@@ -1,0 +1,51 @@
+ <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <mat-horizontal-stepper [linear]="true" #stepper>
+                <mat-step [stepControl]="basic">
+                      
+                    <ng-template matStepLabel>Basic Info</ng-template>
+                    <exalt-basic-info></exalt-basic-info>
+                    
+                </mat-step>
+               
+                <mat-step [stepControl]="personal">
+                       
+                    <ng-template matStepLabel>Personal Info</ng-template>
+                    <exalt-personal-info></exalt-personal-info>
+               
+                </mat-step>
+               
+
+              <mat-step [stepControl]="work" > 
+                   
+                    <ng-template matStepLabel>Work Info</ng-template>
+                    <exalt-work-info></exalt-work-info>
+                   
+                </mat-step>
+                <mat-step [stepControl]="prev_exp">
+                        <ng-template matStepLabel>Previous Experience</ng-template>
+                        <exalt-prev-exp></exalt-prev-exp>
+                </mat-step>
+                <mat-step [stepControl]="qual">
+                        <ng-template matStepLabel>Qualifications</ng-template>
+                        <exalt-qualifications></exalt-qualifications>
+                </mat-step >
+                <mat-step [stepControl]="dependents">
+                        <ng-template matStepLabel>Dependents</ng-template>
+                        <exalt-dependents></exalt-dependents> 
+                </mat-step>
+                <mat-step [stepControl]="about">
+                    <ng-template matStepLabel>About You!</ng-template>
+                    <exalt-about></exalt-about>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </div>
+    </div>
+</div>
+
+
+
+ 
+ 
+ 

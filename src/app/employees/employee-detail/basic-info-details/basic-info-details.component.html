@@ -1,0 +1,39 @@
+<mat-card class="example-card">
+  <mat-card-header class="header">
+    <div class="row">
+      <div class="col-md-10">
+          <b>Basic Information</b>
+      </div>
+      <div class="col-md-2">
+          <span style="margin-left:175px"><i class="fas fa-edit" (click)="onEditItem()"></i></span>
+      </div>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="content">
+      <table class="tables" >
+          <tr>
+            <th>Name</th>
+            <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editName($event)">{{employee.name}}</td>
+          </tr> 
+          <tr>
+            <th>Employee ID</th>
+            <td class="data">{{employee.emp_id}}</td>
+          </tr> 
+          <tr>
+            <th>Gender</th>
+            <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editGender($event)">{{employee.gender}}</td>
+          </tr> 
+          <tr>
+            <th>Email</th>
+            <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editEmail($event)">{{employee.email}}</td>
+          </tr>  
+      </table>
+    </mat-card-content>
+    <hr width="100%">
+    <div class="row" style="margin-left:100px;" *ngIf="editMode">
+      <button mat-raised-button color="primary" style="margin-right:10px;margin-bottom: 10px" (click)="save()">Save</button>
+      <!-- <button mat-raised-button color="accent" style="margin-right:10px;margin-bottom: 10px">Cancel</button> -->
+      <button mat-raised-button color="warn" style="margin-right:10px;margin-bottom: 10px" (click)="delete()">Delete</button>
+    </div>
+</mat-card>
+

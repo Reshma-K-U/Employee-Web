@@ -1,0 +1,39 @@
+<mat-card class="example-card" >
+  <mat-card-header class="header">
+    <div class="row" style="width:100%">
+      <div class="col-md-10">
+          <b class="card-title">Previous Experience</b>
+      </div>
+      <div class="col-md-2">
+        <span  ><i  class="fas fa-edit" (click)="onEditItem()" ></i></span>
+        <span ><i class="fas fa-plus" style="margin-left:25px"  (click)="onNewExperience()"></i></span>
+      </div>
+      
+      
+    </div>
+  </mat-card-header>
+  <mat-card-content class="content">
+      <table class="table table-striped" *ngFor="let exp of exp;let i=index">
+          <tr>
+            <td class="data" >
+              <div class="row">
+                <div class="col-md-12">
+                  <p  [attr.contenteditable]="editMode===true ? true : false" (focusout)="editName($event,i)"><b>{{exp.company_name}}</b></p>
+                   <p [attr.contenteditable]="editMode===true ? true : false" (focusout)="editTitle($event,i)"><i>{{exp.job_title}}</i></p>
+                   <p [attr.contenteditable]="editMode===true ? true : false" (focusout)="editDescription($event,i)">{{exp.description}}</p>
+                  <p [attr.contenteditable]="editMode===true ? true : false" (focusout)="editFrom($event,i)"><span [attr.contenteditable]=false>From:</span>{{exp.from}}</p>
+                  <p [attr.contenteditable]="editMode===true ? true : false" (focusout)="editTo($event,i)"><span [attr.contenteditable]=false>To:</span>{{exp.to}}</p>
+                </div>
+              </div>
+            </td>
+          </tr> 
+        </table>
+  </mat-card-content>
+
+  <hr width="100%">
+  <div class="row" style="margin-left:100px;" *ngIf="editMode">
+    <button mat-raised-button color="primary" style="margin-right:10px;margin-bottom: 10px" (click)="save()">Save</button>
+    <!-- <button mat-raised-button color="accent" style="margin-right:10px;margin-bottom: 10px">Cancel</button> -->
+    <button mat-raised-button color="warn" style="margin-right:10px;margin-bottom: 10px">Delete</button>
+  </div>
+</mat-card>

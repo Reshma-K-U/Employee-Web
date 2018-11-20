@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+            <form #f="ngForm">
+            
+            <table class="table table-striped" id="table" data-filter-control="true">
+                <thead>
+                  <tr>
+                    <th style = "color:#666869">Previous Comapany Name</th>
+                    <th style = "color:#666869">Job Titile</th>
+                    <th style = "color:#666869">
+                      <div class="row">
+                          <div class="col-md-8">
+                            <span style="position:absolute;bottom: 0px">
+                                From Date
+                            </span>
+                          </div>
+                          <div class="col-md-4" >
+                              <span >
+                              <mat-datepicker-toggle matSuffix [for]="fromDate" style="position:absolute;bottom: 0px;height:30px;max-width:5px">
+                              </mat-datepicker-toggle>
+                              <mat-datepicker #fromDate  ></mat-datepicker>
+                              </span>
+                            </div>
+                      </div>
+                    </th>
+                    <th style = "color:#666869">
+                        <div class="row">
+                          <div class="col-md-8">
+                            <span style="position:absolute;bottom: 0px">To Date</span>
+                          </div>
+                          <div class="col-md-4">
+                              <span>
+                                <mat-datepicker-toggle matSuffix [for]="toDate" style="position:absolute;bottom: 0px;height:30px !important; width:20px !important;">
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #toDate></mat-datepicker>
+                              </span>
+                          </div>
+                        </div>
+                    </th>
+                    <th style = "color:#666869">Job Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput required name="companyName" [(ngModel)]="newExp.company_name">
+                          </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                        <input matInput required name="jobTitle" [(ngModel)]="newExp.job_title" >
+                      </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                          <input matInput [matDatepicker]="fromDate" name="fromDate" [(ngModel)]="newExp.fromDate">
+                          </mat-form-field>
+                      
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                          <input matInput [matDatepicker]="toDate" name="toDate" [(ngModel)]="newExp.toDate">
+                          </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput required name="description" [(ngModel)]="newExp.job_description">
+                        </mat-form-field>
+                    </td>
+                </tr>
+              </tbody>
+          </table>
+         </form>
+          <div style="margin-left:320px">
+              <button mat-raised-button color="accent" 
+              style="margin:20px"(click)="closePopup()">Cancel</button>
+              <button mat-raised-button color="primary"
+              style="margin:20px" (click)="addField()">Add</button>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+</div>      
+                          
+                       
+                        
+                           
+                          
+                       
+                        
+                           
+                          
+                       
+                        
+                            
+                           
+                       
+                     
+  
+                  
+                    
+  

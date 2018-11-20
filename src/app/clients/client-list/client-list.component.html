@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+          <div class="search-container">
+              <form>
+                <input type="text" placeholder="Search..." name="search" style="width:90%;height:35px;margin-bottom: 25px;margin-top: 25px">
+                <button type="submit"style="width:10%;height:35px;margin-bottom: 25px;margin-top: 25px" ><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+      </div>
+      <div class="col-md-2">
+        
+          <button type="submit" class="btn btn-primary"
+            style="float:right;margin-bottom: 25px;margin-top: 25px; background-color:#d35f53"
+            routerLink="/add-client">Add Client
+          </button>
+        </div>
+    </div>
+  
+<exalt-client-item class="item"
+  *ngFor="let client of allClients"
+    [client]="client">
+</exalt-client-item>
+
+</div>

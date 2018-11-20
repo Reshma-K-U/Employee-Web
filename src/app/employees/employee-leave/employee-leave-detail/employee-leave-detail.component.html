@@ -1,0 +1,58 @@
+
+<table class="table table-striped table-bordered" *ngIf="data">
+    <thead>
+      <tr class="header-row">
+        <th scope="col">Code</th>
+        <th scope="col">Leave Type</th>
+        <th scope="col">Granted</th>
+        <th scope="col">Applied</th>
+        <th scope="col">Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>CL</th>
+        <td>Casual Leave</td>
+        <td>{{data.maxcl}}</td>
+        <td>{{data.cl}}</td>
+        <td>{{data.maxcl-data.cl}}</td>
+      </tr>
+      <tr>
+          <th>SL</th>
+          <td>Sick Leave</td>
+          <td>{{data.maxsl}}</td>
+          <td>{{data.sl}}</td>
+          <td>{{data.maxsl-data.sl}}</td>
+        </tr>
+        <tr>
+            <th>LOP</th>
+            <td>Loss of Pay</td>
+            <td></td>
+            <td>{{data.lop}}</td>
+            <td></td>
+          </tr>
+        <tr>
+          <th>OL</th>
+          <td>Optional Leave</td>
+          <td>{{data.maxol}}</td>
+          <td>{{data.ol}}</td>
+          <td>{{data.maxol-data.ol}}</td>
+        </tr>
+        <tr>
+          <th>PL</th>
+          <td>Privilage Leave</td>
+          <td>{{data.maxpl}}</td>
+          <td>{{data.pl}}</td>
+          <td>{{data.maxpl-data.pl}}</td>
+        </tr>
+        <tr>
+          <th>CO</th>
+          <td>Compensatory Off</td>
+          <td></td>
+          <td>{{data.co}}</td>
+          <td></td>
+        </tr>
+    </tbody>
+  </table>
+
+

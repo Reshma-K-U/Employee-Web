@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <hr>
+            <mat-form-field>
+                <mat-select [(value)]="selected" placeholder="Team On Leave" (selectionChange)="changeFilter()">
+                  <mat-option value="thisWeek">This Week</mat-option>
+                  <mat-option value="thisMonth">This Month</mat-option>
+                  <mat-option value="lastWeek">Last Week</mat-option>
+                  <mat-option value="lastMonth">Last Month</mat-option>
+                  <mat-option value="nextWeek">Next Week</mat-option>
+                  <mat-option value="nextMonth">Next Month</mat-option>
+                  <mat-option value="thisYear">This Year</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <hr>
+            <exalt-filtered-leaves *ngIf="selected" [data]="data"></exalt-filtered-leaves>
+        </div>
+    </div>
+</div>
+
+

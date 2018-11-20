@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-body">
+            <form #f="ngForm">
+                <mat-form-field class="example-full-width">
+                    <label style = "color:#666869">Expertise Interests etc..</label>
+                    <textarea matInput  name="about" [(ngModel)]="about"></textarea>
+                </mat-form-field>
+            </form>
+            <div style="margin-left:200px">
+              <button mat-raised-button color="accent" matStepperPrevious
+              style="margin:20px">Prev</button>
+              <button mat-raised-button color="primary" matStepperNext
+              style="margin:20px" (click)="onAdd()">Submit</button>
+            </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+  
+
+

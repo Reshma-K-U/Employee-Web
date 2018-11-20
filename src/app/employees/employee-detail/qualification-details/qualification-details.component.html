@@ -1,0 +1,38 @@
+<mat-card class="example-card">
+  <mat-card-header class="header">
+    <div class="row" style="width:100%">
+        <div class="col-md-10">
+            <b>Qualifications</b>
+        </div>
+        <div class="col-md-2">
+          <span ><i class="fas fa-edit" (click)="onEditItem()"></i></span>
+          <span ><i class="fas fa-plus" style="margin-left:25px"  (click)="onAddqualification()"></i></span>
+        </div>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="content">
+    <table class="table table-striped"  *ngFor="let qual of qual;let i=index">
+     
+          <tr>
+              <td class="data" >
+                <div class="row">
+                  <div class="col-md-10">
+                     <p [attr.contenteditable]="editMode===true ? true : false" (focusout)="editCourse($event,i)"><b> {{qual.course}}</b></p>
+                     <p [attr.contenteditable]="editMode===true ? true : false" (focusout)="editSpecialization($event,i)"><i>{{qual.specialization}}</i></p>
+                      <p [attr.contenteditable]="editMode===true ? true : false" (focusout)="editInstitute($event,i)">{{qual.institute}}</p>
+                      <p [attr.contenteditable]="editMode===true ? true : false" (focusout)="editUniversity($event,i)">{{qual.university}}</p>
+                      <p [attr.contenteditable]="editMode===true ? true : false" (focusout)="editPercentage($event,i)">{{qual.percentage}}</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          
+        </table>
+  </mat-card-content>
+  <hr width="100%">
+  <div class="row" style="margin-left:100px;" *ngIf="editMode">
+    <button mat-raised-button color="primary" style="margin-right:10px;margin-bottom: 10px" (click)="save()">Save</button>
+    <!-- <button mat-raised-button color="accent" style="margin-right:10px;margin-bottom: 10px">Cancel</button> -->
+    <button mat-raised-button color="warn" style="margin-right:10px;margin-bottom: 10px">Delete</button>
+  </div>
+</mat-card>

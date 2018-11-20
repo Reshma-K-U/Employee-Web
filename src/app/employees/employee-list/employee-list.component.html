@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8" *ngIf="!add">
+          <div class="search-container">
+              <form>
+                <input type="text" placeholder="Search..." name="search" style="width:90%;height:35px;margin-bottom: 25px;margin-top: 25px">
+                <button type="submit"style="width:10%;height:35px;margin-bottom: 25px;margin-top: 25px" ><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+      </div>
+      <div class="col-md-2">
+        <div *ngIf="!add">
+          <button type="submit" class="btn btn-primary"
+            style="float:right;margin-bottom: 25px;margin-top: 25px;background-color:#d35f53"
+            (click)="loadAddComponent()"
+            >Add Employee
+          </button>
+        </div>
+      </div>
+    </div>
+  <div *ngIf="add">
+    <exalt-add-employee></exalt-add-employee>
+  </div>
+  
+  
+  
+  <div *ngIf="!add && allEmployees">
+        <exalt-employee-item class="item"
+            *ngFor="let emp of allEmployees"
+            [employee]="emp" >
+          </exalt-employee-item>
+      
+  </div>
+</div> 

@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+              <form #f="ngForm">
+              <button class="btn btn-default" type="button" (click)="addField()" 
+              style="background-color:green;color:white;float:right;font-size: 12px;
+              margin-bottom: 10px;"
+              >Add</button>
+          
+              <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th style = "color:#666869">Course</th>
+                      <th style = "color:#666869">Specialization</th>     
+                      <th style = "color:#666869">Institute Name</th>
+                      <th style = "color:#666869">University/Board</th>
+                      <th style = "color:#666869">CGPA/Percentage</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let qual of qualifications; let i = index">
+                      <td >
+                        {{qual.course}}
+                  
+                      </td>
+                      <td>
+                          {{qual.specialization}}
+                        
+                      </td>
+                      <td>
+                          {{qual.institute}}
+                        
+                      </td>
+                      <td>
+                          {{qual.university}}
+                        
+                      </td>
+                      <td>
+                          {{qual.percentage}}
+                         
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <!-- <form #newForm="ngForm"> -->
+                      <td>
+                        <mat-form-field class="example-full-width">
+                          <input matInput name="newCourse" [(ngModel)]="newAttribute.course" required >
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field class="example-full-width">
+                         <input matInput name="newSpecialization" [(ngModel)]="newAttribute.specialization" required >
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field class="example-full-width">
+                          <input matInput name="newInstitute" [(ngModel)]="newAttribute.institute" required >
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field class="example-full-width">
+                          <input matInput name="newUniversity" [(ngModel)]="newAttribute.university" required >
+                        </mat-form-field>
+                      </td>
+                      <td>
+                          <mat-form-field class="example-full-width">
+                              <input matInput name="newPercentage" [(ngModel)]="newAttribute.percentage" required>
+                          </mat-form-field>
+                      </td>
+                      
+                  <!-- </form> -->
+                    </tr>
+                  </tbody>
+                 
+              </table>
+            <!-- </form> -->
+            </form>
+            <div style="margin-left:320px">
+                
+                <button mat-raised-button color="accent" matStepperPrevious
+                style="margin:20px">Prev</button>
+                <button mat-raised-button color="primary" matStepperNext
+                style="margin:20px" (click)="onAdd()">Next</button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>          
+                           
+                     
+                      
+    
+  

@@ -1,0 +1,155 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-body">
+          <form #f="ngForm" >
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th style = "color:#666869">No</th>
+                    <th style = "color:#666869">Name</th>
+                    <th style = "color:#666869">Relationship With Employee</th>
+                    <th style = "color:#666869">Occupation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1.</td>
+                    <td><mat-form-field class="example-full-width">
+                        <input matInput name="firstDependentName" ngModel>
+                      </mat-form-field>
+                    </td>
+                    <td><mat-form-field class="example-full-width">
+                        <input matInput name="firstDependentRelation" ngModel>
+                      </mat-form-field>
+                    </td>
+                    <td><mat-form-field class="example-full-width">
+                        <input matInput name="firstDependentOccupation" ngModel>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>2.</td>
+                      <td><mat-form-field class="example-full-width">
+                          <input matInput name="secondDependentName" ngModel >
+                        </mat-form-field>
+                      </td>
+                      <td><mat-form-field class="example-full-width">
+                          <input matInput name="secondDependentRelation" ngModel>
+                        </mat-form-field>
+                      </td>
+                      <td><mat-form-field class="example-full-width">
+                          <input matInput name="secondDependentOccupation" ngModel >
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td><mat-form-field class="example-full-width">
+                            <input matInput name="thirdDependentName" ngModel >
+                          </mat-form-field>
+                        </td>
+                        <td><mat-form-field class="example-full-width">
+                            <input matInput  name="thirdDependentRelation" ngModel >
+                          </mat-form-field>
+                        </td>
+                        <td><mat-form-field class="example-full-width">
+                            <input matInput name="thirdDependentOccupation" ngModel >
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                 
+                </tbody>
+            </table>
+          </form>
+          <div style="margin-left:320px">
+              <button mat-raised-button color="accent" matStepperPrevious
+              style="margin:20px">Prev</button>
+              <button mat-raised-button color="primary" matStepperNext
+              style="margin:20px" (click)="onAdd(f)">Next</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+              <form #f="ngForm">
+              <button class="btn btn-default" type="button" (click)="addField()" 
+              style="background-color:green;color:white;float:right;font-size: 12px;
+              margin-bottom: 10px;"
+              >Add</button>
+          
+              <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th style = "color:#666869">Dependent Name</th>
+                      <th style = "color:#666869">Relationship</th>     
+                      <th style = "color:#666869">Occupation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let dep of dependents; let i = index">
+                      <td >
+                        {{dep.name}}
+                  
+                      </td>
+                      <td>
+                          {{dep.relation}}
+                        
+                      </td>
+                      <td>
+                          {{dep.occupation}}
+                        
+                      </td>
+                      
+                    <tr>
+                      <!-- <form #newForm="ngForm"> -->
+                      <td>
+                        <mat-form-field class="example-full-width">
+                          <input matInput name="newName" [(ngModel)]="newAttribute.name" required >
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field class="example-full-width">
+                         <input matInput name="newRelation" [(ngModel)]="newAttribute.relation" required >
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field class="example-full-width">
+                          <input matInput name="newOccupation" [(ngModel)]="newAttribute.occupation" required >
+                        </mat-form-field>
+                      </td>
+                      
+                  
+                    </tr>
+                  </tbody>
+                 
+              </table>
+            
+            </form>
+            <div style="margin-left:320px">
+                
+                <button mat-raised-button color="accent" matStepperPrevious
+                style="margin:20px">Prev</button>
+                <button mat-raised-button color="primary" matStepperNext
+                style="margin:20px" (click)="onAdd()">Next</button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>          
+                           
+                     
+                      
+    
+  
+  

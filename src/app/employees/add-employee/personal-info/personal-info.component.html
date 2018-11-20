@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-body">
+            <form #f="ngForm">
+                <div class="mat-radio-button">
+                    <label style = "color:#666869">Marrital Status</label>
+                    <mat-radio-group name="marrital_status" [(ngModel)]="personal.marrital_status" required>
+                    <mat-radio-button value="single" style = "color:#666869">Single</mat-radio-button>
+                    <mat-radio-button value="married" style = "color:#666869">Married</mat-radio-button>
+                    </mat-radio-group>    
+                </div>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <label style = "color:#666869">Date Of Birth</label>
+                  <input matInput [matDatepicker]="picker" name="dob" 
+                  [(ngModel)]="personal.date_of_birth" required>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                
+                <mat-form-field class="example-full-width">
+                    <label style = "color:#666869">Address</label>
+                  <input matInput 
+                            type="text"
+                            id="address"
+                            name="address"
+                            [(ngModel)]="personal.address"
+                            required
+                          >
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <label style = "color:#666869">Mobile Number</label>
+                  <input matInput 
+                          type="text"
+                          id="mobNum"
+                          name="mobNum"
+                          [(ngModel)]="personal.mob_num"
+                          required
+                         >
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <label style = "color:#666869">Other Email</label>
+                  <input matInput
+                          type="email"
+                          id="otherEmail"
+                          name="otherEmail"
+                          [(ngModel)]="personal.other_email"
+                          required 
+                        >
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <label style = "color:#666869">Bank Account Number</label>
+                  <input matInput 
+                          type="text"
+                          id="accnt_num"
+                          name="accnt_num"
+                          [(ngModel)]="personal.accnt_num"
+                          required
+                         >
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <label style = "color:#666869">Aadhar Number</label>
+                  <input matInput 
+                          type="text"
+                          id="aadhar_num"
+                          name="aadhar_num"
+                          [(ngModel)]="personal.aadhar_num"
+                          required
+                          >
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <label style = "color:#666869">Passport Number</label>
+                  <input matInput 
+                          type="text"
+                          id="passport_num"
+                          name="passport_num"
+                          [(ngModel)]="personal.passport_num"
+                          required
+                          >
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <label style = "color:#666869">PAN Number</label>
+                  <input matInput 
+                        type="text"
+                        id="pan_num"
+                        name="pan_num"
+                        [(ngModel)]="personal.pan_num"
+                        required
+                        >
+                </mat-form-field>
+              </form>
+              <div style="margin-left:320px">
+                  <button mat-raised-button color="accent" matStepperPrevious
+                  style="margin:20px">Prev</button>
+                  <button mat-raised-button color="primary" matStepperNext
+                  style="margin:20px" (click)="onAdd()">Next</button>
+                </div>
+        </div>
+      </div>
+        
+    </div>
+  </div>
+</div>
+

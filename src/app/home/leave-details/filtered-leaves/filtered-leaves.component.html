@@ -1,0 +1,26 @@
+<table class="table  table-bordered" >
+  <thead class="header-cell">
+      <tr>
+          <th>Name</th>
+          <th>Employee ID</th>
+          <th>Details</th>
+      </tr>
+  </thead>
+  <tbody *ngFor="let item of data" class="tab">
+    <tr>
+      <td>{{item.name}}</td>
+      <td>{{item.id}}</td>
+      <td *ngIf="item.days==0.5">
+        <b>{{item.leaveType}}</b>
+          [{{item.days}} Day[s]]<br>
+          on {{item.on.toDate() | date}}<br>
+          from {{item.fromSession}} to {{item.toSession}}
+      </td> 
+      <td *ngIf="item.days==1">
+          <b>{{item.leaveType}}</b>
+            [{{item.days}} Day[s]]<br>
+            on {{item.on.toDate() | date}}
+        </td>                               
+    </tr>
+  </tbody>
+</table>

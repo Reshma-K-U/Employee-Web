@@ -1,0 +1,18 @@
+.search-container{
+    
+    align-content: center;
+    padding: 6px 10px;
+   
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .search-container button:hover {
+    background: #ccc;
+  }
+
+  .item{
+    width:33%;
+    display: inline-block;
+  }

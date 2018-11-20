@@ -1,0 +1,76 @@
+<div class="container">
+<mat-card>
+  <mat-card-content>
+    <form #f="ngForm">
+        <mat-form-field class="form-field">
+            <input matInput name="company_name" ngModel placeholder="Company Name">
+          </mat-form-field>
+        <div class="row">
+          
+        <div class="col-md-6">
+          <mat-form-field class="form-field">
+            <input matInput name="client_id" ngModel placeholder="Client ID">
+          </mat-form-field><br>
+          <mat-form-field class="form-field">
+            <input matInput name="website" ngModel placeholder="Website">
+          </mat-form-field><br>
+          <mat-form-field class="form-field">
+            <input matInput  name="city" ngModel placeholder="City">
+          </mat-form-field><br>
+          <mat-form-field class="form-field">
+            <input matInput  name="zip_code" ngModel placeholder="Zip Code">
+          </mat-form-field><br>
+          <mat-form-field class="form-field">
+            <input matInput name="email" ngModel placeholder="Email">
+          </mat-form-field><br> 
+          <mat-form-field class="form-field">
+            <input matInput name="phone" ngModel placeholder="Phone">
+          </mat-form-field><br>
+          <mat-form-field class="form-field">
+            <input matInput name="mob_num" ngModel placeholder="Mobile Number">
+          </mat-form-field><br>
+          <mat-form-field class="form-field">
+            <input matInput name="currency" ngModel placeholder="Currency">
+          </mat-form-field><br>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="form-field">
+            <input matInput name="address" ngModel placeholder="Address">
+          </mat-form-field><br>
+          <mat-form-field class="form-field">
+            <input matInput name="industry_type" ngModel placeholder="Industry Type">
+          </mat-form-field><br>
+          <mat-form-field class="form-field">
+            <input matInput name="state" ngModel placeholder="State">
+          </mat-form-field><br>
+          <mat-form-field class="form-field">
+            <input matInput name="country" ngModel placeholder="Country">
+          </mat-form-field><br>
+          <mat-form-field class="form-field">
+            <input matInput name="alternative_email" ngModel placeholder="Alternative Email">
+          </mat-form-field><br>
+          <mat-form-field class="form-field">
+            <input matInput name="fax" ngModel placeholder="Fax">
+          </mat-form-field><br>
+          <mat-form-field class="form-field"> 
+            <textarea matInput name="note" ngModel placeholder="Note"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+    <hr>
+    <button mat-raised-button color="accent">Cancel</button>
+    <button mat-raised-button color="primary" style="float:right" type="submit" (click)="onAdd(f)">Save</button>
+  </mat-card-content>
+</mat-card>
+ <img [src]="src"> 
+</div>
+
+<img *ngIf="url" [src]="url" class="rounded mb-3" width="180">
+<input type="file"  (change)="detectFiles($event)">
+
+
+
+
+
+

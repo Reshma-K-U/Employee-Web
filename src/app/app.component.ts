@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+ import {FirestoreService} from './services/firestore.service';
 
 @Component({
   selector: 'exalt-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'exalt';
+
+  
+
+  constructor(private fsService:FirestoreService){}
+  
+  ngOnInit(){
+    
+    // this.fsService.add();
+    // this.fsService.getDataForList(); 
+  }
+
+  
+ 
 }

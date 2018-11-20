@@ -1,0 +1,35 @@
+<mat-card class="example-card" >
+  <mat-card-header class="header">
+    <div class="row" style="width:100%">
+        <div class="col-md-10">
+            <b>Dependents</b>
+        </div>
+        <div class="col-md-2">
+          <span style="margin-left:50px"><i class="fas fa-edit" (click)="onEditItem()"></i></span>
+        </div>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="content">
+      <table class="table table-striped" *ngFor="let dep of dep; let i=index">
+          <tr>
+            <td class="data">
+              <div class="row">
+                <div class="col-md-10">
+                    <p [attr.contenteditable]="editMode===true ? true : false" (input)="editName($event,i)" >{{dep.name}}</p>
+                    <p [attr.contenteditable]="editMode===true ? true : false" (input)="editRelation($event,i)">{{dep.relation}}</p>
+                    <p [attr.contenteditable]="editMode===true ? true : false" (input)="editOccupation($event,i)">{{dep.occupation}}</p>
+                </div>
+                
+              </div>
+            </td>
+          </tr> 
+        
+      </table>
+  </mat-card-content>
+  <hr width="100%">
+    <div class="row" style="margin-left:100px;" *ngIf="editMode">
+      <button mat-raised-button color="primary" style="margin-right:10px;margin-bottom: 10px" (click)="save()">Save</button>
+      <!-- <button mat-raised-button color="accent" style="margin-right:10px;margin-bottom: 10px">Cancel</button> -->
+      <button mat-raised-button color="warn" style="margin-right:10px;margin-bottom: 10px">Delete</button>
+    </div>
+</mat-card>

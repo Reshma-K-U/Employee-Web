@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+            <form>
+                <mat-form-field class="example-full-width">
+                    <textarea matInput name="newInterest" [(ngModel)]="newAttribute"></textarea>
+                </mat-form-field>
+            </form>
+            
+        </div>
+        <div class="row" style="margin-left:500px">
+          <button mat-raised-button class="button" color="accent" (click)="addField()">Add</button>
+          <button mat-raised-button class="button" color="primary" (click)="closePopup()">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+  
+
+
+

@@ -1,0 +1,50 @@
+<mat-card class="example-card" >
+  <mat-card-header class="header">
+    <div class="row">
+      <div class="col-md-10">
+          <b>Work Information</b>
+      </div>
+      <div class="col-md-2">
+          <span style="margin-left:175px"><i class="fas fa-edit" (click)="onEditItem()"></i></span>
+      </div>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="content">
+      <table class="tables">
+          <tr>
+            <th>Department</th>
+            <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editDepartment($event)">{{employee.department}}</td>
+          </tr> 
+          <tr>
+            <th>Working Location</th>
+            <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editLocation($event)">{{employee.work_location}}</td>
+          </tr> 
+          <tr>
+              <th>Joining Date</th>
+              <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editJoinDate($event)">{{employee.joining_date}}</td>
+            </tr>  
+            <tr>
+                <th>Source of Hire</th>
+                <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editHireSource($event)">{{employee.hire_source}}</td>
+              </tr> 
+              <tr>
+                  <th>Role</th>
+                  <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editRole($event)">{{employee.role}}</td>
+                </tr> 
+              <tr>
+                  <th>Employee Type</th>
+                  <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editEmployeeType($event)">{{employee.employee_type}}</td>
+                </tr> 
+                <tr>
+                    <th>Status</th>
+                    <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editStatus($event)">{{employee.status}}</td>
+                  </tr> 
+            </table>
+      </mat-card-content>
+      <hr width="100%">
+      <div class="row" style="margin-left:100px;" *ngIf="editMode">
+      <button mat-raised-button color="primary" style="margin-right:10px;margin-bottom: 10px" (click)="save()">Save</button>
+      <!-- <button mat-raised-button color="accent" style="margin-right:10px;margin-bottom: 10px">Cancel</button> -->
+      <button mat-raised-button color="warn" style="margin-right:10px;margin-bottom: 10px">Delete</button>
+    </div>
+</mat-card>

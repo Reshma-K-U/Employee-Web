@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+            <form #f="ngForm">
+            
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th style = "color:#666869">Course</th>
+                    <th style = "color:#666869">Specialization</th>     
+                    <th style = "color:#666869">Institute Name</th>
+                    <th style = "color:#666869">University/Board</th>
+                    <th style = "color:#666869">CGPA/Percentage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <mat-form-field class="example-full-width">
+                        <input matInput name="newCourse" [(ngModel)]="newAttribute.course" required >
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field class="example-full-width">
+                       <input matInput name="newSpecialization" [(ngModel)]="newAttribute.specialization" required >
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field class="example-full-width">
+                        <input matInput name="newInstitute" [(ngModel)]="newAttribute.institute" required >
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field class="example-full-width">
+                        <input matInput name="newUniversity" [(ngModel)]="newAttribute.university" required >
+                      </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput name="newPercentage" [(ngModel)]="newAttribute.percentage" required>
+                        </mat-form-field>
+                    </td>
+                    
+                
+                  </tr>
+                </tbody>
+               
+            </table>
+        
+          </form>
+          <div style="margin-left:320px">
+              
+              <button mat-raised-button color="accent"
+              style="margin:20px" (click)="closePopup()">Cancel</button>
+              <button mat-raised-button color="primary" 
+              style="margin:20px" (click)="addField()">Add</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>          
+                         
+                   
+                    
+  

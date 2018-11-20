@@ -1,0 +1,21 @@
+<mat-card>
+<mat-card-content>
+    <form #f="ngForm">
+      <mat-form-field class="form-field">
+        <input type="number" matInput name="pl" ngModel placeholder="Privilage Leaves">
+      </mat-form-field><br>     
+    </form>
+    <hr>
+    <button mat-raised-button color="accent" (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" style="float:right" type="submit" (click)="submitLeave(f)">Save</button>
+  </mat-card-content>
+</mat-card>
+
+            
+
+    
+    
+    
+    
+    
+    

@@ -1,0 +1,59 @@
+<mat-card class="example-card">
+  <mat-card-header class="header">
+    <div class="row">
+      <div class="col-md-10">
+          <b>Personal Information</b>
+      </div>
+      <div class="col-md-2">
+        <span style="margin-left: 160px"><i class="fas fa-edit" (click)="onEditItem()"></i></span>
+      </div>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="content">
+      <table class="tables">
+          <tr>
+            <th>Marrital Status</th>
+            <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editMarritalStatus($event)">{{employee.marrital_status}}</td>
+          </tr> 
+          <tr>
+            <th>Date of Birth</th>
+            <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editDob($event)">{{employee.dob}}</td>
+          </tr> 
+          <tr>
+            <th>Address</th>
+            <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editAddress($event)">{{employee.address}}</td>
+          </tr>
+            <tr>
+                <th>Mobile Number</th>
+                <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editMob($event)">{{employee.mob_num}}</td>
+                 
+            </tr>  
+            <tr>
+                <th>Other Email</th>
+                <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editEmail($event)">{{employee.other_email}}</td>
+              </tr> 
+              <tr>
+                  <th>Account Number</th>
+                  <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editAccount($event)">{{employee.bank_accnt_num}}</td>
+                </tr> 
+                <tr>
+                    <th>PAN Number</th>
+                    <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editPan($event)">{{employee.pan_num}}</td>
+                  </tr> 
+                  <tr>
+                    <th>Aadhar Number</th>
+                    <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editAadhar($event)">{{employee.aadhar_num}}</td>
+                  </tr> 
+                  <tr>
+                      <th>Passport Number</th>
+                      <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editPassport($event)">{{employee.passport_num}}</td>
+                    </tr> 
+              </table>
+      </mat-card-content>
+      <hr width="100%">
+    <div class="row" style="margin-left:100px;" *ngIf="editMode">
+      <button mat-raised-button color="primary" style="margin-right:10px;margin-bottom: 10px" (click)="save()">Save</button>
+      <!-- <button mat-raised-button color="accent" style="margin-right:10px;margin-bottom: 10px">Cancel</button> -->
+      <button mat-raised-button color="warn" style="margin-right:10px;margin-bottom: 10px">Delete</button>
+    </div>
+</mat-card>

@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+            <form #f="ngForm">
+                <mat-form-field class="example-full-width">
+                    <label style = "color:#666869">Department</label>
+                    <input matInput
+                          name="department"
+                          [(ngModel)]="work.department"
+                          required 
+                         >
+                  <!-- <mat-select  name="department" [(ngModel)]="work.department"   required>
+                            <mat-option  value="marketing"> Marketing</mat-option>
+                            <mat-option  value="hr">Human Resource Management</mat-option>
+                            <mat-option  value="sys_admin">System Administration</mat-option>
+                            <mat-option  value="development">Development</mat-option>
+                            <mat-option  value="testing">Testing</mat-option>
+                          </mat-select> -->
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                      <label style = "color:#666869">Working Location</label>
+                    <input matInput
+                          name="location"
+                          [(ngModel)]="work.location"
+                          required 
+                         >
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                      <label style = "color:#666869">Source of Hire</label>
+                   <!--  <mat-select  required name="hire_source" [(ngModel)]="work.hire_source" >
+                      <mat-option  value="referral">Through Referral</mat-option>
+                      <mat-option  value="job_portals">Through Job Portals</mat-option>
+                      <mat-option  value="advertisement">News Paper Advertisement</mat-option>
+                    </mat-select> -->
+                    <input matInput
+                          name="hire_sourcr"
+                          [(ngModel)]="work.hire_source"
+                          required 
+                         >
+                  </mat-form-field>
+                  
+                  <mat-form-field class="example-full-width" >
+                      <label style = "color:#666869">Date Of Joining</label>
+                    <input matInput [matDatepicker]="picker" required name="join_date" 
+                    [(ngModel)]="work.joining_date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                      <label style = "color:#666869">Role</label>
+                    <!-- <mat-select  required name="role" [(ngModel)]="work.role">
+                      <mat-option  value="manager">Manager</mat-option>
+                      <mat-option  value="directer">Director</mat-option>
+                      <mat-option  value="team_lead">Team Lead</mat-option>
+                      <mat-option  value="engineer">Engineer</mat-option>
+                      <mat-option  value="jr_engineer">Junior Engineer</mat-option>
+                    </mat-select> -->
+                    <input matInput
+                          name="role"
+                          [(ngModel)]="work.role"
+                          required 
+                         >
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                      <label style = "color:#666869">Employee Type</label>
+                   <!--  <mat-select  required name="employee_type" [(ngModel)]="work.employee_type">
+                      <mat-option  value="on_contract">On Contract</mat-option>
+                      <mat-option  value="trainee">Trainee</mat-option>
+                      <mat-option  value="permanant">Permanant</mat-option>
+                      <mat-option  value="temporary">Temporary</mat-option>
+                    </mat-select> -->
+                    <input matInput
+                          name="employee_type"
+                          [(ngModel)]="work.employee_type"
+                          required 
+                         >
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                      <label style = "color:#666869">Status</label>
+                   <!--  <mat-select  required name="status" [(ngModel)]="work.status">
+                      <mat-option  value="active">Active</mat-option>
+                      <mat-option  value="probation">Probation</mat-option>
+                      <mat-option  value="inactive">Inactive</mat-option>
+                    </mat-select> -->
+                    <input matInput
+                          name="status"
+                          [(ngModel)]="work.status"
+                          required 
+                         >
+                  </mat-form-field>
+              </form>
+            <div style="margin-left:250px">
+                <button mat-raised-button color="accent" matStepperPrevious
+                style="margin:20px">Prev</button>
+                <button mat-raised-button color="primary" matStepperNext
+                style="margin:20px"  (click)="onAdd(f)">Next</button>
+              </div>
+        </div>
+      </div>
+       
+    </div>
+  </div>
+</div>
+
+

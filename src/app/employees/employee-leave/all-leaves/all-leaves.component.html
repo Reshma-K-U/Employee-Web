@@ -1,0 +1,176 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <h6>Casual Leaves</h6>
+        <div class="tab">
+          
+            <table class="table table-bordered table-striped">
+              <thead class="header-cell">
+                <tr>
+                  <th>On</th>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Days</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of data">
+                <tr *ngIf="item.days==0.5 && item.leaveType=='cl'">
+                    <td>{{item.on.toDate() | date}}</td>
+                    <td>{{item.fromSession}}</td>
+                    <td>{{item.toSession}}</td>
+                    <td>{{item.days}}</td>
+                </tr>
+                <tr *ngIf="item.days==1 && item.leaveType=='cl'">
+                    <td>{{item.on.toDate() | date}}</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>{{item.days}}</td>
+                </tr>
+              </tbody>
+             </table>
+          </div>
+       <h6>Optional Leaves</h6>
+       <div class="tab">
+          
+          <table class="table table-bordered table-striped">
+            <thead class="header-cell">
+              <tr>
+                <th>On</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Days</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of data">
+              <tr *ngIf="item.days==0.5 && item.leaveType=='ol'">
+                  <td>{{item.on.toDate() | date}}</td>
+                  <td>{{item.fromSession}}</td>
+                  <td>{{item.toSession}}</td>
+                  <td>{{item.days}}</td>
+              </tr>
+              <tr *ngIf="item.days==1 && item.leaveType=='ol'">
+                  <td>{{item.on.toDate() | date}}</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>{{item.days}}</td>
+              </tr>
+            </tbody>
+           </table>
+           </div>
+       <h6>Compensatory Off</h6>
+       <div class="tab">
+          
+          <table class="table table-bordered table-striped">
+            <thead class="header-cell">
+              <tr>
+                <th>On</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Days</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of data">
+              <tr *ngIf="item.days==0.5 && item.leaveType=='co'">
+                  <td>{{item.on.toDate() | date}}</td>
+                  <td>{{item.fromSession}}</td>
+                  <td>{{item.toSession}}</td>
+                  <td>{{item.days}}</td>
+              </tr>
+              <tr *ngIf="item.days==1 && item.leaveType=='co'">
+                  <td>{{item.on.toDate() | date}}</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>{{item.days}}</td>
+              </tr>
+            </tbody>
+           </table>
+           </div>
+    </div>
+    <div class="col-md-6">
+        <h6>Sick Leaves</h6>
+        <div class="tab">
+          
+        <table class="table table-bordered table-striped">
+          <thead class="header-cell">
+            <tr>
+              <th>On</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Days</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of data">
+            <tr *ngIf="item.days==0.5 && item.leaveType=='sl'">
+                <td>{{item.on.toDate() | date}}</td>
+                <td>{{item.fromSession}}</td>
+                <td>{{item.toSession}}</td>
+                <td>{{item.days}}</td>
+            </tr>
+            <tr *ngIf="item.days==1 && item.leaveType=='sl'">
+                <td>{{item.on.toDate() | date}}</td>
+                <td>--</td>
+                <td>--</td>
+                <td>{{item.days}}</td>
+            </tr>
+          </tbody>
+         </table>
+         </div>
+         <h6>Privilage Leaves</h6>
+         <div class="tab">
+          
+            <table class="table table-bordered table-striped">
+              <thead class="header-cell">
+                <tr>
+                  <th>On</th>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Days</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of data">
+                <tr *ngIf="item.days==0.5 && item.leaveType=='pl'">
+                    <td>{{item.on.toDate() | date}}</td>
+                    <td>{{item.fromSession}}</td>
+                    <td>{{item.toSession}}</td>
+                    <td>{{item.days}}</td>
+                </tr>
+                <tr *ngIf="item.days==1 && item.leaveType=='pl'">
+                    <td>{{item.on.toDate() | date}}</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>{{item.days}}</td>
+                </tr>
+              </tbody>
+             </table>
+             </div>
+         <h6>Loss of Pay</h6>
+         <div class="tab">
+          
+            <table class="table table-bordered table-striped">
+              <thead class="header-cell">
+                <tr>
+                  <th>On</th>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Days</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of data">
+                <tr *ngIf="item.days==0.5 && item.leaveType=='lop'">
+                    <td>{{item.on.toDate() | date}}</td>
+                    <td>{{item.fromSession}}</td>
+                    <td>{{item.toSession}}</td>
+                    <td>{{item.days}}</td>
+                </tr>
+                <tr *ngIf="item.days==1 && item.leaveType=='lop'">
+                    <td>{{item.on.toDate() | date}}</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>{{item.days}}</td>
+                </tr>
+              </tbody>
+             </table>
+             </div>
+    </div>
+  </div>
+</div>

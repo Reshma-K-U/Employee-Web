@@ -1,0 +1,22 @@
+<div class="container">
+<div class="row">
+  <mat-card class="header-card">
+      <div id="background">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+          </mat-card-header>
+        </div>
+         <mat-tab-group >
+           <!--  #tabGroup [selectedIndex]="selected.value"
+            (selectedIndexChange)="selected.setValue($event)" -->
+            <mat-tab label="Profile">
+                 <exalt-employee-detail ></exalt-employee-detail> 
+            </mat-tab>
+            <mat-tab label="Leave">
+                <exalt-employee-leave ></exalt-employee-leave>
+            </mat-tab>
+            <mat-tab label="Salary">  </mat-tab>
+          </mat-tab-group> 
+  </mat-card>
+</div>
+</div>
