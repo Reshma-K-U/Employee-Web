@@ -30,13 +30,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
 
 import {EmployeeService} from  './employees/services/employee.services';
 import{FirestoreService} from '../app/services/firestore.service';
 import {FirestoreClientService} from './clients/services/firestore.service'
-
+import {AttendanceService } from './attendance/service/attendance.service'
 
 import { AppComponent } from './app.component';
 import { BasicInfoComponent } from './employees/add-employee/basic-info/basic-info.component';
@@ -82,6 +82,7 @@ import { FilteredLeavesComponent } from './home/leave-details/filtered-leaves/fi
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HomeNavbarComponent } from './home/home-navbar/home-navbar.component';
+import { AttendanceComponent } from './attendance/attendance.component';
 
 
 
@@ -139,7 +140,9 @@ import { HomeNavbarComponent } from './home/home-navbar/home-navbar.component';
 
     HomeComponent,
 
-    HomeNavbarComponent
+    HomeNavbarComponent,
+
+    AttendanceComponent
     
   ],
   imports: [
@@ -164,13 +167,14 @@ import { HomeNavbarComponent } from './home/home-navbar/home-navbar.component';
     MatIconModule,
     MatTabsModule,
     MatDialogModule,
+    MatCheckboxModule,
 
     AppRoutingModule,
 
     
     
   ],
-  providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService],
+  providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent]
 })
