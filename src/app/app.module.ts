@@ -29,14 +29,14 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatDialogModule, MatDialog} from '@angular/material/dialog';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
 
 import {EmployeeService} from  './employees/services/employee.services';
 import{FirestoreService} from '../app/services/firestore.service';
 import {FirestoreClientService} from './clients/services/firestore.service'
-
+import {AttendanceService } from './attendance/service/attendance.service'
 
 import { AppComponent } from './app.component';
 import { BasicInfoComponent } from './employees/add-employee/basic-info/basic-info.component';
@@ -82,10 +82,10 @@ import { FilteredLeavesComponent } from './home/leave-details/filtered-leaves/fi
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HomeNavbarComponent } from './home/home-navbar/home-navbar.component';
+import { AttendanceComponent } from './attendance/attendance.component';
 
 
 import { PayrollComponent } from './payroll/payroll.component';
-import { MatCheckbox, MatCheckboxModule } from '@angular/material';
 import { AddsalaryComponent } from './payroll/addsalary/addsalary.component';
 import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.component';
 
@@ -145,11 +145,7 @@ import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.compo
 
     HomeNavbarComponent,
 
-    PayrollComponent,
-
-    AddsalaryComponent,
-
-    NewempsalaryComponent,
+    AttendanceComponent
     
   ],
   imports: [
@@ -174,10 +170,12 @@ import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.compo
     MatIconModule,
     MatTabsModule,
     MatDialogModule,
+    MatCheckboxModule,
+
     AppRoutingModule,
     MatCheckboxModule,
   ],
-  providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService],
+  providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
   NewempsalaryComponent]
