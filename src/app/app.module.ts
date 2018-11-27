@@ -29,7 +29,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialog} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -84,6 +84,10 @@ import { HomeComponent } from './home/home.component';
 import { HomeNavbarComponent } from './home/home-navbar/home-navbar.component';
 
 
+import { PayrollComponent } from './payroll/payroll.component';
+import { MatCheckbox, MatCheckboxModule } from '@angular/material';
+import { AddsalaryComponent } from './payroll/addsalary/addsalary.component';
+import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.component';
 
 
 @NgModule({
@@ -139,7 +143,13 @@ import { HomeNavbarComponent } from './home/home-navbar/home-navbar.component';
 
     HomeComponent,
 
-    HomeNavbarComponent
+    HomeNavbarComponent,
+
+    PayrollComponent,
+
+    AddsalaryComponent,
+
+    NewempsalaryComponent,
     
   ],
   imports: [
@@ -164,14 +174,12 @@ import { HomeNavbarComponent } from './home/home-navbar/home-navbar.component';
     MatIconModule,
     MatTabsModule,
     MatDialogModule,
-
     AppRoutingModule,
-
-    
-    
+    MatCheckboxModule,
   ],
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService],
   bootstrap: [AppComponent],
-  entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent]
+  entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
+  NewempsalaryComponent]
 })
 export class AppModule { }
