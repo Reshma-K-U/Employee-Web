@@ -16,8 +16,6 @@ export class AppComponent {
     
     // this.fsService.add();
     // this.fsService.getDataForList(); 
+    
   }
-
-  
- 
 }
