@@ -26,9 +26,12 @@
     "bootstrap": "4.0.0-alpha.6",
     "core-js": "^2.5.4",
     "firebase": "^5.5.8",
+<<<<<<< HEAD
  
     "gulp-sass": "^4.0.2",
  
+=======
+>>>>>>> 14eaa348c4ee5fcd36006bed685a5697738adcfb
     "hammerjs": "^2.0.8",
     "ng2-file-upload": "^1.3.0",
     "node-gyp": "^3.8.0",

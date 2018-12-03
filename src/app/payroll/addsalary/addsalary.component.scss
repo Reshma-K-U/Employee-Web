@@ -36,14 +36,21 @@ table, th, td {
     width: 100%;
   }
   h2{
-    margin-left: 30%
+    margin-left: 30%;
   }
 
+  .btn.btn-primary
+  {
+    margin-left:300px;
+  }
   .btn.btn-danger
   {
-    margin-left:100px
+    margin-left:30px;
   }
   .row
   {
-    width: 600px;
+    width: 750px;
+  }
+  .col-sm-5{
+    max-width: 250px;
   }
