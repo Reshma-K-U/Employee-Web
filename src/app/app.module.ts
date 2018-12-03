@@ -142,10 +142,13 @@ import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.compo
     NavbarComponent,
 
     HomeComponent,
+    AddsalaryComponent,
 
     HomeNavbarComponent,
 
-    AttendanceComponent
+    AttendanceComponent,
+    NewempsalaryComponent,
+    PayrollComponent,
     
   ],
   imports: [
