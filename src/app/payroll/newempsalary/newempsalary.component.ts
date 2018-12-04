@@ -17,12 +17,8 @@ export class NewempsalaryComponent implements OnInit {
   }
   onSave(form:NgForm){
     var value=form.value;
-    console.log(value);
     this.newempsalser.newEmployeeSalary(value);
     this.dialogRef.close();
-  }
-  onSubmit(){
-    console.log("form Submitted");
   }
   onReset(){
     this.dialogRef.close();

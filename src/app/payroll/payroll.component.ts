@@ -5,6 +5,7 @@ import { PayrollService } from './service/payroll.service';
 import { NewempsalaryComponent } from './newempsalary/newempsalary.component';
 import { AddEmployeeComponent } from '../employees/add-employee/add-employee.component';
 import { FirestoreService } from '../services/firestore.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'exalt-payroll',
@@ -14,11 +15,22 @@ import { FirestoreService } from '../services/firestore.service';
 export class PayrollComponent implements OnInit {
 
   allemployee:any[]=[];
-  constructor(public dialog: MatDialog,private pyService:PayrollService,fsService:FirestoreService,) { }
+  payrollDetails:any[]=[];
+  subscription:Subscription;
+  constructor(public dialog: MatDialog,private pyService:PayrollService,private fsService:FirestoreService,) { }
 
   ngOnInit() {
 
-this.allemployee=this.pyService.getDataForList();
+this.allemployee=this.fsService.getDataForList();
+this.subscription=this.pyService.getPayrollDetails().subscribe(
+  (value)=>{
+    this.payrollDetails=value;
+    this.subscription.unsubscribe();
+  }
+  
+)
+
+
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(NewempsalaryComponent,{
