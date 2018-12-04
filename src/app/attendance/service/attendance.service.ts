@@ -9,6 +9,8 @@ import {of} from 'rxjs';
 })
 export class AttendanceService {
   allEmployees:any= [];
+  onDate:Date;
+
 
   constructor(private fsService:FirestoreService, private afs:AngularFirestore) { }
 

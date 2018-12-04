@@ -1,22 +1,48 @@
 .date{
-    margin-left: 500px;
+    margin-left: 520px;
 }
-.checkin{
-width:15%;
+th{
+    background-color: #006064;
+    border-color:  #006064;
+    color: #fff;
 }
-.checkout{
-    width:15%;
-    
+
+
+button{
+    width:100%;
 }
 
 .btn-process{
-    margin-left:75%;
+    margin-left:79%;
     width:12%;
-    height:30%;
+    padding: 10px;
     color:#fff;
-    background-color: #0D47A1;
-    border-color: #0D47A1;
+    background-color:#1565C0;
+    border-color: #1565C0;
     border-radius:5px;
-    margin-top: 20px;
+    margin-top: 18px;
 
+}
+
+.Present{
+    width:1px;
+}
+
+
+.col-sm-3 head
+{   
+    color: #fff;
+    
+
+}
+.container{
+    background-color: #3c5076;
+    padding: 20px;
+    margin-left:5%;
+    margin-top:5px;
+    width:80%;
+    color:#fff;
+    border-radius: 2px;
+
+    
 }

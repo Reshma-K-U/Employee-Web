@@ -1,0 +1,43 @@
+<h2>ADD SALARY DETAILS</h2>
+<form #f="ngForm">
+  <div class="row"> 
+     <div class="col-sm-5">
+    <mat-form-field  class="form-field">
+     <input matInput name="empid" [(ngModel)]="employeeDetail.empid" placeholder="Employee ID"></mat-form-field>
+     <mat-form-field  class="form-field">
+    <input matInput name="basicpay" [(ngModel)]="employeeDetail.basicpay"  placeholder="Basic pay"></mat-form-field>
+        <mat-form-field  class="form-field">
+    <input matInput name="hra" [(ngModel)]="employeeDetail.hra" placeholder="HRA"></mat-form-field>
+        <mat-form-field  class="form-field">
+    <input matInput name="speallow" [(ngModel)]="employeeDetail.speallow"  placeholder="Special Allowance"></mat-form-field>
+        <mat-form-field  class="form-field">
+    <input matInput name="medallow" [(ngModel)]="employeeDetail.medallow"  placeholder="Medical Allowance"></mat-form-field>
+    </div>
+    <div class="col-sm-5">
+        <mat-form-field  class="form-field">
+    <input matInput name="cedallow" [(ngModel)]="employeeDetail.cedallow" placeholder="Children Education Allowance"></mat-form-field>
+        <mat-form-field  class="form-field">
+   <input matInput name="bonus" ngModel placeholder="Bonus"></mat-form-field>        
+        <mat-form-field  class="form-field">
+    <input matInput name="arrears" ngModel placeholder="Arrears"></mat-form-field>
+        <mat-form-field  class="form-field">
+    <input matInput name="gwp" ngModel placeholder="Gross Wage Payable"></mat-form-field>
+        <mat-form-field  class="form-field">                
+    <input matInput name="esi" ngModel placeholder="ESI"></mat-form-field>
+    </div>
+    <div class="col-sm-5">
+        <mat-form-field  class="form-field">
+    <input matInput name="wwf" ngModel  placeholder="WWF"></mat-form-field>
+        <mat-form-field  class="form-field">
+    <input matInput name="advance" ngModel placeholder="Advance"></mat-form-field>
+        <mat-form-field  class="form-field">
+    <input matInput name="it" ngModel placeholder="IT"></mat-form-field>
+        <mat-form-field  class="form-field">
+    <input matInput name="others" ngModel placeholder="Others"></mat-form-field>
+        <mat-form-field  class="form-field">
+    <input matInput name="totded" ngModel placeholder="Total Deductions"></mat-form-field>
+    </div>
+     </div>
+          <button class="btn btn-primary" (click)="onSave(f)">SAVE</button>
+        <button class="btn btn-danger" (click)="onCancel()">CANCEL</button>
+</form>

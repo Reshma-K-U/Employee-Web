@@ -30,10 +30,15 @@
       </tr>
     
     
-    </tbody>
-  </table>
+  </div>
+</div>
+    <div *ngFor="let emp of allEmployees">
+        <exalt-attendanceitem [employee]="emp"></exalt-attendanceitem>
 
-</div>
-<div >
+
+    </div>
+ 
+ 
   <button type="button" class="btn-process" >Process</button>
-</div>
+
+ 

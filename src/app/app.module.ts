@@ -83,8 +83,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HomeNavbarComponent } from './home/home-navbar/home-navbar.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { AttendanceitemComponent } from './attendance/attendanceitem/attendanceitem.component';
 
 
+import { PayrollComponent } from './payroll/payroll.component';
+import { AddsalaryComponent } from './payroll/addsalary/addsalary.component';
+import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.component';
 
 
 @NgModule({
@@ -139,10 +143,15 @@ import { AttendanceComponent } from './attendance/attendance.component';
     NavbarComponent,
 
     HomeComponent,
+    AddsalaryComponent,
 
     HomeNavbarComponent,
 
-    AttendanceComponent
+    AttendanceComponent,
+    NewempsalaryComponent,
+    PayrollComponent,
+
+    AttendanceitemComponent
     
   ],
   imports: [
@@ -170,12 +179,11 @@ import { AttendanceComponent } from './attendance/attendance.component';
     MatCheckboxModule,
 
     AppRoutingModule,
-
-    
-    
+    MatCheckboxModule,
   ],
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
-  entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent]
+  entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
+  NewempsalaryComponent]
 })
 export class AppModule { }

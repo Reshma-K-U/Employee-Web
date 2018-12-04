@@ -3,6 +3,7 @@ import { AttendanceService } from './service/attendance.service';
 import { FirestoreService } from '../services/firestore.service';
 import { Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'exalt-attendance',
   templateUrl: './attendance.component.html',
