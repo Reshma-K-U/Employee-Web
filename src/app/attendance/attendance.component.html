@@ -6,15 +6,10 @@
     <mat-datepicker #picker ></mat-datepicker>
   </mat-form-field>
   
-
-
 <div class="container">
- 
-    
-  <table class="table table-bordered" >
+ <table class="table table-bordered" >
     <thead>
       <tr>
-        
         <th>EmpID</th>
         <th>Name</th>
         <th class="checkin">Check in</th>
@@ -28,17 +23,11 @@
         <td class="checkin"><button  type="button" class="btn btn-success" [disabled]="getLeaveStatus(emp.emp_id)"><span> <i class="fa fa-clock-o" aria-hidden="true" ></i></span>Checkin</button></td>
         <td class="checkout"><button  type="button" class="btn btn-danger" [disabled]="getLeaveStatus(emp.emp_id)"><span> <i class="fa fa-clock-o" aria-hidden="true"></i></span>Checkout</button></td>
       </tr>
-    
-    
-  </div>
-</div>
-    <div *ngFor="let emp of allEmployees">
-        <exalt-attendanceitem [employee]="emp"></exalt-attendanceitem>
-
-
-    </div>
- 
- 
+    </tbody>
+  </table>
   <button type="button" class="btn-process" >Process</button>
+</div>
+ 
+  
 
  

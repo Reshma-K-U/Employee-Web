@@ -16,6 +16,7 @@ import { EmployeeLeaveComponent } from './employees/employee-leave/employee-leav
 import { HeaderComponent } from './employees/header/header.component';
 import {HomeComponent} from './home/home.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { PayrollComponent } from './payroll/payroll.component';
 
 const routes: Routes = [
   {path:'',component:EmployeesComponent,pathMatch:'full'},
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path:'view/:id',component:HeaderComponent},
   {path:'home',component:HomeComponent},
   {path:'attendance',component:AttendanceComponent},
+  {path:'payroll',component:PayrollComponent},
 ];
 
 @NgModule({

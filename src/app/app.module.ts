@@ -83,7 +83,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HomeNavbarComponent } from './home/home-navbar/home-navbar.component';
 import { AttendanceComponent } from './attendance/attendance.component';
-import { AttendanceitemComponent } from './attendance/attendanceitem/attendanceitem.component';
+
 
 
 import { PayrollComponent } from './payroll/payroll.component';
@@ -150,8 +150,6 @@ import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.compo
     AttendanceComponent,
     NewempsalaryComponent,
     PayrollComponent,
-
-    AttendanceitemComponent
     
   ],
   imports: [
