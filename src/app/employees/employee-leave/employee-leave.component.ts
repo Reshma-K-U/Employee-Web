@@ -25,6 +25,7 @@ export class EmployeeLeaveComponent implements OnInit {
     // this.router.navigateByUrl('apply-leave/'+this.id);
     const dialogRef = this.dialog.open(ApplyLeaveComponent,{
      data: {id:this.id}
+    
     });
   }
 

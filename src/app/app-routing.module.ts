@@ -15,6 +15,7 @@ import { LeaveDetailsComponent } from './home/leave-details/leave-details.compon
 import { EmployeeLeaveComponent } from './employees/employee-leave/employee-leave.component';
 import { HeaderComponent } from './employees/header/header.component';
 import {HomeComponent} from './home/home.component';
+import { AttendanceComponent } from './attendance/attendance.component';
 
 const routes: Routes = [
   {path:'',component:EmployeesComponent,pathMatch:'full'},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path:'employee-leave',component:EmployeeLeaveComponent},
   {path:'view/:id',component:HeaderComponent},
   {path:'home',component:HomeComponent},
+  {path:'attendance',component:AttendanceComponent},
 ];
 
 @NgModule({

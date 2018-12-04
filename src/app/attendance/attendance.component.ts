@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AttendanceService } from './service/attendance.service';
+import { FirestoreService } from '../services/firestore.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'exalt-attendance',
@@ -7,58 +9,35 @@ import { AttendanceService } from './service/attendance.service';
   styleUrls: ['./attendance.component.scss']
 })
 export class AttendanceComponent implements OnInit {
- buttoncheckin=true;
- buttoncheckout=true;
- allEmployees:any[]=[];
- todaydate:Date;
- 
 
-  constructor(private atService:AttendanceService) { }
+ allEmployees:any[]=[];
+ leavesTaken:any[]=[]
+ todaydate:Date;
+ subscription:Subscription;
+
+
+  constructor(private atService:AttendanceService,private fsService:FirestoreService) { }
 
   ngOnInit(){
-   this.allEmployees= this.atService.getDataForList();
-   console.log(this.allEmployees);
-  console.log(this.todaydate);
+   this.allEmployees= this.fsService.getDataForList();
+  }
 
+  onSaveDate(){
+    this.subscription=this.atService.getLeaveDetails(this.todaydate).subscribe(
+      (value)=>{
+        this.leavesTaken=value;
+      }
+    )
+    this.subscription.unsubscribe();
+  }
+
+  getLeaveStatus(id:string){
     
-  }
-
-  Oncheckin()
-  {
-    this.buttoncheckout=false;
-    this.buttoncheckin=true;
-    var today=new Date();
-
-    // var time=today.getTime();
-    var hours = today.getHours();
-
- // Minutes
- var minutes = "0" + today.getMinutes();
-
- // Seconds
- var seconds = "0" + today.getSeconds();
-    console.log(hours,minutes,seconds);
-  }
-  Oncheckout()
-  {
-    this.buttoncheckout=true;
-    var today=new Date();
-    var hours = today.getHours();
-
- var minutes = "0" + today.getMinutes();
-
- var seconds = "0" + today.getSeconds();
-    console.log(hours,minutes,seconds);
-
-    
-  }
-Ontick()
-{
-  this.buttoncheckin=!this.buttoncheckin;
-  if (this.buttoncheckin==true)
-  {
-    this.buttoncheckout=true;
-  }
-
+    for(var j=0;j<this.leavesTaken.length;j++){
+      if(this.leavesTaken[j].id==id&&this.leavesTaken[j].days==1){
+          return true;
+      }
+    }
+  }   
 }
-}
+

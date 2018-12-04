@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FirestoreService} from '../../services/firestore.service';
 import { AngularFirestore } from 'angularfire2/firestore';
+import {of} from 'rxjs';
 
 
 @Injectable({
@@ -11,15 +12,22 @@ export class AttendanceService {
 
   constructor(private fsService:FirestoreService, private afs:AngularFirestore) { }
 
-  getDataForList() {
-    var docRef=this.afs.collection('employees');
-    var array =[];
-    docRef.ref.get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            array.push(doc.data());
-        })
+getLeaveDetails(date:Date){
+    var data:any[]=[];
+    this.afs.collection('leaves').ref.get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(leaveDoc) {
+        var value=leaveDoc.data();
+    
+        if(date.getTime()==value.on.toDate().getTime()){
+        
+            data.push(value);
+        }
     })
-    return array;
-};
+    })
+    return of(data);
+}
 
 }
+
+
+

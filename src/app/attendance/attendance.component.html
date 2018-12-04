@@ -1,6 +1,7 @@
 
 <mat-form-field  class="date" >
-    <input matInput [matDatepicker]="picker" name="crd" [(ngModel)]=" todaydate" placeholder="Choose a date">
+    <input matInput [matDatepicker]="picker" name="crd" [(ngModel)]=" todaydate" placeholder="Choose a date"
+    (dateChange)="onSaveDate()">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker ></mat-datepicker>
   </mat-form-field>
@@ -10,24 +11,22 @@
 <div class="container">
  
     
-  <table class="table table-bordered">
+  <table class="table table-bordered" >
     <thead>
       <tr>
         
         <th>EmpID</th>
         <th>Name</th>
-        <th>Present/Absent</th>
         <th class="checkin">Check in</th>
         <th class="Checkout">Check out</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let emp of allEmployees">
+      <tr  *ngFor="let emp of allEmployees">
         <td>{{emp.emp_id}}</td>
         <td>{{emp.name}}</td>
-        <td class="Present"><mat-checkbox (click)="Ontick()"></mat-checkbox></td>
-        <td class="checkin"><button  type="button" class="btn btn-success"(click)="Oncheckin()" [disabled]="buttoncheckin"><span> <i class="fa fa-clock-o" aria-hidden="true"></i></span>      checkin</button></td>
-        <td class="checkout"><button  type="button" class="btn btn-danger"(click)="Oncheckout()"[disabled]="buttoncheckout"><span> <i class="fa fa-clock-o" aria-hidden="true"></i></span>     Checkout</button></td>
+        <td class="checkin"><button  type="button" class="btn btn-success" [disabled]="getLeaveStatus(emp.emp_id)"><span> <i class="fa fa-clock-o" aria-hidden="true" ></i></span>Checkin</button></td>
+        <td class="checkout"><button  type="button" class="btn btn-danger" [disabled]="getLeaveStatus(emp.emp_id)"><span> <i class="fa fa-clock-o" aria-hidden="true"></i></span>Checkout</button></td>
       </tr>
     
     
