@@ -1,3 +1,4 @@
+<button mat-raised-button color="primary" class="add-button" (click)="openDialog()">ADD</button>
 <form>
   <div>
 <mat-form-field >
@@ -12,9 +13,9 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-          <th>Name</th>
-          <th>Working Days</th>  
-          <th>Present</th>
+        <th>Name</th>
+        <th>Working Days</th>  
+        <th>Present</th>
         <th>Absent</th>
         <th>Basic Pay</th>
         <th>HRA</th>
@@ -24,19 +25,25 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let emp of allemployee">
-        <td>{{emp.name}}</td>
+      <tr *ngFor="let emp of payrollDetails">
+        <td>{{emp.empname}}</td>
         <td></td>
         <td></td>
         <td></td>
-        <td></td>
-        <td></td>
+        <td>{{emp.basicpay}}</td>
+        <td>{{emp.hra}}</td>
         <td>
           <button mat-raised-button color="primary"(click)="openDialogmore(emp.emp_id)">More</button>   
         </td>
+<<<<<<< HEAD
         <td>{{total}}</td>
         <td><mat-checkbox></mat-checkbox>
         </td>
+=======
+        <td>{{emp.total}}</td>
+        <td><mat-checkbox></mat-checkbox></td>
+        
+>>>>>>> aa6f29e52644d8bf457f5be3a187ce3b48e2fbce
       </tr>
       <tr>
         <td colspan="9"><h6>Total:</h6></td>

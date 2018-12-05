@@ -35,7 +35,7 @@ export class AddsalaryComponent implements OnInit {
         this.employeeDetail.speallow=value.speallow;
         this.employeeDetail.cedallow=value.cedallow;
 
-        console.log(this.employeeDetail);
+  
         this.subscription.unsubscribe();
               }
     )
