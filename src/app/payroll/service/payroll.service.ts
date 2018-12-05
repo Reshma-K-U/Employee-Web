@@ -7,6 +7,7 @@ import { AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument } 
 export class PayrollService {
 
   allemployee:any=[];
+  totalsalary:number=0;
   private userDoc:AngularFirestoreDocument<any>;
   constructor(private fsService:FirestoreService,private afs:AngularFirestore,private psService:PayrollService,) { }
   
@@ -38,12 +39,12 @@ employeeDocRef.
 
 }
 moreEmployeeSalary(more:any){
-     console.log(more);
-    var employeeDocRef=this.afs.collection("payroll").doc(more.empid);
+    var employeeDocRef=this.afs.collection("payroll").doc(more.empid).collection("salarydetails").ref.doc();
 employeeDocRef.
     set({
         
         'empid': more.empid,
+        'name':more.name,
         'basicpay': more.basicpay,
         'hra':more.hra,
         'speallow': more.speallow,
@@ -58,6 +59,7 @@ employeeDocRef.
         'it': more.it,
         'others':more.others,
         'totded': more.totded,
+        
     }) 
 }
 moreEmpFill(id:string){
@@ -70,4 +72,10 @@ moreEmpFill(id:string){
         return data;
     
 }
+addtotalsalary(more){
+    this.totalsalary=parseInt(more.basicpay)+parseInt(more.hra);
+    // console.log(this.totalsalary);
+    return this.totalsalary;
+}
+
 }
