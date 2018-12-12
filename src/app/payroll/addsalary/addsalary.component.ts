@@ -10,14 +10,23 @@ import { Subscription } from 'rxjs';
 })
 export class AddsalaryComponent implements OnInit {
 
-    uptotal:Number;
     employeeDetail:any={
     empid:"",
     basicpay:"",
     hra:"",
     medallow:"",
     speallow:"",
-    cedallow:""
+    cedallow:"",
+    bonus:0,
+    arrears:0,
+    gwp:0,
+    esi:0,
+    wwf:0,
+    advance:0,
+    it:0,
+    others:0,
+    totded:0,
+  
   }
    subscription:Subscription;
   constructor(private moreempser:PayrollService,
@@ -34,17 +43,12 @@ export class AddsalaryComponent implements OnInit {
         this.employeeDetail.medallow=value.medallow;
         this.employeeDetail.speallow=value.speallow;
         this.employeeDetail.cedallow=value.cedallow;
-
-  
-        this.subscription.unsubscribe();
-              }
-    )
+      this.subscription.unsubscribe();
+    })
   }
   onSave(form:NgForm){
-    var value=form.value;
-    // console.log(value);    
-    this.moreempser.moreEmployeeSalary(value);
-    this.uptotal=this.moreempser.addtotalsalary(value);
+    var value=form.value;    
+    this.moreempser.moreEmployeeSalary(value,this.data.date);
     this.dialogRef.close();
   }
   onCancel(){

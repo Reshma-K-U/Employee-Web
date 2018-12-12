@@ -1,0 +1,30 @@
+.example-card {
+    max-width: 800px;
+    margin-left: 20%;
+  }
+  h1{
+      text-align: center;
+  }
+  h3{
+      text-align: center;
+  }
+  table {
+    width: 100%;
+  }
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color:#004080;
+    color:wheat;
+    width: 200px;
+}
+table, th, td {
+    border: 2px solid #f2f2f2;
+ }
+
+ td {
+    height: 25px;
+    vertical-align: bottom;
+    width: 100px;
+}

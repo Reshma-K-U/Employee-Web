@@ -1,59 +1,51 @@
-<button mat-raised-button color="primary" class="add-button" (click)="openDialog()">ADD</button>
-<form>
-  <div>
-<mat-form-field >
-  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+
+<div class="container1">
+  <mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="onDate" [ngModelOptions]="{standalone: true}" (dateChange)=disableAll()>
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
-     
 <button mat-raised-button color="primary" class="add-button" (click)="openDialog()">ADD</button>
-  </div>
+</div>
+<br>
 <div class ="container">
   <table class="table table-bordered">
     <thead>
       <tr>
         <th>Name</th>
-        <th>Working Days</th>  
+        <!-- <th>Working Days</th>  
         <th>Present</th>
-        <th>Absent</th>
+        <th>Absent</th> -->
         <th>Basic Pay</th>
         <th>HRA</th>
         <th>Other</th>
         <th>Total</th>
-        <th>Paid</th>
+        <th>PDF</th>
+        <th>Paid</th>  
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let emp of payrollDetails">
         <td>{{emp.empname}}</td>
+        <!-- <td></td>
         <td></td>
-        <td></td>
-        <td></td>
+        <td></td> -->
         <td>{{emp.basicpay}}</td>
         <td>{{emp.hra}}</td>
         <td>
-          <button mat-raised-button color="primary"(click)="openDialogmore(emp.emp_id)">More</button>   
+          <button mat-raised-button color="primary" [disabled]="disable" (click)="openDialogmore(emp.empid)" >More</button>   
         </td>
-<<<<<<< HEAD
-        <td>{{total}}</td>
-        <td><mat-checkbox></mat-checkbox>
-        </td>
-=======
         <td>{{emp.total}}</td>
-        <td><mat-checkbox></mat-checkbox></td>
-        
->>>>>>> aa6f29e52644d8bf457f5be3a187ce3b48e2fbce
+        <td><button mat-raised-button color="primary" routerLink="/salaryslip/{{emp.empid}}/{{onDate}}">Download</button></td>
+        <td><mat-checkbox [checked]="true"></mat-checkbox></td>  
       </tr>
       <tr>
-        <td colspan="9"><h6>Total:</h6></td>
+        <td><h6>Total:</h6></td>
+        <td colspan="9"></td>
       </tr>
     </tbody>
   </table>
 <div>
-    <button mat-raised-button color="primary">Download pdf</button>
-  <button mat-raised-button color="primary" class="button-generate">Process</button>
-  </div>
+  <button mat-raised-button color="primary" class="button-generate" (click)="onProcessClick()">Process</button>
 </div>
-</form>
-
+</div>

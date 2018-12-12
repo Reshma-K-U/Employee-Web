@@ -88,6 +88,7 @@ import { AttendanceComponent } from './attendance/attendance.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { AddsalaryComponent } from './payroll/addsalary/addsalary.component';
 import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.component';
+import { SalaryslipComponent } from './payroll/salaryslip/salaryslip.component';
 
 
 @NgModule({
@@ -150,6 +151,7 @@ import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.compo
     AttendanceComponent,
     NewempsalaryComponent,
     PayrollComponent,
+    SalaryslipComponent,
     
   ],
   imports: [

@@ -6,6 +6,8 @@ import { NewempsalaryComponent } from './newempsalary/newempsalary.component';
 import { AddEmployeeComponent } from '../employees/add-employee/add-employee.component';
 import { FirestoreService } from '../services/firestore.service';
 import { Subscription } from 'rxjs';
+import { NgIf } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'exalt-payroll',
@@ -15,30 +17,22 @@ import { Subscription } from 'rxjs';
 export class PayrollComponent implements OnInit {
 
   allemployee:any[]=[];
-<<<<<<< HEAD
-  total:Number=100;
-  constructor(public dialog: MatDialog,private pyService:PayrollService,fsService:FirestoreService,) { }
-  ngOnInit() {
-this.allemployee=this.pyService.getDataForList();
-=======
   payrollDetails:any[]=[];
+  payrollDetails1:any[]=[];
+  // payrollDetailsUpdate:any;
   subscription:Subscription;
-  constructor(public dialog: MatDialog,private pyService:PayrollService,private fsService:FirestoreService,) { }
+  onDate:Date;
+  // totalSalary:number;
+  disable:boolean=true;
+  constructor(public dialog: MatDialog,private pyService:PayrollService,private fsService:FirestoreService) { }
 
   ngOnInit() {
-
-this.allemployee=this.fsService.getDataForList();
-this.subscription=this.pyService.getPayrollDetails().subscribe(
+  this.subscription=this.pyService.getPayrollDetails().subscribe(
   (value)=>{
     this.payrollDetails=value;
     this.subscription.unsubscribe();
-  }
-  
-)
-
-
->>>>>>> aa6f29e52644d8bf457f5be3a187ce3b48e2fbce
-  }
+  })
+}
   
   openDialog(): void {
     const dialogRef = this.dialog.open(NewempsalaryComponent,{
@@ -47,10 +41,19 @@ this.subscription=this.pyService.getPayrollDetails().subscribe(
   }
   
   openDialogmore(id:string): void {
-    console.log(id);
     const dialogRef = this.dialog.open(AddsalaryComponent,{
-      data: {id:id},
+      data: {id:id,date:this.onDate},
       width: '750px',
     });
   }
+  disableAll()
+  {
+    this.disable = false;
+  }
+  
+  onProcessClick(){
+    this.pyService.resetEmployeeSalary();
+  }
 }
+ 
+

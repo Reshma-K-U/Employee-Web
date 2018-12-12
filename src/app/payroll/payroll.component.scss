@@ -1,6 +1,5 @@
 .mat-form-field{
     margin-left: 500px;
-    height: 0px;
 }
 
 
@@ -15,7 +14,7 @@ table {
     color: white;
 }
 table, th, td {
-    border: 2px solid black;
+    border: 2px solid #f2f2f2;
  }
 
  td {
@@ -32,4 +31,11 @@ table, th, td {
 h2{
     color: rgb(15, 2, 63);
     text-align: center;
+}
+.add-button{
+    margin-left: 1150px;
+}
+.dateadd{
+    height: 60px;
+    background-color: aqua;
 }
