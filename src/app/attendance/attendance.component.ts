@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AttendanceService } from './service/attendance.service';
 import { FirestoreService } from '../services/firestore.service';
 import { Subscription } from 'rxjs';
+import { Time } from '@angular/common';
 
 
 @Component({
@@ -15,22 +16,34 @@ export class AttendanceComponent implements OnInit {
  leavesTaken:any[]=[]
  todaydate:Date;
  subscription:Subscription;
-
+ checkinStatus:any[]=[];
 
   constructor(private atService:AttendanceService,private fsService:FirestoreService) { }
 
   ngOnInit(){
    this.allEmployees= this.fsService.getDataForList();
+   
   }
 
   onSaveDate(){
+    var sub1:Subscription;
+    this.atService.createDoc(this.todaydate);
+    
+    sub1=this.atService.readCheckinStatus(this.todaydate).subscribe(
+      (value)=>{
+        this.checkinStatus=value;
+        console.log(this.checkinStatus);
+        sub1.unsubscribe();
+      }
+    )
+    
     this.subscription=this.atService.getLeaveDetails(this.todaydate).subscribe(
       (value)=>{
         this.leavesTaken=value;
       }
     )
     this.subscription.unsubscribe();
-  }
+}
 
   getLeaveStatus(id:string){
     
@@ -39,6 +52,20 @@ export class AttendanceComponent implements OnInit {
           return true;
       }
     }
-  }   
+    return false;
+  }  
+  
+  onCheckin(id:string){
+    this.atService.onCheckin(id,this.todaydate);
+  }
+
+  onCheckout(id:string){
+    this.atService.onCheckout(id,this.todaydate);
+  }
+
+  initial(){
+    return true;
+  }
+
 }
 
