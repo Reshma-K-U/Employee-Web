@@ -89,6 +89,8 @@ import { AttendanceComponent } from './attendance/attendance.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { AddsalaryComponent } from './payroll/addsalary/addsalary.component';
 import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.component';
+import { NewdependentComponent } from './employees/employee-detail/dependents-details/newdependent/newdependent.component';
+
 
 
 @NgModule({
@@ -150,6 +152,8 @@ import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.compo
     AttendanceComponent,
     NewempsalaryComponent,
     PayrollComponent,
+    NewdependentComponent,
+    
     
   ],
   imports: [
@@ -182,6 +186,6 @@ import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.compo
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
-  NewempsalaryComponent]
+  NewempsalaryComponent,NewdependentComponent]
 })
 export class AppModule { }

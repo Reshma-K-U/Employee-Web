@@ -22,28 +22,23 @@ export class AttendanceComponent implements OnInit {
 
   ngOnInit(){
    this.allEmployees= this.fsService.getDataForList();
-   
   }
 
   onSaveDate(){
-    var sub1:Subscription;
     this.atService.createDoc(this.todaydate);
-    
-    sub1=this.atService.readCheckinStatus(this.todaydate).subscribe(
-      (value)=>{
-        this.checkinStatus=value;
-        console.log(this.checkinStatus);
-        sub1.unsubscribe();
-      }
-    )
-    
+
     this.subscription=this.atService.getLeaveDetails(this.todaydate).subscribe(
       (value)=>{
         this.leavesTaken=value;
-      }
-    )
-    this.subscription.unsubscribe();
-}
+      })
+    // this.subscription.unsubscribe();
+    
+    this.subscription=this.atService.readCheckinStatus(this.todaydate).subscribe(
+      (value)=>{
+        this.checkinStatus=value;
+      })
+        // this.subscription.unsubscribe();
+  }
 
   getLeaveStatus(id:string){
     
@@ -54,6 +49,22 @@ export class AttendanceComponent implements OnInit {
     }
     return false;
   }  
+
+  getCheckinStatus(id:string){
+    for(var j=0;j<this.checkinStatus.length;j++){
+      if(this.checkinStatus[j].empid==id){
+          return this.checkinStatus[j].isCheckedin;
+      }
+    }
+  }
+
+  getCheckoutStatus(id:string){
+    for(var j=0;j<this.checkinStatus.length;j++){
+      if(this.checkinStatus[j].empid==id){
+          return this.checkinStatus[j].isCheckedout;
+      }
+    }
+  }
   
   onCheckin(id:string){
     this.atService.onCheckin(id,this.todaydate);

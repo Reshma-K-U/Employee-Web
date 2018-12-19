@@ -15,7 +15,7 @@ export class AttendanceService {
       var month=date.getMonth();
       var day=date.getDate();
       this.afs.collection('attendance').doc(year.toString()).collection(month.toString()).doc
-      (day.toString()).collection('employees').ref.doc().set({});
+      (day.toString()).collection('employees').ref.doc('empty').set({});
   }
 
 getLeaveDetails(date:Date){
@@ -23,9 +23,7 @@ getLeaveDetails(date:Date){
     this.afs.collection('leaves').ref.get().then(function(querySnapshot) {
     querySnapshot.forEach(function(leaveDoc) {
         var value=leaveDoc.data();
-    
         if(date.getTime()==value.on.toDate().getTime()){
-        
             data.push(value);
         }
     })
@@ -78,13 +76,21 @@ onCheckout(id:string,date:Date){
 }
 
 readCheckinStatus(date:Date){
-    var year=date.getFullYear();
+     var year=date.getFullYear();
     var month=date.getMonth();
     var day=date.getDate();
-
-    var value= this.afs.collection('attendance').doc(year.toString()).collection(month.toString()).doc
-    (day.toString()).collection('employees').valueChanges() ;
-    return (value);
+    var data:any[]=[];
+    this.afs.collection('attendance').doc(year.toString()).collection(month.toString()).doc
+    (day.toString()).collection('employees').ref.get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(leaveDoc) {
+        var value=leaveDoc.data();
+        if(value!={}){
+            data.push(value);
+        }
+    })
+    })
+    return of(data);
+    
 }
 
 }
