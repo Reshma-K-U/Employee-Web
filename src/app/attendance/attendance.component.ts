@@ -3,6 +3,8 @@ import { AttendanceService } from './service/attendance.service';
 import { FirestoreService } from '../services/firestore.service';
 import { Subscription } from 'rxjs';
 import { Time } from '@angular/common';
+import { AttendanceEditComponent } from './attendance-edit/attendance-edit.component';
+import { MatDialog } from '@angular/material';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class AttendanceComponent implements OnInit {
  subscription:Subscription;
  checkinStatus:any[]=[];
 
-  constructor(private atService:AttendanceService,private fsService:FirestoreService) { }
+  constructor(public dialog:MatDialog,private atService:AttendanceService,private fsService:FirestoreService) { }
 
   ngOnInit(){
    this.allEmployees= this.fsService.getDataForList();
@@ -77,6 +79,9 @@ export class AttendanceComponent implements OnInit {
   initial(){
     return true;
   }
+onEdit(): void{
+const dialogRef =this.dialog.open(AttendanceEditComponent);
+}
 
 }
 

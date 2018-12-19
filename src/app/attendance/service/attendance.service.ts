@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import {of} from 'rxjs';
+import { Validators } from '@angular/forms';
 
 
 @Injectable({
@@ -75,6 +76,7 @@ onCheckout(id:string,date:Date){
     })
 }
 
+
 readCheckinStatus(date:Date){
      var year=date.getFullYear();
     var month=date.getMonth();
@@ -93,7 +95,32 @@ readCheckinStatus(date:Date){
     
 }
 
+addemp(value:any,date:Date)
+{    var time=new Date();
+    time=value.chkin;
+     var time1=new Date();
+    time1=value.chkout;
+    var year=date.getFullYear();
+    var month=date.getMonth();
+    var day=date.getDate();
+    var attendDocref=this.afs.collection('attendance').doc(year.toString()).collection(month.toString()).doc
+    (day.toString()).collection('employees').doc(value.empid)
+    attendDocref.set({
+        'on':value.crd,
+        'empid':value.empid,
+        'checkinTime':time,
+        'checkoutTime':time1,
+        'hours':value.thours,
+        'isCheckedin':true,
+        'isCheckedout':true
+    });
+     
+    }
 }
+
+
+
+
 
 
 

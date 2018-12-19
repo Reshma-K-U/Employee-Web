@@ -4,7 +4,9 @@
     (dateChange)="onSaveDate()">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker ></mat-datepicker>
+   
   </mat-form-field>
+  <button mat-raised-button class="matbutton" (click)="onEdit()"><span ><i class="fas fa-edit"> Edit</i></span></button>
   
 <div class="container">
  <table class="table table-bordered" >
@@ -32,7 +34,7 @@
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn-process" >Process</button>
+ 
 </div>
  
   

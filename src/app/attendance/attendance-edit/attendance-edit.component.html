@@ -1,0 +1,56 @@
+
+<form #f="ngForm" class="example-form">
+  
+    <div class="row">
+      <div class="col-md-4">
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" name="crd" [(ngModel)]="todaydate"   placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+    </div>
+    <div class="row">
+  <div class="col-md-4">
+  <mat-form-field class="example-full-width">
+    <input matInput name="empid" ngModel placeholder="Employee ID" >
+  </mat-form-field>
+  </div>
+  </div>
+<div class="row">
+  <div class="col-md-4">
+  <mat-form-field class="example-full-width">
+      <input matInput name="chkin" ngModel placeholder="Checkin Time" >
+    </mat-form-field>
+  </div>
+</div>
+  <div class="row">
+      <div class="col-md-4">
+      <mat-form-field class="example-full-width">
+          <input matInput name="chkout" ngModel placeholder="Checkout Time" >
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+        <mat-form-field class="example-full-width">
+            <input matInput name="thours" ngModel placeholder="Total Hours" >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-4">
+          <mat-form-field class="example-full-width">
+              <input matInput name="chkdin"  placeholder="CheckedIn" [value]="checked" >
+            </mat-form-field>
+          </div>
+        </div>
+      <div class="row">
+          <div class="col-md-4">
+          <mat-form-field class="example-full-width">
+              <input matInput name="chkdout"  placeholder="CheckedOut" [value]="checked" >
+            </mat-form-field>
+          </div>
+        </div>
+</form>
+<button mat-button   type="submit"(click)="onSave(f)">save</button>
