@@ -1,6 +1,10 @@
 import { Component, OnInit,Input } from '@angular/core';
 import {Employee, Dependents} from '../../model/employee.model';
 import { FirestoreService } from '../../../services/firestore.service';
+import { MatDialog,MatDialogRef,MAT_DIALOG_DATA } from '@angular/material';
+import {NewdependentComponent} from './newdependent/newdependent.component';
+
+
 @Component({
   selector: 'exalt-dependents-details',
   templateUrl: './dependents-details.component.html',
@@ -13,7 +17,7 @@ export class DependentsDetailsComponent implements OnInit {
   editedDep:Dependents[];
   editMode:boolean=false;
   
-  constructor(private fsService:FirestoreService) { }
+  constructor(private fsService:FirestoreService,public dialog:MatDialog) { }
 
   ngOnInit() {
     this.editedDep=[];
@@ -38,6 +42,12 @@ export class DependentsDetailsComponent implements OnInit {
   save(){
     this.fsService.updateDep(this.id,this.dep);
     this.editMode=false;
+  }
+
+  onNewDependent(){
+    this.dialog.open(NewdependentComponent,{
+      data:{id:this.id}
+    });
   }
 
 }

@@ -146,6 +146,23 @@ export class FirestoreService {
                     }
                 )
     }
+    
+    addNewDep(id:string,newDep:Dependents){
+        let count = this.afs.collection('employees').doc(id).collection('dependents').snapshotChanges().map(c => {
+            return c.length;
+          });
+         this.subscription=count.subscribe(
+                    (len)=>{
+                        this.afs.collection('employees').doc(id).collection('dependents').doc('dep'+len).set({
+                            'name':newDep.name,
+                        'relation':newDep.relation,
+                        'occupation':newDep.occupation
+                         })
+                        this.subscription.unsubscribe();
+                    }
+                )
+    }
+
 
     addNewQual(id:string,newQual:Qualification){
         let count = this.afs.collection('employees').doc(id).collection('qualifications').snapshotChanges().map(c => {
@@ -173,7 +190,7 @@ export class FirestoreService {
         updateDep(id:string,dep:Dependents[]){
             var userDoc=this.afs.collection('employees').doc(id);
             dep.forEach(function(value,index){
-                userDoc.collection('dependents').doc('dependent' +index).set({
+                userDoc.collection('dependents').doc('dep' +index).set({
                     'name':value.name,
                     'relation':value.relation,
                     'occupation':value.occupation,

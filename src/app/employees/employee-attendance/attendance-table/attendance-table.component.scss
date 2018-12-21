@@ -1,23 +1,22 @@
 .example-card {
-    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);
+   
     padding:0;
     font-family: arial;
-    width:100%;
+    width:30%;
     height: auto;
     margin-top:10px;
-    overflow: hidden;
-  
+    margin-left:800px;
+   
   }
-
   .header{
     color:white;
-    background-color:#3c5076;
+    background-color:#025aa5;
+    border-color:#025aa5;
+    height: 30px;
+
     font-size:18px;
-      
-}
-.section{
-  margin:1px;
-}
+  }
+  
 
   .content{
     text-align: center;
@@ -26,14 +25,22 @@
     background-color: #FFFFFF;
 }
 
+ .tables th {
+    padding: 10px;
+    width:20%;
+}
+.tables td {
+    padding:10px;
+    width:20%;
+}
+th{
+    width: 250px;;
+}
+
 
 .data{
     // color:#3380FF;
     font-size: 14px;
     text-align: left;
   }
-
-  .mat-tab-body-content {
-    overflow: hidden !important;
-  }
-
+  

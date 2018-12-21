@@ -4,6 +4,12 @@ import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FileSelectDirective} from 'ng2-file-upload';
+//import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
@@ -22,7 +28,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule, DateAdapter } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -32,6 +38,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import {EmployeeService} from  './employees/services/employee.services';
 import{FirestoreService} from '../app/services/firestore.service';
@@ -83,13 +90,19 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HomeNavbarComponent } from './home/home-navbar/home-navbar.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { EmployeeSalaryComponent} from './employees/employee-salary/employee-salary.component';
+import { SalaryslipComponent} from './payroll/salaryslip/salaryslip.component';
 
 
 import { PayrollComponent } from './payroll/payroll.component';
 import { AddsalaryComponent } from './payroll/addsalary/addsalary.component';
 import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.component';
-import { SalaryslipComponent } from './payroll/salaryslip/salaryslip.component';
-import { EmployeeSalaryComponent } from './employees/employee-salary/employee-salary.component';
+import { NewdependentComponent } from './employees/employee-detail/dependents-details/newdependent/newdependent.component';
+
+import { EmployeeAttendanceComponent } from './employees/employee-attendance/employee-attendance.component';
+import { AttendanceCalendarComponent } from './employees/employee-attendance/attendance-calendar/attendance-calendar.component';
+import { AttendanceTableComponent } from './employees/employee-attendance/attendance-table/attendance-table.component';
+import { AttendanceEditComponent } from './attendance/attendance-edit/attendance-edit.component';
 
 
 @NgModule({
@@ -125,6 +138,7 @@ import { EmployeeSalaryComponent } from './employees/employee-salary/employee-sa
     ClientItemComponent,
     InfoComponent,
 
+
     FileSelectDirective,
 
     EmployeeLeaveComponent,
@@ -154,6 +168,12 @@ import { EmployeeSalaryComponent } from './employees/employee-salary/employee-sa
     PayrollComponent,
     SalaryslipComponent,
     EmployeeSalaryComponent,
+    NewdependentComponent,
+    
+    EmployeeAttendanceComponent,
+    AttendanceCalendarComponent,
+    AttendanceTableComponent,
+    AttendanceEditComponent,
     
   ],
   imports: [
@@ -181,10 +201,20 @@ import { EmployeeSalaryComponent } from './employees/employee-salary/employee-sa
     MatCheckboxModule,
     AppRoutingModule,
     MatCheckboxModule,    
+    MatGridListModule,
+
+    AppRoutingModule,
+    MatCheckboxModule,
+
+
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
-  NewempsalaryComponent,EmployeeSalaryComponent,]
+  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,AttendanceEditComponent]
 })
 export class AppModule { }
