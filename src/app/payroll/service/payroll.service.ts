@@ -1,12 +1,15 @@
 import { Injectable, Input } from '@angular/core';
 import { FirestoreService } from '../../services/firestore.service';
 import { AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument } from 'angularfire2/firestore';
+import { ValueTransformer } from '@angular/compiler/src/util';
+import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class PayrollService {
 
   allemployee:any=[];
+  date1:any=[];
   private userDoc:AngularFirestoreDocument<any>;
   constructor(private afs:AngularFirestore,private psService:PayrollService) { }
   
@@ -24,11 +27,16 @@ employeeDocRef.
         'medallow':value.medallow,
         'cedallow': value.cedallow,
         'total':"",
+        // this.employees.push(emp);
     }) 
 
 }
 moreEmployeeSalary(more:any,date:Date){
-    var employeeDocRef=this.afs.collection("payroll").doc(more.empid).collection("salarydetails").ref.doc(date.toString());
+    var date1=date.getDate();
+    var month=date.getMonth();
+    var year=date.getFullYear();
+    var employeeDocRef=this.afs.collection("payroll").doc(more.empid).collection("salarydetails").
+    ref.doc(year.toString()).collection(month.toString()).doc(date1.toString());
     
     var updatetotal=parseInt(more.basicpay)+parseInt(more.hra)+parseInt(more.speallow)+
     parseInt(more.medallow)+parseInt(more.cedallow)+parseInt(more.bonus)+parseInt(more.arrears)+
@@ -48,7 +56,7 @@ employeeDocRef.
         'gwp': more.gwp,
         'esi':more.esi,
         'wwf': more.wwf,
-        'adavnce':more.advance,
+        'advance':more.advance,
         'it': more.it,
         'others':more.others,
         'totded': more.totded,
@@ -78,8 +86,9 @@ moreEmpFill(id:string){
 }
 
 getPayrollDetails(){
-    var col = this.afs.collection('payroll');
-    var data:any
+
+        var col = this.afs.collection('payroll');
+        var data:any
         data = col.valueChanges();
         return data;
     } 
@@ -98,16 +107,25 @@ getPayrollDetails(){
 });
     } 
 
-    salarySlipFill(id:string,date:string){
-        id=id.replace(/\s/g, "");
-        this.userDoc = this.afs.collection('payroll').doc(id).collection('salarydetails').doc(date);
+    salarySlipFill(id:string,d:Date){
+        var date= new Date(d);
+        var day=date.getDate();
+        var month=date.getMonth();
+        var year=date.getFullYear();
+         id=id.replace(/\s/g, "");    
+          this.userDoc = this.afs.collection('payroll').doc(id).collection('salarydetails').doc(year.toString())
+         .collection(month.toString()).doc(day.toString());
         var data:any
         data = this.userDoc.valueChanges();
         return data;
+    }
 
-    
-}
-
-
-
+    empNameDetails(id:string){
+        console.log(id);
+        var userDoc = this.afs.collection('employees').doc(id);
+        var data:any
+        data = this.userDoc.valueChanges();
+        console.log(data);
+        return data;
+    }
 }

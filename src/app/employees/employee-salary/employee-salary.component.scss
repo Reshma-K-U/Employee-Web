@@ -1,0 +1,28 @@
+.select{
+    margin-left: 320px;
+}
+table {
+    width: 100%;
+  }
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color:#02102ce7;
+    color: white;
+}
+table, th, td {
+    border: 2px solid #f2f2f2;
+ }
+
+ td {
+    height: 50px;
+    width: 50px;
+    vertical-align: bottom;
+}
+.container{
+    width: 700px;
+}
+.col-md-3{
+    margin-top: 40px;
+}

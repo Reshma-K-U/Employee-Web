@@ -36,7 +36,7 @@
           <button mat-raised-button color="primary" [disabled]="disable" (click)="openDialogmore(emp.empid)" >More</button>   
         </td>
         <td>{{emp.total}}</td>
-        <td><button mat-raised-button color="primary" routerLink="/salaryslip/{{emp.empid}}/{{onDate}}">Download</button></td>
+        <td><button mat-raised-button color="primary" [disabled]="disable" (click)="onDownload(emp.empid)">Download</button></td>
         <td><mat-checkbox [checked]="true"></mat-checkbox></td>  
       </tr>
       <tr>

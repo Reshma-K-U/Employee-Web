@@ -22,7 +22,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, DateAdapter } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -89,6 +89,7 @@ import { PayrollComponent } from './payroll/payroll.component';
 import { AddsalaryComponent } from './payroll/addsalary/addsalary.component';
 import { NewempsalaryComponent } from './payroll/newempsalary/newempsalary.component';
 import { SalaryslipComponent } from './payroll/salaryslip/salaryslip.component';
+import { EmployeeSalaryComponent } from './employees/employee-salary/employee-salary.component';
 
 
 @NgModule({
@@ -152,6 +153,7 @@ import { SalaryslipComponent } from './payroll/salaryslip/salaryslip.component';
     NewempsalaryComponent,
     PayrollComponent,
     SalaryslipComponent,
+    EmployeeSalaryComponent,
     
   ],
   imports: [
@@ -178,11 +180,11 @@ import { SalaryslipComponent } from './payroll/salaryslip/salaryslip.component';
     MatDialogModule,
     MatCheckboxModule,
     AppRoutingModule,
-    MatCheckboxModule,
+    MatCheckboxModule,    
   ],
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
-  NewempsalaryComponent]
+  NewempsalaryComponent,EmployeeSalaryComponent,]
 })
 export class AppModule { }

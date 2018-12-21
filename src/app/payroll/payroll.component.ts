@@ -6,13 +6,12 @@ import { NewempsalaryComponent } from './newempsalary/newempsalary.component';
 import { AddEmployeeComponent } from '../employees/add-employee/add-employee.component';
 import { FirestoreService } from '../services/firestore.service';
 import { Subscription } from 'rxjs';
-import { NgIf } from '@angular/common';
-import { NgForm } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'exalt-payroll',
   templateUrl: './payroll.component.html',
-  styleUrls: ['./payroll.component.scss']
+  styleUrls: ['./payroll.component.scss'],
 })
 export class PayrollComponent implements OnInit {
 
@@ -22,11 +21,15 @@ export class PayrollComponent implements OnInit {
   // payrollDetailsUpdate:any;
   subscription:Subscription;
   onDate:Date;
+  d : string;
   // totalSalary:number;
   disable:boolean=true;
-  constructor(public dialog: MatDialog,private pyService:PayrollService,private fsService:FirestoreService) { }
+  constructor(public dialog: MatDialog,private pyService:PayrollService,private fsService:FirestoreService,
+    private router:Router
+    ) { }
 
   ngOnInit() {
+   
   this.subscription=this.pyService.getPayrollDetails().subscribe(
   (value)=>{
     this.payrollDetails=value;
@@ -47,13 +50,17 @@ export class PayrollComponent implements OnInit {
     });
   }
   disableAll()
-  {
+  { this.d=this.onDate.toDateString();
+
     this.disable = false;
   }
   
   onProcessClick(){
     this.pyService.resetEmployeeSalary();
   }
+
+  onDownload(id:string){
+    this.router.navigate(['salaryslip'], { queryParams: {id:id,date:this.onDate}});
+  }
 }
- 
 

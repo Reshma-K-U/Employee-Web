@@ -3,9 +3,9 @@
     <h3>SALARY SLIP</h3>
     <div>
       <table>
-        <tr><td>Employee Name:</td><td></td></tr>
-      <tr><td>Designation:</td><td></td></tr>
-      <tr><td>Month&year:</td></tr>
+        <tr><td>Employee Name:</td><td>{{employeeDetails.name}}</td></tr>
+      <tr><td>Designation:</td><td>{{employeeDetails.role}}</td></tr>
+      <tr><td>Month&year:</td><td>{{date1}}</td></tr>
     </table>
     </div>
     <table class="table table-bordered" >
@@ -19,7 +19,7 @@
       </tr>    
         <tr>
             <td>HRA</td><td>{{employeeDetail.hra}}</td>
-            <td>LOANS</td><td>{{employeeDetail.basicpay}}</td>
+            <td>LOANS</td><td></td>
         </tr>
         <tr>
             <td>Arrears</td><td>{{employeeDetail.arrears}}</td>
@@ -35,21 +35,22 @@
         </tr>
         <tr>
             <td>Children Education Allowance</td><td>{{employeeDetail.cedallow}}</td>
-            <td>Total Deduction</td><td>{{employeeDetail.basicpay}}</td>
+            <td>Total Deduction</td><td>{{employeeDetail.totded}}</td>
         </tr>
         <tr>
-            <td>WWF</td><td>{{employeeDetail.basicpay}}</td>
-            <td>Others</td><td>{{employeeDetail.basicpay}}</td>
+            <td>WWF</td><td>{{employeeDetail.wwf}}</td>
+            <td>Others</td><td>{{employeeDetail.others}}</td>
         </tr>
         <tr>
             <td>Bonus</td><td>{{employeeDetail.bonus}}</td>
+            <td>IT</td><td>{{employeeDetail.it}}</td>
         </tr>
         <tr>
-            <td>Total</td><td>{{employeeDetail.basicpay}}</td>
-            <td>Total</td><td></td>
+            <td>Total</td><td>{{total1}}</td>
+            <td>Total</td><td>{{total2}}</td>
         </tr>
         <tr>
-            <td>Total Salary:</td><td colspan="3"></td>
+            <td>Total Salary:</td><td colspan="3">{{total}}</td>
         </tr>
         <tr>
             <td>Total Salary(In Words):</td><td colspan="3"></td>

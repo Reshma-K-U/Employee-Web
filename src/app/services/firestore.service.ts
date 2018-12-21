@@ -11,6 +11,7 @@ import { FirestoreLeaveService } from '../home/leave-details/services/firestore-
 @Injectable()
 export class FirestoreService {
     length:number;
+    id:number;
     private userDoc:AngularFirestoreDocument<any>;
     private subscription:Subscription;
     constructor(private afs:AngularFirestore,private fsLeaveService:FirestoreLeaveService) {}
@@ -100,6 +101,7 @@ export class FirestoreService {
     };
 
     getData(id:string){
+        console.log(id);
         this.userDoc = this.afs.collection('employees').doc(id);
         var data:any
         data = this.userDoc.valueChanges();
