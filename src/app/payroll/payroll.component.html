@@ -26,17 +26,17 @@
     </thead>
     <tbody>
       <tr *ngFor="let emp of payrollDetails">
-        <td>{{emp.empname}}</td>
+        <td>{{emp.emp_id}}</td>
         <!-- <td></td>
         <td></td>
         <td></td> -->
         <td>{{emp.basicpay}}</td>
         <td>{{emp.hra}}</td>
         <td>
-          <button mat-raised-button color="primary" [disabled]="disable" (click)="openDialogmore(emp.empid)" >More</button>   
+          <button mat-raised-button color="primary" [disabled]="disable" (click)="openDialogmore(emp.emp_id)" >More</button>   
         </td>
-        <td>{{emp.total}}</td>
-        <td><button mat-raised-button color="primary" [disabled]="disable" (click)="onDownload(emp.empid)">Download</button></td>
+        <td>{{getTotalField(emp.emp_id)}}</td>
+        <td><button mat-raised-button color="primary" [disabled]="disable" (click)="onDownload(emp.emp_id)">Download</button></td>
         <td><mat-checkbox [checked]="true"></mat-checkbox></td>  
       </tr>
       <tr>

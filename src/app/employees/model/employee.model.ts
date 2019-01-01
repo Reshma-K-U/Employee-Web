@@ -7,6 +7,7 @@ export interface Employee{
      work:Work;
     prev_exp:Prev_Exp[];
      qualification:Qualification[];
+     salary:Salary;
      dependents:Dependents[];
     about:string; 
    
@@ -61,6 +62,15 @@ export interface Employee{
     university:string;
     percentage:string;
     
+  }
+
+  export interface Salary{
+    basicpay:any;
+    hra:any;
+    cedallow:any;
+    medallow:any;
+    speallow:any;
+    total:any;
   }
 
   export   interface Dependents{

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NewempsalaryComponent } from '../../payroll/newempsalary/newempsalary.component';
+import { MatDialog } from '@angular/material';
+
 
 @Component({
   selector: 'exalt-employee-salary',
@@ -17,8 +20,15 @@ export class EmployeeSalaryComponent implements OnInit {
   ];
   month:string[]=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
 
-  constructor() { }
-  ngOnInit() {
+  constructor(public dialog: MatDialog,) { }
+ ngOnInit() {
+  }
+  onMonthClick(){
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(NewempsalaryComponent,{
+      width: '400px',
+    });
   }
 }
 export interface year {

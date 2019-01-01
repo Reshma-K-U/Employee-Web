@@ -16,8 +16,9 @@ import { Route, Router } from '@angular/router';
 export class PayrollComponent implements OnInit {
 
   allemployee:any[]=[];
-  payrollDetails:any[]=[];
+  payrollDetails:any[];
   payrollDetails1:any[]=[];
+  total:any[];
   // payrollDetailsUpdate:any;
   subscription:Subscription;
   onDate:Date;
@@ -29,12 +30,35 @@ export class PayrollComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-   
-  this.subscription=this.pyService.getPayrollDetails().subscribe(
+   this.payrollDetails=[];
+   this.total=[];
+  this.pyService.getPayrollDetails().subscribe(
   (value)=>{
-    this.payrollDetails=value;
-    this.subscription.unsubscribe();
-  })
+    value.forEach(
+      (post)=>{
+        this.payrollDetails.push(post.payload.doc.data());
+        this.pyService.setDetail(post.payload.doc.data());
+      }
+    )
+  })  
+  this.pyService.getTotal().subscribe(
+    (value)=>{
+      value.forEach(
+        (post)=>{
+          this.total.push(post.payload.doc.data());
+        }
+      )
+    })
+
+
+}
+
+getTotalField(id:string){
+      for(var j=0;j<this.total.length;j++){
+        if(this.total[j].empid==id){
+          return this.total[j].total;
+        }
+      }
 }
   
   openDialog(): void {

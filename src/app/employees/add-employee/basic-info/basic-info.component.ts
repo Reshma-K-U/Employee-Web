@@ -27,7 +27,7 @@ export class BasicInfoComponent implements OnInit {
   }
 
   onAdd(){
-    console.log(this.basic);
+    console.log(this.basic.firstname);
     this.addService.setBasic(this.basic);
   }
 

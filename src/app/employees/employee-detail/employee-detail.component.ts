@@ -4,7 +4,8 @@ import { Location } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
 
 import { FirestoreService } from '../../services/firestore.service';
-import { Qualification,Dependents, Prev_Exp} from '../model/employee.model';
+import { Qualification,Dependents, Prev_Exp, Salary} from '../model/employee.model';
+import { PayrollService } from 'src/app/payroll/service/payroll.service';
 
 @Component({
   selector: 'exalt-employee-detail',
@@ -17,13 +18,16 @@ export class EmployeeDetailComponent implements OnInit {
   qual:Qualification[]=[];
   dep:Dependents[]=[];
   exp:Prev_Exp[]=[];
+  sal:Salary[]=[];
   id:string;
   private subscription:Subscription;
   private qualSubscription:Subscription;
   private depSubscription:Subscription;
   private expSubscription:Subscription;
+  private salSubscription:Subscription;
 
-  constructor( private route: ActivatedRoute,private location: Location,private fsService:FirestoreService) {}
+  constructor( private route: ActivatedRoute,private location: Location,private fsService:FirestoreService,
+    pyService:PayrollService) {}
 
   ngOnInit() {
     
@@ -43,6 +47,16 @@ export class EmployeeDetailComponent implements OnInit {
         this.dep=dep;
       }
     )
+
+
+    // this.id = this.route.snapshot.paramMap.get('id');
+    this.salSubscription=this.fsService.getSal(this.id).subscribe(
+      (sal)=>{
+        this.employee=sal;
+      }
+    )
+
+
     this.expSubscription=this.fsService.getExp(this.id).subscribe(
       (exp)=>{
         this.exp=exp;
@@ -55,6 +69,7 @@ export class EmployeeDetailComponent implements OnInit {
     this.qualSubscription.unsubscribe();
     this.depSubscription.unsubscribe();
     this.expSubscription.unsubscribe();
+    this.salSubscription.unsubscribe();
   }
 
   

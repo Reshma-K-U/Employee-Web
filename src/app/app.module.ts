@@ -103,7 +103,8 @@ import { EmployeeAttendanceComponent } from './employees/employee-attendance/emp
 import { AttendanceCalendarComponent } from './employees/employee-attendance/attendance-calendar/attendance-calendar.component';
 import { AttendanceTableComponent } from './employees/employee-attendance/attendance-table/attendance-table.component';
 import { AttendanceEditComponent } from './attendance/attendance-edit/attendance-edit.component';
-
+import { SalaryComponent } from './employees/add-employee/salary/salary.component';
+import { SalaryDetailsComponent } from './employees/employee-detail/salary-details/salary-details.component';
 
 @NgModule({
   declarations: [
@@ -174,6 +175,8 @@ import { AttendanceEditComponent } from './attendance/attendance-edit/attendance
     AttendanceCalendarComponent,
     AttendanceTableComponent,
     AttendanceEditComponent,
+    SalaryComponent,
+    SalaryDetailsComponent,
     
   ],
   imports: [
