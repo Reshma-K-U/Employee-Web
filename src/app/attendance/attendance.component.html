@@ -14,23 +14,49 @@
       <tr>
         <th>EmpID</th>
         <th>Name</th>
-        <th class="checkin">Check in</th>
-        <th class="Checkout">Check out</th>
+        <th >Check in</th>
+        <th>Check out</th>
+        <th>Hours</th>
       </tr>
     </thead>
     <tbody>
       <tr  *ngFor="let emp of allEmployees">
         <td>{{emp.emp_id}}</td>
         <td>{{emp.name}}</td>
-        <td class="checkin"><button  type="button" class="btn btn-success" [disabled]="getLeaveStatus(emp.emp_id)||getCheckinStatus(emp.emp_id)"
-          (click)="onCheckin(emp.emp_id)"><span> <i class="fa fa-clock-o" aria-hidden="true" ></i></span>Checkin</button></td>
+        <!-- <td class="checkin">
+          <button *ngIf="!getCheckinStatus(emp.emp_id)"  type="button" class="btn btn-success" 
+          [disabled]="getLeaveStatus(emp.emp_id)"
+          (click)="onCheckin(emp.emp_id)"><span> <i class="fa fa-clock-o" aria-hidden="true" ></i></span>
+          Checkin</button>
+          <p *ngIf="getCheckinStatus(emp.emp_id)">{{getCheckinTime(emp.emp_id)}}</p>
+        </td>
         <td class="checkout">
-          <button  type="button" class="btn btn-danger" 
-            [disabled]="initial()&&(!getCheckinStatus(emp.emp_id)||getLeaveStatus(emp.emp_id)||getCheckoutStatus(emp.emp_id))"
+          <button *ngIf="getCheckinStatus(emp.emp_id)&&!getCheckoutStatus(emp.emp_id)"  type="button" class="btn btn-danger" 
+            [disabled]="getLeaveStatus(emp.emp_id)"
             (click)="onCheckout(emp.emp_id)">
             <span> <i class="fa fa-clock-o" aria-hidden="true"></i></span>Checkout
           </button>
-        </td>
+          <p *ngIf="getCheckoutStatus(emp.emp_id)">{{getCheckoutTime(emp.emp_id)}}</p>
+        </td> -->
+        <td >
+            <button  type="button" class="btn btn-success" 
+            [hidden]="getCheckinStatus(emp.emp_id)"
+            [disabled]="getLeaveStatus(emp.emp_id)"
+            (click)="onCheckin(emp.emp_id)"><span> <i class="fa fa-clock-o" aria-hidden="true" ></i></span>
+            Checkin</button>
+            <p [hidden]="!getCheckinStatus(emp.emp_id)">{{getCheckinTime(emp.emp_id)}}</p>
+          </td>
+          <td >
+            <button 
+              type="button" class="btn btn-danger" 
+              [hidden]="getCheckoutStatus(emp.emp_id)"
+              [disabled]="getLeaveStatus(emp.emp_id)||!getCheckinStatus(emp.emp_id)"
+              (click)="onCheckout(emp.emp_id)">
+              <span> <i class="fa fa-clock-o" aria-hidden="true"></i></span>Checkout
+            </button>
+            <p [hidden]="!getCheckoutStatus(emp.emp_id)">{{getCheckoutTime(emp.emp_id)}}</p>
+          </td>
+        <td><p *ngIf="getCheckoutStatus(emp.emp_id)">{{getHours(emp.emp_id)}}</p></td>
       </tr>
     </tbody>
   </table>

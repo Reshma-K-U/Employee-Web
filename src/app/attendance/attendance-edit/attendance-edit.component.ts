@@ -23,7 +23,7 @@ export class AttendanceEditComponent implements OnInit {
  onSave(form:NgForm)
  {
    var value=form.value;
-   this.aeds.addemp(value,this.todaydate);
+  //  this.aeds.addemp(value,this.todaydate);
   
    this.dialogRef.close();
  }

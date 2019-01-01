@@ -43,6 +43,11 @@
           <button class="btn btn-primary"  (click)="applyLeave(f)">Apply</button>
           <button class="btn btn-danger" (click)="applyStatus()">Cancel</button>
         </div>
+
+        <div class="alert" *ngIf="alert">
+          <span class="closebtn" (click)="closeAlert()">&times;</span> 
+          You have used maximum of this type of leave!!
+        </div>
          
       <!-- </mat-card> -->
        

@@ -20,50 +20,45 @@ import { Variable } from '@angular/compiler/src/render3/r3_ast';
 })
 export class AttendanceCalendarComponent {
   
-  leavesTaken:any[]=[];
-  data:any[]=[];
   view: CalendarView = CalendarView.Month;
-
   CalendarView = CalendarView;
-
   viewDate: Date = new Date();
-  id:string;
-  subscription:Subscription;
   events: CalendarEvent[];
 
-
+  id:string;
+  subscription:Subscription;
+  leavesTaken:any[]=[];
+  i:number;
  
-
-
   constructor( private route:ActivatedRoute,private lev:FirestoreLeaveService ) {}
-    ngOnInit() {
-      this.events=[];
-      this.id = this.route.snapshot.paramMap.get('id');
-       this.subscription=this.lev.readLeavesTaken(this.id).subscribe(
-        (data)=>{
-            this.data=data;
-            console.log(this.data);
-
-
-            
-            for(var i=0;i<data.length;i++){
-              this.events.push(
-                {
-                start:(this.data[i].on.toDate()),
-                title:this.data[i].leaveType,
+  
+  ngOnInit() {
+    this.events=[
+      {start:new Date(),
+      title:'sick leave',
+      color: {primary:'aff3ef',secondary:'aff3ef'}}
+    ];
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.subscription=this.lev.readLeavesTaken(this.id).subscribe(
+      (data)=>{
+          this.leavesTaken=data;
+          
+          for(var i=0;i<this.leavesTaken.length;i++){
+            this.events.push(
+              {
+                start:(this.leavesTaken[i].on.toDate()),
+                title:this.leavesTaken[i].leaveType,
                 color: {primary:'aff3ef',secondary:'aff3ef'}
               }
-              )
-            }
-            })
-            
-            console.log(this.events);
-            
-            
-          
+            )
+          }
+          console.log(this.leavesTaken);
+          console.log(this.events);
+      })
+      this.subscription.unsubscribe();
     }
 
-  }
+}
     
 
 

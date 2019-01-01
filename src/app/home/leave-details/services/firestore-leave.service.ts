@@ -87,6 +87,7 @@ export class FirestoreLeaveService {
         }
     })
   })
+
   return of(data);
 } 
 
