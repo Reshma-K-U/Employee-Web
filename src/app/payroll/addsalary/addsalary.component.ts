@@ -35,14 +35,16 @@ export class AddsalaryComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    console.log(this.data.id);
     this.subscription=this.moreempser.moreEmpFill(this.data.id).subscribe(
       (value)=>{
-        this.employeeDetail.empid=value.empid;
+        this.employeeDetail.empid=value.emp_id;
         this.employeeDetail.hra=value.hra;
         this.employeeDetail.basicpay=value.basicpay;
         this.employeeDetail.medallow=value.medallow;
         this.employeeDetail.speallow=value.speallow;
         this.employeeDetail.cedallow=value.cedallow;
+        console.log(this.employeeDetail.emp_id);
       this.subscription.unsubscribe();
     })
   }
@@ -54,4 +56,5 @@ export class AddsalaryComponent implements OnInit {
   onCancel(){
     this.dialogRef.close();
   }
+
 }

@@ -43,11 +43,14 @@ export class SalaryslipComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
+      // console.log(this.id);
       this.date=params['date'];
+      // console.log(this.date);
   });
     
-    this.subscription=this.fsService.getData(" "+this.id).subscribe(
+    this.subscription=this.fsService.getData1(this.id).subscribe(
       (value)=>{
+        console.log(value.name);
         this.employeeDetails.name=value.name;
         this.employeeDetails.role=value.role;
         this.subscription.unsubscribe();
@@ -56,7 +59,7 @@ export class SalaryslipComponent implements OnInit {
     var sub:Subscription;
     sub=this.moreempser.salarySlipFill(this.id,this.date).subscribe(
       (value)=>{
-        console.log(value);
+        
         this.employeeDetail.empid=value.empid;
         this.employeeDetail.hra=value.hra;
         this.employeeDetail.basicpay=value.basicpay;
