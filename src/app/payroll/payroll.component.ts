@@ -32,25 +32,20 @@ export class PayrollComponent implements OnInit {
   ngOnInit() {
    this.payrollDetails=[];
    this.total=[];
-  this.pyService.getPayrollDetails().subscribe(
+  
+   this.pyService.getPayrollDetails().subscribe(
   (value)=>{
-    value.forEach(
-      (post)=>{
-        this.payrollDetails.push(post.payload.doc.data());
-        this.pyService.setDetail(post.payload.doc.data());
-      }
-    )
-  })  
-  this.pyService.getTotal().subscribe(
-    (value)=>{
-      value.forEach(
-        (post)=>{
-          this.total.push(post.payload.doc.data());
-        }
-      )
+      this.payrollDetails=value;
+      console.log(this.payrollDetails)
+  }) 
+  
+  this.pyService.getTotal().subscribe(x=>{
+    x.forEach((post)=>{
+      this.total.push(post.payload.doc.data());
     })
-
-
+    console.log(this.total)
+  })
+  
 }
 
 getTotalField(id:string){

@@ -15,7 +15,7 @@ export class PayrollService {
   private userDoc:AngularFirestoreDocument<any>;
   constructor(private afs:AngularFirestore,private psService:PayrollService) { }
   
-  newEmployeeSalary(value:any){
+   newEmployeeSalary(value:any){
     
      var employeeDocRef=this.afs.collection("employees").doc(value.empid);
      var hra=parseInt(value.basicpay)*0.5;
@@ -28,17 +28,17 @@ employeeDocRef.
     set({
         
          'empid': value.empid,
-        // 'empname':value.empname,
+        'empname':value.empname,
         'basicpay': value.basicpay,
-        'hra':hra,
+         'hra':hra,
         'speallow': speallow,
         'medallow':medallow,
         'cedallow': cedallow,
         'total':"",
-        // this.employees.push(emp);
+         
     }) 
     return true;
-}
+} 
 moreEmployeeSalary(more:any,date:Date){
     var date1=date.getDate();
     var month=date.getMonth();
@@ -95,13 +95,31 @@ moreEmpFill(id:string){
 
 getPayrollDetails(){
 
-        var col = this.afs.collection('employees');
-        var data:any
-        data = col.snapshotChanges();
-        return data;
+    var col = this.afs.collection('employees');
+    var data:any
+    data = col.valueChanges();
+    data.subscribe(
+        value=>{
+            value.forEach((val)=>{
+                var employeeDocRef=this.afs.collection("payroll").doc(val.emp_id);
+                employeeDocRef.
+                    set({
+                        'empid': val.emp_id,
+                        'name':val.name,
+                        'hra':val.hra,
+                        'basicpay':val.basicpay,
+                        'cedallow':val.cedallow,
+                        'medallow':val.medallow,
+                        'speallow':val.speallow,
+                        'total':val.total,
+                    })
+                })
+            }
+    )
+    return data;
 }
 
-setDetail(val:any){
+/* setDetail(val:any){
     var employeeDocRef=this.afs.collection("payroll").doc(val.emp_id);
     employeeDocRef.
         set({
@@ -115,7 +133,7 @@ setDetail(val:any){
            'total':val.total,
         })
 
-}
+} */
         
 
     getTotal(){

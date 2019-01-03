@@ -174,12 +174,9 @@ import { SalaryDetailsComponent } from './employees/employee-detail/salary-detai
     EmployeeAttendanceComponent,
     AttendanceCalendarComponent,
     AttendanceTableComponent,
-<<<<<<< HEAD
-=======
     AttendanceEditComponent,
     SalaryComponent,
     SalaryDetailsComponent,
->>>>>>> eee59b34cd5ca0e6d3660e2bb12cde60e02051e9
     
   ],
   imports: [
