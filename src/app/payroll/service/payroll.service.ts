@@ -97,7 +97,8 @@ getPayrollDetails(){
 
         var col = this.afs.collection('employees');
         var data:any
-        data = col.snapshotChanges();
+        // data = col.snapshotChanges();
+        data=col.valueChanges();
         return data;
 }
 

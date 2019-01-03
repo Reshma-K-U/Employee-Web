@@ -36,8 +36,9 @@ export class PayrollComponent implements OnInit {
   (value)=>{
     value.forEach(
       (post)=>{
-        this.payrollDetails.push(post.payload.doc.data());
-        this.pyService.setDetail(post.payload.doc.data());
+          this.payrollDetails=value;
+        // this.payrollDetails.push(post.payload.doc.data());
+        // this.pyService.setDetail(post.payload.doc.data());
       }
     )
   })  

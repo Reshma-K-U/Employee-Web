@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Rx';
 
 import {Employee, Prev_Exp, Qualification, Dependents,Salary} from '../employees/model/employee.model';
 import { FirestoreLeaveService } from '../home/leave-details/services/firestore-leave.service';
+// import { Http,Headers } from '@angular/http';
 
 
 @Injectable()
@@ -14,7 +15,8 @@ export class FirestoreService {
     id:number;
     private userDoc:AngularFirestoreDocument<any>;
     private subscription:Subscription;
-    constructor(private afs:AngularFirestore,private fsLeaveService:FirestoreLeaveService) {}
+    constructor(private afs:AngularFirestore,private fsLeaveService:FirestoreLeaveService,
+        ) {}
  
     ngOnInit(){}
 
@@ -336,6 +338,5 @@ export class FirestoreService {
           
             setLeave(data:any){
                 
-            }
-        
+            }     
 }
