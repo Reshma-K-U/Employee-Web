@@ -35,16 +35,18 @@ export class PayrollComponent implements OnInit {
   
    this.pyService.getPayrollDetails().subscribe(
   (value)=>{
-      this.payrollDetails=value;
-      console.log(this.payrollDetails)
-  }) 
-  
-  this.pyService.getTotal().subscribe(x=>{
-    x.forEach((post)=>{
-      this.total.push(post.payload.doc.data());
+    this.payrollDetails=value;
+  })  
+
+  this.pyService.getTotal().subscribe(
+    (value)=>{
+      value.forEach(
+        (post)=>{
+          this.total.push(post.payload.doc.data());
+        }
+      )
     })
     console.log(this.total)
-  })
   
 }
 

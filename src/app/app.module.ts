@@ -3,7 +3,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {FileSelectDirective} from 'ng2-file-upload';
 //import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -39,6 +38,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTreeModule} from '@angular/material/tree';
 
 import {EmployeeService} from  './employees/services/employee.services';
 import{FirestoreService} from '../app/services/firestore.service';
@@ -105,7 +105,9 @@ import { AttendanceTableComponent } from './employees/employee-attendance/attend
 import { AttendanceEditComponent } from './attendance/attendance-edit/attendance-edit.component';
 import { SalaryComponent } from './employees/add-employee/salary/salary.component';
 import { SalaryDetailsComponent } from './employees/employee-detail/salary-details/salary-details.component';
-
+import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { EmployeeDocumentsComponent } from './employees/employee-documents/employee-documents.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -138,9 +140,6 @@ import { SalaryDetailsComponent } from './employees/employee-detail/salary-detai
     ClientDetailsComponent,
     ClientItemComponent,
     InfoComponent,
-
-
-    FileSelectDirective,
 
     EmployeeLeaveComponent,
 
@@ -177,7 +176,8 @@ import { SalaryDetailsComponent } from './employees/employee-detail/salary-detai
     AttendanceEditComponent,
     SalaryComponent,
     SalaryDetailsComponent,
-    
+    AllsalaryslipsComponent,
+    EmployeeDocumentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -205,9 +205,11 @@ import { SalaryDetailsComponent } from './employees/employee-detail/salary-detai
     AppRoutingModule,
     MatCheckboxModule,    
     MatGridListModule,
-
+    MatTreeModule,
+    
     AppRoutingModule,
     MatCheckboxModule,
+    PdfViewerModule,
 
 
     CalendarModule.forRoot({

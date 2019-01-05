@@ -95,28 +95,11 @@ moreEmpFill(id:string){
 
 getPayrollDetails(){
 
-    var col = this.afs.collection('employees');
-    var data:any
-    data = col.valueChanges();
-    data.subscribe(
-        value=>{
-            value.forEach((val)=>{
-                var employeeDocRef=this.afs.collection("payroll").doc(val.emp_id);
-                employeeDocRef.
-                    set({
-                        'empid': val.emp_id,
-                        'name':val.name,
-                        'hra':val.hra,
-                        'basicpay':val.basicpay,
-                        'cedallow':val.cedallow,
-                        'medallow':val.medallow,
-                        'speallow':val.speallow,
-                        'total':val.total,
-                    })
-                })
-            }
-    )
-    return data;
+        var col = this.afs.collection('employees');
+        var data:any
+        // data = col.snapshotChanges();
+        data=col.valueChanges();
+        return data;
 }
 
 /* setDetail(val:any){

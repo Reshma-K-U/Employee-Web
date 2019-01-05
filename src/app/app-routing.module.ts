@@ -21,6 +21,7 @@ import { SalaryslipComponent } from './payroll/salaryslip/salaryslip.component';
 import { EmployeeSalaryComponent } from './employees/employee-salary/employee-salary.component';
 import { SalaryComponent } from './employees/add-employee/salary/salary.component';
 import { PersonalInfoComponent } from './employees/add-employee/personal-info/personal-info.component';
+import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
 const routes: Routes = [
   {path:'',component:EmployeesComponent,pathMatch:'full'},
   {path:'employees',component:EmployeesComponent},
@@ -40,6 +41,8 @@ const routes: Routes = [
   {path:'payroll',component:PayrollComponent},
   {path:'salaryslip',component:SalaryslipComponent},
   {path:'./employee/employee-salary/employee-salary.component',component:EmployeeSalaryComponent},
+  {path:'employee-salary',component:EmployeeSalaryComponent},
+  {path:'allsalaryslips',component:AllsalaryslipsComponent},
 ];
 
 @NgModule({

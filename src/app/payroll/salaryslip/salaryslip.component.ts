@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PayrollService } from '../service/payroll.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import * as jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'exalt-salaryslip',
   templateUrl: './salaryslip.component.html',
@@ -35,6 +37,7 @@ export class SalaryslipComponent implements OnInit {
     others:"",
     totded:"",
   }
+
   subscription:Subscription;
 
 
@@ -50,7 +53,7 @@ export class SalaryslipComponent implements OnInit {
     
     this.subscription=this.fsService.getData1(this.id).subscribe(
       (value)=>{
-        console.log(value.name);
+        // console.log(value.name);
         this.employeeDetails.name=value.name;
         this.employeeDetails.role=value.role;
         this.subscription.unsubscribe();
@@ -88,5 +91,23 @@ export class SalaryslipComponent implements OnInit {
       this.total=this.total1-this.total2;
       sub.unsubscribe();
     })
-  } 
+  }
+
+  public onDownload(name:string)  
+  {  
+    var data = document.getElementById('contentToConvert');  
+    html2canvas(data).then(canvas => {  
+      // Few necessary setting options  
+      var imgWidth = 208;   
+      var pageHeight = 295;    
+      var imgHeight = canvas.height * imgWidth / canvas.width;  
+      var heightLeft = imgHeight;  
+  
+      const contentDataURL = canvas.toDataURL('image/png')  
+      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+      var position = 0;  
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+      pdf.save(name+'.pdf'); // Generated PDF   
+    });  
+  }  
 }
