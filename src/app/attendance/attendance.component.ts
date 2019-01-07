@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AttendanceService } from './service/attendance.service';
 import { FirestoreService } from '../services/firestore.service';
 import { Subscription } from 'rxjs';
-import { Time } from '@angular/common';
-import { AttendanceEditComponent } from './attendance-edit/attendance-edit.component';
-import { MatDialog } from '@angular/material';
+
+
 
 
 @Component({
@@ -20,42 +19,65 @@ export class AttendanceComponent implements OnInit {
  subscription:Subscription;
  checkinStatus:any[]=[];
 
-  constructor(public dialog:MatDialog,private atService:AttendanceService,private fsService:FirestoreService) { }
+  constructor(private atService:AttendanceService,private fsService:FirestoreService) { }
 
   ngOnInit(){
    this.allEmployees= this.fsService.getDataForList();
-   
   }
 
   onSaveDate(){
-    var sub1:Subscription;
     this.atService.createDoc(this.todaydate);
-    
-    sub1=this.atService.readCheckinStatus(this.todaydate).subscribe(
-      (value)=>{
-        this.checkinStatus=value;
-        console.log(this.checkinStatus);
-        sub1.unsubscribe();
-      }
-    )
-    
+
     this.subscription=this.atService.getLeaveDetails(this.todaydate).subscribe(
       (value)=>{
         this.leavesTaken=value;
-      }
-    )
-    this.subscription.unsubscribe();
-}
+        console.log(this.leavesTaken);
+      })
+    // this.subscription.unsubscribe();
+    
+    this.subscription=this.atService.readCheckinStatus(this.todaydate).subscribe(
+      (value)=>{
+        this.checkinStatus=value;
+        console.log(this.checkinStatus);
+      })
+        // this.subscription.unsubscribe();
+  }
 
   getLeaveStatus(id:string){
     
     for(var j=0;j<this.leavesTaken.length;j++){
+      console.log(this.leavesTaken.length);
       if(this.leavesTaken[j].id==id&&this.leavesTaken[j].days==1){
           return true;
       }
     }
     return false;
   }  
+
+  getCheckinStatus(id:string){
+    for(var j=0;j<this.checkinStatus.length;j++){
+      if(this.checkinStatus[j].empid==id){
+          return this.checkinStatus[j].isCheckedin,this.checkinStatus[j].checkinTime;
+        
+      }
+    }
+  }
+  getCheckintime(id:string)
+  {
+    for(var j=0;j<this.checkinStatus.length;j++){
+      if(this.checkinStatus[j].empid==id){
+        return this.getCheckinStatus[j].checkinTime;
+      }
+    }
+  }
+
+  getCheckoutStatus(id:string){
+    for(var j=0;j<this.checkinStatus.length;j++){
+      if(this.checkinStatus[j].empid==id){
+          return this.checkinStatus[j].isCheckedout;
+      }
+    }
+  }
   
   onCheckin(id:string){
     this.atService.onCheckin(id,this.todaydate);
@@ -68,9 +90,6 @@ export class AttendanceComponent implements OnInit {
   initial(){
     return true;
   }
-onEdit(): void{
-const dialogRef =this.dialog.open(AttendanceEditComponent);
-}
+
 
 }
-

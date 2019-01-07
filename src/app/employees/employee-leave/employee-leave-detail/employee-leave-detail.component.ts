@@ -24,6 +24,7 @@ export class EmployeeLeaveDetailComponent implements OnInit {
     this.subscription=this.fsService.getData(this.id).subscribe(
       (data)=>{
         this.data=data;
+    
         this.subscription.unsubscribe();
       }
     )

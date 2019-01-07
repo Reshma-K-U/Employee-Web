@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attendance-table.component.scss']
 })
 export class AttendanceTableComponent implements OnInit {
- 
 
   constructor() { }
 

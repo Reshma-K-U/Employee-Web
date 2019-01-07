@@ -5,7 +5,8 @@
             <b>Dependents</b>
         </div>
         <div class="col-md-2">
-          <span style="margin-left:50px"><i class="fas fa-edit" (click)="onEditItem()"></i></span>
+          <span><i class="fas fa-edit" (click)="onEditItem()"></i></span>
+          <span ><i class="fas fa-plus" style="margin-left:25px"  (click)="onNewDependent()"></i></span>
         </div>
     </div>
   </mat-card-header>
@@ -15,9 +16,9 @@
             <td class="data">
               <div class="row">
                 <div class="col-md-10">
-                    <p [attr.contenteditable]="editMode===true ? true : false" (input)="editName($event,i)" >{{dep.name}}</p>
-                    <p [attr.contenteditable]="editMode===true ? true : false" (input)="editRelation($event,i)">{{dep.relation}}</p>
-                    <p [attr.contenteditable]="editMode===true ? true : false" (input)="editOccupation($event,i)">{{dep.occupation}}</p>
+                    <p [attr.contenteditable]="editMode===true ? true : false" (focusout)="editName($event,i)" >{{dep.name}}</p>
+                    <p [attr.contenteditable]="editMode===true ? true : false" (focusout)="editRelation($event,i)">{{dep.relation}}</p>
+                    <p [attr.contenteditable]="editMode===true ? true : false" (focusout)="editOccupation($event,i)">{{dep.occupation}}</p>
                 </div>
                 
               </div>

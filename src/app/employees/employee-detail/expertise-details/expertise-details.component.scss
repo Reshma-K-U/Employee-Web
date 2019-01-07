@@ -5,6 +5,7 @@
     width:100%;
     height: auto;
     margin-top:10px;
+    overflow: hidden;
   
   }
 
@@ -31,3 +32,8 @@
     font-size: 14px;
     text-align: left;
   }
+
+  .mat-tab-body-content {
+    overflow: hidden !important;
+  }
+

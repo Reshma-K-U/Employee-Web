@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs/Rx';
 export class AllLeavesComponent implements OnInit {
 
   id:string;
-  subscription:Subscription;
+ // subscription:Subscription;
   cl:any[]=[];
   sl:any[]=[];
   pl:any[]=[];
@@ -24,10 +24,10 @@ export class AllLeavesComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-     this.subscription=this.fsService.readLeavesTaken(this.id).subscribe(
+    /*  this.subscription=this.fsService.readLeavesTaken(this.id).subscribe(
       (data)=>{
           this.data=data;
       })
-      this.subscription.unsubscribe(); 
+      this.subscription.unsubscribe();  */
   }
 }
