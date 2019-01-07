@@ -79,16 +79,8 @@ export class FirestoreLeaveService {
   } 
 
   readLeavesTaken(i:string){
-    var data:any[]=[];
-    this.afs.collection('leaves').ref.get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(leaveDoc) {
-        if(leaveDoc.data().id==i){
-          data.push(leaveDoc.data());
-        }
-    })
-  })
-
-  return of(data);
+   var queryRef =  this.afs.collection('leaves').ref.where("id","==",i);
+    return queryRef;
 } 
 
   addPrivilageLeave(id:string,data:any){

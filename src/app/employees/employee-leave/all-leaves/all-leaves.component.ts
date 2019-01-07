@@ -24,10 +24,19 @@ export class AllLeavesComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-     this.subscription=this.fsService.readLeavesTaken(this.id).subscribe(
-      (data)=>{
-          this.data=data;
-      })
-      this.subscription.unsubscribe(); 
+    this.fsService.readLeavesTaken(this.id).get().then( (querySnapshot) => {
+      if(querySnapshot.empty){
+            console.log("not found");
+      }
+      else
+      {
+        querySnapshot.docs.map( (documentSnapshot) => {
+        this.data.push(documentSnapshot.data());
+
+      });
+    }
+    console.log(this.data);
+});
+
   }
 }

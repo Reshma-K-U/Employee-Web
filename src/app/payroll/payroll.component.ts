@@ -33,10 +33,10 @@ export class PayrollComponent implements OnInit {
    this.payrollDetails=[];
    this.total=[];
   
-   this.pyService.getPayrollDetails().subscribe(
+  /*  this.pyService.getPayrollDetails().subscribe(
   (value)=>{
     this.payrollDetails=value;
-  })  
+  })   */
 
   this.pyService.getTotal().subscribe(
     (value)=>{

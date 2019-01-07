@@ -27,7 +27,7 @@ export class AttendanceCalendarComponent {
 
   id:string;
   subscription:Subscription;
-  leavesTaken:any[]=[];
+  data:any[]=[];
   i:number;
  
   constructor( private route:ActivatedRoute,private lev:FirestoreLeaveService ) {}
@@ -39,41 +39,24 @@ export class AttendanceCalendarComponent {
       color: {primary:'aff3ef',secondary:'aff3ef'}}
     ];
     this.id = this.route.snapshot.paramMap.get('id');
-    this.subscription=this.lev.readLeavesTaken(this.id).subscribe(
-      (data)=>{
-          this.leavesTaken=data;
-          
-          for(var i=0;i<this.leavesTaken.length;i++){
-            this.events.push(
-              {
-                start:(this.leavesTaken[i].on.toDate()),
-                title:this.leavesTaken[i].leaveType,
-                color: {primary:'aff3ef',secondary:'aff3ef'}
-              }
-            )
-          }
-          console.log(this.leavesTaken);
-          console.log(this.events);
-      })
-      this.subscription.unsubscribe();
+    this.lev.readLeavesTaken(this.id).get().then( (querySnapshot) => {
+      if(querySnapshot.empty){
+            console.log("not found");
+      }
+      else
+      {
+        querySnapshot.docs.map( (documentSnapshot) => {
+        this.data.push(documentSnapshot.data());
+
+      });
     }
+    console.log(this.data);
+});
 
+  
 }
-    
 
-
-
-
-
-  
-
-  
-
-
-
-    
-
-
-
-
-  
+currentStyles(day){
+  return '#FF5733'
+}
+}

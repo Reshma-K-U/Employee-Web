@@ -95,11 +95,15 @@ moreEmpFill(id:string){
 
 getPayrollDetails(){
 
-        var col = this.afs.collection('employees');
-        var data:any
-        // data = col.snapshotChanges();
-        data=col.valueChanges();
-        return data;
+        /* var query = this.afs.collection('employees');
+
+        query.ref.onSnapshot(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                cities.push(doc.data().name);
+            });
+            console.log("Current cities in CA: ", cities.join(", "));
+        });
+     */
 }
 
 /* setDetail(val:any){
