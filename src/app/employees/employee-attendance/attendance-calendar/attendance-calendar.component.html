@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 <ng-template #customCellTemplate let-day="day" let-locale="locale">
   
   <div class="cal-cell-top">
@@ -9,6 +10,10 @@
 </ng-template>
 
 <div class="row text-center">
+=======
+  
+  <div class="row text-center">
+>>>>>>> 8702b807b2f10c421d92c56aba20c72ef3b12d3d
   <div class="col-md-4">
     <div class="btn-group">
       <div
@@ -16,7 +21,7 @@
         mwlCalendarPreviousView
         [view]="view"
         [(viewDate)]="viewDate"
-        >
+        (viewDateChange)="activeDayIsOpen = false">
         Previous
       </div>
       <div
@@ -29,7 +34,8 @@
         class="btn btn-primary"
         mwlCalendarNextView
         [view]="view"
-        [(viewDate)]="viewDate">
+        [(viewDate)]="viewDate"
+        (viewDateChange)="activeDayIsOpen = false">
         Next
       </div>
     </div>
@@ -37,15 +43,69 @@
   <div class="col-md-4">
     <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
   </div>
- 
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        (click)="view = CalendarView.Month"
+        [class.active]="view === CalendarView.Month">
+        Month
+      </div>
+      <div
+        class="btn btn-primary"
+        (click)="view = CalendarView.Week"
+        [class.active]="view === CalendarView.Week">
+        Week
+      </div>
+      <div 
+        class="btn btn-primary"
+        (click)="view = CalendarView.Day"
+        [class.active]="view === CalendarView.Day">
+        Day
+      </div>
+    </div>
+  </div>
 </div>
 <br>
-<div  class="calendar">
-  <mwl-calendar-month-view
+<div [ngSwitch]="view">
+  <div  class="cal-month-view" >
+  <mwl-calendar-month-view  
+
+    *ngSwitchCase="CalendarView.Month"
     [viewDate]="viewDate"
     [events]="events"
+<<<<<<< HEAD
     [cellTemplate]="customCellTemplate">
+=======
+    (beforeViewRender)="beforeMonthViewRender($event)"
+    >
+>>>>>>> 8702b807b2f10c421d92c56aba20c72ef3b12d3d
   </mwl-calendar-month-view>
-
 </div>
+<div class="cal-month-view">
+  <mwl-calendar-week-view
+    *ngSwitchCase="CalendarView.Week"
+    [viewDate]="viewDate"
+    [events]="events"
+    [dayStartHour]="9"
+    [dayEndHour]="20">
+   
+  </mwl-calendar-week-view>
+  </div>
+  <div class="cal-month-view">
+  <mwl-calendar-day-view
+    *ngSwitchCase="CalendarView.Day"
+    [viewDate]="viewDate"
+    [events]="events"
+    [dayStartHour]="9"
+    [dayEndHour]="20">
+  </mwl-calendar-day-view>
+  </div>
 
+
+
+    
+
+
+
+   

@@ -1,5 +1,6 @@
 .date{
-    margin-left: 520px;
+    margin-left: 540px;
+    margin-top:50px;
 }
 th{
     background-color: #3c5076;
@@ -8,29 +9,16 @@ th{
 }
 
 
-button{
-    width:100%;
+.btn btn-success{
+    width: 65%;
+    margin-left: 85px;
+}
+.btn btn-danger{
+    width: 65%;
+    margin-left: 85px;
 }
 
-.btn-process{
-    margin-left:79%;
-    width:12%;
-    padding: 10px;
-    color:#fff;
-    background-color:#1565C0;
-    border-color: #1565C0;
-    border-radius:5px;
-    margin-top: 18px;
 
-}
-.btn-primary{
-    margin-left: 85%;
-    width:12%;
-    background-color: #3c5076;
-    border-color:  #3c5076;
-
-
-}
 
 .Present{
     width:1px;
@@ -43,21 +31,23 @@ button{
     
 
 }
+.chk{
+    width:85px;
+}
+.tdk{
+    width:180px;
+}
+.tid{
+    width:108px;
+}
 .container{
     // background-color: #3c5076;
-    padding: 20px;
-    margin-left:5%;
+    padding: 18px;
+    margin-left:12%;
     margin-top:5px;
-    width:80%;
+    width:75%;
     // color:#fff;
     border-radius: 2px;
 
     
-}
-.matbutton{
-    width:10%;
-    margin-left: 1190px;
-    background-color: #3c5076;
-    border-color:  #3c5076;
-    color:#fff;
 }

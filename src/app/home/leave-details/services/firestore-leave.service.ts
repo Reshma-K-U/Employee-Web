@@ -79,9 +79,53 @@ export class FirestoreLeaveService {
   } 
 
   readLeavesTaken(i:string){
+<<<<<<< HEAD
    var queryRef =  this.afs.collection('leaves').ref.where("id","==",i);
     return queryRef;
+=======
+    /* var data:any[]=[];
+    this.afs.collection('leaves').ref.get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(leaveDoc) {
+        var value=leaveDoc.data();
+        if(leaveDoc.data().id==i){
+          data.push(value);
+        }
+    })
+  })
+  return of(data); */
+  var docRef=this.afs.collection('leaves');
+  var query=docRef.ref.where("id","==",i);
+  return query;
+  
+  }
+
+
+
+
+
+
+
+
+getLeavesTaken(i:string){
+  var data:any[]=[];
+  this.afs.collection('leaves').ref.get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(leaveDoc) {
+      if(leaveDoc.data().id==i){
+        data.push(leaveDoc.data());
+      }
+  })
+})
+return of(data);
+>>>>>>> 8702b807b2f10c421d92c56aba20c72ef3b12d3d
 } 
+
+
+
+
+
+
+
+
 
   addPrivilageLeave(id:string,data:any){
     this.afs.collection('employees').doc(id).update({

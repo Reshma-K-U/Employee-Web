@@ -102,7 +102,7 @@ import { NewdependentComponent } from './employees/employee-detail/dependents-de
 import { EmployeeAttendanceComponent } from './employees/employee-attendance/employee-attendance.component';
 import { AttendanceCalendarComponent } from './employees/employee-attendance/attendance-calendar/attendance-calendar.component';
 import { AttendanceTableComponent } from './employees/employee-attendance/attendance-table/attendance-table.component';
-import { AttendanceEditComponent } from './attendance/attendance-edit/attendance-edit.component';
+
 import { SalaryComponent } from './employees/add-employee/salary/salary.component';
 import { SalaryDetailsComponent } from './employees/employee-detail/salary-details/salary-details.component';
 import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
@@ -173,7 +173,6 @@ import { EmployeeDocumentsComponent } from './employees/employee-documents/emplo
     EmployeeAttendanceComponent,
     AttendanceCalendarComponent,
     AttendanceTableComponent,
-    AttendanceEditComponent,
     SalaryComponent,
     SalaryDetailsComponent,
     AllsalaryslipsComponent,

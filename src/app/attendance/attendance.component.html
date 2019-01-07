@@ -6,7 +6,7 @@
     <mat-datepicker #picker ></mat-datepicker>
    
   </mat-form-field>
-  <button mat-raised-button class="matbutton" (click)="onEdit()"><span ><i class="fas fa-edit"> Edit</i></span></button>
+  
   
 <div class="container">
  <table class="table table-bordered" >
@@ -14,13 +14,20 @@
       <tr>
         <th>EmpID</th>
         <th>Name</th>
+<<<<<<< HEAD
         <th >Check in</th>
         <th>Check out</th>
         <th>Hours</th>
+=======
+        <th>Checkin</th>
+        <th>Checkout</th>
+        <th>TotalHours</th>
+>>>>>>> 8702b807b2f10c421d92c56aba20c72ef3b12d3d
       </tr>
     </thead>
     <tbody>
       <tr  *ngFor="let emp of allEmployees">
+<<<<<<< HEAD
         <td>{{emp.emp_id}}</td>
         <td>{{emp.name}}</td>
         <!-- <td class="checkin">
@@ -57,6 +64,19 @@
             <p [hidden]="!getCheckoutStatus(emp.emp_id)">{{getCheckoutTime(emp.emp_id)}}</p>
           </td>
         <td><p *ngIf="getCheckoutStatus(emp.emp_id)">{{getHours(emp.emp_id)}}</p></td>
+=======
+        <td class="tid">{{emp.emp_id}}</td>
+        <td class="tdk">{{emp.name}}</td>
+        <td class="chk"><button class="btn btn-success" [disabled]="getLeaveStatus(emp.emp_id)||getCheckinStatus(emp.emp_id)"
+          (click)="onCheckin(emp.emp_id)"> Checkin</button></td>
+        <td class="chk">
+          <button class="btn btn-danger" 
+            [disabled]="initial()&&(!getCheckinStatus(emp.emp_id)||getLeaveStatus(emp.emp_id)||getCheckoutStatus(emp.emp_id))"
+            (click)="onCheckout(emp.emp_id)"> Checkout
+          </button>
+        </td>
+        <td class="tid"></td>
+>>>>>>> 8702b807b2f10c421d92c56aba20c72ef3b12d3d
       </tr>
     </tbody>
   </table>

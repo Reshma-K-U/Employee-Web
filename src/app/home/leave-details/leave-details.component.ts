@@ -29,7 +29,9 @@ export class LeaveDetailsComponent implements OnInit {
                         this.subscription=this.fsService.getThisWeek().subscribe(
                           (value)=>{
                             this.data=value;
+                           
                             }
+                            
                           )
                         this.subscription.unsubscribe();
                         break;
