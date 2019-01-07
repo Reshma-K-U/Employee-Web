@@ -1,0 +1,59 @@
+<mat-card class="example-card">
+<div id="contentToConvert" >
+    <h1 class="cardtitle">EXALTURE SOFTWARE LABS</h1>
+    <h3>SALARY SLIP</h3>
+    <div>
+      <table>
+        <tr><td>Employee Name:</td><td>{{employeeDetails.name}}</td></tr>
+      <tr><td>Designation:</td><td>{{employeeDetails.role}}</td></tr>
+      <tr><td>Month&year:</td><td>{{date1}}</td></tr>
+    </table>
+    </div>
+    <table class="table table-bordered" >
+      <tr>
+        <th colspan="2">Earnings</th>
+        <th colspan="2">Deduction</th>
+      </tr>
+      <tr>
+          <td>Basic</td><td>{{employeeDetail.basicpay}}</td>
+          <td>ESI</td><td>{{employeeDetail.esi}}</td>
+      </tr>    
+        <tr>
+            <td>HRA</td><td>{{employeeDetail.hra}}</td>
+            <td>LOANS</td><td></td>
+        </tr>
+        <tr>
+            <td>Arrears</td><td>{{employeeDetail.arrears}}</td>
+            <td>Advance</td><td>{{employeeDetail.advance}}</td>
+        </tr>
+        <tr>
+            <td>Medical Allowance</td><td>{{employeeDetail.medallow}}</td>
+            <td>LOP</td><td></td>
+        </tr>
+        <tr>
+            <td>Special Allowance</td><td>{{employeeDetail.speallow}}</td>
+            <td>PF</td><td></td>
+        </tr>
+        <tr>
+            <td>Children Education Allowance</td><td>{{employeeDetail.cedallow}}</td>
+            <td>Total Deduction</td><td>{{employeeDetail.totded}}</td>
+        </tr>
+        <tr>
+            <td>WWF</td><td>{{employeeDetail.wwf}}</td>
+            <td>Others</td><td>{{employeeDetail.others}}</td>
+        </tr>
+        <tr>
+            <td>Bonus</td><td>{{employeeDetail.bonus}}</td>
+            <td>IT</td><td>{{employeeDetail.it}}</td>
+        </tr>
+        <tr>
+            <td>Total</td><td>{{total1}}</td>
+            <td>Total</td><td>{{total2}}</td>
+        </tr>
+        <tr>
+            <td>Total Salary:</td><td colspan="3">{{total}}</td>
+        </tr>
+    </table>
+    </div>
+    <button class="btn btn-primary" (click)="onDownload(employeeDetails.name)">Download</button>
+    </mat-card>

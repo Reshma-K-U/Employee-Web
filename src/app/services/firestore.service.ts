@@ -4,16 +4,19 @@ import 'rxjs/Rx'
 import {AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument} from 'angularfire2/firestore';
 import { Subscription } from 'rxjs/Rx';
 
-import {Employee, Prev_Exp, Qualification, Dependents} from '../employees/model/employee.model';
+import {Employee, Prev_Exp, Qualification, Dependents,Salary} from '../employees/model/employee.model';
 import { FirestoreLeaveService } from '../home/leave-details/services/firestore-leave.service';
+// import { Http,Headers } from '@angular/http';
 
 
 @Injectable()
 export class FirestoreService {
     length:number;
+    id:number;
     private userDoc:AngularFirestoreDocument<any>;
     private subscription:Subscription;
-    constructor(private afs:AngularFirestore,private fsLeaveService:FirestoreLeaveService) {}
+    constructor(private afs:AngularFirestore,private fsLeaveService:FirestoreLeaveService,
+        ) {}
  
     ngOnInit(){}
 
@@ -57,8 +60,33 @@ export class FirestoreService {
             'ol':0,
             'pl':0,
             'lop':0,
-            'co':0
-        })
+            'co':0,
+
+            'hra':employee.salary.hra,
+            'basicpay':employee.salary.basicpay,
+            'cedallow':employee.salary.cedallow,
+            'medallow':employee.salary.medallow,
+            'speallow':employee.salary.speallow,
+            'total':employee.salary.total,
+
+
+     })
+     var employeeDocRef=this.afs.collection("payroll").doc(employee.basic.emp_id);
+     employeeDocRef.
+         set({
+            'empid': employee.basic.emp_id,
+            'name':employee.basic.firstname.concat(" ",employee.basic.lastname),
+            'hra':employee.salary.hra,
+            'basicpay':employee.salary.basicpay,
+            'cedallow':employee.salary.cedallow,
+            'medallow':employee.salary.medallow,
+            'speallow':employee.salary.speallow,
+            'total':employee.salary.total,
+         })
+
+
+
+
         employee.dependents.forEach(function (value,index){
         employeeDocRef.collection('dependents').doc('dependent' +index).set({
             'name':value.name,
@@ -76,6 +104,16 @@ export class FirestoreService {
                 'percentage':value.percentage,
              })
             })
+
+            // employee.salary.forEach(function (value,index){
+            //     employeeDocRef.collection('salary').doc('qual' +index).set({
+            //         'hra':value.hra,
+            //         'basicpay':value.basicpay,
+            //         'cedallow':value.cedallow,
+            //         'medallow':value.medallow,
+            //         'speallow':value.speallow,
+            //      })
+            //     })
 
             employee.prev_exp.forEach(function (value,index){
                 employeeDocRef.collection('prev_experience').doc('exp' +index).set({
@@ -100,16 +138,36 @@ export class FirestoreService {
     };
 
     getData(id:string){
+        // console.log(id);
         this.userDoc = this.afs.collection('employees').doc(id);
         var data:any
         data = this.userDoc.valueChanges();
         return data;
     }
 
+
+    getData1(id:string){
+        // console.log(id);
+        this.userDoc = this.afs.collection('employees').doc(id);
+        var data:any
+        data = this.userDoc.valueChanges();
+        return data;
+    }
+
+
+
     getQual(id:string){
         this.userDoc = this.afs.collection('employees').doc(id);
         var data:any
         data=this.userDoc.collection('qualifications').valueChanges();
+        return data;
+    }
+
+
+    getSal(id:string){
+        this.userDoc = this.afs.collection('employees').doc(id);
+        var data:any
+        data=this.userDoc.valueChanges();
         return data;
     }
 
@@ -195,6 +253,30 @@ export class FirestoreService {
                  })
             })
         }
+        updateSal(id:string,field:string,newVal:string){
+            this.afs.collection('employees').doc(id).update({
+                [""+field+""]:newVal
+            })
+            this.afs.collection('payroll').doc(id).update({
+                [""+field+""]:newVal
+            })
+        }
+        // updateSal(id:string,sal:Salary[]){
+        //     console.log(sal);
+        //     var userDoc=this.afs.collection('employees').doc(id);
+        //     sal.forEach(function(value){
+        //         console.log(value.basicpay);
+        //         userDoc.set({
+        //                 'basicpay':value.basicpay,
+        //                 'hra':value.hra,
+        //                 'medallow':value.medallow,
+        //                 'cedallow':value.cedallow,
+        //                 'specallow':value.speallow,
+        //                 'total':parseInt(value.basicpay)+parseInt(value.hra)+parseInt(value.cedallow)
+        //                 +parseInt(value.medallow)+parseInt(value.speallow)
+        //          })
+        //     })
+        // }
 
         updateQual(id:string,qual:Qualification[]){
             var userDoc=this.afs.collection('employees').doc(id);
@@ -256,6 +338,5 @@ export class FirestoreService {
           
             setLeave(data:any){
                 
-            }
-        
+            }     
 }

@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+              <form #f="ngForm">
+                  <!-- <mat-form-field class="example-full-width">
+                      <label style = "color:#666869">EMPID</label>
+                    <input matInput
+                          name="empid"
+                          [(ngModel)]="salary.empid" 
+                          required 
+                         >
+                  </mat-form-field> -->
+                  <mat-form-field class="example-full-width">
+                      <label style = "color:#666869">Basic Pay</label>
+                      <input matInput
+                            id="basicpay"
+                            (input)="autoFill($event)"
+                            name="basicpay"
+                            [(ngModel)]="salary.basicpay"
+                            required 
+                           >
+                    <!-- <mat-select  name="department" [(ngModel)]="work.department"   required>
+                              <mat-option  value="marketing"> Marketing</mat-option>
+                              <mat-option  value="hr">Human Resource Management</mat-option>
+                              <mat-option  value="sys_admin">System Administration</mat-option>
+                              <mat-option  value="development">Development</mat-option>
+                              <mat-option  value="testing">Testing</mat-option>
+                            </mat-select> -->
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <label style = "color:#666869">HRA</label>
+                      <input matInput
+                            name="hra"
+
+                            [(ngModel)]="salary.hra"
+                            required 
+                           >
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <label style = "color:#666869">Medical Allowance</label>
+                     <!--  <mat-select  required name="hire_source" [(ngModel)]="work.hire_source" >
+                        <mat-option  value="referral">Through Referral</mat-option>
+                        <mat-option  value="job_portals">Through Job Portals</mat-option>
+                        <mat-option  value="advertisement">News Paper Advertisement</mat-option>
+                      </mat-select> -->
+                      <input matInput
+                            name="medallow"
+                            [(ngModel)]="salary.medallow"
+                            required 
+                           >
+                    </mat-form-field>
+                    
+                    <mat-form-field class="example-full-width" >
+                        <label style = "color:#666869">Children Education Allowance</label>
+                      <input matInput
+                            name="cedallow"
+                            [(ngModel)]="salary.cedallow"
+                            required
+                            >
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <label style = "color:#666869">Special Allowance</label>
+                      <!-- <mat-select  required name="role" [(ngModel)]="work.role">
+                        <mat-option  value="manager">Manager</mat-option>
+                        <mat-option  value="directer">Director</mat-option>
+                        <mat-option  value="team_lead">Team Lead</mat-option>
+                        <mat-option  value="engineer">Engineer</mat-option>
+                        <mat-option  value="jr_engineer">Junior Engineer</mat-option>
+                      </mat-select> -->
+                      <input matInput
+                            name="speallow"
+                            [(ngModel)]="salary.speallow"
+                            required 
+                           >
+                    </mat-form-field>
+                </form>
+                  <button mat-raised-button color="accent" matStepperPrevious
+                  style="margin:20px">Prev</button>
+                  <button mat-raised-button color="primary" matStepperNext
+                  style="margin:20px" (click)=onAdd()>Next</button>
+                </div>
+        
+        </div>
+         
+      </div>
+    </div>
+  </div>
+  
+  
+  

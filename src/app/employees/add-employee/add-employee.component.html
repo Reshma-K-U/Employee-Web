@@ -35,6 +35,10 @@
                         <ng-template matStepLabel>Dependents</ng-template>
                         <exalt-dependents></exalt-dependents> 
                 </mat-step>
+                <mat-step [stepControl]="salary">
+                    <ng-template matStepLabel>Salary Info</ng-template>
+                    <exalt-salary></exalt-salary>
+                    </mat-step>
                 <mat-step [stepControl]="about">
                     <ng-template matStepLabel>About You!</ng-template>
                     <exalt-about></exalt-about>

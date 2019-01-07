@@ -3,7 +3,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {FileSelectDirective} from 'ng2-file-upload';
 //import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -90,7 +89,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HomeNavbarComponent } from './home/home-navbar/home-navbar.component';
 import { AttendanceComponent } from './attendance/attendance.component';
-
+import { EmployeeSalaryComponent} from './employees/employee-salary/employee-salary.component';
+import { SalaryslipComponent} from './payroll/salaryslip/salaryslip.component';
 
 
 import { PayrollComponent } from './payroll/payroll.component';
@@ -102,8 +102,10 @@ import { EmployeeAttendanceComponent } from './employees/employee-attendance/emp
 import { AttendanceCalendarComponent } from './employees/employee-attendance/attendance-calendar/attendance-calendar.component';
 import { AttendanceTableComponent } from './employees/employee-attendance/attendance-table/attendance-table.component';
 
-
-
+import { SalaryComponent } from './employees/add-employee/salary/salary.component';
+import { SalaryDetailsComponent } from './employees/employee-detail/salary-details/salary-details.component';
+import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -137,9 +139,6 @@ import { AttendanceTableComponent } from './employees/employee-attendance/attend
     ClientItemComponent,
     InfoComponent,
 
-
-    FileSelectDirective,
-
     EmployeeLeaveComponent,
 
     ApplyLeaveComponent,
@@ -157,6 +156,7 @@ import { AttendanceTableComponent } from './employees/employee-attendance/attend
     NavbarComponent,
 
     HomeComponent,
+
     AddsalaryComponent,
 
     HomeNavbarComponent,
@@ -164,14 +164,16 @@ import { AttendanceTableComponent } from './employees/employee-attendance/attend
     AttendanceComponent,
     NewempsalaryComponent,
     PayrollComponent,
+    SalaryslipComponent,
+    EmployeeSalaryComponent,
     NewdependentComponent,
     
     EmployeeAttendanceComponent,
     AttendanceCalendarComponent,
     AttendanceTableComponent,
-    
-    
-    
+    SalaryComponent,
+    SalaryDetailsComponent,
+    AllsalaryslipsComponent,
   ],
   imports: [
     BrowserModule,
@@ -196,10 +198,13 @@ import { AttendanceTableComponent } from './employees/employee-attendance/attend
     MatTabsModule,
     MatDialogModule,
     MatCheckboxModule,
+    AppRoutingModule,
+    MatCheckboxModule,    
     MatGridListModule,
-
+    
     AppRoutingModule,
     MatCheckboxModule,
+    PdfViewerModule,
 
 
     CalendarModule.forRoot({
@@ -210,6 +215,6 @@ import { AttendanceTableComponent } from './employees/employee-attendance/attend
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
-  NewempsalaryComponent,NewdependentComponent]
+  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent]
 })
 export class AppModule { }
