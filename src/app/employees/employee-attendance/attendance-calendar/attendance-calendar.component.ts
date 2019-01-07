@@ -41,52 +41,12 @@ const BLUE_CELL: 'blue-cell' = 'blue-cell';
 })
 export class AttendanceCalendarComponent {
   
-<<<<<<< HEAD
-=======
   leavesTaken:any[] = [];
   data: any[] = [];
  // snapshot:any;
->>>>>>> 8702b807b2f10c421d92c56aba20c72ef3b12d3d
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
   viewDate: Date = new Date();
-<<<<<<< HEAD
-  events: CalendarEvent[];
-
-  id:string;
-  subscription:Subscription;
-  data:any[]=[];
-  i:number;
- 
-  constructor( private route:ActivatedRoute,private lev:FirestoreLeaveService ) {}
-  
-  ngOnInit() {
-    this.events=[
-      {start:new Date(),
-      title:'sick leave',
-      color: {primary:'aff3ef',secondary:'aff3ef'}}
-    ];
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.lev.readLeavesTaken(this.id).get().then( (querySnapshot) => {
-      if(querySnapshot.empty){
-            console.log("not found");
-      }
-      else
-      {
-        querySnapshot.docs.map( (documentSnapshot) => {
-        this.data.push(documentSnapshot.data());
-
-      });
-    }
-    console.log(this.data);
-});
-
-  
-}
-
-currentStyles(day){
-  return '#FF5733'
-=======
   id:string;
 
   events: CalendarEvent[];
@@ -136,6 +96,5 @@ for(var i=0;i<this.data.length;i++)
     return 1;
   }
 }
->>>>>>> 8702b807b2f10c421d92c56aba20c72ef3b12d3d
 }
 }

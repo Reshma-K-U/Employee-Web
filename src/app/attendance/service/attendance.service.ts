@@ -12,8 +12,6 @@ export class AttendanceService {
 
 constructor(private afs:AngularFirestore) { }
 
-<<<<<<< HEAD
-=======
   createDoc(date:Date){
       var year=date.getFullYear();
       var month=date.getMonth();
@@ -21,7 +19,6 @@ constructor(private afs:AngularFirestore) { }
       this.afs.collection('attendance').doc(year.toString()).collection(month.toString()).doc
       (day.toString()).collection('employees').ref.doc().set({});
   }
->>>>>>> 8702b807b2f10c421d92c56aba20c72ef3b12d3d
 
 getLeaveDetails(date:Date){
     var data:any[]=[];
@@ -31,11 +28,7 @@ getLeaveDetails(date:Date){
         var value=leaveDoc.data();
     
         if(date.getTime()==value.on.toDate().getTime()){
-<<<<<<< HEAD
-            console.log('equal date');
-=======
         
->>>>>>> 8702b807b2f10c421d92c56aba20c72ef3b12d3d
             data.push(value);
         }
     })
@@ -94,19 +87,8 @@ readCheckinStatus(date:Date){
     var year=date.getFullYear();
     var month=date.getMonth();
     var day=date.getDate();
-<<<<<<< HEAD
     return this.afs.collection('attendance').doc(year.toString()).collection(month.toString()).doc
     (day.toString()).collection('employees').snapshotChanges();
-=======
-
-    var value= this.afs.collection('attendance').doc(year.toString()).collection(month.toString()).doc
-    (day.toString()).collection('employees').valueChanges();
-   
-    return (value);
-}
-
-
->>>>>>> 8702b807b2f10c421d92c56aba20c72ef3b12d3d
 }
 
 }

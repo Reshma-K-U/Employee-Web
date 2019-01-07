@@ -1,19 +1,6 @@
 
-<<<<<<< HEAD
-<ng-template #customCellTemplate let-day="day" let-locale="locale">
-  
-  <div class="cal-cell-top">
-      <!-- ng-style="{'background-color': red}" -->
-    <span class="cal-day-number"  >{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
-  </div>
-  <!-- <small style="margin: 5px">There are {{ day.events.length }} events on this day</small> -->
-</ng-template>
-
-<div class="row text-center">
-=======
   
   <div class="row text-center">
->>>>>>> 8702b807b2f10c421d92c56aba20c72ef3b12d3d
   <div class="col-md-4">
     <div class="btn-group">
       <div
@@ -74,12 +61,8 @@
     *ngSwitchCase="CalendarView.Month"
     [viewDate]="viewDate"
     [events]="events"
-<<<<<<< HEAD
-    [cellTemplate]="customCellTemplate">
-=======
     (beforeViewRender)="beforeMonthViewRender($event)"
     >
->>>>>>> 8702b807b2f10c421d92c56aba20c72ef3b12d3d
   </mwl-calendar-month-view>
 </div>
 <div class="cal-month-view">
