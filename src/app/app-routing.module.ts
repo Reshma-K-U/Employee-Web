@@ -22,6 +22,7 @@ import { EmployeeSalaryComponent } from './employees/employee-salary/employee-sa
 import { SalaryComponent } from './employees/add-employee/salary/salary.component';
 import { PersonalInfoComponent } from './employees/add-employee/personal-info/personal-info.component';
 import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
+import { AssetsComponent } from './assets/assets.component';
 const routes: Routes = [
   {path:'',component:EmployeesComponent,pathMatch:'full'},
   {path:'employees',component:EmployeesComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'attendance',component:AttendanceComponent},
   {path:'payroll',component:PayrollComponent},
+  {path:'assets',component:AssetsComponent},
   {path:'salaryslip',component:SalaryslipComponent},
   {path:'./employee/employee-salary/employee-salary.component',component:EmployeeSalaryComponent},
   {path:'employee-salary',component:EmployeeSalaryComponent},

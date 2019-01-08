@@ -106,6 +106,8 @@ import { SalaryComponent } from './employees/add-employee/salary/salary.componen
 import { SalaryDetailsComponent } from './employees/employee-detail/salary-details/salary-details.component';
 import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { AssetsComponent } from './assets/assets.component';
+import { AddassetsComponent } from './assets/addassets/addassets.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -175,6 +177,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     SalaryComponent,
     SalaryDetailsComponent,
     AllsalaryslipsComponent,
+    AssetsComponent,
+    AddassetsComponent,
   ],
   imports: [
     BrowserModule,
@@ -216,6 +220,6 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
-  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,AttendanceEditComponent]
+  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,AttendanceEditComponent,AddassetsComponent,]
 })
 export class AppModule { }

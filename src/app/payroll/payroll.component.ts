@@ -7,6 +7,7 @@ import { AddEmployeeComponent } from '../employees/add-employee/add-employee.com
 import { FirestoreService } from '../services/firestore.service';
 import { Subscription } from 'rxjs';
 import { Route, Router } from '@angular/router';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'exalt-payroll',
@@ -15,6 +16,7 @@ import { Route, Router } from '@angular/router';
 })
 export class PayrollComponent implements OnInit {
 
+  moreclick:boolean=false;
   allemployee:any[]=[];
   payrollDetails:any[];
   payrollDetails1:any[]=[];
@@ -22,7 +24,7 @@ export class PayrollComponent implements OnInit {
   // payrollDetailsUpdate:any;
   subscription:Subscription;
   onDate:Date;
-  d : string;
+  d : Date;
   // totalSalary:number;
   disable:boolean=true;
   constructor(public dialog: MatDialog,private pyService:PayrollService,private fsService:FirestoreService,
@@ -30,26 +32,30 @@ export class PayrollComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    // if(this.moreclick=true){
+    //   this.payrollDetails=[];
+    //   this.pyService.
+    // }
+    // else{
    this.payrollDetails=[];
    this.total=[];
   this.pyService.getPayrollDetails().subscribe(
   (value)=>{
-    value.forEach(
-      (post)=>{
+
           this.payrollDetails=value;
         // this.payrollDetails.push(post.payload.doc.data());
         // this.pyService.setDetail(post.payload.doc.data());
-      }
-    )
   })  
-  this.pyService.getTotal().subscribe(
-    (value)=>{
-      value.forEach(
-        (post)=>{
-          this.total.push(post.payload.doc.data());
-        }
-      )
-    })
+
+// }
+  // this.pyService.getTotal().subscribe(
+  //   (value)=>{
+  //     value.forEach(
+  //       (post)=>{
+  //         this.total.push(post.payload.doc.data());
+  //       }
+  //     )
+  //   })
 
 
 }
@@ -69,19 +75,23 @@ getTotalField(id:string){
   }
   
   openDialogmore(id:string): void {
+
+    console.log(id);
+    this.moreclick=true;
     const dialogRef = this.dialog.open(AddsalaryComponent,{
       data: {id:id,date:this.onDate},
       width: '750px',
     });
   }
   disableAll()
-  { this.d=this.onDate.toDateString();
-
+  { 
+    this.d=this.onDate;     
     this.disable = false;
+    // this.pyService.createMoreDatabase(this.onDate);
   }
   
   onProcessClick(){
-    this.pyService.resetEmployeeSalary();
+    // this.pyService.resetEmployeeSalary();
   }
 
   onDownload(id:string){

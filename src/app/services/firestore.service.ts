@@ -13,6 +13,7 @@ import { FirestoreLeaveService } from '../home/leave-details/services/firestore-
 export class FirestoreService {
     length:number;
     id:number;
+    date:Date;
     private userDoc:AngularFirestoreDocument<any>;
     private subscription:Subscription;
     constructor(private afs:AngularFirestore,private fsLeaveService:FirestoreLeaveService,
@@ -72,6 +73,12 @@ export class FirestoreService {
 
      })
      var employeeDocRef=this.afs.collection("payroll").doc(employee.basic.emp_id);
+     var d=employee.work.joining_date;
+     var date=new Date(d);
+     console.log(date);
+     var day=date.getDate();
+     var month=date.getMonth();
+     var year=date.getFullYear();
      employeeDocRef.
          set({
             'empid': employee.basic.emp_id,
@@ -82,10 +89,19 @@ export class FirestoreService {
             'medallow':employee.salary.medallow,
             'speallow':employee.salary.speallow,
             'total':employee.salary.total,
+            'isEdited':false,
          })
-
-
-
+    //         'bonus':0,
+    //         'arrears':0,
+    //         'gwp':0,
+    //         'esi':0,
+    //         'wwf':0,
+    //         'advance':0,
+    //         'it':0,
+    //         'others':0,
+    //         'totded':0,
+    //         'day':day,
+    //      }) 
 
         employee.dependents.forEach(function (value,index){
         employeeDocRef.collection('dependents').doc('dependent' +index).set({
