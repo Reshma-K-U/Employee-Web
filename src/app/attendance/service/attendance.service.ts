@@ -16,7 +16,7 @@ export class AttendanceService {
       var month=date.getMonth();
       var day=date.getDate();
       this.afs.collection('attendance').doc(year.toString()).collection(month.toString()).doc
-      (day.toString()).collection('employees').ref.doc('empty').set({});
+      (day.toString()).collection('employees').ref.doc().set({});
   }
 
 getLeaveDetails(date:Date){
@@ -24,7 +24,9 @@ getLeaveDetails(date:Date){
     this.afs.collection('leaves').ref.get().then(function(querySnapshot) {
     querySnapshot.forEach(function(leaveDoc) {
         var value=leaveDoc.data();
+    
         if(date.getTime()==value.on.toDate().getTime()){
+        
             data.push(value);
         }
     })
@@ -78,44 +80,17 @@ onCheckout(id:string,date:Date){
 
 
 readCheckinStatus(date:Date){
-     var year=date.getFullYear();
-    var month=date.getMonth();
-    var day=date.getDate();
-    var data:any[]=[];
-    this.afs.collection('attendance').doc(year.toString()).collection(month.toString()).doc
-    (day.toString()).collection('employees').ref.get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(leaveDoc) {
-        var value=leaveDoc.data();
-        if(value!={}){
-            data.push(value);
-        }
-    })
-    })
-    return of(data);
-    
-}
-
-addemp(value:any,date:Date)
-{    var time=new Date();
-    time=value.chkin;
-     var time1=new Date();
-    time1=value.chkout;
     var year=date.getFullYear();
     var month=date.getMonth();
     var day=date.getDate();
-    var attendDocref=this.afs.collection('attendance').doc(year.toString()).collection(month.toString()).doc
-    (day.toString()).collection('employees').doc(value.empid)
-    attendDocref.set({
-        'on':value.crd,
-        'empid':value.empid,
-        'checkinTime':time,
-        'checkoutTime':time1,
-        'hours':value.thours,
-        'isCheckedin':true,
-        'isCheckedout':true
-    });
-     
-    }
+
+    var value= this.afs.collection('attendance').doc(year.toString()).collection(month.toString()).doc
+    (day.toString()).collection('employees').valueChanges();
+   
+    return (value);
+}
+
+
 }
 
 

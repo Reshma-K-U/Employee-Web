@@ -101,7 +101,7 @@ import { NewdependentComponent } from './employees/employee-detail/dependents-de
 import { EmployeeAttendanceComponent } from './employees/employee-attendance/employee-attendance.component';
 import { AttendanceCalendarComponent } from './employees/employee-attendance/attendance-calendar/attendance-calendar.component';
 import { AttendanceTableComponent } from './employees/employee-attendance/attendance-table/attendance-table.component';
-import { AttendanceEditComponent } from './attendance/attendance-edit/attendance-edit.component';
+
 import { SalaryComponent } from './employees/add-employee/salary/salary.component';
 import { SalaryDetailsComponent } from './employees/employee-detail/salary-details/salary-details.component';
 import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
@@ -173,7 +173,6 @@ import { AddassetsComponent } from './assets/addassets/addassets.component';
     EmployeeAttendanceComponent,
     AttendanceCalendarComponent,
     AttendanceTableComponent,
-    AttendanceEditComponent,
     SalaryComponent,
     SalaryDetailsComponent,
     AllsalaryslipsComponent,
@@ -220,6 +219,6 @@ import { AddassetsComponent } from './assets/addassets/addassets.component';
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
-  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,AttendanceEditComponent,AddassetsComponent,]
+  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent]
 })
 export class AppModule { }
