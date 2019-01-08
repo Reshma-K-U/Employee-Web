@@ -210,7 +210,6 @@ import { EmployeeDocumentsComponent } from './employees/employee-documents/emplo
     MatCheckboxModule,
     PdfViewerModule,
 
-
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory

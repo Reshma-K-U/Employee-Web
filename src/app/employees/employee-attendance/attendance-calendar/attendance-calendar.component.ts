@@ -50,6 +50,7 @@ export class AttendanceCalendarComponent {
   id:string;
 
   events: CalendarEvent[];
+
   
   constructor( private route:ActivatedRoute,private lev:FirestoreLeaveService ){}
     ngOnInit() {
@@ -57,36 +58,38 @@ export class AttendanceCalendarComponent {
       this.events=[];
      // this.snapshot = {};
       this.id = this.route.snapshot.paramMap.get('id');
-      var query= this.lev.readLeavesTaken(this.id);
-      query.get().then( (querySnapshot) => {
-        if(querySnapshot.empty){
-              console.log("not found");
-        }
-        else
-        {
-          querySnapshot.docs.map( (documentSnapshot) => {
-          this.data.push(documentSnapshot.data());
-          
-        });
-        }
-        console.log(this.data.length); 
-});
-
+     
 
     }
     
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
     body.forEach(day => {
-      if (this.isLeave(day.date)==1) {
-        day.cssClass = RED_CELL;
-      }
+      var query= this.lev.readLeavesTaken(this.id);
+      query.get().then( (querySnapshot) => {
+          if(querySnapshot.empty){
+              console.log("not found");
+          }
+          else
+          {
+              querySnapshot.docs.map( (documentSnapshot) => {
+              if(documentSnapshot.data().on.toDate().getTime()==day.date.getTime()){
+                console.log('equal');
+                day.cssClass=RED_CELL;
+                
+          }
+          });
+        }
+    
+      });
 
+      day.cssClass=RED_CELL;
     });
   }
 
 isLeave(date:Date){
+  
 
-for(var i=0;i<this.data.length;i++)
+/* for(var i=0;i<this.data.length;i++)
 {
   console.log(this.data[i].on.toDate.getTime);
   console.log(date.getTime());
@@ -95,6 +98,6 @@ for(var i=0;i<this.data.length;i++)
     console.log(date.getTime());
     return 1;
   }
-}
-}
+}*/
+} 
 }

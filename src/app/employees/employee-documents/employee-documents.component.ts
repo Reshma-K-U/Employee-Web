@@ -1,13 +1,48 @@
-import {NestedTreeControl} from '@angular/cdk/tree';
+ /* import {SelectionModel} from '@angular/cdk/collections';
+import {FlatTreeControl} from '@angular/cdk/tree';*/
 import {Component, Injectable} from '@angular/core';
-import {MatTreeNestedDataSource} from '@angular/material/tree';
-import {BehaviorSubject,Observable,of as observableOf} from 'rxjs';
 
-export class FileNode {
-  children: FileNode[];
-  filename: string;
-  type: any;
+/*import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import {BehaviorSubject} from 'rxjs';
+
+
+export class TodoItemNode {
+  children: TodoItemNode[];
+  item: string;
 }
+
+
+export class TodoItemFlatNode {
+  item: string;
+  level: number;
+  expandable: boolean;
+}
+
+
+const TREE_DATA = {
+  Groceries: {
+    'Almond Meal flour':null,
+    'Organic eggs': null,
+    'Protein Powder': null,
+    Fruits: {
+      Citrus:{'Apple': null,
+              Berries: ['Blueberry', 'Raspberry'],
+              'Orange': null
+              },
+      Sweet:{
+              'Apple': null,
+                Berries: ['Blueberry', 'Raspberry'],
+                Orange: null
+            }
+    }
+
+  },
+  Reminders: [
+    'Cook dinner',
+    'Read the Material Design spec',
+    'Upgrade Application to Angular'
+  ]
+};*/
 
 @Component({
   selector: 'exalt-employee-documents',
@@ -17,52 +52,5 @@ export class FileNode {
 
 export class EmployeeDocumentsComponent{
 
-  nestedTreeControl: NestedTreeControl<FileNode>;
-  nestedDataSource: MatTreeNestedDataSource<FileNode>;
-  dataChange = new BehaviorSubject<FileNode[]>([]);
-  
-  constructor() {
-    this.nestedTreeControl = new NestedTreeControl<FileNode>(this._getChildren);
-    this.nestedDataSource = new MatTreeNestedDataSource();
-    this.dataChange.subscribe(data=>this.nestedDataSource.data=data);
-    
-    this.dataChange.next([
-      {
-        filename: "add",
-        type: "",
-        children: [
-          {
-            filename: "test",
-            type: "docx",
-            children:[]
-          }
-        ]
-      },
-      {
-        filename: "add",
-        type: "",
-        children: [
-          {
-            filename: "test",
-            type: "docx",
-            children:[]
-          }
-        ]
-      },
-    ])
-  }
-
-  hasNestedChild = (_: number, nodeData: FileNode) => {return !(nodeData.type);};
-
-  private _getChildren = (node: FileNode) => {return observableOf(node.children);};
-
-  ngOnInit() {
-  }
-
-}
-
-
-
-
-
-  
+ 
+} 
