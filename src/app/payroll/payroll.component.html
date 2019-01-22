@@ -1,11 +1,10 @@
 
-<div class="container1">
+<div class="container">
   <mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="onDate" [ngModelOptions]="{standalone: true}" (dateChange)=disableAll()>
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="onDate">
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
-<button mat-raised-button color="primary" class="add-button" (click)="openDialog()">ADD</button>
 </div>
 <br>
 <div class ="container">
@@ -13,9 +12,6 @@
     <thead>
       <tr>
         <th>Name</th>
-        <!-- <th>Working Days</th>  
-        <th>Present</th>
-        <th>Absent</th> -->
         <th>Basic Pay</th>
         <th>HRA</th>
         <th>Other</th>
@@ -27,16 +23,13 @@
     <tbody>
       <tr *ngFor="let emp of payrollDetails">
         <td>{{emp.name}}</td>
-        <!-- <td></td>
-        <td></td>
-        <td></td> -->
         <td>{{emp.basicpay}}</td>
         <td>{{emp.hra}}</td>
         <td>
-          <button mat-raised-button color="primary" [disabled]="disable" (click)="openDialogmore(emp.emp_id)" >More</button>   
+          <button mat-raised-button color="primary" (click)="openDialogmore(emp.empid)" >Edit/Save</button>   
         </td>
-        <td>{{getTotalField(emp.emp_id)}}</td>
-        <td><button mat-raised-button color="primary" [disabled]="disable" (click)="onDownload(emp.emp_id)">Download</button></td>
+        <td>{{emp.total}}</td>
+        <td><button mat-raised-button color="primary" (click)="onDownload(emp.empid)">Download</button></td>
         <td><mat-checkbox [checked]="true"></mat-checkbox></td>  
       </tr>
       <tr>

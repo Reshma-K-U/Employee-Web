@@ -1,48 +1,14 @@
- /* import {SelectionModel} from '@angular/cdk/collections';
-import {FlatTreeControl} from '@angular/cdk/tree';*/
+import {NestedTreeControl} from '@angular/cdk/tree';
 import {Component, Injectable} from '@angular/core';
+import {MatTreeNestedDataSource} from '@angular/material/tree';
+import {BehaviorSubject,Observable,of as observableOf} from 'rxjs';
 
-/*import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
-import {BehaviorSubject} from 'rxjs';
 
-
-export class TodoItemNode {
-  children: TodoItemNode[];
-  item: string;
+export class FileNode {
+  children: FileNode[];
+  filename: string;
+  type: any;
 }
-
-
-export class TodoItemFlatNode {
-  item: string;
-  level: number;
-  expandable: boolean;
-}
-
-
-const TREE_DATA = {
-  Groceries: {
-    'Almond Meal flour':null,
-    'Organic eggs': null,
-    'Protein Powder': null,
-    Fruits: {
-      Citrus:{'Apple': null,
-              Berries: ['Blueberry', 'Raspberry'],
-              'Orange': null
-              },
-      Sweet:{
-              'Apple': null,
-                Berries: ['Blueberry', 'Raspberry'],
-                Orange: null
-            }
-    }
-
-  },
-  Reminders: [
-    'Cook dinner',
-    'Read the Material Design spec',
-    'Upgrade Application to Angular'
-  ]
-};*/
 
 @Component({
   selector: 'exalt-employee-documents',
@@ -51,6 +17,46 @@ const TREE_DATA = {
 })
 
 export class EmployeeDocumentsComponent{
+  dataChange = new BehaviorSubject<FileNode[]>([]);
+  nestedTreeControl: NestedTreeControl<FileNode>;
+  nestedDataSource: MatTreeNestedDataSource<FileNode>;
 
- 
-} 
+  constructor() {
+    this.nestedTreeControl = new NestedTreeControl<FileNode>(this._getChildren);
+    this.nestedDataSource = new MatTreeNestedDataSource();
+
+    this.dataChange.subscribe(data=>{
+      this.nestedDataSource.data=data;
+    })
+
+    this.dataChange.next([
+      {
+        filename:'personal',
+        type:"",
+        children:[
+            {
+              filename:'aadhar',
+              type:'doc',
+              children:null,
+            },
+            {
+              filename:'id card',
+              type:"doc",
+              children:null
+            }
+        ]
+      },
+      {
+        filename:'Offer Letter',
+        type:'pdf',
+        children:null
+
+      }
+    ])
+}
+
+hasNestedChild = (_: number, nodeData: FileNode) => !nodeData.type;
+
+  private _getChildren = (node: FileNode) => node.children;
+}
+

@@ -22,17 +22,19 @@ constructor(private afs:AngularFirestore) { }
 
 getLeaveDetails(date:Date){
     var data:any[]=[];
-    console.log('inside fn');
+    
     this.afs.collection('leaves').ref.get().then(function(querySnapshot) {
     querySnapshot.forEach(function(leaveDoc) {
         var value=leaveDoc.data();
-    
-        if(date.getTime()==value.on.toDate().getTime()){
-        
+        /* if(date.getTime()==value.on.toDate().getTime()){
             data.push(value);
-        }
+        } */
+    if(date.getDate()==value.on.toDate().getDate()&&
+    date.getMonth()==value.on.toDate().getMonth()&&
+    date.getFullYear()==value.on.toDate().getFullYear()){
+            data.push(value);
+    } 
     })
-    console.log('data',data);
     })
     return of(data);
 }

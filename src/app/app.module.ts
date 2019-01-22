@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -12,6 +13,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
+import {AngularFireStorageModule} from 'angularfire2/storage';
 var firebaseConfig = {
   apiKey: "AIzaSyBzsyyLdJBjK0kZcEPPiorS38Ij7Hg3LTw",
   authDomain: "getexalture.firebaseapp.com",
@@ -20,6 +22,7 @@ var firebaseConfig = {
   storageBucket: "getexalture.appspot.com",
   messagingSenderId: "43275888739"
 };
+
 
 
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -108,6 +111,10 @@ import { SalaryDetailsComponent } from './employees/employee-detail/salary-detai
 import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { EmployeeDocumentsComponent } from './employees/employee-documents/employee-documents.component';
+import { AssetsComponent } from './assets/assets.component';
+import { AddassetsComponent } from './assets/addassets/addassets.component';
+import { GridModule } from '@progress/kendo-angular-grid';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -177,6 +184,8 @@ import { EmployeeDocumentsComponent } from './employees/employee-documents/emplo
     SalaryDetailsComponent,
     AllsalaryslipsComponent,
     EmployeeDocumentsComponent,
+    AssetsComponent,
+    AddassetsComponent,
   ],
   imports: [
     BrowserModule,
@@ -184,6 +193,7 @@ import { EmployeeDocumentsComponent } from './employees/employee-documents/emplo
     CommonModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -209,11 +219,14 @@ import { EmployeeDocumentsComponent } from './employees/employee-documents/emplo
     AppRoutingModule,
     MatCheckboxModule,
     PdfViewerModule,
+    HttpClientModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-    })
+    }),
+
+    GridModule
   ],
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],

@@ -23,21 +23,6 @@
       <tr  *ngFor="let emp of allEmployees">
         <td>{{emp.emp_id}}</td>
         <td>{{emp.name}}</td>
-        <!-- <td class="checkin">
-          <button *ngIf="!getCheckinStatus(emp.emp_id)"  type="button" class="btn btn-success" 
-          [disabled]="getLeaveStatus(emp.emp_id)"
-          (click)="onCheckin(emp.emp_id)"><span> <i class="fa fa-clock-o" aria-hidden="true" ></i></span>
-          Checkin</button>
-          <p *ngIf="getCheckinStatus(emp.emp_id)">{{getCheckinTime(emp.emp_id)}}</p>
-        </td>
-        <td class="checkout">
-          <button *ngIf="getCheckinStatus(emp.emp_id)&&!getCheckoutStatus(emp.emp_id)"  type="button" class="btn btn-danger" 
-            [disabled]="getLeaveStatus(emp.emp_id)"
-            (click)="onCheckout(emp.emp_id)">
-            <span> <i class="fa fa-clock-o" aria-hidden="true"></i></span>Checkout
-          </button>
-          <p *ngIf="getCheckoutStatus(emp.emp_id)">{{getCheckoutTime(emp.emp_id)}}</p>
-        </td> -->
         <td >
             <button  type="button" class="btn btn-success" 
             [hidden]="getCheckinStatus(emp.emp_id)"

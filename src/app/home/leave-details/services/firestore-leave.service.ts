@@ -89,10 +89,23 @@ export class FirestoreLeaveService {
     })
   })
   return of(data); */
+  var data:any[]=[];
   var docRef=this.afs.collection('leaves');
   var query=docRef.ref.where("id","==",i);
-  return query;
-  
+  query.get().then( (querySnapshot) => {
+    if(querySnapshot.empty){
+        console.log("not found");
+    }
+    else
+    {
+        querySnapshot.docs.map( (documentSnapshot) => {
+          data.push(documentSnapshot.data());
+          
+        })
+      }
+      
+    });
+    return of(data);
   }
 
 

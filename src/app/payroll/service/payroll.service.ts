@@ -9,11 +9,9 @@ import { of, Observable } from 'rxjs';
 export class PayrollService {
 
   allemployee:any=[];
-  date1:any=[];
-  hra1:Number;
 
   private userDoc:AngularFirestoreDocument<any>;
-  constructor(private afs:AngularFirestore,private psService:PayrollService) { }
+  constructor(private afs:AngularFirestore) { }
   
    newEmployeeSalary(value:any){
     
@@ -22,9 +20,7 @@ export class PayrollService {
      var medallow=parseInt(value.basicpay)*0.4;
      var cedallow=parseInt(value.basicpay)*0.3;
      var speallow=parseInt(value.basicpay)*0.2;
-     console.log(hra);
-     console.log(medallow);
-employeeDocRef.
+    employeeDocRef.
     set({
         
          'empid': value.empid,
@@ -39,21 +35,24 @@ employeeDocRef.
     }) 
     return true;
 } 
+
 moreEmployeeSalary(more:any,date:Date){
     var date1=date.getDate();
     var month=date.getMonth();
     var year=date.getFullYear();
-    var employeeDocRef=this.afs.collection("payroll").doc(more.empid).collection("salarydetails").
-    ref.doc(year.toString()).collection(month.toString()).doc(date1.toString());
+    var docRef =  this.afs.collection("payroll").doc(more.empid);
+    var employeeDocRef=docRef.collection(year.toString()).ref.doc(month.toString());
     
     var updatetotal=parseInt(more.basicpay)+parseInt(more.hra)+parseInt(more.speallow)+
     parseInt(more.medallow)+parseInt(more.cedallow)+parseInt(more.bonus)+parseInt(more.arrears)+
-    parseInt(more.gwp)+parseInt(more.esi)+parseInt(more.advance)+parseInt(more.it)+
-    parseInt(more.others)+parseInt(more.totded)+parseInt(more.wwf);
-employeeDocRef.
+    parseInt(more.gwp)-parseInt(more.esi)-parseInt(more.advance)-parseInt(more.it)-
+    parseInt(more.others)-parseInt(more.totded)+parseInt(more.wwf);
+    
+    employeeDocRef.
     set({
         
         'empid': more.empid,
+        'name':more.name,
         'basicpay': more.basicpay,
         'hra':more.hra,
         'speallow': more.speallow,
@@ -69,23 +68,25 @@ employeeDocRef.
         'others':more.others,
         'totded': more.totded,
         'total':updatetotal,
+        'day':date1,
     }) 
 
-    this.afs.collection("payroll").doc(more.empid).update({
-        'total' :  updatetotal,
-        'empid': more.empid,
-        'basicpay': more.basicpay,
-        'hra':more.hra,
-        'speallow': more.speallow,
-        'medallow':more.medallow,
-        'cedallow': more.cedallow,
-  })
+    docRef.update({
+        'total':updatetotal
+    })
+
+
   
 }
-moreEmpFill(id:string){
-        // id=id.replace(/\s/g, "");
 
-        this.userDoc = this.afs.collection('employees').doc(id);
+
+
+
+
+
+moreEmpFill(id:string){
+
+        this.userDoc = this.afs.collection('payroll').doc(id);
         var data:any
         data = this.userDoc.valueChanges();
          
@@ -94,83 +95,48 @@ moreEmpFill(id:string){
 }
 
 getPayrollDetails(){
+    this.afs.collection('employees').valueChanges().subscribe(data=>{
+    data.forEach(val=>{
+        this.afs.collection('payroll').doc(val['emp_id']).set({
+            'empid': val['emp_id'],
+            'name':val['name'],
+            'basicpay': val['basicpay'],
+            'hra':val['hra'],
+            'speallow': val['speallow'],
+            'medallow':val['medallow'],
+            'cedallow': val['cedallow'],
+            'total':val['total']
+        })
+    })
+    })
 
-        /* var query = this.afs.collection('employees');
-
-        query.ref.onSnapshot(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                cities.push(doc.data().name);
-            });
-            console.log("Current cities in CA: ", cities.join(", "));
-        });
-     */
+    return this.afs.collection('payroll').snapshotChanges();
 }
 
-/* setDetail(val:any){
-    var employeeDocRef=this.afs.collection("payroll").doc(val.emp_id);
-    employeeDocRef.
-        set({
-           'empid': val.emp_id,
-           'name':val.name,
-           'hra':val.hra,
-           'basicpay':val.basicpay,
-           'cedallow':val.cedallow,
-           'medallow':val.medallow,
-           'speallow':val.speallow,
-           'total':val.total,
-        })
 
-} */
-        
-
-    getTotal(){
-        var col = this.afs.collection('payroll');
+    getAllPayroll(value:any,date:Date){
+        var date1=date.getDate();
+        var month=date.getMonth();
+        var year=date.getFullYear(); 
+        var id=value;
+        this.userDoc = this.afs.collection('payroll').doc(id).collection(year.toString()).doc(month.toString());
         var data:any
-        data = col.snapshotChanges();
+        data = this.userDoc.valueChanges();
         return data;
     }
 
-
-
-    resetEmployeeSalary(){
-        var col = this.afs.collection('payroll');
-    col.ref.get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-        var cityRef = col.doc(doc.id);
-        cityRef.update({
-            'total':""
-        })
-    });
-});
-    } 
-
+   
     salarySlipFill(id:string,d:Date){
         var date= new Date(d);
         var day=date.getDate();
         var month=date.getMonth();
         var year=date.getFullYear();
         //  id=id.replace(/\s/g, "");    
-          this.userDoc = this.afs.collection('payroll').doc(id).collection('salarydetails').doc(year.toString())
-         .collection(month.toString()).doc(day.toString());
+          this.userDoc = this.afs.collection('payroll').doc(id).collection(year.toString()).doc(month.toString());
         var data:any
         data = this.userDoc.valueChanges();
         return data;
     }
 
-    empNameDetails(id:string){
-        console.log(id);
-        var userDoc = this.afs.collection('employees').doc(id);
-        var data:any
-        data = this.userDoc.valueChanges();
-        console.log(data);
-        return data;
-    }
 
-    getPayrollDetails1(id:any){
-
-        var col = this.afs.collection('employees').doc(id);
-        var data:any
-        data = col.valueChanges();
-        return data;
-    } 
 }

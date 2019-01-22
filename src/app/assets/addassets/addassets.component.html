@@ -1,0 +1,14 @@
+<h2>Add Assets</h2>
+<form #f="ngForm">
+    <div class="container">
+       <mat-form-field  class="form-field">
+        <input matInput name="itemid" ngModel placeholder="Item ID"></mat-form-field>
+        <mat-select placeholder="Year">
+          <mat-option *ngFor="let y of year" [value]="y.value">
+            {{y.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-form-field  class="form-field">
+                <input matInput name="type" ngModel placeholder="Item type"></mat-form-field>        
+    </div>
+  </form>

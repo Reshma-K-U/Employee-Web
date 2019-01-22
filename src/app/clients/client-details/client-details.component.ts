@@ -15,6 +15,7 @@ export class ClientDetailsComponent implements OnInit {
   subscription:Subscription;
   active:boolean;
   label:string;
+  imageUrl:string;
   
   constructor(private route: ActivatedRoute,private location: Location,private fsClient:FirestoreClientService) { }
 
@@ -34,6 +35,12 @@ export class ClientDetailsComponent implements OnInit {
         this.subscription.unsubscribe();
      }
     )
+
+    this.fsClient.getImageUrl(this.id).subscribe(val=>{
+      this.imageUrl=val;
+      console.log(this.imageUrl)
+    })
+    
     
   }
 

@@ -39,65 +39,35 @@ export class AddemployeeService {
   public sal:Salary;
   about:string;
   constructor(private empService:EmployeeService,private fsService:FirestoreService) { }
-calsalary:Salary={
-  basicpay:" ",
-  hra:"",
-  cedallow:"",
-  medallow:"",
-  speallow:"",
-  total:"0",
-}
-  ngOnInit(){
-    
-  }
+  ngOnInit(){}
 
   setBasic(bas:Basic){
-      this.newEmp.basic=bas;
-      console.log(this.basic);
+    this.newEmp.basic=bas;
   }
   setPersonal(pers:Personal){
     this.newEmp.personal=pers;
-    console.log(this.personal);
 }
 setWork(work:Work){
   this.newEmp.work=work;
-  console.log(this.work);
 }
 setPrev_Exp(exp:Prev_Exp[]){
   this.newEmp.prev_exp=exp;
-  console.log('bbvbvbvb');
-  console.log(this.prev_exp);
 }
 setQualification(qual:Qualification[]){
   this.newEmp.qualification=qual;
-  console.log('hdddhhd');
-  console.log(this.qual);
 }
 setDependents(dep:Dependents[]){
   this.newEmp.dependents=dep;
-  console.log(this.dependents);
 }
 setAbout(abt:string){
   this.newEmp.about=abt;
-  console.log(this.about);
-  console.log('new employee');
-  console.log(this.newEmp);
   this.empService.addEmployee(this.newEmp);
   this.fsService.addEmployee(this.newEmp);
 }
 setSalary(sal:Salary){
   this.newEmp.salary=sal;
 }
-Calculate(value:any){
- this.calsalary.basicpay=value.basicpay;
-this.calsalary.hra=parseInt(value.basicpay)*0.5;
-this.calsalary.medallow=parseInt(value.basicpay)*0.4;
-this.calsalary.cedallow=parseInt(value.basicpay)*0.3;
-this.calsalary.speallow=parseInt(value.basicpay)*0.2;
-this.calsalary.total=parseInt(this.calsalary.basicpay)+parseInt(this.calsalary.cedallow)+
-parseInt(this.calsalary.hra)+parseInt(this.calsalary.medallow)+parseInt(this.calsalary.speallow);
-return this.calsalary;
-}
+
 
 }
 
