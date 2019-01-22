@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 import { NgForm } from '@angular/forms';
 import { PayrollService } from 'src/app/payroll/service/payroll.service';
-import { MatDialogRef } from '@angular/material';
 import { AssetsService } from '../assets.service';
-import { FirestoreService } from 'src/app/services/firestore.service';
+import { Route, Router } from '@angular/router';
+
 
 @Component({
-  selector: 'exalt-addassets',
-  templateUrl: './addassets.component.html',
-  styleUrls: ['./addassets.component.scss']
+  selector: 'exalt-assignassets',
+  templateUrl: './assignassets.component.html',
+  styleUrls: ['./assignassets.component.scss']
 })
-export class AddassetsComponent implements OnInit {
-  constructor(private asService:AssetsService,public dialogRef:MatDialogRef<AddassetsComponent>,
-    private fsService:FirestoreService) { }
-  onDate:Date;
-  employeeNames:any[];
+export class AssignassetsComponent implements OnInit {
+
+  name:string='joel';
+  constructor(public asService:AssetsService,public dialogRef:MatDialogRef<AssignassetsComponent>,
+    private router:Router) { }
   item: item[] = [
     {value: 'laptop', viewValue: 'Laptop'},
     {value: 'mobile', viewValue: 'Mobile'},
@@ -31,23 +32,15 @@ export class AddassetsComponent implements OnInit {
     {value: 'motorola', viewValue: 'Motorola'},
     {value: 'redmi', viewValue: 'Redmi'},
   ];
-  model:model[]=[
-    {value:'A1',viewValue:'A1'},
-    {value:'A2',viewValue:'A2'},
-    {value:'A3',viewValue:'A3'},
-    {value:'B1',viewValue:'B1'},
-    {value:'B2',viewValue:'B2'},
-    {value:'C1',viewValue:'C1'},
-  ]
+
 
   ngOnInit() {
-    this.employeeNames=this.fsService.getDataForList()
-    console.log(this.employeeNames); 
   }
-  onSave(form:NgForm){
-    var value=form.value;    
-    this.asService.addAssets(value,this.onDate);
+  onSearch(form:NgForm){
+    var value=form.value;
+    var data=this.asService.searchAssets(value);
     this.dialogRef.close();
+    this.router.navigate(['searchassets'], { queryParams: {data,name}});
   }
   onCancel(){
     this.dialogRef.close();
@@ -58,10 +51,6 @@ export interface item {
   viewValue: string;
 }
 export interface company {
-  value: string;
-  viewValue: string;
-}
-export interface model {
   value: string;
   viewValue: string;
 }

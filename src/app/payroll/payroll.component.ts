@@ -21,6 +21,7 @@ export class PayrollComponent implements OnInit {
   payrollDetails:any[];
   payrollDetails1:any[]=[];
   total:any[];
+  totalsal:any=0;
   // payrollDetailsUpdate:any;
   subscription:Subscription;
   onDate:Date;
@@ -43,10 +44,12 @@ export class PayrollComponent implements OnInit {
   (value)=>{
 
           this.payrollDetails=value;
+          this.payrollDetails.forEach(element => {
+            this.totalsal=this.totalsal+element.total;            
+          });
         // this.payrollDetails.push(post.payload.doc.data());
         // this.pyService.setDetail(post.payload.doc.data());
   })  
-
 // }
   // this.pyService.getTotal().subscribe(
   //   (value)=>{
@@ -92,6 +95,7 @@ getTotalField(id:string){
   
   onProcessClick(){
     // this.pyService.resetEmployeeSalary();
+    this.router.navigate(['accountstatement'], { queryParams: {date:this.onDate}});
   }
 
   onDownload(id:string){

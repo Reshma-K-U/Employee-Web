@@ -7,6 +7,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+'@angular/platform-browser/animations';
+import { GridModule } from '@progress/kendo-angular-grid';
 
 
 
@@ -108,6 +110,10 @@ import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AssetsComponent } from './assets/assets.component';
 import { AddassetsComponent } from './assets/addassets/addassets.component';
+import { AccountstatementComponent } from './payroll/accountstatement/accountstatement.component';
+import { AssignassetsComponent } from './assets/assignassets/assignassets.component';
+import { SearchassetsComponent } from './assets/searchassets/searchassets.component';
+import { EditassetsComponent } from './assets/editassets/editassets.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -178,6 +184,10 @@ import { AddassetsComponent } from './assets/addassets/addassets.component';
     AllsalaryslipsComponent,
     AssetsComponent,
     AddassetsComponent,
+    AccountstatementComponent,
+    AssignassetsComponent,
+    SearchassetsComponent,
+    EditassetsComponent,
   ],
   imports: [
     BrowserModule,
@@ -219,6 +229,7 @@ import { AddassetsComponent } from './assets/addassets/addassets.component';
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
-  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent]
+  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,AddassetsComponent,AssignassetsComponent,SearchassetsComponent,
+EditassetsComponent]
 })
 export class AppModule { }

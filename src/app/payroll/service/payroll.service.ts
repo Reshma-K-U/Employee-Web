@@ -11,6 +11,7 @@ export class PayrollService {
   allemployee:any=[];
   date1:any=[];
   hra1:Number;
+  totalsal:any=[];
 
   private userDoc:AngularFirestoreDocument<any>;
   constructor(private afs:AngularFirestore,private psService:PayrollService) { }
@@ -151,7 +152,19 @@ getPayrollDetails(){
         var data:any
         // data = col.snapshotChanges();
         data=col.valueChanges();
+        console.log(data);
         return data;
+}
+
+totalSalary(){
+    var col = this.afs.collection('payroll');
+    var data:any
+    data=col.valueChanges();
+    // totalsal=parseInt(data.total)+(totalsal);
+    this.totalsal=data;
+    console.log(this.totalsal);
+    return this.totalsal;
+
 }
 
 setDetail(val:any){
@@ -238,4 +251,13 @@ setDetail(val:any){
         data = col.valueChanges();
         return data;
     } 
+    formatDate(date:Date){
+        var date= new Date(date);
+        var day=date.getDate();
+        var month=date.getMonth();
+        month=month+1;
+        var year=date.getFullYear();
+        var d=day+"/"+month+"/"+year;
+        return d;
+    }
 }

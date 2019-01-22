@@ -1,0 +1,27 @@
+<div id=contentToConvert><h1 class="headr">{{date}}</h1>
+<div class ="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Basic Pay</th>
+        <th>HRA</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of payrollDetails">
+        <td>{{emp.name}}</td>
+        <td>{{emp.basicpay}}</td>
+        <td>{{emp.hra}}</td>
+        <td>{{emp.total}}</td>
+      </tr>
+      <tr>
+        <td><h6>Total:</h6></td>
+        <td colspan="9"><b><h1>{{totalsal}}</h1></b></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<button class="btn btn-primary" (click)="onDownload()">Download</button>

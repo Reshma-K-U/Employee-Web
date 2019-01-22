@@ -1,0 +1,28 @@
+<h2>EDIT ASSETS</h2>
+<form #f="ngForm">
+  <div class="row"> 
+     <div class="col-sm-3">
+        <mat-form-field  class="form-field">
+          <input matInput name="itemid" [(ngModel)]="assetDetail.itemid" placeholder="ITEM ID"></mat-form-field>
+        <mat-form-field  class="form-field">
+          <input matInput name="type" [(ngModel)]="assetDetail.type"  placeholder="ITEM TYPE"></mat-form-field>
+        <mat-form-field  class="form-field">
+          <input matInput name="company" [(ngModel)]="assetDetail.company" placeholder="COMPANY"></mat-form-field>
+     </div>  
+     <div class="col-sm-3">
+        <mat-form-field  class="form-field">
+          <input matInput name="model" [(ngModel)]="assetDetail.model"  placeholder="MODEl"></mat-form-field>
+        <mat-form-field  class="form-field">
+          <input matInput name="date" [(ngModel)]="assetDetail.day"  placeholder="DATE"></mat-form-field>
+          <mat-form-field  class="form-field"> 
+              <mat-select placeholder="Assign" [(ngModel)]="selectedOption4" name="assign">
+                <mat-option *ngFor="let emp of employeeNames" [value]="emp.name">
+                  {{emp.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+  </div>
+        <button class="btn btn-primary" (click)="onSave(f)">SAVE</button>
+        <button class="btn btn-danger" (click)="onCancel()">CANCEL</button>
+</form>
