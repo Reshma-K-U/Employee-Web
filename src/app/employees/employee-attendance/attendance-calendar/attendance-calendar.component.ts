@@ -16,6 +16,7 @@ import { NG_MODEL_WITH_FORM_CONTROL_WARNING } from '@angular/forms/src/directive
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { isPlatformServer } from '@angular/common';
 
+
 const RED_CELL: 'red-cell' = 'red-cell';
 const BLUE_CELL: 'blue-cell' = 'blue-cell';
 
@@ -40,7 +41,7 @@ const BLUE_CELL: 'blue-cell' = 'blue-cell';
 
 })
 export class AttendanceCalendarComponent {
-  
+  result:boolean=true;
   leavesTaken:any[] = [];
   data: any[] = [];
  // snapshot:any;
@@ -51,12 +52,13 @@ export class AttendanceCalendarComponent {
   viewDate: Date = new Date();
   id:string;
 
-  events: CalendarEvent[];
+  events: CalendarEvent[] = [];
+
   
   constructor( private route:ActivatedRoute,private lev:FirestoreLeaveService ){}
     ngOnInit() {
      
-      this.events=[];
+    
      // this.snapshot = {};
       this.id = this.route.snapshot.paramMap.get('id');
       var query= this.lev.readLeavesTaken(this.id);
@@ -66,37 +68,59 @@ export class AttendanceCalendarComponent {
         }
         else
         {
+
           querySnapshot.docs.map( (documentSnapshot) => {
           this.data.push(documentSnapshot.data());
           
         });
+        
         }
-        console.log(this.data.length); 
+        console.log(this.data); 
+
 });
 
 
     }
     
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
+    setTimeout(()=>{
     body.forEach(day => {
+
       if (this.isLeave(day.date)==1) {
-        day.cssClass = RED_CELL;
+  
+       day.cssClass=RED_CELL;
       }
-
+        
+     
+    
     });
+  },5000);
   }
+  
+   isLeave(date:Date):any{
+   
+  // console.log(date);
+   //console.log(this.data.length);
 
-isLeave(date:Date){
-
-for(var i=0;i<this.data.length;i++)
-{
-  console.log(this.data[i].on.toDate.getTime);
-  console.log(date.getTime());
-  if(this.data[i].on.toDate.getTime()===date.getTime()){
-    console.log(this.data[i].on.toDate.getTime);
-    console.log(date.getTime());
-    return 1;
+    for(var i=0;i<this.data.length;i++)
+    {
+     
+     // console.log(date.getTime())
+   //   console.log(this.data[i].on.toDate().getTime())
+ 
+      if(this.data[i].on.toDate().getTime() === date.getTime())
+       {
+        
+        console.log("test");
+        
+       } 
+      
+       
+      }
+      
+   
+   return 1;
+  
   }
-}
-}
+  
 }

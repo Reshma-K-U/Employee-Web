@@ -22,6 +22,9 @@ import { EmployeeSalaryComponent } from './employees/employee-salary/employee-sa
 import { SalaryComponent } from './employees/add-employee/salary/salary.component';
 import { PersonalInfoComponent } from './employees/add-employee/personal-info/personal-info.component';
 import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
+import { ProjectComponent } from'./project/project.component';
+import { ProjectListComponent } from './project/project-list/project-list.component';
+import { AddprojectComponent } from './project/addproject/addproject.component';
 const routes: Routes = [
   {path:'',component:EmployeesComponent,pathMatch:'full'},
   {path:'employees',component:EmployeesComponent},
@@ -43,6 +46,10 @@ const routes: Routes = [
   {path:'./employee/employee-salary/employee-salary.component',component:EmployeeSalaryComponent},
   {path:'employee-salary',component:EmployeeSalaryComponent},
   {path:'allsalaryslips',component:AllsalaryslipsComponent},
+  {path:'project',component:ProjectComponent},
+  {path:'project-list',component:ProjectListComponent},
+  {path:'addproject',component:AddprojectComponent },
+
 ];
 
 @NgModule({
