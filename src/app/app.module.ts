@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -14,6 +15,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
+import {AngularFireStorageModule} from 'angularfire2/storage';
 var firebaseConfig = {
   apiKey: "AIzaSyBzsyyLdJBjK0kZcEPPiorS38Ij7Hg3LTw",
   authDomain: "getexalture.firebaseapp.com",
@@ -22,6 +24,7 @@ var firebaseConfig = {
   storageBucket: "getexalture.appspot.com",
   messagingSenderId: "43275888739"
 };
+
 
 
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -40,6 +43,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTreeModule} from '@angular/material/tree';
 
 import {EmployeeService} from  './employees/services/employee.services';
 import{FirestoreService} from '../app/services/firestore.service';
@@ -108,12 +112,15 @@ import { SalaryComponent } from './employees/add-employee/salary/salary.componen
 import { SalaryDetailsComponent } from './employees/employee-detail/salary-details/salary-details.component';
 import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { EmployeeDocumentsComponent } from './employees/employee-documents/employee-documents.component';
 import { AssetsComponent } from './assets/assets.component';
 import { AddassetsComponent } from './assets/addassets/addassets.component';
 import { AccountstatementComponent } from './payroll/accountstatement/accountstatement.component';
 import { AssignassetsComponent } from './assets/assignassets/assignassets.component';
 import { SearchassetsComponent } from './assets/searchassets/searchassets.component';
 import { EditassetsComponent } from './assets/editassets/editassets.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -182,6 +189,7 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
     SalaryComponent,
     SalaryDetailsComponent,
     AllsalaryslipsComponent,
+    EmployeeDocumentsComponent,
     AssetsComponent,
     AddassetsComponent,
     AccountstatementComponent,
@@ -195,6 +203,7 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
     CommonModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -215,16 +224,19 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
     AppRoutingModule,
     MatCheckboxModule,    
     MatGridListModule,
+    MatTreeModule,
     
     AppRoutingModule,
     MatCheckboxModule,
     PdfViewerModule,
-
+    HttpClientModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-    })
+    }),
+
+    GridModule
   ],
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],

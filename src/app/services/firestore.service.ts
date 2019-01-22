@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { forEach } from '@angular/router/src/utils/collection';
 import 'rxjs/Rx'
 import {AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument} from 'angularfire2/firestore';
 import { Subscription } from 'rxjs/Rx';
+import {Observable} from 'rxjs';
 
 import {Employee, Prev_Exp, Qualification, Dependents,Salary} from '../employees/model/employee.model';
 import { FirestoreLeaveService } from '../home/leave-details/services/firestore-leave.service';
-// import { Http,Headers } from '@angular/http';
+
 
 
 @Injectable()
@@ -27,14 +27,12 @@ export class FirestoreService {
     employeeDocRef.
         set({
             
-            /* 'firstname':  employee.basic.firstname,
-            'lastname':   employee.basic.lastname, */
             'name':employee.basic.firstname.concat(" ",employee.basic.lastname),
             'emp_id': employee.basic.emp_id,
             'gender': employee.basic.gender,
             'email':employee.basic.email,
             'marrital_status':  employee.personal.marrital_status,
-            'dob':   new Date(employee.personal.date_of_birth).toDateString(),
+            'dob':   new Date(employee.personal.date_of_birth),
             'address': employee.personal.address,
             'mob_num': employee.personal.mob_num,
             'other_email':employee.personal.other_email,
@@ -45,7 +43,7 @@ export class FirestoreService {
             'department':  employee.work.department,
             'work_location':   employee.work.location,
             'hire_source': employee.work.hire_source,
-            'joining_date': new Date(employee.work.joining_date).toDateString(),
+            'joining_date': new Date(employee.work.joining_date),
             'role':employee.work.role,
             'employee_type':employee.work.employee_type,
             'status':employee.work.status,
@@ -91,17 +89,6 @@ export class FirestoreService {
             'total':employee.salary.total,
             'isEdited':false,
          })
-    //         'bonus':0,
-    //         'arrears':0,
-    //         'gwp':0,
-    //         'esi':0,
-    //         'wwf':0,
-    //         'advance':0,
-    //         'it':0,
-    //         'others':0,
-    //         'totded':0,
-    //         'day':day,
-    //      }) 
 
         employee.dependents.forEach(function (value,index){
         employeeDocRef.collection('dependents').doc('dependent' +index).set({
@@ -121,15 +108,6 @@ export class FirestoreService {
              })
             })
 
-            // employee.salary.forEach(function (value,index){
-            //     employeeDocRef.collection('salary').doc('qual' +index).set({
-            //         'hra':value.hra,
-            //         'basicpay':value.basicpay,
-            //         'cedallow':value.cedallow,
-            //         'medallow':value.medallow,
-            //         'speallow':value.speallow,
-            //      })
-            //     })
 
             employee.prev_exp.forEach(function (value,index){
                 employeeDocRef.collection('prev_experience').doc('exp' +index).set({
@@ -154,23 +132,11 @@ export class FirestoreService {
     };
 
     getData(id:string){
-        // console.log(id);
         this.userDoc = this.afs.collection('employees').doc(id);
         var data:any
         data = this.userDoc.valueChanges();
         return data;
     }
-
-
-    getData1(id:string){
-        // console.log(id);
-        this.userDoc = this.afs.collection('employees').doc(id);
-        var data:any
-        data = this.userDoc.valueChanges();
-        return data;
-    }
-
-
 
     getQual(id:string){
         this.userDoc = this.afs.collection('employees').doc(id);
@@ -277,22 +243,7 @@ export class FirestoreService {
                 [""+field+""]:newVal
             })
         }
-        // updateSal(id:string,sal:Salary[]){
-        //     console.log(sal);
-        //     var userDoc=this.afs.collection('employees').doc(id);
-        //     sal.forEach(function(value){
-        //         console.log(value.basicpay);
-        //         userDoc.set({
-        //                 'basicpay':value.basicpay,
-        //                 'hra':value.hra,
-        //                 'medallow':value.medallow,
-        //                 'cedallow':value.cedallow,
-        //                 'specallow':value.speallow,
-        //                 'total':parseInt(value.basicpay)+parseInt(value.hra)+parseInt(value.cedallow)
-        //                 +parseInt(value.medallow)+parseInt(value.speallow)
-        //          })
-        //     })
-        // }
+       
 
         updateQual(id:string,qual:Qualification[]){
             var userDoc=this.afs.collection('employees').doc(id);
@@ -354,5 +305,47 @@ export class FirestoreService {
           
             setLeave(data:any){
                 
-            }     
+            }  
+            
+    getPayrollDetails(id:string){
+        var fromYear:number;
+        var fromMonth:number;
+        var toYear:number;
+        var toMonth:number;
+        var data:any[]=[];
+        var month :string[]=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        this.getData(id).subscribe(
+            value=>{
+                fromYear = value.joining_date.toDate().getFullYear();
+                fromMonth = value.joining_date.toDate().getMonth();
+                toYear=new Date().getFullYear();
+                toMonth = new Date().getMonth()-1;
+                
+              while(toYear>=fromYear){
+                if(fromYear==toYear){
+                  while(toMonth>=fromMonth){
+                    data.push({
+                      'year':toYear,
+                      'month':month[toMonth]
+                    })
+                    toMonth--;
+                  }
+                }
+                else{
+                while(toMonth>=0){
+                  data.push({
+                    'year':toYear,
+                    'month':month[toMonth]
+                  })
+                  toMonth--;
+                }
+                
+              }
+              toYear--;
+              toMonth=11;
+            }
+    })
+    return data;
+}
+ 
 }

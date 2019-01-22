@@ -51,7 +51,7 @@ export class SalaryslipComponent implements OnInit {
       // console.log(this.date);
   });
     
-    this.subscription=this.fsService.getData1(this.id).subscribe(
+    this.subscription=this.fsService.getData(this.id).subscribe(
       (value)=>{
         // console.log(value.name);
         this.employeeDetails.name=value.name;

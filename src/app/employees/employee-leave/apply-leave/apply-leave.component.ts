@@ -14,7 +14,7 @@ import { FirestoreService } from '../../../services/firestore.service';
 export class ApplyLeaveComponent implements OnInit {
 
   id:string; 
-  apply:boolean=true; 
+  alert:boolean=false; 
   subscription:Subscription;
   
   constructor(public dialogRef: MatDialogRef<ApplyLeaveComponent>,
@@ -27,25 +27,24 @@ export class ApplyLeaveComponent implements OnInit {
     // this.id = this.route.snapshot.paramMap.get('id');
     
      this.id=this.dat.id.replace(/\s/g, "");
-     console.log(this.id);
   }
 
   applyLeave(form:NgForm){
    var value=form.value;
   this.subscription=this.fsService.getData(this.dat.id).subscribe(
       (data)=>{
-        console.log(data);
         var field=value.leaveType;
         if(data[field]<data['max'+field]){
           this.fsLeaveService.applyLeave(this.dat.id,data['name'],value,data[field]);
+          this.dialogRef.close();
         }
         else{
-          this.apply=false;
+          this.alert=true;
         }
         this.subscription.unsubscribe();
       } 
   )
-  this.dialogRef.close();
+  
 /* var diff = Math.abs(value.toDate.getTime() - value.fromDate.getTime());
    var diffDays = Math.ceil(diff / (1000 * 3600 * 24)); 
    console.log(diffDays); */
@@ -53,8 +52,12 @@ export class ApplyLeaveComponent implements OnInit {
   }
 
   applyStatus(){
-    this.apply=true;
+    this.alert=false;
     this.dialogRef.close();
+    }
+
+    closeAlert(){
+      this.alert=false;
     }
 
 }

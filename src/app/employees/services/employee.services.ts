@@ -37,8 +37,6 @@ export class EmployeeService{
 
   addEmployee(emp:Employee){
       this.employees.push(emp);
-      console.log('new employee push');
-    console.log(this.employees);
   }
 
   getEmployeeSize(){
