@@ -8,56 +8,56 @@
   <mat-card-content>
    <form #f="ngForm">
         <mat-form-field class="form-field">
-            <input matInput name="company_name" [(ngModel)]="client.company_name"  placeholder="Company Name">
+            <input matInput name="company_name" [(ngModel)]="clientInfo.company_name"  placeholder="Company Name">
         </mat-form-field>
         <div class="row">
           <div class="col-md-6">
             <mat-form-field class="form-field">
-              <input matInput name="client_id" value={{client.client_id}} placeholder="Client ID" [attr.contenteditable]=false> 
+              <input matInput name="client_id" value={{clientInfo.client_id}} placeholder="Client ID" [attr.contenteditable]=false> 
             </mat-form-field><br>
             <mat-form-field class="form-field">
-              <input matInput name="website" [(ngModel)]="client.website"  placeholder="Website">
+              <input matInput name="website" [(ngModel)]="clientInfo.website"  placeholder="Website">
             </mat-form-field><br>
             <mat-form-field class="form-field">
-              <input matInput  name="city" [(ngModel)]="client.city" placeholder="City">
+              <input matInput  name="city" [(ngModel)]="clientInfo.city" placeholder="City">
             </mat-form-field><br>
             <mat-form-field class="form-field">
-              <input matInput  name="zip_code" [(ngModel)]="client.zip_code"  placeholder="Zip Code">
+              <input matInput  name="zip_code" [(ngModel)]="clientInfo.zip_code"  placeholder="Zip Code">
             </mat-form-field><br>
             <mat-form-field class="form-field">
-              <input matInput name="email" [(ngModel)]="client.email"  placeholder="Email">
+              <input matInput name="email" [(ngModel)]="clientInfo.email"  placeholder="Email">
             </mat-form-field><br> 
             <mat-form-field class="form-field">
-              <input matInput name="phone"  [(ngModel)]="client.phone" placeholder="Phone">
+              <input matInput name="phone"  [(ngModel)]="clientInfo.phone" placeholder="Phone">
             </mat-form-field><br>
             <mat-form-field class="form-field">
-              <input matInput name="mob_num" [(ngModel)]="client.mob_num"  placeholder="Mobile Number">
+              <input matInput name="mob_num" [(ngModel)]="clientInfo.mob_num"  placeholder="Mobile Number">
             </mat-form-field><br>
             <mat-form-field class="form-field">
-              <input matInput name="currency" [(ngModel)]="client.currency"  placeholder="Currency">
+              <input matInput name="currency" [(ngModel)]="clientInfo.currency"  placeholder="Currency">
             </mat-form-field><br>
           </div>
           <div class="col-md-6">
             <mat-form-field class="form-field">
-              <input matInput name="address" [(ngModel)]="client.address"  placeholder="Address 2">
+              <input matInput name="address" [(ngModel)]="clientInfo.address"  placeholder="Address 2">
             </mat-form-field><br>
             <mat-form-field class="form-field">
-              <input matInput name="industry_type" [(ngModel)]="client.industry_type"  placeholder="Industry Type">
+              <input matInput name="industry_type" [(ngModel)]="clientInfo.industry_type"  placeholder="Industry Type">
             </mat-form-field><br>
             <mat-form-field class="form-field">
-              <input matInput name="state" [(ngModel)]="client.state"  placeholder="State">
+              <input matInput name="state" [(ngModel)]="clientInfo.state"  placeholder="State">
             </mat-form-field><br>
             <mat-form-field class="form-field">
-              <input matInput name="country" [(ngModel)]="client.country"  placeholder="Country">
+              <input matInput name="country" [(ngModel)]="clientInfo.country"  placeholder="Country">
             </mat-form-field><br>
             <mat-form-field class="form-field">
-              <input matInput name="alternative_email" [(ngModel)]="client.alternative_email"  placeholder="Alternative Email">
+              <input matInput name="alternative_email" [(ngModel)]="clientInfo.alternative_email"  placeholder="Alternative Email">
             </mat-form-field><br>
             <mat-form-field class="form-field">
-              <input matInput name="fax" [(ngModel)]="client.fax"   placeholder="Fax">
+              <input matInput name="fax" [(ngModel)]="clientInfo.fax"   placeholder="Fax">
             </mat-form-field><br>
             <mat-form-field class="form-field"> 
-              <textarea matInput name="note" [(ngModel)]="client.note" placeholder="Note"></textarea>
+              <textarea matInput name="note" [(ngModel)]="clientInfo.note" placeholder="Note"></textarea>
             </mat-form-field>
            
           </div>

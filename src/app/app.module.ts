@@ -114,6 +114,10 @@ import { EmployeeDocumentsComponent } from './employees/employee-documents/emplo
 import { AssetsComponent } from './assets/assets.component';
 import { AddassetsComponent } from './assets/addassets/addassets.component';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { ClientPaymentComponent } from './clients/client-details/client-payment/client-payment.component';
+import { ClientInvoiceComponent } from './clients/client-details/client-invoice/client-invoice.component';
+import { NewInvoiceComponent } from './clients/client-details/new-invoice/new-invoice.component';
+
 
 @NgModule({
   declarations: [
@@ -186,6 +190,10 @@ import { GridModule } from '@progress/kendo-angular-grid';
     EmployeeDocumentsComponent,
     AssetsComponent,
     AddassetsComponent,
+    ClientPaymentComponent,
+    ClientInvoiceComponent,
+    NewInvoiceComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -231,6 +239,6 @@ import { GridModule } from '@progress/kendo-angular-grid';
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
-  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent]
+  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,ClientInvoiceComponent]
 })
 export class AppModule { }

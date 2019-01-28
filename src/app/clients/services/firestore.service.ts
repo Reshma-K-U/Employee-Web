@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument} from 'angularfire2/firestore';
-import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
-import {Observable} from 'rxjs';
+import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageReference } from 'angularfire2/storage';
+import {Observable,of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -85,28 +85,54 @@ export class FirestoreClientService {
   }
 
   uploadLogo(file:File){
-    console.log(file.name);
     var path= `test/${file.name}`;
-    console.log(path);
-
     this.task=this.storage.upload(path,file);
     this.afs.collection('clients').doc('client001').update({
         'logoPath':path
     })
   }
 
-  getImageUrl(id:string){
-    var url :string
-    var image:string;
-    var ref;
-    this.afs.collection('clients').doc(id).valueChanges().subscribe(
-      data=>{
-        url = data['logoPath'];
-        ref = this.storage.ref(url);
-        /* const downloadURL = ref.getDownloadURL().subscribe(url => { 
-        console.log('hfhf',url); */
-       
+  getImageUrl(path:string){
+    
+    var ref:AngularFireStorageReference = this.storage.ref(path);
+    return ref.getDownloadURL(); 
+  }
+
+  getProjects(clientName:string){
+    var data:any[]=[];
+    var docRef=this.afs.collection('project');
+    var query=docRef.ref.where('client_company',"==",clientName);
+    query.get().then( (querySnapshot) => {
+      if(querySnapshot.empty){
+        console.log("not found");
+      }
+      else
+      {
+        querySnapshot.docs.map( (documentSnapshot) => {
+          data.push(documentSnapshot.data());
+          
+        })
+      }
+      
+    });
+    return of(data);
+  }
+
+  createNewInvoice(details:any,client:any){
+    console.log('aaaa',details);
+    console.log('gdgdg',client);
+      this.afs.collection('clients').doc(client.data.client_id).collection('invoices')
+      .doc(details.invoice_num).set({
+        'client_name':client.data.company_name,
+        'client_address':client.data.address,
+        'invoice_num':details.invoice_num,
+        'project_name':details.project,
+        'due_on_receipt':details.dueOnR,
+        'due_date':details.dueDate,
+        'total_hours':details.total_hours,
+        'unit_price':details.unit_price,
+        'project_description':details.about,
+        'line_total':details.line_total,
       })
-      return ref.getDownloadURL();
-}
+  }
 }

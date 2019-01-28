@@ -19,11 +19,18 @@ export class ClientDetailsComponent implements OnInit {
   
   constructor(private route: ActivatedRoute,private location: Location,private fsClient:FirestoreClientService) { }
 
-  ngOnInit() {
+ public  ngOnInit() {
+
     this.id = this.route.snapshot.paramMap.get('id');
     this.subscription=this.fsClient.getData(this.id).subscribe(
      (client)=>{
         this.client=client;
+        
+        var path = this.client['logoPath'];
+        this.fsClient.getImageUrl(path).subscribe(val=>{
+          this.imageUrl = val
+        })
+        
         if(this.client.status=='active'){
           this.active=true;
           this.label='Mark as Inactive';
@@ -36,17 +43,11 @@ export class ClientDetailsComponent implements OnInit {
      }
     )
 
-    this.fsClient.getImageUrl(this.id).subscribe(val=>{
-      this.imageUrl=val;
-      console.log(this.imageUrl)
-    })
-    
     
   }
 
   statusChange(){
     this.active=!this.active;
-    console.log('status change',this.active);
     if(this.active==true){
       this.fsClient.updateField(this.id,'status','active');
       this.label='Mark as Inavctive';
