@@ -3,15 +3,15 @@
 [pageSize]="pageSize"
 [skip]="skip"
 [pageable]="true"
-(pageChange)="pageChange($event)"
->
-  <kendo-grid-column field="year" title="Year" width="20">
+(pageChange)="pageChange($event)" >
+ <kendo-grid-column field="year" title="Year" width="20">
   </kendo-grid-column>
   <kendo-grid-column field="month" title="Month" width="20">
   </kendo-grid-column>
-  <kendo-grid-column field="Discontinued" title="Download" width="20">
-      <ng-template kendoGridCellTemplate>
-          <button class="btn btn-primary">Download</button>
+  <kendo-grid-column  title="Download" width="20">
+      <ng-template kendoGridCellTemplate let-items>
+          <!-- <button mat-raised-button color="primary" (click)="onDownload(items.year,items.monthIndex)">Download</button> -->
+          <button mat-raised-button class="deletebtn" (click)="onView(items.year,items.monthIndex)">Download</button>
       </ng-template>
   </kendo-grid-column>
 </kendo-grid>

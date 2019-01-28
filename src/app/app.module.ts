@@ -8,6 +8,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+'@angular/platform-browser/animations';
+import { GridModule } from '@progress/kendo-angular-grid';
 
 
 
@@ -116,9 +118,17 @@ import { AddprojectComponent } from './project/addproject/addproject.component';
 import { EmployeeDocumentsComponent } from './employees/employee-documents/employee-documents.component';
 import { AssetsComponent } from './assets/assets.component';
 import { AddassetsComponent } from './assets/addassets/addassets.component';
+<<<<<<< HEAD
 import { GridModule } from '@progress/kendo-angular-grid';
 import { ProjectItemComponent } from './project/project-list/project-item/project-item.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
+=======
+import { AccountstatementComponent } from './payroll/accountstatement/accountstatement.component';
+import { AssignassetsComponent } from './assets/assignassets/assignassets.component';
+import { SearchassetsComponent } from './assets/searchassets/searchassets.component';
+import { EditassetsComponent } from './assets/editassets/editassets.component';
+
+>>>>>>> 59e64e4f89b4b22893ff5d818f58f1112fba36ba
 
 @NgModule({
   declarations: [
@@ -194,8 +204,15 @@ import { ProjectDetailComponent } from './project/project-detail/project-detail.
     EmployeeDocumentsComponent,
     AssetsComponent,
     AddassetsComponent,
+<<<<<<< HEAD
     ProjectItemComponent,
     ProjectDetailComponent,
+=======
+    AccountstatementComponent,
+    AssignassetsComponent,
+    SearchassetsComponent,
+    EditassetsComponent,
+>>>>>>> 59e64e4f89b4b22893ff5d818f58f1112fba36ba
   ],
   imports: [
     BrowserModule,
@@ -241,6 +258,11 @@ import { ProjectDetailComponent } from './project/project-detail/project-detail.
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
+<<<<<<< HEAD
   NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,ProjectComponent]
+=======
+  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,AddassetsComponent,AssignassetsComponent,SearchassetsComponent,
+EditassetsComponent]
+>>>>>>> 59e64e4f89b4b22893ff5d818f58f1112fba36ba
 })
 export class AppModule { }

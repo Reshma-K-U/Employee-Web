@@ -66,9 +66,8 @@ export class FirestoreService {
             'cedallow':employee.salary.cedallow,
             'medallow':employee.salary.medallow,
             'speallow':employee.salary.speallow,
+            'conallow':employee.salary.conallow,
             'total':employee.salary.total,
-
-
      })
      var employeeDocRef=this.afs.collection("payroll").doc(employee.basic.emp_id);
      var d=employee.work.joining_date;
@@ -86,6 +85,7 @@ export class FirestoreService {
             'cedallow':employee.salary.cedallow,
             'medallow':employee.salary.medallow,
             'speallow':employee.salary.speallow,
+            'conallow':employee.salary.conallow,
             'total':employee.salary.total,
             'isEdited':false,
          })
@@ -326,7 +326,8 @@ export class FirestoreService {
                   while(toMonth>=fromMonth){
                     data.push({
                       'year':toYear,
-                      'month':month[toMonth]
+                      'month':month[toMonth],
+                      'monthIndex':toMonth
                     })
                     toMonth--;
                   }
@@ -335,7 +336,8 @@ export class FirestoreService {
                 while(toMonth>=0){
                   data.push({
                     'year':toYear,
-                    'month':month[toMonth]
+                    'month':month[toMonth],
+                    'monthIndex':toMonth
                   })
                   toMonth--;
                 }
@@ -347,5 +349,4 @@ export class FirestoreService {
     })
     return data;
 }
- 
 }

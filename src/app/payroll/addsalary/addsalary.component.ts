@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class AddsalaryComponent implements OnInit {
 
+    date:Date=new Date;
     employeeDetail:any={
     empid:"",
     name:"",
@@ -38,11 +39,14 @@ export class AddsalaryComponent implements OnInit {
     this.subscription=this.moreempser.moreEmpFill(this.data.id).subscribe(
       (value)=>{
         this.employeeDetail.empid=value.empid;
+        this.employeeDetail.empname=value.name;
+        this.employeeDetail.join_date=value.join_date;
         this.employeeDetail.hra=value.hra;
         this.employeeDetail.basicpay=value.basicpay;
         this.employeeDetail.medallow=value.medallow;
         this.employeeDetail.speallow=value.speallow;
         this.employeeDetail.cedallow=value.cedallow;
+        this.employeeDetail.conallow=value.conallow;
       this.subscription.unsubscribe();
     })
   }

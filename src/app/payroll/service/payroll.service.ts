@@ -100,12 +100,14 @@ getPayrollDetails(){
         this.afs.collection('payroll').doc(val['emp_id']).set({
             'empid': val['emp_id'],
             'name':val['name'],
+            'join_date':val['joining_date'],
             'basicpay': val['basicpay'],
             'hra':val['hra'],
             'speallow': val['speallow'],
             'medallow':val['medallow'],
             'cedallow': val['cedallow'],
-            'total':val['total']
+            'total':val['total'],
+            'conallow':val['conallow'],
         })
     })
     })
@@ -125,18 +127,41 @@ getPayrollDetails(){
         return data;
     }
 
-   
-    salarySlipFill(id:string,d:Date){
-        var date= new Date(d);
-        var day=date.getDate();
+    accountStatement(date:Date){
+        date=new Date(date);
         var month=date.getMonth();
         var year=date.getFullYear();
-        //  id=id.replace(/\s/g, "");    
-          this.userDoc = this.afs.collection('payroll').doc(id).collection(year.toString()).doc(month.toString());
+        var data:any=[];
+        this.afs.collection('payroll').valueChanges().subscribe(
+            d=>{
+                d.forEach(val=>{
+                     this.afs.collection('payroll').doc(val['empid']).collection(year.toString())
+                    .doc(month.toString()).valueChanges().subscribe(value=>{
+                        data.push(value);
+                    })
+                })
+            }
+        )
+        
+        
+        // data = this.userDoc.valueChanges();
+        return of(data);
+    }
+
+   
+    salarySlipFill(id:string,month,year){  
+        month=month-1;
+        this.userDoc = this.afs.collection('payroll').doc(id).collection(year.toString()).doc(month.toString());
         var data:any
         data = this.userDoc.valueChanges();
         return data;
     }
-
-
+    formatDate(date:Date){
+        var date= new Date(date);
+        var month=date.getMonth();
+        month=month+1;
+        var year=date.getFullYear();
+        var day=month+"/"+year;
+        return day;
+    }
 }
