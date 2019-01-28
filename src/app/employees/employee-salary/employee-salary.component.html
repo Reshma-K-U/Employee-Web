@@ -1,17 +1,18 @@
-<mat-form-field class="select">
-  <mat-select placeholder="Year">
-    <mat-option *ngFor="let y of year" [value]="y.value">
-      {{y.viewValue}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<div>
-  <button mat-raised-button color="primary" class="add-button" (click)="onMonthClick()">UPDATE</button>
-  </div>
-<div class="container">
-  <div class="row" >
-    <div class="col-md-3" *ngFor="let m of month">
-      <button class="btn btn-primary" (click)=onMonthClick()>{{m}}</button>
-    </div>
-  </div>
-</div>
+<kendo-grid 
+[data]="gridView"
+[pageSize]="pageSize"
+[skip]="skip"
+[pageable]="true"
+(pageChange)="pageChange($event)"
+>
+  <kendo-grid-column field="year" title="Year" width="20">
+  </kendo-grid-column>
+  <kendo-grid-column field="month" title="Month" width="20">
+  </kendo-grid-column>
+  <kendo-grid-column field="Discontinued" title="Download" width="20">
+      <ng-template kendoGridCellTemplate>
+          <button class="btn btn-primary">Download</button>
+      </ng-template>
+  </kendo-grid-column>
+</kendo-grid>
+`

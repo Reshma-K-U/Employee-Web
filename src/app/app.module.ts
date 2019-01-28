@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -12,6 +13,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
+import {AngularFireStorageModule} from 'angularfire2/storage';
 var firebaseConfig = {
   apiKey: "AIzaSyBzsyyLdJBjK0kZcEPPiorS38Ij7Hg3LTw",
   authDomain: "getexalture.firebaseapp.com",
@@ -20,6 +22,7 @@ var firebaseConfig = {
   storageBucket: "getexalture.appspot.com",
   messagingSenderId: "43275888739"
 };
+
 
 
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -38,6 +41,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTreeModule} from '@angular/material/tree';
 
 import {EmployeeService} from  './employees/services/employee.services';
 import{FirestoreService} from '../app/services/firestore.service';
@@ -100,7 +104,7 @@ import { NewdependentComponent } from './employees/employee-detail/dependents-de
 
 import { EmployeeAttendanceComponent } from './employees/employee-attendance/employee-attendance.component';
 import { AttendanceCalendarComponent } from './employees/employee-attendance/attendance-calendar/attendance-calendar.component';
-import { AttendanceTableComponent } from './employees/employee-attendance/attendance-table/attendance-table.component';
+
 
 import { SalaryComponent } from './employees/add-employee/salary/salary.component';
 import { SalaryDetailsComponent } from './employees/employee-detail/salary-details/salary-details.component';
@@ -109,6 +113,13 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ProjectComponent } from './project/project.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
 import { AddprojectComponent } from './project/addproject/addproject.component';
+import { EmployeeDocumentsComponent } from './employees/employee-documents/employee-documents.component';
+import { AssetsComponent } from './assets/assets.component';
+import { AddassetsComponent } from './assets/addassets/addassets.component';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { ProjectItemComponent } from './project/project-list/project-item/project-item.component';
+import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -173,13 +184,18 @@ import { AddprojectComponent } from './project/addproject/addproject.component';
     
     EmployeeAttendanceComponent,
     AttendanceCalendarComponent,
-    AttendanceTableComponent,
+    
     SalaryComponent,
     SalaryDetailsComponent,
     AllsalaryslipsComponent,
     ProjectComponent,
     ProjectListComponent,
     AddprojectComponent,
+    EmployeeDocumentsComponent,
+    AssetsComponent,
+    AddassetsComponent,
+    ProjectItemComponent,
+    ProjectDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -187,6 +203,7 @@ import { AddprojectComponent } from './project/addproject/addproject.component';
     CommonModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -207,16 +224,19 @@ import { AddprojectComponent } from './project/addproject/addproject.component';
     AppRoutingModule,
     MatCheckboxModule,    
     MatGridListModule,
+    MatTreeModule,
     
     AppRoutingModule,
     MatCheckboxModule,
     PdfViewerModule,
-
+    HttpClientModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-    })
+    }),
+
+    GridModule
   ],
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],

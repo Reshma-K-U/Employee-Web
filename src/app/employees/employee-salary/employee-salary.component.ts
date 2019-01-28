@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NewempsalaryComponent } from '../../payroll/newempsalary/newempsalary.component';
-import { MatDialog } from '@angular/material';
+import {ActivatedRoute } from '@angular/router';
+import { FirestoreService } from '../../services/firestore.service';
+import {  PageChangeEvent,GridDataResult } from '@progress/kendo-angular-grid';
 
-import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'exalt-employee-salary',
@@ -11,33 +11,40 @@ import { Route, Router } from '@angular/router';
 })
 
 export class EmployeeSalaryComponent implements OnInit {
-  year: year[] = [
-    {value: '2018', viewValue: '2018'},
-    {value: '2019', viewValue: '2019'},
-    {value: '2020', viewValue: '2020'},
-    {value: '2021', viewValue: '2021'},
-    {value: '2022', viewValue: '2022'},
-    {value: '2023', viewValue: '2023'},
-  ];
-  month:string[]=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  
+  id:string;
+  pageSize:number=10;
+  skip = 0;
+  public gridView: GridDataResult;
+  private items: any[];
+  
+  constructor(private route:ActivatedRoute,private fsService:FirestoreService) { }
+  
+  ngOnInit() { 
+  this.id = this.route.snapshot.paramMap.get('id');
+  this.items=this.fsService.getPayrollDetails(this.id);
+  setTimeout(() => {
+    this.loadItems();
+  }, 5000);
+ 
+ }
 
-  constructor(public dialog: MatDialog,private router: Router,) { }
- ngOnInit() {
-  }
-  // onMonthClick(){
-  // }
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(NewempsalaryComponent,{
-  //     width: '400px',
-  //   });
-  // }
-  onMonthClick(){
-    console.log("clicked");
-    this.router.navigate(['allsalaryslips']);
-    }
+ public pageChange(event: PageChangeEvent): void {
+  this.skip = event.skip;
+  this.loadItems();
 }
 
-export interface year {
-  value: string;
-  viewValue: string;
+private loadItems(): void {
+  this.gridView = {
+      data: this.items.slice(this.skip, this.skip + this.pageSize),
+      total: this.items.length
+  };
 }
+
+}
+
+ 
+
+
+
+

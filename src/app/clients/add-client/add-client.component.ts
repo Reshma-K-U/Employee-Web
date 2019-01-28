@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FirestoreClientService } from '../services/firestore.service';
 import { Url } from 'url';
+import { FirebaseStorage } from 'angularfire2';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'exalt-add-client',
@@ -10,9 +12,9 @@ import { Url } from 'url';
 })
 export class AddClientComponent implements OnInit {
 
-  url:Url;
+selectedFile:File;
   
-  constructor(private fsClient:FirestoreClientService) { }
+  constructor(private fsClient:FirestoreClientService,private http:HttpClient) { }
   
   ngOnInit() {}
   
@@ -22,14 +24,12 @@ export class AddClientComponent implements OnInit {
     this.fsClient.addNewClient(value);
   }
 
-  detectFiles(event) {
-    console.log(event);
-    var selectedFile:File=event.target.files[0];
-    var reader = new FileReader();
-    reader.onload = (event: any) => {
-    this.url = event.target.result;
+  onSelectFile(event) {
+    this.selectedFile=event.target.files[0];
   }
-  reader.readAsDataURL(event.target.files[0]);
+
+  onUpload(){
+      this.fsClient.uploadLogo(this.selectedFile);
   }
 
 }

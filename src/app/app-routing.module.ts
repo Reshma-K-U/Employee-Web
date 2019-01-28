@@ -25,6 +25,8 @@ import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips
 import { ProjectComponent } from'./project/project.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
 import { AddprojectComponent } from './project/addproject/addproject.component';
+import { AssetsComponent } from './assets/assets.component';
+import { ProjectDetailComponent} from './project/project-detail/project-detail.component';
 const routes: Routes = [
   {path:'',component:EmployeesComponent,pathMatch:'full'},
   {path:'employees',component:EmployeesComponent},
@@ -42,6 +44,7 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'attendance',component:AttendanceComponent},
   {path:'payroll',component:PayrollComponent},
+  {path:'assets',component:AssetsComponent},
   {path:'salaryslip',component:SalaryslipComponent},
   {path:'./employee/employee-salary/employee-salary.component',component:EmployeeSalaryComponent},
   {path:'employee-salary',component:EmployeeSalaryComponent},
@@ -49,6 +52,7 @@ const routes: Routes = [
   {path:'project',component:ProjectComponent},
   {path:'project-list',component:ProjectListComponent},
   {path:'addproject',component:AddprojectComponent },
+  {path:'project-detail/:id',component:ProjectDetailComponent},
 
 ];
 

@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument} from 'angularfire2/firestore';
+import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreClientService {
 
-  constructor(private afs:AngularFirestore) { }
+  task: AngularFireUploadTask;
+  downloadURL: Observable<string>;
+
+  constructor(private afs:AngularFirestore,private storage: AngularFireStorage) { }
 
   addNewClient(data:any){
       this.afs.collection('clients').doc(data.client_id).set(
@@ -78,4 +83,30 @@ export class FirestoreClientService {
       'status':'active',
     })
   }
+
+  uploadLogo(file:File){
+    console.log(file.name);
+    var path= `test/${file.name}`;
+    console.log(path);
+
+    this.task=this.storage.upload(path,file);
+    this.afs.collection('clients').doc('client001').update({
+        'logoPath':path
+    })
+  }
+
+  getImageUrl(id:string){
+    var url :string
+    var image:string;
+    var ref;
+    this.afs.collection('clients').doc(id).valueChanges().subscribe(
+      data=>{
+        url = data['logoPath'];
+        ref = this.storage.ref(url);
+        /* const downloadURL = ref.getDownloadURL().subscribe(url => { 
+        console.log('hfhf',url); */
+       
+      })
+      return ref.getDownloadURL();
+}
 }

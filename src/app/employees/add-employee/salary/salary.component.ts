@@ -2,7 +2,6 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { AddemployeeService } from '../addemployee.service';
 import { Salary } from '../../model/employee.model';
 import { NgForm } from '@angular/forms';
-import { PayrollService } from 'src/app/payroll/service/payroll.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./salary.component.scss']
 })
 export class SalaryComponent implements OnInit {
-  // salarys:Salary[]=[];
+ 
   subscription:Subscription;
   salary:Salary={
     basicpay:" ",
@@ -23,17 +22,22 @@ export class SalaryComponent implements OnInit {
     speallow:" ",
     total:"0",
   }
-  constructor(private pyservice:PayrollService,private addService:AddemployeeService) { }
+  constructor(private addService:AddemployeeService) { }
 
   ngOnInit() {
   }
    onAdd(){
-     this.salary=this.addService.Calculate(this.salary);
-     console.log(this.salary.total);
     this.addService.setSalary(this.salary);
   }
-  autoFill(event:any){
-    this.salary=this.addService.Calculate(this.salary)
+  
+  autoFill(){
+     this.salary.hra=parseInt(this.salary.basicpay)*0.5;
+     this.salary.medallow=parseInt(this.salary.basicpay)*0.4;
+     this.salary.cedallow=parseInt(this.salary.basicpay)*0.3;
+     this.salary.speallow=parseInt(this.salary.basicpay)*0.2;
+     this.salary.total=parseInt(this.salary.basicpay)+parseInt(this.salary.cedallow)+
+     parseInt(this.salary.hra)+parseInt(this.salary.medallow)+parseInt(this.salary.speallow);
+     }
 
   }
-}
+

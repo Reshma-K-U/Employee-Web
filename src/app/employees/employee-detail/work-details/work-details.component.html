@@ -21,7 +21,7 @@
           </tr> 
           <tr>
               <th>Joining Date</th>
-              <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editJoinDate($event)">{{employee.joining_date}}</td>
+              <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editJoinDate($event)">{{employee.joining_date.toDate()|date}}</td>
             </tr>  
             <tr>
                 <th>Source of Hire</th>

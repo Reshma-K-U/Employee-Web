@@ -16,7 +16,7 @@
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field class="form-field">
-                      <mat-select name="client_company" placeholder="Company Name">
+                      <mat-select name="client_company" [(ngModel)]="selectedclient" placeholder="Company Name">
                           <mat-option *ngFor="let client of allclients" [value]="client.company_name">
                             {{client.company_name}}
                           </mat-option>
@@ -33,7 +33,7 @@
                         <mat-datepicker #endDate></mat-datepicker>
                       </mat-form-field>
                       <mat-form-field class="form-field">
-                          <mat-select name="assigned_emp" placeholder="Assigned Employee" [formControl]="toppings" multiple>
+                          <mat-select name="assigned_emp" [(ngModel)]="assignedemp" placeholder="Assigned Employee"  multiple>
 
                             <mat-option *ngFor="let emp of allemployees" [value]="emp.name+emp.role">{{emp.name}}({{emp.role}})</mat-option>
                           </mat-select>
