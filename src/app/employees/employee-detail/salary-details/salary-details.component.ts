@@ -19,6 +19,7 @@ export class SalaryDetailsComponent implements OnInit {
     cedallow:"",
     medallow:"",
     speallow:"",
+    conallow:"",
     total:"",
 
   }

@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { AssetsService } from '../assets.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'exalt-editassets',
@@ -11,8 +12,9 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class EditassetsComponent implements OnInit {
 
-  employeeNames:any[];
-  assetDetail:any={
+    onDate:Date=new Date();
+    employeeNames:any[];
+    assetDetail:any={
     itemid:"",
     type:"",
     company:"",
@@ -26,7 +28,6 @@ export class EditassetsComponent implements OnInit {
 
   ngOnInit() {
     this.employeeNames=this.fsService.getDataForList()
-    console.log(this.employeeNames); 
     this.subscription=this.asService.editFill(this.data.id).subscribe(
       (value)=>{
         this.assetDetail.itemid=value.itemid;
@@ -38,5 +39,12 @@ export class EditassetsComponent implements OnInit {
       }
     )
   }
-
+  onSave(form:NgForm){
+    var value=form.value;
+    this.asService.reAssign(value,this.onDate);
+    this.dialogRef.close();
+  }
+  onCancel(){
+    this.dialogRef.close();
+  }
 }

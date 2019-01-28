@@ -70,6 +70,7 @@ export interface Employee{
     cedallow:any;
     medallow:any;
     speallow:any;
+    conallow:any;
     total:any;
   }
 

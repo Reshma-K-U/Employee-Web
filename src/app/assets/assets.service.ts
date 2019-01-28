@@ -63,4 +63,17 @@ editFill(id){
         data = this.userDoc.valueChanges();
         return data;
 }
+reAssign(form:any,date:Date){
+  var day=date.getDate();
+  var month=date.getMonth();
+  month=month+1;
+  var year=date.getFullYear();
+  var d=day+"/"+month+"/"+year;
+  var employeeDocRef=this.afs.collection("assets").doc(form.itemid);
+employeeDocRef.
+   update({
+       'employee':form.assign,
+       'day':d,
+   })
+}
 }

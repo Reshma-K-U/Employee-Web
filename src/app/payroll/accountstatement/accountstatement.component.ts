@@ -19,16 +19,14 @@ export class AccountstatementComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.date=params['date'];
-      this.date=this.pyservice.formatDate(this.date)
   });
-    this.pyservice.getPayrollDetails().subscribe(
-      (value)=>{
     
-              this.payrollDetails=value;
-              this.payrollDetails.forEach(element => {
-                this.totalsal=this.totalsal+element.total;            
-              });
-      })  
+  setTimeout(()=>{
+    this.pyservice.accountStatement(this.date).subscribe(val=>{
+      this.payrollDetails=val
+    })
+  },1000)
+      
   }
   public onDownload()  
   {  
