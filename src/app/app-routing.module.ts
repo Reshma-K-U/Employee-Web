@@ -26,13 +26,10 @@ import { ProjectComponent } from'./project/project.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
 import { AddprojectComponent } from './project/addproject/addproject.component';
 import { AssetsComponent } from './assets/assets.component';
-<<<<<<< HEAD
 import { ProjectDetailComponent} from './project/project-detail/project-detail.component';
-=======
 import { AccountstatementComponent } from './payroll/accountstatement/accountstatement.component';
 import { SearchassetsComponent } from './assets/searchassets/searchassets.component';
 import { EditassetsComponent } from './assets/editassets/editassets.component';
->>>>>>> 59e64e4f89b4b22893ff5d818f58f1112fba36ba
 const routes: Routes = [
   {path:'',component:EmployeesComponent,pathMatch:'full'},
   {path:'employees',component:EmployeesComponent},
@@ -55,17 +52,14 @@ const routes: Routes = [
   {path:'./employee/employee-salary/employee-salary.component',component:EmployeeSalaryComponent},
   {path:'employee-salary',component:EmployeeSalaryComponent},
   {path:'allsalaryslips',component:AllsalaryslipsComponent},
-<<<<<<< HEAD
   {path:'project',component:ProjectComponent},
   {path:'project-list',component:ProjectListComponent},
   {path:'addproject',component:AddprojectComponent },
   {path:'project-detail/:id',component:ProjectDetailComponent},
 
-=======
   {path:'accountstatement',component:AccountstatementComponent},
   {path:'searchassets',component:SearchassetsComponent},
   {path:'editassets',component:EditassetsComponent},
->>>>>>> 59e64e4f89b4b22893ff5d818f58f1112fba36ba
 ];
 
 @NgModule({
