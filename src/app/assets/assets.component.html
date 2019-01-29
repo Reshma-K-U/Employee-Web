@@ -1,5 +1,26 @@
-
-<button mat-raised-button color="primary" class="button-generate" (click)="onAddClick()">Add</button>
-<button mat-raised-button color="primary" class="button-generate" (click)="onProcessClick()">Delete</button>
-<button mat-raised-button color="primary" class="button-generate" (click)="onProcessClick()">View</button>
-<button mat-raised-button color="primary" class="button-generate" (click)="onProcessClick()">Assign</button>
+<button mat-raised-button color="warn" class="addbtn" (click)="onAddClick()">Add</button>
+<div class ="container">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Asset</th>
+          <th>Company</th>
+          <th>Model</th>
+          <th>Date</th> 
+          <th>Employee</th>
+          <th>Edit/Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ast of assetDetails">
+          <td>{{ast.type}}</td>
+          <td>{{ast.company}}</td>
+          <td>{{ast.model}}</td>
+          <td>{{ast.day}}</td>
+          <td>{{ast.employee}}</td>
+          <td><button mat-raised-button color="primary" (click)="onEditClick(ast.itemid)">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <div>

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute } from '@angular/router';
 import { FirestoreService } from '../../services/firestore.service';
 import {  PageChangeEvent,GridDataResult } from '@progress/kendo-angular-grid';
+import * as jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { Route, Router } from '@angular/router';
 
 
 @Component({
@@ -17,8 +20,10 @@ export class EmployeeSalaryComponent implements OnInit {
   skip = 0;
   public gridView: GridDataResult;
   private items: any[];
-  
-  constructor(private route:ActivatedRoute,private fsService:FirestoreService) { }
+  constructor(private route:ActivatedRoute,
+    private fsService:FirestoreService,
+    private router:Router
+    ) {  }
   
   ngOnInit() { 
   this.id = this.route.snapshot.paramMap.get('id');
@@ -26,7 +31,7 @@ export class EmployeeSalaryComponent implements OnInit {
   setTimeout(() => {
     this.loadItems();
   }, 5000);
- 
+ console.log(this.items);
  }
 
  public pageChange(event: PageChangeEvent): void {
@@ -40,10 +45,13 @@ private loadItems(): void {
       total: this.items.length
   };
 }
-
+onView(year:any,month:any){
+  month=month+1;
+  this.router.navigate(['salaryslip'], { queryParams: {id:this.id,month,year}});
 }
 
- 
+
+}
 
 
 

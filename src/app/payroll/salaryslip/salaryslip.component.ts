@@ -12,7 +12,9 @@ import html2canvas from 'html2canvas';
 })
 export class SalaryslipComponent implements OnInit {
   id:string;
-  date:Date;
+  month:any;
+  year:any;
+  day:string;
   total1:number;
   total2:number;
   total:number;
@@ -46,21 +48,20 @@ export class SalaryslipComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
-      // console.log(this.id);
-      this.date=params['date'];
-      // console.log(this.date);
+      this.month=params['month'];
+      this.year=params['year']
+      this.day=this.month+"/"+this.year;
   });
     
     this.subscription=this.fsService.getData(this.id).subscribe(
       (value)=>{
-        // console.log(value.name);
         this.employeeDetails.name=value.name;
         this.employeeDetails.role=value.role;
         this.subscription.unsubscribe();
       }
     )
     var sub:Subscription;
-    sub=this.moreempser.salarySlipFill(this.id,this.date).subscribe(
+    sub=this.moreempser.salarySlipFill(this.id,this.month,this.year).subscribe(
       (value)=>{
         
         this.employeeDetail.empid=value.empid;
@@ -108,6 +109,7 @@ export class SalaryslipComponent implements OnInit {
       var position = 0;  
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
       pdf.save(name+'.pdf'); // Generated PDF   
+      return true;
     });  
   }  
 }

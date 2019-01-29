@@ -17,7 +17,7 @@
           </tr> 
           <tr>
             <th>Date of Birth</th>
-            <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editDob($event)">{{employee.dob}}</td>
+            <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editDob($event)">{{employee.dob.toDate()|date}}</td>
           </tr> 
           <tr>
             <th>Address</th>

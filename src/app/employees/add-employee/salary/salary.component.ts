@@ -20,7 +20,9 @@ export class SalaryComponent implements OnInit {
     cedallow:" ",
     medallow:" ",
     speallow:" ",
-    total:"0",
+    conallow:" ",
+    total:" ",
+
   }
   constructor(private addService:AddemployeeService) { }
 
@@ -31,12 +33,33 @@ export class SalaryComponent implements OnInit {
   }
   
   autoFill(){
-     this.salary.hra=parseInt(this.salary.basicpay)*0.5;
-     this.salary.medallow=parseInt(this.salary.basicpay)*0.4;
-     this.salary.cedallow=parseInt(this.salary.basicpay)*0.3;
-     this.salary.speallow=parseInt(this.salary.basicpay)*0.2;
-     this.salary.total=parseInt(this.salary.basicpay)+parseInt(this.salary.cedallow)+
-     parseInt(this.salary.hra)+parseInt(this.salary.medallow)+parseInt(this.salary.speallow);
+    if(this.salary.total<=16000){
+     this.salary.basicpay=parseInt(this.salary.total)*0.87;
+     this.salary.conallow=parseInt(this.salary.total)*0.05;
+     this.salary.hra=parseInt(this.salary.total)*0;
+     this.salary.medallow=parseInt(this.salary.total)*0.05;
+     this.salary.cedallow=parseInt(this.salary.total)*0.03;
+     this.salary.speallow=parseInt(this.salary.total)*0;
+     this.salary.total=this.salary.total;
+    }
+    if(16000<this.salary.total && 25000>=this.salary.total){
+      this.salary.basicpay=parseInt(this.salary.total)*0.67;
+      this.salary.hra=parseInt(this.salary.total)*0.2;
+      this.salary.conallow=parseInt(this.salary.total)*0.05;
+      this.salary.medallow=parseInt(this.salary.total)*0.05;
+      this.salary.cedallow=parseInt(this.salary.total)*0.03;
+      this.salary.speallow=parseInt(this.salary.total)*0;
+      this.salary.total=this.salary.total;
+    }
+    if(this.salary.total>25000){
+      this.salary.basicpay=parseInt(this.salary.total)*0.55;
+      this.salary.hra=parseInt(this.salary.total)*0.2;
+      this.salary.medallow=parseInt(this.salary.total)*0.05;
+      this.salary.cedallow=parseInt(this.salary.total)*0.03;
+      this.salary.speallow=parseInt(this.salary.total)*0.12;
+      this.salary.conallow=parseInt(this.salary.total)*0.05;
+      this.salary.total=this.salary.total;  
+    }
      }
 
   }

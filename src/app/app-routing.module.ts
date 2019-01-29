@@ -24,6 +24,9 @@ import { PersonalInfoComponent } from './employees/add-employee/personal-info/pe
 import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
 import { AssetsComponent } from './assets/assets.component';
 import { NewInvoiceComponent } from './clients/client-details/new-invoice/new-invoice.component';
+import { AccountstatementComponent } from './payroll/accountstatement/accountstatement.component';
+import { SearchassetsComponent } from './assets/searchassets/searchassets.component';
+import { EditassetsComponent } from './assets/editassets/editassets.component';
 const routes: Routes = [
   {path:'',component:EmployeesComponent,pathMatch:'full'},
   {path:'employees',component:EmployeesComponent},
@@ -47,6 +50,9 @@ const routes: Routes = [
   {path:'employee-salary',component:EmployeeSalaryComponent},
   {path:'allsalaryslips',component:AllsalaryslipsComponent},
   {path:'newinvoice',component:NewInvoiceComponent},
+  {path:'accountstatement',component:AccountstatementComponent},
+  {path:'searchassets',component:SearchassetsComponent},
+  {path:'editassets',component:EditassetsComponent}
 ];
 
 @NgModule({

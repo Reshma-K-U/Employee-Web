@@ -8,6 +8,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+'@angular/platform-browser/animations';
+import { GridModule } from '@progress/kendo-angular-grid';
 
 
 
@@ -113,10 +115,13 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { EmployeeDocumentsComponent } from './employees/employee-documents/employee-documents.component';
 import { AssetsComponent } from './assets/assets.component';
 import { AddassetsComponent } from './assets/addassets/addassets.component';
-import { GridModule } from '@progress/kendo-angular-grid';
 import { ClientPaymentComponent } from './clients/client-details/client-payment/client-payment.component';
 import { ClientInvoiceComponent } from './clients/client-details/client-invoice/client-invoice.component';
 import { NewInvoiceComponent } from './clients/client-details/new-invoice/new-invoice.component';
+import { AccountstatementComponent } from './payroll/accountstatement/accountstatement.component';
+import { AssignassetsComponent } from './assets/assignassets/assignassets.component';
+import { SearchassetsComponent } from './assets/searchassets/searchassets.component';
+import { EditassetsComponent } from './assets/editassets/editassets.component';
 
 
 @NgModule({
@@ -194,6 +199,10 @@ import { NewInvoiceComponent } from './clients/client-details/new-invoice/new-in
     ClientInvoiceComponent,
     NewInvoiceComponent,
     
+    AccountstatementComponent,
+    AssignassetsComponent,
+    SearchassetsComponent,
+    EditassetsComponent,
   ],
   imports: [
     BrowserModule,
@@ -239,6 +248,8 @@ import { NewInvoiceComponent } from './clients/client-details/new-invoice/new-in
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
-  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,ClientInvoiceComponent]
+  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,ClientInvoiceComponent,
+  AddassetsComponent,AssignassetsComponent,SearchassetsComponent,
+EditassetsComponent]
 })
 export class AppModule { }

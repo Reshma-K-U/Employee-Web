@@ -5,14 +5,22 @@
           <div class="card-body">
               <form #f="ngForm">
                   <mat-form-field class="example-full-width">
-                      <label style = "color:#666869">Basic Pay</label>
+                      <label style = "color:#666869">Total</label>
                       <input matInput
-                            id="basicpay"
+                            id="total"
                             (input)="autoFill($event)"
-                            name="basicpay"
-                            [(ngModel)]="salary.basicpay"
+                            name="total"
+                            [(ngModel)]="salary.total"
                             required 
                            >
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                      <label style = "color:#666869">Basic Pay</label>
+                    <input matInput
+                          name="basicpay"
+                        [(ngModel)]="salary.basicpay"
+                          required 
+                         >
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
                         <label style = "color:#666869">HRA</label>
@@ -30,6 +38,15 @@
                             required 
                            >
                     </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                      <label style = "color:#666869">conveyance allowance</label>
+                    <input matInput
+                          name="conallow"
+                          [(ngModel)]="salary.conallow"
+                          required 
+                         >
+                  </mat-form-field>
                     
                     <mat-form-field class="example-full-width" >
                         <label style = "color:#666869">Children Education Allowance</label>
@@ -39,6 +56,7 @@
                             required
                             >
                     </mat-form-field>
+                    
                     <mat-form-field class="example-full-width">
                         <label style = "color:#666869">Special Allowance</label>
                       <input matInput

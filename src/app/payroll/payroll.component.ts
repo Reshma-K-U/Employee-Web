@@ -49,17 +49,21 @@ export class PayrollComponent implements OnInit {
 
   const dialogRef = this.dialog.open(AddsalaryComponent,{
       data: {id:id,date:this.onDate},
-      width: '750px',
+      // width: '750px',
     });
   }
   
   
   onProcessClick(){
-  
+    this.router.navigate(['accountstatement'], { queryParams: {date:this.onDate}});
   }
 
   onDownload(id:string){
-    this.router.navigate(['salaryslip'], { queryParams: {id:id,date:this.onDate}});
+    var date= new Date(this.onDate);
+    var month=date.getMonth();
+    month=month+1;
+    var year=date.getFullYear();
+    this.router.navigate(['salaryslip'], { queryParams: {id:id,month,year}});
   }
 }
 

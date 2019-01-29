@@ -1,0 +1,27 @@
+<h1>Search Results</h1>
+<div class ="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Asset</th>
+        <th>Company</th>
+        <th>Model</th>
+        <th>Date</th> 
+        <th>Employee</th>
+        <th>Assign</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="onDate" [ngModelOptions]="{standalone: true}">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker></td>
+        <td></td>
+        <td><button mat-raised-button color="primary" class="button-generate">Process</button></td>
+      </tr>
+    </tbody>
+  </table>
+<div>
