@@ -22,7 +22,11 @@ import { EmployeeSalaryComponent } from './employees/employee-salary/employee-sa
 import { SalaryComponent } from './employees/add-employee/salary/salary.component';
 import { PersonalInfoComponent } from './employees/add-employee/personal-info/personal-info.component';
 import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
+import { ProjectComponent } from './project/project.component';
+import { ProjectListComponent } from './project/project-list/project-list.component';
+import { AddprojectComponent } from './project/addproject/addproject.component';
 import { AssetsComponent } from './assets/assets.component';
+import { ProjectDetailComponent} from './project/project-detail/project-detail.component';
 import { AccountstatementComponent } from './payroll/accountstatement/accountstatement.component';
 import { SearchassetsComponent } from './assets/searchassets/searchassets.component';
 import { EditassetsComponent } from './assets/editassets/editassets.component';
@@ -57,6 +61,10 @@ const routes: Routes = [
   {path: 'tds', component: TdsComponent},
   {path: 'income', component: IncomeComponent},
   {path: 'perquisite', component: PerquisiteComponent},
+  {path: 'project', component: ProjectComponent},
+  {path: 'project-list', component: ProjectListComponent},
+  {path: 'addproject', component: AddprojectComponent },
+  {path: 'project-detail/:id', component: ProjectDetailComponent},
 ];
 
 @NgModule({

@@ -1,0 +1,58 @@
+<div class="container">
+  <mat-card class="mat-ex"  >
+    <mat-card-content >
+      <form #f="ngForm">
+        <mat-form-field class="form-field">
+          <input matInput name="proj_id" ngModel placeholder="Project id">
+        </mat-form-field>
+              <mat-form-field class="form-field">
+                  <input matInput name="proj_name" ngModel placeholder="Project Name">
+                </mat-form-field>
+                <mat-form-field  class="form-field">
+                    <mat-select name="proj_type" ngModel placeholder="Project Type">
+                      <mat-option value="web">WEB</mat-option>
+                      <mat-option value="web">ANDROID</mat-option>
+                      <mat-option value="web">IOS</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field class="form-field">
+                      <mat-select name="client_company" [(ngModel)]="selectedclient" placeholder="Company Name">
+                          <mat-option *ngFor="let client of allclients" [value]="client.company_name">
+                            {{client.company_name}}
+                          </mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                  <mat-form-field class="form-field">
+                      <input name="startDate" ngModel matInput [matDatepicker]="startDate" placeholder="START DATE">
+                      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                      <mat-datepicker #startDate></mat-datepicker>
+                  </mat-form-field>
+                    <mat-form-field class="form-field">
+                        <input name="endDate" ngModel matInput [matDatepicker]="endDate" placeholder="Deadline">
+                        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                        <mat-datepicker #endDate></mat-datepicker>
+                      </mat-form-field>
+                      <mat-form-field class="form-field">
+                          <mat-select name="assigned_emp" [(ngModel)]="assignedemp" placeholder="Assigned Employee"  multiple>
+
+                            <mat-option *ngFor="let emp of allemployees" [value]="emp.name+emp.role">{{emp.name}}({{emp.role}})</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    
+    
+      </form>
+       <hr>
+      <button mat-raised-button color="warn">Cancel</button>
+      <button mat-raised-button color="primary" style="float:right" type="submit" (click)="onAdd(f)">Save</button> 
+    </mat-card-content>
+  </mat-card>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
