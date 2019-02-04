@@ -14,10 +14,12 @@ export class AddsalaryComponent implements OnInit {
     employeeDetail:any={
     empid:"",
     name:"",
+    join_date:"",
     basicpay:"",
     hra:"",
     medallow:"",
     speallow:"",
+    conallow:"",
     cedallow:"",
     bonus:0,
     arrears:0,
@@ -26,8 +28,9 @@ export class AddsalaryComponent implements OnInit {
     wwf:0,
     advance:0,
     it:0,
-    others:0,
     totded:0,
+    others:0,
+    lop:0,
   }
    subscription:Subscription;
   constructor(private moreempser:PayrollService,
@@ -40,13 +43,27 @@ export class AddsalaryComponent implements OnInit {
       (value)=>{
         this.employeeDetail.empid=value.empid;
         this.employeeDetail.empname=value.name;
-        this.employeeDetail.join_date=value.join_date;
+        this.employeeDetail.join_date=value.join_date.toDate();
+        var jdate=this.employeeDetail.join_date.getDate();
+        var jmonth=this.employeeDetail.join_date.getMonth();
+        jmonth=jmonth+1;
+        var jyear=this.employeeDetail.join_date.getFullYear();
+        this.employeeDetail.join_date=jdate+"/"+jmonth+"/"+jyear;
         this.employeeDetail.hra=value.hra;
         this.employeeDetail.basicpay=value.basicpay;
         this.employeeDetail.medallow=value.medallow;
         this.employeeDetail.speallow=value.speallow;
         this.employeeDetail.cedallow=value.cedallow;
         this.employeeDetail.conallow=value.conallow;
+
+        // this.employeeDetail.bonus=value.bonus;
+        // this.employeeDetail.arrears=value.arrears;
+        // this.employeeDetail.gwp=value.gwp;
+        // this.employeeDetail.esi=value.esi;
+        // this.employeeDetail.it=value.it;
+        // this.employeeDetail.advance=value.advance;
+        // this.employeeDetail.totded=value.totded;
+        // this.employeeDetail.lop=value.lop;
       this.subscription.unsubscribe();
     })
   }

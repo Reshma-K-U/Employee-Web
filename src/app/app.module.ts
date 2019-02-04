@@ -119,6 +119,11 @@ import { AccountstatementComponent } from './payroll/accountstatement/accountsta
 import { AssignassetsComponent } from './assets/assignassets/assignassets.component';
 import { SearchassetsComponent } from './assets/searchassets/searchassets.component';
 import { EditassetsComponent } from './assets/editassets/editassets.component';
+import { TdsComponent } from './payroll/tds/tds.component';
+import { IncomeComponent } from './payroll/tds/income/income.component';
+import { DeductionsComponent } from './payroll/tds/deductions/deductions.component';
+import { ExemptionsComponent } from './payroll/tds/exemptions/exemptions.component';
+import { PerquisiteComponent } from './payroll/tds/perquisite/perquisite.component';
 
 
 @NgModule({
@@ -182,7 +187,6 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
     SalaryslipComponent,
     EmployeeSalaryComponent,
     NewdependentComponent,
-    
     EmployeeAttendanceComponent,
     AttendanceCalendarComponent,
     AttendanceTableComponent,
@@ -196,6 +200,11 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
     AssignassetsComponent,
     SearchassetsComponent,
     EditassetsComponent,
+    TdsComponent,
+    IncomeComponent,
+    DeductionsComponent,
+    ExemptionsComponent,
+    PerquisiteComponent,
   ],
   imports: [
     BrowserModule,
@@ -222,10 +231,9 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
     MatDialogModule,
     MatCheckboxModule,
     AppRoutingModule,
-    MatCheckboxModule,    
+    MatCheckboxModule,
     MatGridListModule,
     MatTreeModule,
-    
     AppRoutingModule,
     MatCheckboxModule,
     PdfViewerModule,

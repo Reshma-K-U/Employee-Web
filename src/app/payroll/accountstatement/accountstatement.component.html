@@ -3,17 +3,47 @@
   <table class="table table-bordered">
     <thead>
       <tr>
+        <th>Emp ID</th>
         <th>Name</th>
         <th>Basic Pay</th>
+        <th>Join Date</th>
         <th>HRA</th>
+        <th>Special Allowance</th>
+        <th>Conveyance Allowance</th>
+        <th>Medical Allowance</th>
+        <th>Children Edn Allowance</th>
+        <th>Bonus</th>
+        <th>Arrears</th>
+        <th>GWP</th>
+        <th>ESI</th>
+        <th>WWF</th>
+        <th>Advance</th>
+        <th>IT</th>
+        <th>Total Deductions</th>
+        <th>LOP</th>
         <th>Total</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let emp of payrollDetails">
-        <td>{{emp.empname}}</td>
+        <td>{{emp.empid}}</td>
+        <td>{{emp.name}}</td>
         <td>{{emp.basicpay}}</td>
+        <td>{{emp.join_date}}</td>
         <td>{{emp.hra}}</td>
+        <td>{{emp.speallow}}</td>
+        <td>{{emp.conallow}}</td>
+        <td>{{emp.medallow}}</td>
+        <td>{{emp.cedallow}}</td>
+        <td>{{emp.bonus}}</td>
+        <td>{{emp.arrears}}</td>
+        <td>{{emp.gwp}}</td>
+        <td>{{emp.esi}}</td>
+        <td>{{emp.it}}</td>
+        <td>{{emp.wwf}}</td>
+        <td>{{emp.advance}}</td>
+        <td>{{emp.totded}}</td>
+        <td>{{emp.lop}}</td>
         <td>{{emp.total}}</td>
       </tr>
       <tr>

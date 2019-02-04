@@ -5,6 +5,7 @@
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
+<button mat-raised-button color="warn" class="button-generate" (click)="onTdsClick()">TDS</button>
 </div>
 <br>
 <div class ="container">
@@ -17,7 +18,6 @@
         <th>Other</th>
         <th>Total</th>
         <th>PDF</th>
-        <th>Paid</th>  
       </tr>
     </thead>
     <tbody>
@@ -30,11 +30,10 @@
         </td>
         <td>{{emp.total}}</td>
         <td><button mat-raised-button color="primary" (click)="onDownload(emp.empid)">Download</button></td>
-        <td><mat-checkbox [checked]="true"></mat-checkbox></td>  
       </tr>
       <tr>
         <td><h6>Total:</h6></td>
-        <td colspan="9">{{totalsal}}</td>
+        <td colspan="9"><h1>{{totalsal}}</h1></td>
       </tr>
     </tbody>
   </table>

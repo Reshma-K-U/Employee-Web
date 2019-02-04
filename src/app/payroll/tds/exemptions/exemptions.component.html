@@ -1,0 +1,33 @@
+<div class="content">
+    <h2>Exemptions</h2>
+  <div class="green">
+  <table>
+      <tr><b>Exemption</b><td><input type="text" name="desc"></td></tr>
+      <tr><b>Leave Encashment Exemption</b><td><input type="text" name="desc"></td></tr>
+      <tr><b>Gratuity Exemption</b><td><input type="text" name="desc"></td></tr>
+    </table>
+  </div>
+  <div class="blue">
+    <h2>HRA Exemptions</h2>
+    <mat-card class="card">
+        <label for="email"><b>Total rent paid:</b></label><input type="text" name="desc">
+      <mat-checkbox (change)="checkBoxClick(tick)">Override HRA Exemptions</mat-checkbox>
+      <div *ngIf="checkbox">
+            <label for="email"><b>Total HRA:</b></label><input type="text" name="desc">
+            <label for="email"><b>40% of Basic:</b></label><input class="input" type="text" name="desc">
+            <label for="email"><b>Excess rent:</b></label><input type="text" name="desc">
+            <label for="email"><b>HRA Exemption:</b></label><input type="text" name="desc">
+      </div>
+    </mat-card>
+  </div>
+  <div class="other">
+      <h2>Other Exemptions</h2>
+  <mat-card>
+      <label for="email"><b>LTA Exemption:</b></label><input type="text" name="desc">
+    </mat-card>
+  </div>
+    </div>
+    <button class="btn btn-primary">SAVE</button>
+    <button class="btn btn-danger">CANCEL</button>
+
+
