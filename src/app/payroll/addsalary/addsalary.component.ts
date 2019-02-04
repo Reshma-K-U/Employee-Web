@@ -40,12 +40,7 @@ export class AddsalaryComponent implements OnInit {
       (value)=>{
         this.employeeDetail.empid=value.empid;
         this.employeeDetail.empname=value.name;
-        value.join_date=new Date;
-        var jmonth=value.join_date.getMonth();
-        var jdate=value.join_date.getDate();
-        var jyear=value.join_date.getYear();
-        var jmonth=jmonth+1;
-        this.employeeDetail.join_date=jdate+"/"+jmonth+"/"+jyear;
+        this.employeeDetail.join_date=value.join_date;
         this.employeeDetail.hra=value.hra;
         this.employeeDetail.basicpay=value.basicpay;
         this.employeeDetail.medallow=value.medallow;

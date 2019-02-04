@@ -4,10 +4,10 @@
     <form #f="ngForm">
         <mat-form-field class="form-field">
             <input matInput name="company_name" ngModel placeholder="Company Name">
-            
+
           </mat-form-field>
         <div class="row">
-          
+
         <div class="col-md-6">
           <mat-form-field class="form-field">
             <input matInput name="client_id" ngModel placeholder="Client ID">
@@ -23,7 +23,7 @@
           </mat-form-field><br>
           <mat-form-field class="form-field">
             <input matInput name="email" ngModel placeholder="Email">
-          </mat-form-field><br> 
+          </mat-form-field><br>
           <mat-form-field class="form-field">
             <input matInput name="phone" ngModel placeholder="Phone">
           </mat-form-field><br>
@@ -53,20 +53,18 @@
           <mat-form-field class="form-field">
             <input matInput name="fax" ngModel placeholder="Fax">
           </mat-form-field><br>
-          <mat-form-field class="form-field"> 
+          <mat-form-field class="form-field">
             <textarea matInput name="note" ngModel placeholder="Note"></textarea>
           </mat-form-field>
         </div>
       </div>
-      <input type="file" (change)="onSelectFile($event)" placeholder="add a logo">
-            <button class="btn btn-primary" (click)="onUpload()">Upload</button>
+
     </form>
     <hr>
     <button mat-raised-button color="accent">Cancel</button>
     <button mat-raised-button color="primary" style="float:right" type="submit" (click)="onAdd(f)">Save</button>
   </mat-card-content>
 </mat-card>
- <img [src]="src"> 
 </div>
 
 

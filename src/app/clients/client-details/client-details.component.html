@@ -8,25 +8,34 @@
   <div class="row" *ngIf="client">
     <div class="col-md-4"></div>
     <div class="col-md-4 header">
-        <img src={{imageUrl}}>
-       <h5><b>{{client.company_name}}</b></h5>
+      <div>
+          <img src={{imageUrl}}>
       </div>
-      <div class="col-md-4"></div>
+      <br>
+      <div>
+          <input type="file" (change)="onSelectFile($event)" placeholder="add a logo">
+          <button class="btn btn-primary" (click)="onUpload()">Upload Logo</button>
+      </div>
+
+
+    </div>
+    <div class="col-md-4">
+      <h2><b>{{client.company_name}}</b></h2>
+    </div>
   </div>
   <hr>
   <div class="row">
-      <mat-tab-group style="width:100%"> 
-          <mat-tab label="Main"></mat-tab>
-         <mat-tab  label="Info"> 
+      <mat-tab-group style="width:100%">
+         <mat-tab  label="Info">
             <exalt-info *ngIf="client" [client]="client"></exalt-info>
           </mat-tab>
           <mat-tab label="Payements">
-            <exalt-client-payment *ngIf="client" [client]="client"></exalt-client-payment> 
+            <exalt-client-payment *ngIf="client" [client]="client"></exalt-client-payment>
           </mat-tab>
           <mat-tab label="Documents">  </mat-tab>
-          <mat-tab label="Bookings">  </mat-tab>
+          <mat-tab label="Projects">  </mat-tab>
       </mat-tab-group>
   </div>
- 
+
 </div>
-  
+

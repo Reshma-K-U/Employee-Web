@@ -106,18 +106,24 @@ import { NewdependentComponent } from './employees/employee-detail/dependents-de
 
 import { EmployeeAttendanceComponent } from './employees/employee-attendance/employee-attendance.component';
 import { AttendanceCalendarComponent } from './employees/employee-attendance/attendance-calendar/attendance-calendar.component';
-import { AttendanceTableComponent } from './employees/employee-attendance/attendance-table/attendance-table.component';
+
 
 import { SalaryComponent } from './employees/add-employee/salary/salary.component';
 import { SalaryDetailsComponent } from './employees/employee-detail/salary-details/salary-details.component';
 import { AllsalaryslipsComponent } from './payroll/allsalaryslips/allsalaryslips.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ProjectComponent } from './project/project.component';
+import { ProjectListComponent } from './project/project-list/project-list.component';
+import { AddprojectComponent } from './project/addproject/addproject.component';
 import { EmployeeDocumentsComponent } from './employees/employee-documents/employee-documents.component';
 import { AssetsComponent } from './assets/assets.component';
 import { AddassetsComponent } from './assets/addassets/addassets.component';
 import { ClientPaymentComponent } from './clients/client-details/client-payment/client-payment.component';
 import { ClientInvoiceComponent } from './clients/client-details/client-invoice/client-invoice.component';
 import { NewInvoiceComponent } from './clients/client-details/new-invoice/new-invoice.component';
+
+import { ProjectItemComponent } from './project/project-list/project-item/project-item.component';
+import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 import { AccountstatementComponent } from './payroll/accountstatement/accountstatement.component';
 import { AssignassetsComponent } from './assets/assignassets/assignassets.component';
 import { SearchassetsComponent } from './assets/searchassets/searchassets.component';
@@ -188,10 +194,13 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
     
     EmployeeAttendanceComponent,
     AttendanceCalendarComponent,
-    AttendanceTableComponent,
+    
     SalaryComponent,
     SalaryDetailsComponent,
     AllsalaryslipsComponent,
+    ProjectComponent,
+    ProjectListComponent,
+    AddprojectComponent,
     EmployeeDocumentsComponent,
     AssetsComponent,
     AddassetsComponent,
@@ -199,6 +208,8 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
     ClientInvoiceComponent,
     NewInvoiceComponent,
     
+    ProjectItemComponent,
+    ProjectDetailComponent,
     AccountstatementComponent,
     AssignassetsComponent,
     SearchassetsComponent,
@@ -249,7 +260,6 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
   NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,ClientInvoiceComponent,
-  AddassetsComponent,AssignassetsComponent,SearchassetsComponent,
-EditassetsComponent]
+  AddassetsComponent,AssignassetsComponent,SearchassetsComponent,ProjectComponent,EditassetsComponent]
 })
 export class AppModule { }

@@ -1,7 +1,8 @@
 <mat-card >
   <mat-card-header>
       <div>
-          <button class="btn btn-primary" (click)="update()">Update Info</button>
+          <button class="btn btn-primary" style="float:right" (click)="update()">Update Info</button>
+
       </div>
       <br><hr>
   </mat-card-header>
@@ -13,7 +14,7 @@
         <div class="row">
           <div class="col-md-6">
             <mat-form-field class="form-field">
-              <input matInput name="client_id" value={{clientInfo.client_id}} placeholder="Client ID" [attr.contenteditable]=false> 
+              <input matInput name="client_id" value={{clientInfo.client_id}} placeholder="Client ID" [attr.contenteditable]=false>
             </mat-form-field><br>
             <mat-form-field class="form-field">
               <input matInput name="website" [(ngModel)]="clientInfo.website"  placeholder="Website">
@@ -26,7 +27,7 @@
             </mat-form-field><br>
             <mat-form-field class="form-field">
               <input matInput name="email" [(ngModel)]="clientInfo.email"  placeholder="Email">
-            </mat-form-field><br> 
+            </mat-form-field><br>
             <mat-form-field class="form-field">
               <input matInput name="phone"  [(ngModel)]="clientInfo.phone" placeholder="Phone">
             </mat-form-field><br>
@@ -56,17 +57,16 @@
             <mat-form-field class="form-field">
               <input matInput name="fax" [(ngModel)]="clientInfo.fax"   placeholder="Fax">
             </mat-form-field><br>
-            <mat-form-field class="form-field"> 
+            <mat-form-field class="form-field">
               <textarea matInput name="note" [(ngModel)]="clientInfo.note" placeholder="Note"></textarea>
             </mat-form-field>
-           
+
           </div>
         </div>
-        
+
       </form>
-     
+
     </mat-card-content>
-   
+
   </mat-card>
-  
-  
+

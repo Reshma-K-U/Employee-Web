@@ -26,7 +26,7 @@
             </mat-select>
           </mat-form-field>
         <mat-form-field class="example-full-width" >
-        <input matInput [matDatepicker]="picker" placeholder="Assign Date" [(ngModel)]='onDate'>
+        <input matInput [matDatepicker]="picker" placeholder="Assign Date" name="onDate" [(ngModel)]='onDate'>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -37,7 +37,10 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-        <button class="btn btn-primary" (click)="onSave(f)">SAVE</button>
+      <div class="row" style="margin-left:30px">
+        <button class="btn btn-primary" style="margin-right:20px" (click)="onSave(f)">SAVE</button>
         <button class="btn btn-danger" (click)="onCancel()">CANCEL</button>
+      </div>
+       
     </div>
   </form>

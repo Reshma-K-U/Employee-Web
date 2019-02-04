@@ -1,3 +1,102 @@
-<p>
-  new-invoice works!
-</p>
+<button mat-button color="primary" (click)="onDownload()">Download</button>
+<div class="double" id=contentToConvert>
+  <div class="row">
+    <div class="col-md-6">
+        <h1 class="text">INVOICE</h1>
+    </div>
+    <div class="col-md-6">
+      <h3>Date: {{date|date}}</h3>
+    </div>
+  </div>
+
+    <br>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Exalture Software Labs Pvt Limited</h2>
+    <h3>X/711-s2, Ground Floor,</h3>
+    <h3>Adamstar Building, Kalangatu Road,</h3>
+    <h3>Kakkanad, Kochi- 682030</h3>
+    <h3>Kerala, INDIA</h3>
+    <h3>Phone# +91-484-2980722</h3>
+    <h3><a href="#">www.exalture.com</a></h3>
+    <h3>GSTIN: <b>32AADCE3309G1Z6</b></h3>
+    <h3>PAN CARD No:- AADCE3309G</h3>
+  </div>
+  <div class="col-md-6">
+    <h2>To:</h2>
+    <h3>{{invoiceDetails.client_name}}</h3>
+    <h3>{{invoiceDetails.client_address}}</h3>
+  </div>
+</div>
+<table class="table table-bordered">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">INVOICE#</th>
+        <th scope="col">PROJECT</th>
+        <th scope="col">PAYMENT TERMS</th>
+        <th scope="col">DUE DATE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{invoiceDetails.invoice_num}}</td>
+        <td>{{invoiceDetails.project_name}}</td>
+        <td>{{invoiceDetails.due_on_receipt|date}}</td>
+        <td>{{invoiceDetails.due_date|date}}</td>
+      </tr>
+      </tbody>
+  </table>
+
+  <table class="table table-bordered">
+      <thead>
+        <tr class="table-dark">
+          <th scope="col">QUANTITY</th>
+          <th scope="col">DESCRIPTION</th>
+          <th scope="col">UNIT PRICE</th>
+          <th scope="col">LINE TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{invoiceDetails.total_hours}}</td>
+          <td>{{invoiceDetails.project_description}}</td>
+          <td>{{invoiceDetails.unit_price}}</td>
+          <td>{{invoiceDetails.line_total}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>SAC-998313</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr class="noborder">
+              <td class="noborder"></td><td class="noborder"></td>
+              <td class="noborder">Subtotal</td>
+              <td></td>
+            </tr>
+            <tr class="noborder">
+              <td class="noborder"></td><td class="noborder"></td>
+              <td class="noborder">IGST 0%</td>
+              <td>Exempted Under LUT<br>No:271/KKD/2017</td>
+            </tr>
+            <tr class="noborder">
+              <td class="noborder"></td><td class="noborder"></td>
+              <td class="noborder">Total</td>
+              <td></td>
+            </tr>
+            <tr class="noborder">
+              <td class="noborder"></td><td class="noborder"></td>
+              <td class="noborder"></td>
+              <td></td>
+            </tr>
+      </tbody>
+    </table>
+<h3 style="float:right;">THANK YOU FOR YOUR BUSINESS!</h3>
+
+</div>

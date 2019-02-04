@@ -1,24 +1,37 @@
 <div class="container">
 <div class="row">
   <mat-card class="header-card">
-      <div id="background">
+      <!-- <div id="background"> -->
           <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
+            <div>
+            <div>
+              <img src={{imageUrl}}>
+            </div>
+            <div>
+                <label for="upload-photo">Browse...</label>
+                <!-- <input type="file" name="photo" id="upload-photo" /> -->
+                <input type="file" id="upload-photo" (change)="onSelectFile($event)" placeholder="add a logo">
+            </div>
+          </div>
           </mat-card-header>
-        </div>
+        <!-- </div> -->
          <mat-tab-group >
-           <!--  #tabGroup [selectedIndex]="selected.value"
-            (selectedIndexChange)="selected.setValue($event)" -->
             <mat-tab label="Profile">
-                 <exalt-employee-detail ></exalt-employee-detail> 
+                 <exalt-employee-detail ></exalt-employee-detail>
             </mat-tab>
             <mat-tab label="Leave">
                 <exalt-employee-leave ></exalt-employee-leave>
             </mat-tab>
-            <mat-tab label="Salary"><exalt-employee-salary></exalt-employee-salary>  </mat-tab>
-            <mat-tab label="Attendance"><exalt-employee-attendance></exalt-employee-attendance></mat-tab>
-            <mat-tab label="Documents"><exalt-employee-documents></exalt-employee-documents>  </mat-tab>
-          </mat-tab-group> 
+            <mat-tab label="Salary">
+              <exalt-employee-salary></exalt-employee-salary>
+            </mat-tab>
+            <mat-tab label="Attendance">
+              <exalt-employee-attendance></exalt-employee-attendance>
+            </mat-tab>
+            <mat-tab label="Documents">
+              <exalt-employee-documents></exalt-employee-documents>
+            </mat-tab>
+          </mat-tab-group>
   </mat-card>
 </div>
 </div>

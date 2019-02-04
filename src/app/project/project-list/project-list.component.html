@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+
+   
+      <div *ngIf="!add">
+        <button type="submit" class="btn btn-primary"
+          style="margin-left:1000px;margin-bottom: 25px;margin-top: 25px;background-color:#d35f53"
+          routerLink="/addproject"
+          >Add Project
+        </button>
+      
+    </div>
+  </div>
+  <exalt-project-item  class="item"
+  *ngFor="let project of allproject"
+  [project]="project">
+
+  </exalt-project-item>
+  </div>
+
+
+
+
+
+ 

@@ -10,7 +10,7 @@
           <div class="col-md-9">
             <mat-card-content >
                 <nav>
-                    <a style="color:3355FF"  routerLink="/view/{{employee.emp_id}}" (click)="loadDetails()"><b>{{employee.name}}</b></a>
+                    <a style="color:3355FF"  routerLink="/view/{{employee.emp_id}}"><b>{{employee.name}}</b></a>
                 </nav>
                 <nav>
                     <a class="title"routerLink="https://webmail.1and1.com/" >{{employee.email}}</a>
@@ -34,21 +34,21 @@
           </div>
         </div>
       </mat-card>
-      
+
 
 <div class="row"  *ngIf="selected">
   <button mat-raised-button color="primary" style="margin-left:50px;margin-top:20px" (click)="remove()">Remove</button>
-  <button mat-raised-button color="primary" style="margin-left:20px;margin-top:20px" (click)="cancel()">Cancel</button>  
+  <button mat-raised-button color="primary" style="margin-left:20px;margin-top:20px" (click)="cancel()">Cancel</button>
 </div>
 
 </ul>
 
-    
-
-    
 
 
-       
- 
+
+
+
+
+
 
 

@@ -16,7 +16,7 @@ export class AboutComponent implements OnInit {
   }
   onAdd(){
     this.addService.setAbout(this.about);
-    this.router.navigate(['employee-list']);
+    // this.router.navigate(['employee-list']);
 
   }
 }

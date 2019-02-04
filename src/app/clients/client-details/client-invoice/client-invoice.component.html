@@ -1,6 +1,6 @@
 
 <form #f="ngForm">
-  <div class="row"> 
+  <div class="row">
      <div class="col-md-6">
     <mat-form-field  class="form-field">
      <input matInput name="invoice_num" ngModel  placeholder="Invoice Number">
@@ -17,7 +17,17 @@
        <mat-form-field  class="form-field">
         <input matInput name="line_total" [(ngModel)]="invoiceDetails.total_hours*invoiceDetails.unit_price" placeholder="Line total">
        </mat-form-field>
-    
+       <mat-form-field  class="form-field" *ngIf="client.data.country=='india'">
+        <input matInput name="igst" [(ngModel)]="invoiceDetails.igst" placeholder="IGST">
+       </mat-form-field>
+       <mat-form-field  class="form-field" *ngIf="this.client.data.country =='india' && this.client.data.state == 'kerala'">
+        <input matInput name="cgst" [(ngModel)]="invoiceDetails.cgst" placeholder="CGST">
+       </mat-form-field>
+       <mat-form-field  class="form-field" *ngIf = "this.client.data.country == 'india' && this.client.data.state == 'kerala'">
+        <input matInput name="gst" [(ngModel)]="invoiceDetails.gst" placeholder="GST">
+       </mat-form-field>
+
+
     </div>
     <div class="col-md-6">
         <mat-form-field class="form-field">
@@ -31,17 +41,20 @@
             <input name="dueDate" ngModel matInput [matDatepicker]="dueDate" placeholder="Due Date">
             <mat-datepicker-toggle matSuffix [for]="dueDate"></mat-datepicker-toggle>
             <mat-datepicker #dueDate></mat-datepicker>
-        </mat-form-field>  
+        </mat-form-field>
         <mat-form-field  class="form-field">
             <input matInput name="unit_price" [(ngModel)]="invoiceDetails.unit_price" placeholder="Unit Price">
            </mat-form-field>
            <mat-form-field class="form-field">
             <textarea matInput name="about" ngModel placeholder="Textarea"></textarea>
-          </mat-form-field>  
-           
+          </mat-form-field>
+          <mat-form-field  class="form-field">
+            <input matInput name="total" [(ngModel)]="invoiceDetails.total" placeholder="Total">
+           </mat-form-field>
+
+
     </div>
     <button class="btn btn-primary"  (click)="onSubmit(f)">Submit</button>
     <button class="btn btn-danger" (click)="onCancel()">Cancel</button>
     </div>
     </form>
-    
