@@ -1,0 +1,77 @@
+<mat-form-field>
+    <mat-select placeholder="Section" [(value)]="selected" (selectionChange)="onSectionChange(selected)">
+      <mat-option value="80c">80C</mat-option>
+      <mat-option value="80d">80D</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+<table *ngIf="table80c">
+  <thead>
+    <tr>
+      <th>Narrations</th>
+      <th>Age</th>
+      <th>Section</th>
+      <th>Max.Limit</th>
+      <th>Gross</th>
+      <th>Qualifying</th>
+      <th>Deductable</th>
+      <th>Proof</th>
+      <th>Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let j of array">
+      <td><mat-form-field  class="form-field"> 
+          <mat-select name="itemValue" (selectionChange)="addRow(j)">
+            <mat-option *ngFor="let i of section80c" [value]="i.value">
+              {{i.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><mat-checkbox></mat-checkbox></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<table *ngIf="table80d">
+    <thead>
+      <tr>
+        <th>Narrations</th>
+        <th>Age</th>
+        <th>Section</th>
+        <th>Max.Limit</th>
+        <th>Gross</th>
+        <th>Qualifying</th>
+        <th>Deductable</th>
+        <th>Proof</th>
+        <th>Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let j of array">
+        <td><mat-form-field  class="form-field"> 
+            <mat-select name="itemValue" (selectionChange)="addRow(j)">
+              <mat-option *ngFor="let i of section80d" [value]="i.value">
+                {{i.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><mat-checkbox></mat-checkbox></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  

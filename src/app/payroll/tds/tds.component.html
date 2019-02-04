@@ -1,0 +1,28 @@
+<mat-form-field  class="form-field">
+  <mat-select placeholder="Choose Employee" [(ngModel)]="selectedOption" name="empname" (selectionChange)="onNameChange(selectedOption)">
+  <mat-option *ngFor="let emp of employeeNames" [value]="emp.emp_id">
+    {{emp.name}}
+  </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-card *ngIf="navbar" class="card">
+  <p class="tab"><b>Employee Name: {{employeeDetails.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Employee ID: {{employeeDetails.empid}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Join Date: {{employeeDetails.join_date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Date Of Birth: {{employeeDetails.dob}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Gender: {{employeeDetails.gender}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </b>
+  </p>
+</mat-card>
+<nav mat-tab-nav-bar *ngIf="navbar" class="navbar">
+    <mat-tab-group style="width:120%" #tabGroup>
+        <mat-tab label="INCOME"><exalt-income></exalt-income></mat-tab>
+       <mat-tab  label="INCOME FROM PREVIOUS EMPLOYER"></mat-tab>
+        <mat-tab label="EXMPTIONS"><exalt-exemptions></exalt-exemptions></mat-tab>
+        <mat-tab label="PERQUISITE"><exalt-perquisite></exalt-perquisite></mat-tab>
+        <mat-tab label="DEDUCTIONS"><exalt-deductions></exalt-deductions></mat-tab>
+        <mat-tab label="OTHER INCOME"></mat-tab>
+        <mat-tab label="HOUSE PROPERTY INCOME"></mat-tab>
+        <mat-tab label="RESULT"></mat-tab>
+      </mat-tab-group>
+</nav>

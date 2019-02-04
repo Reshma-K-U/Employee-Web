@@ -44,20 +44,21 @@ moreEmployeeSalary(more:any,date:Date){
     var employeeDocRef=docRef.collection(year.toString()).ref.doc(month.toString());
     
     var updatetotal=parseInt(more.basicpay)+parseInt(more.hra)+parseInt(more.speallow)+
-    parseInt(more.medallow)+parseInt(more.cedallow)+parseInt(more.bonus)+parseInt(more.arrears)+
-    parseInt(more.gwp)-parseInt(more.esi)-parseInt(more.advance)-parseInt(more.it)-
-    parseInt(more.others)-parseInt(more.totded)+parseInt(more.wwf);
-    
+    parseInt(more.medallow)+parseInt(more.cedallow)+parseInt(more.conallow)+parseInt(more.bonus)+
+    parseInt(more.arrears)+parseInt(more.gwp)-parseInt(more.esi)-parseInt(more.advance)-
+    parseInt(more.it)-parseInt(more.others)-parseInt(more.totded)+parseInt(more.wwf)-parseInt(more.lop);
     employeeDocRef.
     set({
         
         'empid': more.empid,
-        'name':more.name,
+        'name':more.empname,
+        'join_date':more.join_date,
         'basicpay': more.basicpay,
         'hra':more.hra,
         'speallow': more.speallow,
         'medallow':more.medallow,
         'cedallow': more.cedallow,
+        'conallow':more.conallow,
         'bonus': more.bonus,
         'arrears':more.arrears,
         'gwp': more.gwp,
@@ -68,30 +69,21 @@ moreEmployeeSalary(more:any,date:Date){
         'others':more.others,
         'totded': more.totded,
         'total':updatetotal,
+        'lop':more.lop,
         'day':date1,
     }) 
 
     docRef.update({
         'total':updatetotal
-    })
-
-
-  
+    })  
 }
-
-
-
-
-
 
 moreEmpFill(id:string){
 
         this.userDoc = this.afs.collection('payroll').doc(id);
         var data:any
-        data = this.userDoc.valueChanges();
-         
+        data = this.userDoc.valueChanges(); 
         return data;
-    
 }
 
 getPayrollDetails(){
@@ -113,55 +105,68 @@ getPayrollDetails(){
     })
 
     return this.afs.collection('payroll').snapshotChanges();
+}   
+getAllPayroll(value:any,date:Date){
+    var date1=date.getDate();
+    var month=date.getMonth();
+    var year=date.getFullYear(); 
+    var id=value;
+    this.userDoc = this.afs.collection('payroll').doc(id).collection(year.toString()).doc(month.toString());
+    var data:any
+    data = this.userDoc.valueChanges();
+    return data; 
 }
 
-
-    getAllPayroll(value:any,date:Date){
-        var date1=date.getDate();
-        var month=date.getMonth();
-        var year=date.getFullYear(); 
-        var id=value;
-        this.userDoc = this.afs.collection('payroll').doc(id).collection(year.toString()).doc(month.toString());
-        var data:any
-        data = this.userDoc.valueChanges();
-        return data;
-    }
-
-    accountStatement(date:Date){
-        date=new Date(date);
-        var month=date.getMonth();
-        var year=date.getFullYear();
-        var data:any=[];
-        this.afs.collection('payroll').valueChanges().subscribe(
-            d=>{
-                d.forEach(val=>{
-                     this.afs.collection('payroll').doc(val['empid']).collection(year.toString())
-                    .doc(month.toString()).valueChanges().subscribe(value=>{
-                        data.push(value);
-                    })
+accountStatement(date:Date){
+    date=new Date(date);
+    var month=date.getMonth();
+    var year=date.getFullYear();
+    var data:any=[];
+    this.afs.collection('payroll').valueChanges().subscribe(
+        d=>{
+            d.forEach(val=>{
+                 this.afs.collection('payroll').doc(val['empid']).collection(year.toString())
+                .doc(month.toString()).valueChanges().subscribe(value=>{
+                    data.push(value);
                 })
-            }
-        )
-        
-        
-        // data = this.userDoc.valueChanges();
-        return of(data);
-    }
+            })
+        }
+    )
+    // data = this.userDoc.valueChanges();
+    return of(data);
+}    
 
-   
-    salarySlipFill(id:string,month,year){  
-        month=month-1;
-        this.userDoc = this.afs.collection('payroll').doc(id).collection(year.toString()).doc(month.toString());
-        var data:any
-        data = this.userDoc.valueChanges();
-        return data;
-    }
-    formatDate(date:Date){
-        var date= new Date(date);
-        var month=date.getMonth();
-        month=month+1;
-        var year=date.getFullYear();
-        var day=month+"/"+year;
-        return day;
-    }
+salarySlipFill(id:string,month,year){  
+    month=month-1;
+    this.userDoc = this.afs.collection('payroll').doc(id).collection(year.toString()).doc(month.toString());
+    var data:any
+    data = this.userDoc.valueChanges();
+    return data;
+}
+
+formatDate(date:Date){
+    var date= new Date(date);
+    var month=date.getMonth();
+    month=month+1;
+    var year=date.getFullYear();
+    var day=month+"/"+year;
+    return day;
+}   
+
+getEmployeeName(){
+    var col = this.afs.collection('payroll');
+    var data:any
+    // data = col.snapshotChanges();
+    data=col.valueChanges();
+    return data;
+    
+}
+dateToString(date){
+    var day=date.getDate();
+    var month=date.getMonth();
+    month=month+1;
+    var year=date.getFullYear();
+    date=month+"/"+year;
+    return date;
+}
 }

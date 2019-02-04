@@ -22,6 +22,7 @@ export class PayrollComponent implements OnInit {
   subscription:Subscription;
   onDate:Date=new Date();
   disable:boolean=true;
+  totalsal:number=0;
   
   constructor(
     public dialog: MatDialog,
@@ -31,14 +32,10 @@ export class PayrollComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    
-   
-  
    this.pyService.getPayrollDetails().subscribe(
     (value)=>{
       this.payrollDetails=[];
         value.forEach(x=>{
-          
             this.payrollDetails.push(x.payload.doc.data())
         })
     }) 
@@ -64,6 +61,9 @@ export class PayrollComponent implements OnInit {
     month=month+1;
     var year=date.getFullYear();
     this.router.navigate(['salaryslip'], { queryParams: {id:id,month,year}});
+  }
+  onTdsClick(){
+    this.router.navigate(['tds']);
   }
 }
 
