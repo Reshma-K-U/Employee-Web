@@ -13,6 +13,8 @@ import { ProjectService } from 'src/app/project/service/project.service';
 export class AddprojectComponent implements OnInit {
 allclients:any[] = [] ;
 allemployees:any[] = [];
+textbox:boolean=false;
+n:number=1;
  
   constructor(private cfs:FirestoreClientService ,private afs:FirestoreService,private pfs:ProjectService) { }
 
@@ -31,6 +33,17 @@ allemployees:any[] = [];
    
   
   }
- 
+onclick(n)
+{
+  this.n=n+1;
 
+  if(this.n % 2 == 0){
+
+  this.textbox=true;
+}
+else{
+  this.textbox=false;
+
+}
+}
 }

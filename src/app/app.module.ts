@@ -125,6 +125,8 @@ import { AccountstatementComponent } from './payroll/accountstatement/accountsta
 import { AssignassetsComponent } from './assets/assignassets/assignassets.component';
 import { SearchassetsComponent } from './assets/searchassets/searchassets.component';
 import { EditassetsComponent } from './assets/editassets/editassets.component';
+import { ProjInfoComponent } from './project/project-detail/proj-info/proj-info.component';
+import { ProjDocComponent } from './project/project-detail/proj-doc/proj-doc.component';
 
 
 @NgModule({
@@ -188,10 +190,10 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
     SalaryslipComponent,
     EmployeeSalaryComponent,
     NewdependentComponent,
-    
+
     EmployeeAttendanceComponent,
     AttendanceCalendarComponent,
-    
+
     SalaryComponent,
     SalaryDetailsComponent,
     AllsalaryslipsComponent,
@@ -207,6 +209,8 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
     AssignassetsComponent,
     SearchassetsComponent,
     EditassetsComponent,
+    ProjInfoComponent,
+    ProjDocComponent,
   ],
   imports: [
     BrowserModule,
@@ -233,10 +237,10 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
     MatDialogModule,
     MatCheckboxModule,
     AppRoutingModule,
-    MatCheckboxModule,    
+    MatCheckboxModule,
     MatGridListModule,
     MatTreeModule,
-    
+
     AppRoutingModule,
     MatCheckboxModule,
     PdfViewerModule,
