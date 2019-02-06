@@ -118,6 +118,9 @@ import { AddprojectComponent } from './project/addproject/addproject.component';
 import { EmployeeDocumentsComponent } from './employees/employee-documents/employee-documents.component';
 import { AssetsComponent } from './assets/assets.component';
 import { AddassetsComponent } from './assets/addassets/addassets.component';
+import { ClientPaymentComponent } from './clients/client-details/client-payment/client-payment.component';
+import { ClientInvoiceComponent } from './clients/client-details/client-invoice/client-invoice.component';
+import { NewInvoiceComponent } from './clients/client-details/new-invoice/new-invoice.component';
 
 import { ProjectItemComponent } from './project/project-list/project-item/project-item.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
@@ -127,6 +130,13 @@ import { SearchassetsComponent } from './assets/searchassets/searchassets.compon
 import { EditassetsComponent } from './assets/editassets/editassets.component';
 import { ProjInfoComponent } from './project/project-detail/proj-info/proj-info.component';
 import { ProjDocComponent } from './project/project-detail/proj-doc/proj-doc.component';
+import { TdsComponent } from './payroll/tds/tds.component';
+import { IncomeComponent } from './payroll/tds/income/income.component';
+import { DeductionsComponent } from './payroll/tds/deductions/deductions.component';
+import { ExemptionsComponent } from './payroll/tds/exemptions/exemptions.component';
+import { PerquisiteComponent } from './payroll/tds/perquisite/perquisite.component';
+import { ProjPaymentComponent } from './project/project-detail/proj-payment/proj-payment.component';
+import { ProjInvoiceComponent } from './project/project-detail/proj-invoice/proj-invoice.component';
 
 
 @NgModule({
@@ -190,7 +200,6 @@ import { ProjDocComponent } from './project/project-detail/proj-doc/proj-doc.com
     SalaryslipComponent,
     EmployeeSalaryComponent,
     NewdependentComponent,
-
     EmployeeAttendanceComponent,
     AttendanceCalendarComponent,
 
@@ -203,6 +212,9 @@ import { ProjDocComponent } from './project/project-detail/proj-doc/proj-doc.com
     EmployeeDocumentsComponent,
     AssetsComponent,
     AddassetsComponent,
+    ClientPaymentComponent,
+    ClientInvoiceComponent,
+    NewInvoiceComponent,
     ProjectItemComponent,
     ProjectDetailComponent,
     AccountstatementComponent,
@@ -211,6 +223,13 @@ import { ProjDocComponent } from './project/project-detail/proj-doc/proj-doc.com
     EditassetsComponent,
     ProjInfoComponent,
     ProjDocComponent,
+    TdsComponent,
+    IncomeComponent,
+    DeductionsComponent,
+    ExemptionsComponent,
+    PerquisiteComponent,
+    ProjPaymentComponent,
+    ProjInvoiceComponent,
   ],
   imports: [
     BrowserModule,
@@ -256,8 +275,7 @@ import { ProjDocComponent } from './project/project-detail/proj-doc/proj-doc.com
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
-  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,ProjectComponent,
- AddassetsComponent,AssignassetsComponent,SearchassetsComponent,
-EditassetsComponent]
+  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,ClientInvoiceComponent,
+  AddassetsComponent,AssignassetsComponent,SearchassetsComponent,ProjectComponent,EditassetsComponent,ProjInvoiceComponent]
 })
 export class AppModule { }

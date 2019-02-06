@@ -22,7 +22,8 @@
             <!-- <exalt-info *ngIf="tabGroup.selectedIndex==1"[client]="client"></exalt-info> -->
             <exalt-proj-info *ngIf="project" [project]="project"></exalt-proj-info>
           </mat-tab>
-          <mat-tab label="Payements"> </mat-tab>
+          <mat-tab label="Payements">
+            <exalt-proj-payment *ngIf="project" [project]="project"> </exalt-proj-payment> </mat-tab>
           <mat-tab label="Documents"> <exalt-proj-doc> </exalt-proj-doc> </mat-tab>
 
         </mat-tab-group>

@@ -8,8 +8,8 @@ export class ProjectService {
 
   constructor(private afs:AngularFirestore) { }
   addNewProject(data:any){
- 
-  
+
+  console.log(data);
     this.afs.collection('project').doc(data.proj_id).set(
       {
         'project_id':data.proj_id,
@@ -20,7 +20,7 @@ export class ProjectService {
         'end_date':data.endDate,
         'assigned_emp':data.assigned_emp,
         'agent_name':data.agent_name,
-      
+
       }
     )
 }
@@ -49,14 +49,14 @@ remove(id:string){
 update(data:any){
   console.log(data.project_id);
   this.afs.collection('project').doc(data.project_id).update({
-        
+
         'project_name':data.project_name,
         'project_type':data.project_type,
         'client_company':data.client_company,
         'start_date':data.start_date,
         'end_date':data.end_date,
         'assigned_emp':data.assigned_emp,
-       
+
   })
 }
 

@@ -38,25 +38,24 @@
                             <mat-option *ngFor="let emp of allemployees" [value]="emp.name+emp.role">{{emp.name}}({{emp.role}})</mat-option>
                           </mat-select>
                         </mat-form-field>
-                        
-                        <mat-checkbox class="form-field" (change)="onclick(this.n)"  >Agent</mat-checkbox>
+
+                        <mat-checkbox class="form-field" (change)="onclick()"  >Agent</mat-checkbox>
                         <mat-form-field class="form-field" *ngIf="textbox">
-                          <input matInput name="agent_name"   ngModel placeholder="agent name">
+                          <input matInput name="agent_name"   [(ngModel)]="agentName" placeholder="agent name">
                         </mat-form-field>
-    
+
       </form>
        <hr>
        <a routerLink="/project-list"><button mat-raised-button color="primary">Back</button></a>
-      <button mat-raised-button color="primary" style="float:right" type="submit" (click)="onAdd(f)">Save</button> 
+      <button mat-raised-button color="primary" style="float:right" type="submit" (click)="onAdd(f)">Save</button>
     </mat-card-content>
   </mat-card>
   </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+

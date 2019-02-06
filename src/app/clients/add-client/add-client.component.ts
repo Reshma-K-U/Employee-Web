@@ -12,24 +12,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddClientComponent implements OnInit {
 
-selectedFile:File;
-  
-  constructor(private fsClient:FirestoreClientService,private http:HttpClient) { }
-  
-  ngOnInit() {}
-  
 
-  onAdd(form:NgForm){
-    var value=form.value;
+  constructor(private fsClient: FirestoreClientService, private http: HttpClient) { }
+  ngOnInit() {}
+  onAdd(form: NgForm) {
+    const value = form.value;
     this.fsClient.addNewClient(value);
   }
 
-  onSelectFile(event) {
-    this.selectedFile=event.target.files[0];
-  }
-
-  onUpload(){
-      this.fsClient.uploadLogo(this.selectedFile);
-  }
 
 }

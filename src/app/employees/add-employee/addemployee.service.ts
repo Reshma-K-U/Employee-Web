@@ -55,6 +55,7 @@ setPrev_Exp(exp:Prev_Exp[]){
 }
 setQualification(qual:Qualification[]){
   this.newEmp.qualification=qual;
+  console.log('hdhdgd',this.newEmp.qualification);
 }
 setDependents(dep:Dependents[]){
   this.newEmp.dependents=dep;

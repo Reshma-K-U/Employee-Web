@@ -11,39 +11,32 @@ import { ProjectService } from 'src/app/project/service/project.service';
   styleUrls: ['./addproject.component.scss']
 })
 export class AddprojectComponent implements OnInit {
-allclients:any[] = [] ;
-allemployees:any[] = [];
-textbox:boolean=false;
-n:number=1;
- 
-  constructor(private cfs:FirestoreClientService ,private afs:FirestoreService,private pfs:ProjectService) { }
+allclients: any[] = [] ;
+allemployees: any[] = [];
+textbox = false;
+agentName = '';
+
+  constructor(private cfs: FirestoreClientService , private afs: FirestoreService, private pfs: ProjectService) { }
 
   ngOnInit() {
-   this.allclients= this.cfs.getDataForList();
+   this.allclients = this.cfs.getDataForList();
    console.log(this.allclients);
 
-   this.allemployees=this.afs.getDataForList();
+   this.allemployees = this.afs.getDataForList();
    console.log(this.allemployees);
   }
 
-   onAdd(form:NgForm){
+   onAdd(form: NgForm) {
+     console.log(this.agentName);
     console.log(form);
-    var value=form.value;
+    const value = form.value;
+    value.agent_name = this.agentName;
     this.pfs.addNewProject(value);
-   
-  
+
+
+
   }
-onclick(n)
-{
-  this.n=n+1;
-
-  if(this.n % 2 == 0){
-
-  this.textbox=true;
-}
-else{
-  this.textbox=false;
-
-}
+onclick() {
+  this.textbox = !this.textbox;
 }
 }
