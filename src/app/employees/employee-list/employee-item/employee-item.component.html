@@ -1,10 +1,11 @@
-<ul *ngIf="!loadEmployee" >
+<ul>
     <mat-card class="example-card" (click)="select($event)" >
-        <div id="background">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image" style="margin-top:50px"></div>
+          <mat-card-header class="header">
+            <div>
+                <img src={{imageUrl}} >
+            </div>
           </mat-card-header>
-        </div>
+
         <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-9">

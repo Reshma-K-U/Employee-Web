@@ -12,39 +12,36 @@ import { EXPANSION_PANEL_ANIMATION_TIMING } from '@angular/material';
 })
 export class PrevExpComponent implements OnInit {
 
-  experiences:Prev_Exp[]=[];
-  newExp:Prev_Exp={
-    company_name:" ",
-    job_title:" ",
-    fromDate:" ",
-    toDate:" ",
-    job_description:" ",
-  }
-  
-  constructor(private addService:AddemployeeService) { }
-  
+  experiences: Prev_Exp[] = [];
+  newExp: Prev_Exp = {
+    company_name: ' ',
+    job_title: ' ',
+    fromDate: ' ',
+    toDate: ' ',
+    job_description: ' ',
+  };
+  constructor(private addService: AddemployeeService) { }
 
   ngOnInit() {
   }
-  addField(){
+  addField() {
     console.log(this.newExp);
     this.experiences.push(this.newExp);
       console.log(this.experiences);
-      this.newExp={
-        company_name:" ",
-    job_title:" ",
-    fromDate:" ",
-    toDate:" ",
-    job_description:" ",
+      this.newExp = {
+        company_name: ' ',
+    job_title: ' ',
+    fromDate: ' ',
+    toDate: ' ',
+    job_description: ' ',
 
-      }
+      };
     }
 
-    onAdd(){
+    onAdd() {
         this.addService.setPrev_Exp(this.experiences);
     }
 
   }
-  
 
 

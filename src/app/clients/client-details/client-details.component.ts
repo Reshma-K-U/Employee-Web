@@ -58,10 +58,7 @@ export class ClientDetailsComponent implements OnInit {
   }
   onSelectFile(event) {
     this.selectedFile = event.target.files[0];
-  }
-
-  onUpload() {
-      this.fsClient.uploadLogo(this.selectedFile, this.id);
+    this.fsClient.uploadLogo(this.selectedFile, this.id);
   }
 
 }

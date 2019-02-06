@@ -14,14 +14,23 @@ invoiceDetails: any = {
 'invoice_id': '',
 'client_address': '',
 'client_name' : '',
+'client_country' : '',
+'client_state' : '',
 'due_date': '',
 'due_on_receipt': '',
 'invoice_num': '',
-'line_total': '',
-'project_description': '',
 'project_name': '',
-'total_hours': '',
-'unit_price' : ''
+'data': [],
+// 'line_total': '',
+// 'project_description': '',
+
+// 'total_hours': '',
+// 'unit_price' : '',
+'subtotal': '',
+'igst' : '',
+'cgst' : '',
+'sgst' : '',
+'total' : ''
 };
 client_id: string;
 invoice_id: string;
@@ -37,6 +46,7 @@ date: Date = new Date();
    this.fsService.getInvoiceDetails(this.client_id, this.invoice_id).subscribe(
      val => {
        this.invoiceDetails = val;
+       console.log(this.invoiceDetails);
        this.invoiceDetails.due_on_receipt = this.invoiceDetails.due_on_receipt.toDate();
        this.invoiceDetails.due_date = this.invoiceDetails.due_date.toDate();
      }

@@ -15,14 +15,19 @@ export class ClientInvoiceComponent implements OnInit {
     'project_name': '',
     'due_on_receipt': '',
     'due_date': '',
+    'data': [],
+    'subTotal': 0,
+    'igst': 0,
+    'cgst': 0,
+    'sgst': 0,
+    'total' : 0,
+  };
+
+  newRow: any = {
     'total_hours': '',
-    'unit_price': '',
-    'project_description': '',
-    'line_total': '',
-    'igst' : '',
-    'cgst' : '',
-    'gst' : '',
-    'total' : '',
+      'unit_price': '',
+      'project_description': '',
+      'line_total': '',
   };
   projects: any[] = [];
   constructor(
@@ -35,23 +40,18 @@ export class ClientInvoiceComponent implements OnInit {
     this.fsService.getProjects(this.client.data.company_name).subscribe(val => {
       this.projects = val;
     });
-    if (this.client.data.country === 'india') {
-      console.log('india');
-    }
-    this.invoiceDetails.line_total = this.invoiceDetails.total_hours * this.invoiceDetails.unit_price;
-    this.invoiceDetails.igst = (this.invoiceDetails.line_total * 18 ) / 100;
-    this.invoiceDetails.cgst = (this.invoiceDetails.line_total * 9 ) / 100;
-    this.invoiceDetails.gst = (this.invoiceDetails.line_total * 9 ) / 100;
-    const total = this.invoiceDetails.line_total - this.invoiceDetails.igst ;
-    // - this.invoiceDetails.cgst - this.invoiceDetails.gst;
-    this.invoiceDetails.total = total;
-    console.log(this.client.data);
+    this.invoiceDetails.data = [];
   }
 
 
   onSubmit(form: NgForm) {
     const value = form.value;
-    this.fsService.createNewInvoice(value, this.client);
+    console.log('value', value);
+   this.invoiceDetails.invoice_num =  value.invoice_num,
+   this.invoiceDetails.project_name =  value.project,
+   this.invoiceDetails.due_on_receipt =  value.dueOnR,
+   this.invoiceDetails.due_date =  value.dueDate,
+    this.fsService.createNewInvoice(this.invoiceDetails, this.client);
     this.dialogRef.close();
     this.router.navigate(['newinvoice'],
     { queryParams: {client_id: this.client.data.client_id, invoice_id: value.invoice_num}});
@@ -61,5 +61,30 @@ export class ClientInvoiceComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  onChange() {
+    this.newRow.line_total = parseInt(this.newRow.total_hours) * parseInt(this.newRow.unit_price);
+  }
+
+addNewRow() {
+  this.invoiceDetails.data.push(this.newRow);
+  this.invoiceDetails.subTotal = this.invoiceDetails.subTotal + parseInt(this.newRow.line_total);
+  if (this.client.data.country === 'india') {
+    if (this.client.data.state !== 'kerala') {
+      this.invoiceDetails.igst = this.invoiceDetails.subTotal * 18 / 100;
+    } else {
+      this.invoiceDetails.cgst = this.invoiceDetails.subTotal * 9 / 100;
+      this.invoiceDetails.sgst = this.invoiceDetails.subTotal * 9 / 100;
+    }
+  }
+  this.invoiceDetails.total = this.invoiceDetails.subTotal + this.invoiceDetails.igst;
+  this.invoiceDetails.total = this.invoiceDetails.total + this.invoiceDetails.cgst;
+  this.invoiceDetails.total = this.invoiceDetails.total + this.invoiceDetails.sgst;
+  this.newRow = {
+    'total_hours': '',
+      'unit_price': '',
+      'project_description': '',
+      'line_total': '',
+  };
+}
 
 }
