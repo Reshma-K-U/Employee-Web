@@ -9,12 +9,19 @@ import { FirestoreService } from '../../../services/firestore.service';
 })
 export class EmployeeItemComponent implements OnInit {
   @Input() employee: any;
+  imageUrl = 'assets/images/employee.png';
+  logoPath = '';
 
   selected = false;
 
   constructor(private fsService: FirestoreService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.logoPath = this.employee['logoPath'] ;
+      this.fsService.getImageUrl(this.logoPath).subscribe(data => {
+        this.imageUrl = data;
+      });
+  }
 
 
   select(event: any) {

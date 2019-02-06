@@ -6,22 +6,24 @@
   </div>
   <hr>
   <div class="row" *ngIf="client">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 header">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 header">
       <div>
+        <div>
           <img src={{imageUrl}}>
+        </div>
+        <div class="imgUpload">
+          <label class="imgLabel" for="upload-photo"><i class="fas fa-camera"></i> Choose Photo</label>
+          <input type="file" id="upload-photo" (change)="onSelectFile($event)" placeholder="add a logo">
+        </div>
       </div>
-      <br>
-      <div>
-          <input type="file" (change)="onSelectFile($event)" placeholder="add a logo">
-          <button class="btn btn-primary" (click)="onUpload()">Upload Logo</button>
+      <div class="clientInfo">
+        <h1><b>{{client.company_name}}</b></h1>
+        <h2>{{client.website}}</h2>
       </div>
-
-
+      <div class="col-md-3"></div>
     </div>
-    <div class="col-md-4">
-      <h2><b>{{client.company_name}}</b></h2>
-    </div>
+
   </div>
   <hr>
   <div class="row">

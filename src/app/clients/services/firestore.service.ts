@@ -116,18 +116,23 @@ export class FirestoreClientService {
   }
 
   createNewInvoice(details: any, client: any) {
-      this.afs.collection('clients').doc(client.data.client_id).collection('invoices')
+    console.log(details);
+       this.afs.collection('clients').doc(client.data.client_id).collection('invoices')
       .doc(details.invoice_num).set({
         'client_name': client.data.company_name,
         'client_address': client.data.address,
+        'client_country': client.data.country,
+        'client_state': client.data.state,
         'invoice_num': details.invoice_num,
-        'project_name': details.project,
-        'due_on_receipt': details.dueOnR,
-        'due_date': details.dueDate,
-        'total_hours': details.total_hours,
-        'unit_price': details.unit_price,
-        'project_description': details.about,
-        'line_total': details.line_total,
+        'project_name': details.project_name,
+        'due_on_receipt': details.due_on_receipt,
+        'due_date': details.due_date,
+        'data': details.data,
+        'subtotal': details.subTotal,
+        'igst': details.igst,
+        'cgst': details.cgst,
+        'sgst': details.sgst,
+        'total': details.total
       });
   }
   getInvoiceDetails(client_id: string, invoice_id: string) {

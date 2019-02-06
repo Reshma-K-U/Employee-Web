@@ -1,20 +1,17 @@
 <div class="container">
 <div class="row">
   <mat-card class="header-card">
-      <!-- <div id="background"> -->
           <mat-card-header>
             <div>
             <div>
               <img src={{imageUrl}}>
             </div>
-            <div>
-                <label for="upload-photo"><i class="fas fa-camera"></i>Choose Photo</label>
-                <!-- <input type="file" name="photo" id="upload-photo" /> -->
-                <input type="file" id="upload-photo" (change)="onSelectFile($event)" placeholder="add a logo">
+            <div class="imgUpload">
+              <label class="imgLabel" for="upload-photo"><i class="fas fa-camera"></i> Choose Photo</label>
+              <input type="file" id="upload-photo" (change)="onSelectFile($event)" placeholder="add a logo">
             </div>
           </div>
           </mat-card-header>
-        <!-- </div> -->
          <mat-tab-group >
             <mat-tab label="Profile">
                  <exalt-employee-detail ></exalt-employee-detail>

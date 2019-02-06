@@ -1,4 +1,4 @@
-<button mat-button color="primary" (click)="onDownload()">Download</button>
+<button style="float:right" mat-button color="primary" (click)="onDownload()">Download</button>
 <div class="double" id=contentToConvert>
   <div class="row">
     <div class="col-md-6">
@@ -57,7 +57,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let invoiceDetails of invoiceDetails.data">
           <td>{{invoiceDetails.total_hours}}</td>
           <td>{{invoiceDetails.project_description}}</td>
           <td>{{invoiceDetails.unit_price}}</td>
@@ -78,17 +78,32 @@
             <tr class="noborder">
               <td class="noborder"></td><td class="noborder"></td>
               <td class="noborder">Subtotal</td>
-              <td></td>
+              <td>{{invoiceDetails.subtotal}}</td>
             </tr>
-            <tr class="noborder">
+            <tr class="noborder" *ngIf="invoiceDetails.client_country!='india'">
               <td class="noborder"></td><td class="noborder"></td>
               <td class="noborder">IGST 0%</td>
               <td>Exempted Under LUT<br>No:271/KKD/2017</td>
             </tr>
+            <tr class="noborder" *ngIf="invoiceDetails.client_country=='india'&&invoiceDetails.client_state!='kerala'">
+              <td class="noborder"></td><td class="noborder"></td>
+              <td class="noborder">IGST</td>
+              <td>{{invoiceDetails.igst}}</td>
+            </tr>
+            <tr class="noborder" *ngIf="invoiceDetails.client_state=='kerala'">
+              <td class="noborder"></td><td class="noborder"></td>
+              <td class="noborder">CGST</td>
+              <td>{{invoiceDetails.cgst}}</td>
+            </tr>
+            <tr class="noborder" *ngIf="invoiceDetails.client_state=='kerala'">
+              <td class="noborder"></td><td class="noborder"></td>
+              <td class="noborder">SGST</td>
+              <td>{{invoiceDetails.sgst}}</td>
+            </tr>
             <tr class="noborder">
               <td class="noborder"></td><td class="noborder"></td>
               <td class="noborder">Total</td>
-              <td></td>
+              <td>{{invoiceDetails.total}}</td>
             </tr>
             <tr class="noborder">
               <td class="noborder"></td><td class="noborder"></td>
