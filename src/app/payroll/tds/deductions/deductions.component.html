@@ -4,7 +4,7 @@
       <mat-option value="80d">80D</mat-option>
     </mat-select>
   </mat-form-field>
-  
+
 <table *ngIf="table80c">
   <thead>
     <tr>
@@ -21,21 +21,21 @@
   </thead>
   <tbody>
     <tr *ngFor="let j of array">
-      <td><mat-form-field  class="form-field"> 
+      <td><mat-form-field  class="form-field">
           <mat-select name="itemValue" (selectionChange)="addRow(j)">
             <mat-option *ngFor="let i of section80c" [value]="i.value">
               {{i.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><input matInput name="lta" [(ngModel)]="lta"></td>
+      <td><input matInput name="lta" [(ngModel)]="lta"></td>
+      <td><input matInput name="lta" [(ngModel)]="lta"></td>
+      <td><input matInput name="lta" [(ngModel)]="lta"></td>
+      <td><input matInput name="lta" [(ngModel)]="lta"></td>
+      <td><input matInput name="lta" [(ngModel)]="lta"></td>
       <td><mat-checkbox></mat-checkbox></td>
-      <td></td>
+      <td><input matInput name="lta" [(ngModel)]="lta"></td>
     </tr>
   </tbody>
 </table>
@@ -56,22 +56,21 @@
     </thead>
     <tbody>
       <tr *ngFor="let j of array">
-        <td><mat-form-field  class="form-field"> 
+        <td><mat-form-field  class="form-field">
             <mat-select name="itemValue" (selectionChange)="addRow(j)">
               <mat-option *ngFor="let i of section80d" [value]="i.value">
                 {{i.viewValue}}
               </mat-option>
             </mat-select>
           </mat-form-field></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><input matInput name="lta" [(ngModel)]="lta"></td>
+        <td><input matInput name="lta" [(ngModel)]="lta"></td>
+        <td><input matInput name="lta" [(ngModel)]="lta"></td>
+        <td><input matInput name="lta" [(ngModel)]="lta"></td>
+        <td><input matInput name="lta" [(ngModel)]="lta"></td>
+        <td><input matInput name="lta" [(ngModel)]="lta"></td>
         <td><mat-checkbox></mat-checkbox></td>
-        <td></td>
+        <td><input matInput name="lta" [(ngModel)]="lta"></td>
       </tr>
     </tbody>
   </table>
-  

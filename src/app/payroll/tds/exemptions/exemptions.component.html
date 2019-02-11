@@ -1,33 +1,41 @@
+<form #f="ngForm">
 <div class="content">
-    <h2>Exemptions</h2>
   <div class="green">
+      <h2>Exemptions</h2>
   <table>
-      <tr><b>Exemption</b><td><input type="text" name="desc"></td></tr>
-      <tr><b>Leave Encashment Exemption</b><td><input type="text" name="desc"></td></tr>
-      <tr><b>Gratuity Exemption</b><td><input type="text" name="desc"></td></tr>
+      <tr><b>Exemption</b><td>
+        <input matInput name="exem" [(ngModel)]="exem">
+      </td></tr>
+      <tr><b>Leave Encashment Exemption</b><td>
+        <input matInput name="lee" [(ngModel)]="lee">
+      </td></tr>
+      <tr><b>Gratuity Exemption</b><td>
+          <input matInput name="gex" [(ngModel)]="gex">
+      </td></tr>
     </table>
   </div>
   <div class="blue">
     <h2>HRA Exemptions</h2>
     <mat-card class="card">
-        <label for="email"><b>Total rent paid:</b></label><input type="text" name="desc">
+        <label for="email"><b>Total rent paid:</b></label> <input matInput name="totrent" [(ngModel)]="totrent">
       <mat-checkbox (change)="checkBoxClick(tick)">Override HRA Exemptions</mat-checkbox>
       <div *ngIf="checkbox">
-            <label for="email"><b>Total HRA:</b></label><input type="text" name="desc">
-            <label for="email"><b>40% of Basic:</b></label><input class="input" type="text" name="desc">
-            <label for="email"><b>Excess rent:</b></label><input type="text" name="desc">
-            <label for="email"><b>HRA Exemption:</b></label><input type="text" name="desc">
+            <label><b>Total HRA:</b></label> <input matInput name="tothra" [(ngModel)]="tothra">
+            <label><b>40% of Basic:</b></label> <input matInput name="b40" [(ngModel)]="b40">
+            <label><b>Excess rent:</b></label> <input matInput name="exrent" [(ngModel)]="exrent">
+            <label><b>HRA Exemption:</b></label> <input matInput name="hraex" [(ngModel)]="hraex">
       </div>
     </mat-card>
   </div>
   <div class="other">
       <h2>Other Exemptions</h2>
-  <mat-card>
-      <label for="email"><b>LTA Exemption:</b></label><input type="text" name="desc">
+  <mat-card class="card">
+      <label><b>LTA Exemption:</b></label> <input matInput name="lta" [(ngModel)]="lta">
     </mat-card>
   </div>
     </div>
-    <button class="btn btn-primary">SAVE</button>
+  </form>
+    <button class="btn btn-primary" (click)="onSaveClick(f)">SAVE</button>
     <button class="btn btn-danger">CANCEL</button>
 
 

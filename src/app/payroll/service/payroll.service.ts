@@ -185,16 +185,6 @@ getTaxDetails(id: string) {
   from.forEach((i, index) => {
     userDoc.collection(fromYear.toString()).doc(i).valueChanges()
     .subscribe( val1 => {
-      // if (!val1 ) {
-      //  monthData = {
-      //       'basicpay': 0,
-      //       'cedallow': 0,
-      //       'medallow': 0,
-      //       'conallow': 0,
-      //       'speallow': 0,
-      //       'tax': 0
-      //     };
-      // }
       if (!val1) {
         monthData = salary;
 
@@ -210,23 +200,12 @@ getTaxDetails(id: string) {
         to.forEach((j, ind) => {
           userDoc.collection(toYear.toString()).doc(j).valueChanges()
         .subscribe( val2 => {
-          // if (!val2 && !hasSalary) {
-          //   monthData = {
-          //       'basicpay': 0,
-          //       'cedallow': 0,
-          //       'medallow': 0,
-          //       'conallow': 0,
-          //       'speallow': 0,
-          //       'tax': 0
-          //     };
-          // }
           if (!val2 ) {
             monthData = salary;
           } else {
             if (!hasSalary) {
               hasSalary = true;
               this.startIndex = 9 + ind;
-              console.log('start', this.startIndex);
             }
             monthData = val2;
           }
@@ -252,4 +231,49 @@ getTaxDetails(id: string) {
 
     return of(data);
 }
+addExemption(form: any, empid) {
+  const employeeDocRef = this.afs.collection('tds').doc(empid);
+  employeeDocRef.
+     set({
+         'exemption': form.exem,
+         'lee': form.lee,
+         'gex': form.gex,
+         'totrent': form.totrent,
+         'tothra': form.tothra,
+         'b40': form.b40,
+         'exrent': form.exrent,
+         'hraex': form.hraex,
+         'lta': form.lta,
+     });
+  }
+  addPerquisite(form: any, empid) {
+    const employeeDocRef = this.afs.collection('tds').doc(empid);
+    employeeDocRef.
+       update({
+            'vehper': form.vehper,
+            'hoper': form.hoper,
+            'assres': form.assres,
+            'loanper': form.loanper,
+       });
+    }
+    addHousePropertyIncome(form: any, empid) {
+      const employeeDocRef = this.afs.collection('tds').doc(empid);
+      employeeDocRef.
+         update({
+            'tihp': form.tihp,
+            'ihlso': form.ihlso,
+            'tilop': form.tilop,
+            'totexem' : form.exem,
+            'totilop': form.totilop,
+            'alv': form.alv,
+            'muntax': form.muntax,
+            'unrent': form.unrent,
+            'netannval': form.netannval,
+            'd30': form.d30,
+            'ihl': form.ihl,
+            'lendname': form.lendname,
+            'lendpan': form.lendpan,
+            'ilop': form.ilop,
+         });
+      }
 }

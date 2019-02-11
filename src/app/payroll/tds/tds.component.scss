@@ -21,20 +21,20 @@ table, th, td {
     margin-left: 500px;
 }
 .tab {
-    // display:inline;
     margin-left: 40px;
-    // word-spacing: 30px;
     font-size: 140%;
 }
 .card{
-    background-color: darkgrey;
+    background-color:#EEF5F5;
 }
-.navbar{
-    background-color: wheat;
+  .navbar{
+    background-color: #BDBDBD;
     line-height: 3.5;
 }
 
 .form-field{
   display: flex !important;
-  justify-content: center !important;
+  justify-content: center !important;}
+label{
+  padding-left: 60px;
 }
