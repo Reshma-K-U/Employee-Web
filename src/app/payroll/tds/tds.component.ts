@@ -39,14 +39,9 @@ export class TdsComponent implements OnInit {
         this.employeeDetails.join_date = this.pyService.dateToString(this.employeeDetails.join_date);
         this.employeeDetails.dob = value.dob.toDate();
         this.employeeDetails.dob = this.pyService.dateToString(this.employeeDetails.dob);
-        // var day=this.employeeDetails.join_date.getDate();
-        // var month=this.employeeDetails.join_date.getMonth();
-        // month=month+1;
-        // var year=this.employeeDetails.join_date.getFullYear();
-        // this.employeeDetails.join_date=day+"/"+month+"/"+year;
         this.subscription.unsubscribe();
       }
-    )
+    );
 
   }
 }

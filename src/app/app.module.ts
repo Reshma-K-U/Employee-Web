@@ -45,8 +45,8 @@ import { AppRoutingModule } from './app-routing.module';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTreeModule} from '@angular/material/tree';
 
-import {EmployeeService} from  './employees/services/employee.services';
-import{FirestoreService} from '../app/services/firestore.service';
+import {EmployeeService} from './employees/services/employee.services';
+import {FirestoreService} from '../app/services/firestore.service';
 import {FirestoreClientService} from './clients/services/firestore.service'
 import {AttendanceService } from './attendance/service/attendance.service'
 
@@ -130,6 +130,9 @@ import { IncomeComponent } from './payroll/tds/income/income.component';
 import { DeductionsComponent } from './payroll/tds/deductions/deductions.component';
 import { ExemptionsComponent } from './payroll/tds/exemptions/exemptions.component';
 import { PerquisiteComponent } from './payroll/tds/perquisite/perquisite.component';
+import { OtherincomeComponent } from './payroll/tds/otherincome/otherincome.component';
+import { ResultComponent } from './payroll/tds/result/result.component';
+import { HousepropertyComponent } from './payroll/tds/houseproperty/houseproperty.component';
 
 
 @NgModule({
@@ -164,29 +167,17 @@ import { PerquisiteComponent } from './payroll/tds/perquisite/perquisite.compone
     ClientDetailsComponent,
     ClientItemComponent,
     InfoComponent,
-
     EmployeeLeaveComponent,
-
     ApplyLeaveComponent,
-
     EmployeeLeaveDetailComponent,
-
     LeaveDetailsComponent,
-
     AllLeavesComponent,
-
     AddPrivilageLeaveComponent,
-
     FilteredLeavesComponent,
-
     NavbarComponent,
-
     HomeComponent,
-
     AddsalaryComponent,
-
     HomeNavbarComponent,
-
     AttendanceComponent,
     NewempsalaryComponent,
     PayrollComponent,
@@ -195,7 +186,7 @@ import { PerquisiteComponent } from './payroll/tds/perquisite/perquisite.compone
     NewdependentComponent,
     EmployeeAttendanceComponent,
     AttendanceCalendarComponent,
-    
+
     SalaryComponent,
     SalaryDetailsComponent,
     AllsalaryslipsComponent,
@@ -216,6 +207,9 @@ import { PerquisiteComponent } from './payroll/tds/perquisite/perquisite.compone
     DeductionsComponent,
     ExemptionsComponent,
     PerquisiteComponent,
+    OtherincomeComponent,
+    ResultComponent,
+    HousepropertyComponent,
   ],
   imports: [
     BrowserModule,
