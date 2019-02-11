@@ -9,9 +9,9 @@ import { Subscription } from 'rxjs';
 })
 export class TdsComponent implements OnInit {
   employeeNames: any[];
-  navbar: boolean = false;
-  navbar2: boolean = false;
-  section: boolean = false;
+  navbar = false;
+  navbar2 = false;
+  section = false;
   empid: string;
   selectedOption: string;
   employeeDetails: any = {
@@ -22,10 +22,11 @@ export class TdsComponent implements OnInit {
     gender: '',
   };
   subscription: Subscription;
+  salaryDetails: any;
   constructor(private pyService: PayrollService, private fsService: FirestoreService) { }
 
   ngOnInit() {
-    this.employeeNames = this.fsService.getDataForList()
+    this.employeeNames = this.fsService.getDataForList();
   }
   onNameChange(empid) {
     this.navbar = true;
@@ -36,17 +37,12 @@ export class TdsComponent implements OnInit {
         this.employeeDetails.empid = value.emp_id;
         this.employeeDetails.gender = value.gender;
         this.employeeDetails.join_date = value.joining_date.toDate();
-        this.employeeDetails.join_date = this.pyService.dateToString(this.employeeDetails.join_date);
         this.employeeDetails.dob = value.dob.toDate();
-        this.employeeDetails.dob = this.pyService.dateToString(this.employeeDetails.dob);
-        // var day=this.employeeDetails.join_date.getDate();
-        // var month=this.employeeDetails.join_date.getMonth();
-        // month=month+1;
-        // var year=this.employeeDetails.join_date.getFullYear();
-        // this.employeeDetails.join_date=day+"/"+month+"/"+year;
         this.subscription.unsubscribe();
-      }
-    )
-
-  }
+      });
+      this.pyService.moreEmpFill(this.empid).subscribe(
+        val => {
+          this.salaryDetails = val;
+        });
+    }
 }

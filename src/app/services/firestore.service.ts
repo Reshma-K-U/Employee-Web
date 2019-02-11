@@ -233,10 +233,10 @@ export class FirestoreService {
         }
         updateSal(id: string, field: string, newVal: string) {
             this.afs.collection('employees').doc(id).update({
-                ['' + field + '']: newVal
+                ['' + field + '']: parseInt(newVal)
             });
             this.afs.collection('payroll').doc(id).update({
-                ['' + field + '']: newVal
+                ['' + field + '']: parseInt(newVal)
             });
         }
 

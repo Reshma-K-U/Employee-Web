@@ -1,3 +1,43 @@
-<p>
-  income works!
-</p>
+<table class="table" >
+  <thead class="thead-light table-bordered">
+    <tr>
+      <th >Component</th>
+      <th >Total</th>
+      <th  *ngFor="let m of months">{{m}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="Details && Details.length>0">
+      <th>BASIC</th>
+      <td>{{basicTotal}}</td>
+      <td *ngFor="let m of Details">{{m.basicpay}}</td>
+    </tr>
+    <tr>
+      <th>CONVEYANCE</th>
+      <td>{{conTotal}}</td>
+      <td *ngFor="let m of Details">{{m.conallow}}</td>
+    </tr>
+    <tr>
+      <th>MEDICAL</th>
+      <td>{{medTotal}}</td>
+      <td *ngFor="let m of Details">{{m.medallow}}</td>
+    </tr>
+    <tr>
+      <th>CHILDREN EDUCATION</th>
+      <td>{{cedTotal}}</td>
+      <td *ngFor="let m of Details">{{m.cedallow}}</td>
+    </tr>
+    <tr>
+      <th>SPECIAL</th>
+      <td>{{speTotal}}</td>
+      <td *ngFor="let m of Details">{{m.speallow}}</td>
+    </tr>
+    <tr>
+      <th>PROF TAX</th>
+      <td>{{12}}</td>
+      <td *ngFor="let m of Details">{{m.basicpay}}</td>
+    </tr>
+
+
+  </tbody>
+</table>
