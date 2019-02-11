@@ -16,10 +16,10 @@
   </div>
 
   <div class="row">
-      <mat-tab-group style="width:100%" #tabGroup> 
+      <mat-tab-group style="width:100%"> 
           <mat-tab label="Main">  </mat-tab>
          <mat-tab  label="Info"> 
-            <exalt-info *ngIf="tabGroup.selectedIndex==1"[client]="client"></exalt-info>
+            <!-- <exalt-info [client]="client"></exalt-info> -->
           </mat-tab>
           <mat-tab label="Payements"> </mat-tab>
           <mat-tab label="Documents">  </mat-tab>

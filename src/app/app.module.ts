@@ -118,6 +118,9 @@ import { AddprojectComponent } from './project/addproject/addproject.component';
 import { EmployeeDocumentsComponent } from './employees/employee-documents/employee-documents.component';
 import { AssetsComponent } from './assets/assets.component';
 import { AddassetsComponent } from './assets/addassets/addassets.component';
+import { ClientPaymentComponent } from './clients/client-details/client-payment/client-payment.component';
+import { ClientInvoiceComponent } from './clients/client-details/client-invoice/client-invoice.component';
+import { NewInvoiceComponent } from './clients/client-details/new-invoice/new-invoice.component';
 
 import { ProjectItemComponent } from './project/project-list/project-item/project-item.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
@@ -196,6 +199,10 @@ import { HousepropertyComponent } from './payroll/tds/houseproperty/housepropert
     EmployeeDocumentsComponent,
     AssetsComponent,
     AddassetsComponent,
+    ClientPaymentComponent,
+    ClientInvoiceComponent,
+    NewInvoiceComponent,
+    
     ProjectItemComponent,
     ProjectDetailComponent,
     AccountstatementComponent,
@@ -254,8 +261,7 @@ import { HousepropertyComponent } from './payroll/tds/houseproperty/housepropert
   providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
   bootstrap: [AppComponent],
   entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
-  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,ProjectComponent,
- AddassetsComponent,AssignassetsComponent,SearchassetsComponent,
-EditassetsComponent]
+  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,ClientInvoiceComponent,
+  AddassetsComponent,AssignassetsComponent,SearchassetsComponent,ProjectComponent,EditassetsComponent]
 })
 export class AppModule { }

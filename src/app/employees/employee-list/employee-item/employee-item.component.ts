@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {Employee} from '../../model/employee.model';
 import { FirestoreService } from '../../../services/firestore.service';
 
@@ -8,31 +8,32 @@ import { FirestoreService } from '../../../services/firestore.service';
   styleUrls: ['./employee-item.component.scss']
 })
 export class EmployeeItemComponent implements OnInit {
-  
-  @Input() employee:any;
-  loadEmployee:boolean=false;
-  selected:boolean=false;
+  @Input() employee: any;
+  imageUrl = 'assets/images/employee.png';
+  logoPath = '';
 
-  constructor(private fsService:FirestoreService) { }
+  selected = false;
 
-  ngOnInit() { 
+  constructor(private fsService: FirestoreService) { }
+
+  ngOnInit() {
+    this.logoPath = this.employee['logoPath'] ;
+      this.fsService.getImageUrl(this.logoPath).subscribe(data => {
+        this.imageUrl = data;
+      });
   }
 
-  loadDetails(){
-      this.loadEmployee=true;
-      // this.fsService.getData(this.employee.emp_id);
+
+  select(event: any) {
+    this.selected = true;
   }
 
-  select(event:any){
-    this.selected=true;
-  }
-
-  remove(){
+  remove() {
     this.fsService.remove(this.employee.emp_id);
   }
 
-  cancel(){
-    this.selected=false;
+  cancel() {
+    this.selected = false;
   }
 
 }
@@ -40,4 +41,3 @@ export class EmployeeItemComponent implements OnInit {
 
 
 
-  

@@ -26,6 +26,7 @@ import { ProjectComponent } from './project/project.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
 import { AddprojectComponent } from './project/addproject/addproject.component';
 import { AssetsComponent } from './assets/assets.component';
+import { NewInvoiceComponent } from './clients/client-details/new-invoice/new-invoice.component';
 import { ProjectDetailComponent} from './project/project-detail/project-detail.component';
 import { AccountstatementComponent } from './payroll/accountstatement/accountstatement.component';
 import { SearchassetsComponent } from './assets/searchassets/searchassets.component';
@@ -55,6 +56,7 @@ const routes: Routes = [
   {path: './employee/employee-salary/employee-salary.component', component: EmployeeSalaryComponent},
   {path: 'employee-salary', component: EmployeeSalaryComponent},
   {path: 'allsalaryslips', component: AllsalaryslipsComponent},
+  {path: 'newinvoice', component: NewInvoiceComponent},
   {path: 'accountstatement', component: AccountstatementComponent},
   {path: 'searchassets', component: SearchassetsComponent},
   {path: 'editassets', component: EditassetsComponent},
