@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input } from '@angular/core';
+import { Component, OnInit , Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import {ClientInvoiceComponent} from '../client-invoice/client-invoice.component';
 
@@ -9,10 +9,10 @@ import {ClientInvoiceComponent} from '../client-invoice/client-invoice.component
   styleUrls: ['./client-payment.component.scss']
 })
 export class ClientPaymentComponent implements OnInit {
-  
-  @Input() client:any;
-  
-  constructor( public dialog: MatDialog,) { }
+
+  @Input() client: any;
+
+  constructor( public dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -20,9 +20,9 @@ export class ClientPaymentComponent implements OnInit {
 
   newInvoice(): void {
 
-    const dialogRef = this.dialog.open(ClientInvoiceComponent,{
-        data: {data:this.client},
-        width: '750px',
+    const dialogRef = this.dialog.open(ClientInvoiceComponent, {
+        data: {data: this.client},
+        width: '945px',
       });
     }
 

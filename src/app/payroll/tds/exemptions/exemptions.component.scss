@@ -1,52 +1,42 @@
-
+.parent{
+  padding:40px;
+}
 table {
-    width: 65%;
-    // background-color: white;
+    width: 100%;
   }
 
 table, th, td {
     border: 2px solid #f2f2f2;
+    padding:5px;
+    font-size: small
  }
 
- td {
-    height: 25px;
-    width: 100px;
-    vertical-align: bottom;
-}
 .card{
   box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);
   width:50%;
-  height:100%;
-  background-color: darkgray;
-  // background: #99b3ff;
+  margin-top:30px;
+
 }
-
-
-
 .content {
   overflow: auto;
   border: 3px solid #666;
 }
-// .content div {
-//   padding: 10px;
-// }
-.blue {
-  float: right;
-  width: 45%;
-}
-.green {
-  float: left;
-  width: 35%;
-}
-.other{
-  float: inherit;
-  width: 35%;
-}
-.othercard{
-  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);
-  width:50%;
-  height:100%;
-}
+
 input{
   background-color: white;
+}
+p{
+  font-size:12px;
+}
+
+.other{
+  margin-top: 30px;
+}
+
+.mat-checkbox{
+  padding:10px;
+}
+
+.btn{
+  margin:3px !important;
 }

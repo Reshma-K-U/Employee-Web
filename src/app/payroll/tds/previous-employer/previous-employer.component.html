@@ -1,0 +1,84 @@
+<table class="table" >
+  <thead class="thead-light table-bordered">
+    <tr>
+      <th >Month</th>
+      <th >Income After Exemption</th>
+      <th>Professional Tax</th>
+      <th>PF</th>
+      <th>Total Tax</th>
+      <th>Income Tax</th>
+      <th>Surcharge</th>
+      <th>Cess</th>
+      <th>LTA Exemption</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          <mat-form-field  class="form-field">
+              <mat-select [(ngModel)]="details.month" (selectionChange)="onSelectMonth($event.value)">
+                <mat-option *ngFor="let m of months" [value]="m.viewVal">
+                  {{m.viewVal}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+      </td>
+      <td>
+          <mat-form-field  class="form-field">
+              <input matInput name="incAfterExemption" [(ngModel)]="details.incAfterExemption"
+               >
+             </mat-form-field>
+      </td>
+      <td>
+          <mat-form-field  class="form-field">
+              <input matInput name="profTax" [(ngModel)]="details.profTax"
+
+              >
+             </mat-form-field>
+      </td>
+      <td>
+          <mat-form-field  class="form-field">
+              <input matInput name="pf" [(ngModel)]="details.pf"
+
+              >
+             </mat-form-field>
+      </td>
+      <td>
+          <mat-form-field  class="form-field">
+              <input matInput name="totalTax" [(ngModel)]="details.totalTax"
+
+              >
+             </mat-form-field>
+      </td>
+      <td><mat-form-field  class="form-field">
+          <input matInput name="incomeTax"  [(ngModel)]="details.incomeTax"
+
+         >
+         </mat-form-field></td>
+      <td><mat-form-field  class="form-field">
+          <input matInput name="surCharge"  [(ngModel)]="details.surCharge"
+
+         >
+         </mat-form-field></td>
+      <td><mat-form-field  class="form-field">
+          <input matInput name="cess" [(ngModel)]="details.cess"
+
+          >
+         </mat-form-field></td>
+      <td><mat-form-field  class="form-field">
+          <input matInput name="ltaExemption" [(ngModel)]="details.ltaExemption"
+
+         >
+         </mat-form-field>
+        </td>
+    </tr>
+  </tbody>
+</table>
+<div class="row">
+  <div class="col-md-5"></div>
+  <div class="col-md-2">
+      <button class="btn btn-primary"(click)="onSave()">Save</button>
+      <button class="btn btn-danger">CANCEL</button>
+  </div>
+  <div class="col-md-5"></div>
+</div>

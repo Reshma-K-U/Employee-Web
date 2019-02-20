@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PayrollService } from '../../service/payroll.service';
+import { TaxComputationService } from '../service/tax-computation.service';
 
 
 @Component({
@@ -17,12 +18,11 @@ export class IncomeComponent implements OnInit {
   speTotal =  0;
   medTotal =  0;
   conTotal =  0;
-  constructor(private pyService: PayrollService) { }
+  constructor(private pyService: PayrollService , private itService: TaxComputationService) { }
 
   ngOnInit() {
-    this.pyService.getTaxDetails(this.id).subscribe(val => {
+    this.itService.getTaxDetails(this.id).subscribe(val => {
       this.Details = val;
-      console.log(this.Details);
     });
 
     setTimeout(() => {

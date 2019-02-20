@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'exalt-otherincome',
@@ -6,25 +6,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./otherincome.component.scss']
 })
 export class OtherincomeComponent implements OnInit {
-
-  plusopen:boolean = false;
-  status:number = 1;
-  tableon: boolean = false;
+  @Input() empid: string;
+  otherIncome = {
+    'descriptipn': '',
+    'maxLimit': '',
+    'amount': '',
+    'remarks': ''
+  };
+  shortTermIncome = {
+    'descriptipn': '',
+    'maxLimit': '',
+    'amount': '',
+    'remarks': ''
+  };
+  descriptions = [{viewVal: 'Other income 1'}, {viewVal: 'Other income 2'}];
   constructor() { }
 
   ngOnInit() {
   }
-  // onAdd() {
-  //   this.tableon = true;
-  // }
-  plusClick(status) {
-    console.log(status);
-    this.status = status + 1;
-    if (this.status % 2 === 0) {
-            this.plusopen = true;
-    }
-    else {
-      this.plusopen = false;
-    }
+  onSelectDescription(val: string) {
+    console.log(val);
   }
 }

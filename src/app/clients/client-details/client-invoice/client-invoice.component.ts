@@ -46,7 +46,6 @@ export class ClientInvoiceComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const value = form.value;
-    console.log('value', value);
    this.invoiceDetails.invoice_num =  value.invoice_num,
    this.invoiceDetails.project_name =  value.project,
    this.invoiceDetails.due_on_receipt =  value.dueOnR,
@@ -54,7 +53,7 @@ export class ClientInvoiceComponent implements OnInit {
     this.fsService.createNewInvoice(this.invoiceDetails, this.client);
     this.dialogRef.close();
     this.router.navigate(['newinvoice'],
-    { queryParams: {client_id: this.client.data.client_id, invoice_id: value.invoice_num}});
+    { queryParams: {year: new Date().getFullYear(), month: new Date().getMonth(), invoice_id: value.invoice_num}});
   }
 
   onCancel() {

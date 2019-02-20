@@ -116,8 +116,9 @@ export class FirestoreClientService {
   }
 
   createNewInvoice(details: any, client: any) {
-    console.log(details);
-       this.afs.collection('clients').doc(client.data.client_id).collection('invoices')
+      const year = new Date().getFullYear();
+      const month = new Date().getMonth();
+       this.afs.collection('invoices').doc(year.toString()).collection(month.toString())
       .doc(details.invoice_num).set({
         'client_name': client.data.company_name,
         'client_address': client.data.address,
@@ -135,8 +136,8 @@ export class FirestoreClientService {
         'total': details.total
       });
   }
-  getInvoiceDetails(client_id: string, invoice_id: string) {
-    return this.afs.collection('clients').doc(client_id).collection('invoices')
+  getInvoiceDetails(year: string, month: string, invoice_id: string) {
+    return this.afs.collection('invoices').doc(year).collection(month)
     .doc(invoice_id).valueChanges();
   }
 }

@@ -8,27 +8,25 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./houseproperty.component.scss']
 })
 export class HousepropertyComponent implements OnInit {
-
+@Input() empid: string;
   house: any = {
     tihp: '',
     ihlso: '',
     tilop: '',
     totexem: '',
   };
-  plusopen: boolean = false;
-  plusopen2:boolean = false;
-  status: number = 1;
-  status2:number = 1;
+  plusopen = false;
+  plusopen2 = false;
+  status = 1;
+  status2 = 1;
   constructor(private pyService: PayrollService) { }
-  @Input() empid: any;
   ngOnInit() {
   }
     plusClick(status) {
       this.status = status + 1;
       if (this.status % 2 === 0) {
               this.plusopen = true;
-      }
-      else {
+      } else {
         this.plusopen = false;
       }
     }
@@ -36,20 +34,19 @@ export class HousepropertyComponent implements OnInit {
       this.status2 = status2 + 1;
       if (this.status2 % 2 === 0) {
               this.plusopen2 = true;
-      }
-      else {
+      } else {
         this.plusopen2 = false;
       }
     }
     onSaveClick(form: NgForm) {
-      this.house.tihp = parseInt(this.house.ihlso) + parseInt(this.house.tilop) + parseInt(this.house.totexem);
+      this.house.tihp = parseInt(this.house.ihlso, 10) + parseInt(this.house.tilop, 10) + parseInt(this.house.totexem, 10);
       console.log(this.house.tihp);
       console.log(this.house.ihlso);
       // const value = form.value;
       // this.pyService.addHousePropertyIncome(value, this.empid);
     }
     autoFill() {
-      this.house.tihp = parseInt(this.house.ihlso) + parseInt(this.house.tilop) + parseInt(this.house.totexem);
+      this.house.tihp = parseInt(this.house.ihlso, 10) + parseInt(this.house.tilop, 10) + parseInt(this.house.totexem, 10);
       console.log(this.house.tihp);
     }
 }
