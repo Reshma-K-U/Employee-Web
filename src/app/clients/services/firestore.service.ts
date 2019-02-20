@@ -115,6 +115,8 @@ export class FirestoreClientService {
     return of(data);
   }
 
+
+
   createNewInvoice(details: any, client: any) {
       const year = new Date().getFullYear();
       const month = new Date().getMonth();

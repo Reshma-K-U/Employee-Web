@@ -48,6 +48,7 @@ import {FirestoreService} from '../app/services/firestore.service';
 import {FirestoreClientService} from './clients/services/firestore.service';
 import {AttendanceService } from './attendance/service/attendance.service';
 import {TaxComputationService} from './payroll/tds/service/tax-computation.service';
+import {MatListModule} from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { BasicInfoComponent } from './employees/add-employee/basic-info/basic-info.component';
@@ -127,11 +128,15 @@ import { AccountstatementComponent } from './payroll/accountstatement/accountsta
 import { AssignassetsComponent } from './assets/assignassets/assignassets.component';
 import { SearchassetsComponent } from './assets/searchassets/searchassets.component';
 import { EditassetsComponent } from './assets/editassets/editassets.component';
+import { ProjInfoComponent } from './project/project-detail/proj-info/proj-info.component';
+import { ProjDocComponent } from './project/project-detail/proj-doc/proj-doc.component';
 import { TdsComponent } from './payroll/tds/tds.component';
 import { IncomeComponent } from './payroll/tds/income/income.component';
 import { DeductionsComponent } from './payroll/tds/deductions/deductions.component';
 import { ExemptionsComponent } from './payroll/tds/exemptions/exemptions.component';
 import { PerquisiteComponent } from './payroll/tds/perquisite/perquisite.component';
+import { ProjPaymentComponent } from './project/project-detail/proj-payment/proj-payment.component';
+import { ProjInvoiceComponent } from './project/project-detail/proj-invoice/proj-invoice.component';
 import { OtherincomeComponent } from './payroll/tds/otherincome/otherincome.component';
 import { ResultComponent } from './payroll/tds/result/result.component';
 import { HousepropertyComponent } from './payroll/tds/houseproperty/houseproperty.component';
@@ -204,18 +209,21 @@ import { AddaccountsComponent } from './accounts/addaccounts/addaccounts.compone
     ClientPaymentComponent,
     ClientInvoiceComponent,
     NewInvoiceComponent,
-
     ProjectItemComponent,
     ProjectDetailComponent,
     AccountstatementComponent,
     AssignassetsComponent,
     SearchassetsComponent,
     EditassetsComponent,
+    ProjInfoComponent,
+    ProjDocComponent,
     TdsComponent,
     IncomeComponent,
     DeductionsComponent,
     ExemptionsComponent,
     PerquisiteComponent,
+    ProjPaymentComponent,
+    ProjInvoiceComponent,
     OtherincomeComponent,
     ResultComponent,
     HousepropertyComponent,
@@ -251,6 +259,8 @@ import { AddaccountsComponent } from './accounts/addaccounts/addaccounts.compone
     MatCheckboxModule,
     MatGridListModule,
     MatTreeModule,
+    MatListModule,
+
     AppRoutingModule,
     MatCheckboxModule,
     PdfViewerModule,
@@ -268,6 +278,6 @@ import { AddaccountsComponent } from './accounts/addaccounts/addaccounts.compone
   bootstrap: [AppComponent],
   entryComponents: [NewqualificationComponent, NewinterestComponent, NewexperienceComponent, AddPrivilageLeaveComponent, AddsalaryComponent,
   NewempsalaryComponent, EmployeeSalaryComponent, NewdependentComponent, ClientInvoiceComponent,
-  AddassetsComponent, AssignassetsComponent, SearchassetsComponent, ProjectComponent, EditassetsComponent]
+  AddassetsComponent, AssignassetsComponent, SearchassetsComponent, ProjectComponent, EditassetsComponent, ProjInvoiceComponent]
 })
 export class AppModule { }

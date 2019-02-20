@@ -25,9 +25,9 @@ export class ClientInvoiceComponent implements OnInit {
 
   newRow: any = {
     'total_hours': '',
-      'unit_price': '',
+      'unit_price': 0,
       'project_description': '',
-      'line_total': '',
+      'line_total': 0,
   };
   projects: any[] = [];
   constructor(

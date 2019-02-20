@@ -38,6 +38,7 @@ date: Date = new Date();
     this.route.queryParams.subscribe(params => {
       this.year = params['year'];
       this.month = params['month'];
+
       this.invoice_id = params['invoice_id'];
   });
    this.fsService.getInvoiceDetails(this.year, this.month, this.invoice_id).subscribe(

@@ -21,7 +21,7 @@ export class AttendanceComponent implements OnInit {
   constructor(private atService:AttendanceService,private fsService:FirestoreService) { }
 
   ngOnInit(){
-   
+
     this.allEmployees= this.fsService.getDataForList();
     this.checkinStatus=[];
     this.subscription=this.atService.getLeaveDetails(this.todaydate).subscribe(
@@ -35,15 +35,15 @@ export class AttendanceComponent implements OnInit {
         this.checkinStatus.push(post.payload.doc.data());
       })
     })
-     
+
   }
 
-  
+
 
     getLeaveStatus(id:string){
-     
+
     for(var j=0;j<this.leavesTaken.length;j++){
-      console.log(this.leavesTaken.length);
+
       if(this.leavesTaken[j].id==id&&this.leavesTaken[j].days==1){
           return true;
       }
@@ -52,18 +52,18 @@ export class AttendanceComponent implements OnInit {
   }
 
   getCheckinStatus(id:string){
-    
+
     for(var j=0;j<this.checkinStatus.length;j++){
-     
+
       if(this.checkinStatus[j].empid==id&&this.checkinStatus[j].isCheckedin==true){
         return true;
       }
     }
      return false;
-  } 
+  }
 
   getCheckoutStatus(id:string){
-  
+
     for(var j=0;j<this.checkinStatus.length;j++){
      if(this.checkinStatus[j].empid==id && this.checkinStatus[j].isCheckedout==true){
         return true;
@@ -71,7 +71,7 @@ export class AttendanceComponent implements OnInit {
     }
     return false;
   }
-  
+
   onCheckin(id:string){
     this.atService.onCheckin(id,this.todaydate);
     return new Date().getTime();
