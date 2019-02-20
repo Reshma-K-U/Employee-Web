@@ -136,6 +136,8 @@ import { OtherincomeComponent } from './payroll/tds/otherincome/otherincome.comp
 import { ResultComponent } from './payroll/tds/result/result.component';
 import { HousepropertyComponent } from './payroll/tds/houseproperty/houseproperty.component';
 import { PreviousEmployerComponent } from './payroll/tds/previous-employer/previous-employer.component';
+import { AccountsComponent } from './accounts/accounts.component';
+import { AddaccountsComponent } from './accounts/addaccounts/addaccounts.component';
 
 
 @NgModule({
@@ -218,6 +220,8 @@ import { PreviousEmployerComponent } from './payroll/tds/previous-employer/previ
     ResultComponent,
     HousepropertyComponent,
     PreviousEmployerComponent,
+    AccountsComponent,
+    AddaccountsComponent,
   ],
   imports: [
     BrowserModule,

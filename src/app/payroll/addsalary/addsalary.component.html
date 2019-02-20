@@ -1,6 +1,6 @@
 <h2>ADD SALARY DETAILS</h2>
 <form #f="ngForm">
-    <div class="row"> 
+    <div class="row">
         <div class="col-md-4">
             <mat-form-field  class="form-field">
                 <input matInput name="empid" [(ngModel)]="employeeDetail.empid" placeholder="Employee ID"></mat-form-field>
@@ -14,7 +14,7 @@
                 <input matInput name="join_date" [(ngModel)]="employeeDetail.join_date" placeholder="Join Date"></mat-form-field>
         </div>
     </div>
-    <div class="row"> 
+    <div class="row">
         <div class="col-md-4">
             <mat-form-field  class="form-field">
                 <input matInput name="basicpay" [(ngModel)]="employeeDetail.basicpay"  placeholder="Basic pay"></mat-form-field>
@@ -42,19 +42,19 @@
                 <input matInput name="cedallow" [(ngModel)]="employeeDetail.cedallow" placeholder="Children Education Allowance"></mat-form-field>
         </div>
     </div>
-    <div class="row"> 
+    <div class="row">
         <div class="col-md-4">
             <mat-form-field  class="form-field">
-                <input matInput name="bonus" [(ngModel)]="employeeDetail.bonus" placeholder="Bonus"></mat-form-field>        
+                <input matInput name="pt" [(ngModel)]="employeeDetail.pt" placeholder="PT"></mat-form-field>
         </div>
         <div class="col-md-4">
-            <mat-form-field  class="form-field">
-                <input matInput name="arrears" [(ngModel)]="employeeDetail.arrears" placeholder="Arrears"></mat-form-field>    
-        </div>
-        <div class="col-md-4">
-            <mat-form-field  class="form-field">
-                <input matInput name="lop" [(ngModel)]="employeeDetail.lop" placeholder="LOP"></mat-form-field>    
-        </div>
+          <mat-form-field  class="form-field">
+              <input matInput name="esi" [(ngModel)]="employeeDetail.esi" placeholder="ESI"></mat-form-field>
+      </div>
+      <div class="col-md-4">
+          <mat-form-field  class="form-field">
+              <input matInput name="wwf" [(ngModel)]="employeeDetail.wwf"  placeholder="WWF"></mat-form-field>
+      </div>
     </div>
     <div class="row">
         <div class="col-md-4">
@@ -62,22 +62,24 @@
                 <input matInput name="gwp" [(ngModel)]="employeeDetail.gwp" placeholder="Gross Wage Payable"></mat-form-field>
         </div>
         <div class="col-md-4">
-            <mat-form-field  class="form-field">                
-                <input matInput name="esi" [(ngModel)]="employeeDetail.esi" placeholder="ESI"></mat-form-field>
-        </div>
-        <div class="col-md-4">
-            <mat-form-field  class="form-field">
-                <input matInput name="wwf" [(ngModel)]="employeeDetail.wwf"  placeholder="WWF"></mat-form-field>
-        </div>
+          <mat-form-field  class="form-field">
+              <input matInput name="arrears" [(ngModel)]="employeeDetail.arrears" placeholder="Arrears"></mat-form-field>
+      </div>
+      <div class="col-md-4">
+          <mat-form-field  class="form-field">
+              <input matInput name="lop" [(ngModel)]="employeeDetail.lop" placeholder="LOP"></mat-form-field>
+      </div>
+
+
     </div>
-    <div class="row"> 
+    <div class="row">
         <div class="col-md-4">
             <mat-form-field  class="form-field">
-                <input matInput name="advance" [(ngModel)]="employeeDetail.advance" placeholder="Advance"></mat-form-field>            
+                <input matInput name="advance" [(ngModel)]="employeeDetail.advance" placeholder="Advance"></mat-form-field>
         </div>
         <div class="col-md-4">
             <mat-form-field  class="form-field">
-                <input matInput name="it" [(ngModel)]="employeeDetail.it" placeholder="IT"></mat-form-field>   
+                <input matInput name="it" [(ngModel)]="employeeDetail.it" placeholder="IT"></mat-form-field>
         </div>
         <div class="col-md-4">
             <mat-form-field  class="form-field">

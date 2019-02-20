@@ -34,6 +34,8 @@ import { EditassetsComponent } from './assets/editassets/editassets.component';
 import { TdsComponent } from './payroll/tds/tds.component';
 import { IncomeComponent } from './payroll/tds/income/income.component';
 import { PerquisiteComponent } from './payroll/tds/perquisite/perquisite.component';
+import { AccountsComponent } from './accounts/accounts.component';
+import { AddaccountsComponent } from './accounts/addaccounts/addaccounts.component';
 const routes: Routes = [
   {path: '', component: EmployeesComponent, pathMatch: 'full'},
   {path: 'employees', component: EmployeesComponent},
@@ -67,6 +69,8 @@ const routes: Routes = [
   {path: 'project-list', component: ProjectListComponent},
   {path: 'addproject', component: AddprojectComponent },
   {path: 'project-detail/:id', component: ProjectDetailComponent},
+  {path: 'accounts', component: AccountsComponent},
+  {path: 'addaccounts', component: AddaccountsComponent},
 ];
 
 @NgModule({

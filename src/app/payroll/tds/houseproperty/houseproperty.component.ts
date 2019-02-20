@@ -40,13 +40,8 @@ export class HousepropertyComponent implements OnInit {
     }
     onSaveClick(form: NgForm) {
       this.house.tihp = parseInt(this.house.ihlso, 10) + parseInt(this.house.tilop, 10) + parseInt(this.house.totexem, 10);
-      console.log(this.house.tihp);
-      console.log(this.house.ihlso);
-      // const value = form.value;
-      // this.pyService.addHousePropertyIncome(value, this.empid);
     }
     autoFill() {
       this.house.tihp = parseInt(this.house.ihlso, 10) + parseInt(this.house.tilop, 10) + parseInt(this.house.totexem, 10);
-      console.log(this.house.tihp);
     }
 }

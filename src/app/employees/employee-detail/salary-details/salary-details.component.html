@@ -14,25 +14,37 @@
           <tr>
             <th>Basic pay</th>
             <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editBasicpay($event)">{{employee.basicpay}}</td>
-          </tr> 
+          </tr>
           <tr>
             <th>HRA</th>
             <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editHra($event)">{{employee.hra}}</td>
-          </tr> 
+          </tr>
           <tr>
               <th>Medical Allowance</th>
               <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editMedallow($event)">{{employee.medallow}}</td>
-            </tr>  
+            </tr>
             <tr>
                 <th>Children Education Allowance</th>
                 <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editCedallow($event)">{{employee.cedallow}}</td>
-              </tr> 
+              </tr>
               <tr>
                   <th>Special Allowance</th>
                   <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editSpeallow($event)">{{employee.speallow}}</td>
-                </tr> 
+                </tr>
               <tr>
-                  </tr> 
+                  <th>WWF</th>
+                  <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editWwf($event)">{{employee.wwf}}</td>
+                </tr>
+                <tr>
+                  <th>ESI</th>
+                  <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editEsi($event)">{{employee.esi}}</td>
+                </tr>
+                <tr>
+                  <th>Professional Tax</th>
+                  <td class="data" [attr.contenteditable]="editMode===true ? true : false" (input)="editPt($event)">{{employee.pt}}</td>
+                </tr>
+              <tr>
+                  </tr>
             </table>
       </mat-card-content>
       <hr width="100%">

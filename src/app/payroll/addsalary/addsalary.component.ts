@@ -10,69 +10,71 @@ import { Subscription } from 'rxjs';
 })
 export class AddsalaryComponent implements OnInit {
 
-    date:Date=new Date;
-    employeeDetail:any={
-    empid:"",
-    name:"",
-    join_date:"",
-    basicpay:"",
-    hra:"",
-    medallow:"",
-    speallow:"",
-    conallow:"",
-    cedallow:"",
-    bonus:0,
-    arrears:0,
-    gwp:0,
-    esi:0,
-    wwf:0,
-    advance:0,
-    it:0,
-    totded:0,
-    others:0,
-    lop:0,
-  }
-   subscription:Subscription;
-  constructor(private moreempser:PayrollService,
-    public dialogRef:MatDialogRef<AddsalaryComponent>, 
-    @Inject(MAT_DIALOG_DATA) public data:any,
+    date: Date = new Date;
+    employeeDetail: any = {
+    empid: '',
+    name: '',
+    join_date: '',
+    basicpay: '',
+    hra: '',
+    medallow: '',
+    speallow: '',
+    conallow: '',
+    cedallow: '',
+    bonus: 0,
+    arrears: 0,
+    gwp: 0,
+    esi: 0,
+    wwf: 0,
+    advance: 0,
+    it: 0,
+    totded: 0,
+    others: 0,
+    lop: 0,
+    pt: 0,
+  };
+   subscription: Subscription;
+  constructor(private moreempser: PayrollService,
+    public dialogRef: MatDialogRef<AddsalaryComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     ) { }
 
   ngOnInit() {
-    this.subscription=this.moreempser.moreEmpFill(this.data.id).subscribe(
-      (value)=>{
-        this.employeeDetail.empid=value.empid;
-        this.employeeDetail.empname=value.name;
-        this.employeeDetail.join_date=value.join_date.toDate();
-        var jdate=this.employeeDetail.join_date.getDate();
-        var jmonth=this.employeeDetail.join_date.getMonth();
-        jmonth=jmonth+1;
-        var jyear=this.employeeDetail.join_date.getFullYear();
-        this.employeeDetail.join_date=jdate+"/"+jmonth+"/"+jyear;
-        this.employeeDetail.hra=value.hra;
-        this.employeeDetail.basicpay=value.basicpay;
-        this.employeeDetail.medallow=value.medallow;
-        this.employeeDetail.speallow=value.speallow;
-        this.employeeDetail.cedallow=value.cedallow;
-        this.employeeDetail.conallow=value.conallow;
-
-        // this.employeeDetail.bonus=value.bonus;
-        // this.employeeDetail.arrears=value.arrears;
+    this.subscription = this.moreempser.moreEmpFill(this.data.id).subscribe(
+      (value) => {
+        this.employeeDetail.empid = value.empid;
+        this.employeeDetail.empname = value.name;
+        this.employeeDetail.join_date = value.join_date.toDate();
+        var jdate = this.employeeDetail.join_date.getDate();
+        var jmonth = this.employeeDetail.join_date.getMonth();
+        jmonth = jmonth + 1;
+        var jyear = this.employeeDetail.join_date.getFullYear();
+        this.employeeDetail.join_date = jdate + "/" + jmonth + "/" + jyear;
+        this.employeeDetail.hra = value.hra;
+        this.employeeDetail.basicpay = value.basicpay;
+        this.employeeDetail.medallow = value.medallow;
+        this.employeeDetail.speallow = value.speallow;
+        this.employeeDetail.cedallow = value.cedallow;
+        this.employeeDetail.conallow = value.conallow;
+        this.employeeDetail.esi = value.esi;
+        this.employeeDetail.wwf = value.wwf;
+        this.employeeDetail.pt = value.pt;
+        console.log(this.employeeDetail.pt);
+        console.log(this.employeeDetail.wwf);
+        console.log(this.employeeDetail.esi);
         // this.employeeDetail.gwp=value.gwp;
-        // this.employeeDetail.esi=value.esi;
         // this.employeeDetail.it=value.it;
         // this.employeeDetail.advance=value.advance;
         // this.employeeDetail.totded=value.totded;
         // this.employeeDetail.lop=value.lop;
       this.subscription.unsubscribe();
-    })
+    });
   }
-  onSave(){   
-    this.moreempser.moreEmployeeSalary(this.employeeDetail,this.data.date);
+  onSave() {
+    this.moreempser.moreEmployeeSalary(this.employeeDetail, this.data.date);
     this.dialogRef.close();
   }
-  onCancel(){
+  onCancel() {
     this.dialogRef.close();
   }
-
 }

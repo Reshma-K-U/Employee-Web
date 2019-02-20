@@ -65,6 +65,9 @@ export class FirestoreService {
             'medallow': employee.salary.medallow,
             'speallow': employee.salary.speallow,
             'conallow': employee.salary.conallow,
+            'wwf': employee.salary.wwf,
+            'esi': employee.salary.esi,
+            'pt': employee.salary.pt,
             'total': employee.salary.total,
      });
 
@@ -113,6 +116,9 @@ export class FirestoreService {
             'medallow': employee.salary.medallow,
             'speallow': employee.salary.speallow,
             'conallow': employee.salary.conallow,
+            'wwf': employee.salary.wwf,
+            'esi': employee.salary.esi,
+            'pt': employee.salary.pt,
             'total': employee.salary.total,
             'isEdited': false,
          });
