@@ -16,9 +16,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>a</td>
-        <td>b</td>
+      <tr *ngFor="let acc of accountDetails">
+        <td>{{acc.creditname}}</td>
+        <td>{{acc.amount}}</td>
       </tr>
+      <tr>
+        <td>Total</td>
+        <td>{{this.creditTotal}}</td>
       </tbody>
       </table>

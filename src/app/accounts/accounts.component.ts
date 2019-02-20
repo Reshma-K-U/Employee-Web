@@ -11,6 +11,7 @@ import { Route, Router } from '@angular/router';
 export class AccountsComponent implements OnInit {
 
   accountDetails:any[];
+  creditTotal:any[];
   onDate: Date = new Date();
   constructor(private accService: AccountsService, private router: Router) { }
 
@@ -18,9 +19,11 @@ export class AccountsComponent implements OnInit {
     this.accountDetails=[];
     this.accService.getAccountDetails(this.onDate).subscribe(
     (value)=>{
-            this.accountDetails=value;
-            });
+            this.creditTotal=value.creditTotal;
+            this.accountDetails=value.credit;
             console.log(this.accountDetails);
+            });
+
   }
   onAddClick(){
         this.router.navigate(['addaccounts']);
