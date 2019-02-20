@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="row">
+    <mat-form-field class="date">
+    <input matInput (input)="dateChange($event)" [matDatepicker]="picker" name="onDate" placeholder="Choose a date" [(ngModel)]="onDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button color="warn" class="addbtn" (click)="onAddClick()">Add</button>
+  </div>
+</div>
+<table class="table" >
+    <thead class="thead-light table-bordered">
+      <tr>
+        <th >CREDIT</th>
+        <th >AMOUNT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>a</td>
+        <td>b</td>
+      </tr>
+      </tbody>
+      </table>

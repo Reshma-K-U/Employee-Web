@@ -1,0 +1,40 @@
+
+.tab {
+  width: 100%;
+  font-size: 140%;
+}
+.card{
+  background-color: #EEF5F5;
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 60px;
+  width: 95%;
+}
+.green {
+  float: left;
+  width: 35%;
+}
+input{
+  height: 30px;
+  width:150px;
+}
+label{
+  padding-left: 50px;
+}
+table {
+  width: 150%;
+  margin-left: 40%;
+}
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#02102ce7;
+  color: white;
+}
+table, th, td,tr {
+  border: 2px solid #f5f0f0;
+}
+.tabrow{
+  height: 20px;
+}

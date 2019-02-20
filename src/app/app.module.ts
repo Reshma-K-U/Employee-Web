@@ -137,6 +137,11 @@ import { ExemptionsComponent } from './payroll/tds/exemptions/exemptions.compone
 import { PerquisiteComponent } from './payroll/tds/perquisite/perquisite.component';
 import { ProjPaymentComponent } from './project/project-detail/proj-payment/proj-payment.component';
 import { ProjInvoiceComponent } from './project/project-detail/proj-invoice/proj-invoice.component';
+import { OtherincomeComponent } from './payroll/tds/otherincome/otherincome.component';
+import { ResultComponent } from './payroll/tds/result/result.component';
+import { HousepropertyComponent } from './payroll/tds/houseproperty/houseproperty.component';
+import { AccountsComponent } from './accounts/accounts.component';
+import { AddaccountsComponent } from './accounts/addaccounts/addaccounts.component';
 
 
 @NgModule({
@@ -171,29 +176,17 @@ import { ProjInvoiceComponent } from './project/project-detail/proj-invoice/proj
     ClientDetailsComponent,
     ClientItemComponent,
     InfoComponent,
-
     EmployeeLeaveComponent,
-
     ApplyLeaveComponent,
-
     EmployeeLeaveDetailComponent,
-
     LeaveDetailsComponent,
-
     AllLeavesComponent,
-
     AddPrivilageLeaveComponent,
-
     FilteredLeavesComponent,
-
     NavbarComponent,
-
     HomeComponent,
-
     AddsalaryComponent,
-
     HomeNavbarComponent,
-
     AttendanceComponent,
     NewempsalaryComponent,
     PayrollComponent,
@@ -230,10 +223,11 @@ import { ProjInvoiceComponent } from './project/project-detail/proj-invoice/proj
     PerquisiteComponent,
     ProjPaymentComponent,
     ProjInvoiceComponent,
-
-
-
-
+    OtherincomeComponent,
+    ResultComponent,
+    HousepropertyComponent,
+    AccountsComponent,
+    AddaccountsComponent,
   ],
   imports: [
     BrowserModule,

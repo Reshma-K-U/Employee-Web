@@ -20,7 +20,7 @@ export class AddemployeeService {
       {course:'',specialization:'',institute:'',university:'',percentage:''},
     ],
      salary:
-       {basicpay:'',hra:'',cedallow:'',medallow:'',speallow:'',conallow:'',total:'0'},
+       {basicpay: '', hra: '', cedallow: '', medallow: '', speallow: '', conallow: '', total: '0', wwf: '', esi: '', pt: ''},
 
       about:'',
     dependents:[
@@ -28,7 +28,7 @@ export class AddemployeeService {
       {name:'',relation:'',occupation:''},
       {name:'',relation:'',occupation:''},
     ],
-    
+
   }
   public basic:Basic;
   public personal:Personal;

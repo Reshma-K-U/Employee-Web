@@ -65,6 +65,9 @@ export class FirestoreService {
             'medallow': employee.salary.medallow,
             'speallow': employee.salary.speallow,
             'conallow': employee.salary.conallow,
+            'wwf': employee.salary.wwf,
+            'esi': employee.salary.esi,
+            'pt': employee.salary.pt,
             'total': employee.salary.total,
      });
 
@@ -113,6 +116,9 @@ export class FirestoreService {
             'medallow': employee.salary.medallow,
             'speallow': employee.salary.speallow,
             'conallow': employee.salary.conallow,
+            'wwf': employee.salary.wwf,
+            'esi': employee.salary.esi,
+            'pt': employee.salary.pt,
             'total': employee.salary.total,
             'isEdited': false,
          });
@@ -233,10 +239,10 @@ export class FirestoreService {
         }
         updateSal(id: string, field: string, newVal: string) {
             this.afs.collection('employees').doc(id).update({
-                ['' + field + '']: newVal
+                ['' + field + '']: parseInt(newVal)
             });
             this.afs.collection('payroll').doc(id).update({
-                ['' + field + '']: newVal
+                ['' + field + '']: parseInt(newVal)
             });
         }
 

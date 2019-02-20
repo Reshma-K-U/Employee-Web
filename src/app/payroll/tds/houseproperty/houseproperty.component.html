@@ -1,0 +1,82 @@
+<form #f="ngForm">
+<mat-card class="card" (click)="plusClick(status)">
+<i class="fas fa-plus"></i><b>Total Income from House Property</b>
+<input matInput id="tihp" (input)="autoFill($event)" name="tihp" class="input1" [(ngModel)]="house.tihp" required>
+</mat-card>
+<table class="table-bordered" *ngIf="plusopen">
+  <th>#</th>
+  <th>Particulars</th>
+  <th>Amount</th>
+  <tr>
+    <td>a</td>
+    <td>Interest on Housing loan(Self Occupied)</td>
+    <td><input matInput name="ihlso" [(ngModel)]="house.ihlso"></td>
+  </tr>
+  <tr>
+      <td>b</td>
+      <td>Total Income/Loss from Let Out Property</td>
+      <td><input matInput name="tilop" [(ngModel)]="house.tilop"></td>
+    </tr>
+    <tr>
+        <td>c</td>
+        <td>Total Exemption</td>
+        <td><input matInput name="totexem" [(ngModel)]="house.totexem"></td>
+      </tr>
+</table>
+<mat-card class="card" (click)="plusClick2(status2)">
+    <i class="fas fa-plus"><b>Income from Let Out Property</b></i>
+    <input matInput name="ilop" class="input2" [(ngModel)]="totilop">
+    </mat-card>
+    <table class="table-bordered" *ngIf="plusopen2">
+      <th>#</th>
+      <th>Particulars</th>
+      <th>Amount</th>
+      <tr>
+        <td>1</td>
+        <td>Annual Letable Value/Rent Received or Receivable</td>
+        <td><input matInput name="alv" [(ngModel)]="alv"></td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Less:Muncipal Taxes Paid During the Year</td>
+          <td><input matInput name="muntax" [(ngModel)]="muntax"></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Less:Unrealized Rent</td>
+            <td><input matInput name="unrent" [(ngModel)]="unrent"></td>
+          </tr>
+          <tr>
+              <td>4</td>
+              <td>Net Annual Value(1-(2+3))</td>
+              <td><input matInput name="netannval" [(ngModel)]="netannval"></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td colspan="2">Less:Deductions from Annual Value</td>
+              </tr>
+              <tr>
+                  <td></td>
+                  <td>Standard Deduction @30% of Net Annual Value</td>
+                  <td><input matInput name="d30" [(ngModel)]="d30"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Interest on Housing Loan</td>
+                    <td><input matInput name="ihl" [(ngModel)]="ihl"></td>
+                  </tr>
+                  <tr>
+                      <td colspan="0"></td>
+                      <label for="email"><b>Lender"s Name</b></label><input matInput name="lendname" [(ngModel)]="lendname">
+                      <label for="email"><b>Lender's PAN</b></label><input matInput name="lendpan" [(ngModel)]="lendpan">
+                    </tr>
+                  <tr>
+                      <td>6</td>
+                      <td>Income/Loss from Let Out Property</td>
+                      <td><input matInput name="ilop" [(ngModel)]="ilop"></td>
+                    </tr>
+    </table>
+</form>
+    <button class="btn btn-primary" (click)="onSaveClick(f)">SAVE</button>
+    <button class="btn btn-danger">CANCEL</button>
+

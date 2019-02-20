@@ -1,0 +1,21 @@
+<!-- <button class="btn btn-primary" (click)="onAdd()">ADD</button> -->
+<mat-card class="card" (click)="plusClick(status)">
+    <i class="fas fa-plus"><b>Total Income from House Property</b></i>
+    </mat-card>
+<table *ngIf="plusopen">
+  <th>Description</th>
+  <th>Max Limit</th>
+    <th>Amount</th>
+    <th>Remarks</th>
+    <tbody>
+    <tr>
+      <td><input type="text" name="desc"></td>
+      <td><input type="text" name="desc"></td>
+      <td><input type="text" name="desc"></td>
+      <td><input type="text" name="desc"></td>
+    </tr>
+    </tbody>
+  </table>
+  <h1>Total:</h1>
+  <button class="btn btn-primary">SAVE</button>
+  <button class="btn btn-danger">CANCEL</button>

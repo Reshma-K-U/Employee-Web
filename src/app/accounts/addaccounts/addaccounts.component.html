@@ -1,0 +1,188 @@
+<!-- <div><div class="container">
+    <mat-form-field>
+    <input matInput [matDatepicker]="picker" name="onDate" placeholder="Choose a date" [(ngModel)]="onDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  </div>
+  <form #f1="ngForm" class="green">
+  <table class="table1" id="creditTable">
+          <tbody>
+        <tr>
+          <td> CREDIT<i class="fas fa-plus" (click)="creditPlusClick(newcredit)"></i>
+            <i class="fas fa-minus" (click)="creditMinusClick(newcredit)"></i></td>
+          <td>AMOUNT</td>
+        </tr>
+        <tr>
+          <td>Building Rent</td>
+          <td><input matInput (input)="debitTotal($event)" name="bulrent" [(ngModel)]="credit.bulrent"></td>
+        <tr>
+          <td>Electricity</td>
+          <td><input matInput (input)="debitTotal($event)" name="elec" [(ngModel)]="credit.elec"></td>
+        </tr>
+        <tr>
+          <td>Employee Salary</td>
+          <td><input matInput (input)="debitTotal($event)" name="empsal" [(ngModel)]="credit.empsal"></td>
+        </tr>
+        <tr>
+          <td>Food & Beverages</td>
+          <td><input matInput (input)="debitTotal($event)" name="foodbev" [(ngModel)]="credit.foodbev"></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td><input matInput name="totcre" [(ngModel)]="credit.totcre"></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+
+  <form #f2="ngForm" class="blue">
+    <table class="table2" id="debitTable">
+        <thead class="thead-light table-bordered">
+          <tr>
+            <td> DEBIT<i class="fas fa-plus" (click)="debitPlusClick(newdebit)"></i>
+              <i class="fas fa-minus" (click)="debitMinusClick(newdebit)"></i></td>
+            <td>AMOUNT</td>
+          <tr>
+            <td>PROJECT PAYMENT</td>
+            <td><input matInput name="projpay" [(ngModel)]="debit.projpay"></td>
+          </tr>
+          <tr>
+            <td>BALANCE</td>
+            <td><input matInput (input)="debitBalance($event)" name="balance" [(ngModel)]="debit.balance"></td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td><input matInput (input)="debitTotal($event)" name="totdeb" [(ngModel)]="debit.totdeb"></td>
+          </tr>
+        </thead>
+      </table>
+    </form>
+  </div>
+  <div>
+          <button class="btn btn-primary" (click)="onSave(f1,f2)">SAVE</button>
+          <button class="btn btn-danger" (click)="onCancel()">CANCEL</button>
+        </div> -->
+
+        <mat-form-field class="date">
+            <input matInput [matDatepicker]="picker" name="onDate" placeholder="Choose a date" [(ngModel)]="onDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card1">
+                  <div class="card-body">
+                      <form #f="ngForm">
+                      <button class="btn btn-default" type="button" (click)="addCreditField()"
+                      style="background-color:green;color:white;float:right;font-size: 12px;
+                      margin-bottom: 10px;"
+                      ><i class="fas fa-plus"></i></button>
+
+                      <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th style = "color:#666869">Credit</th>
+                              <th style = "color:#666869">Amount</th>
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let qual of credit; let i = index">
+                              <td >
+                                {{qual.creditname}}
+
+                              </td>
+                              <td>
+                                  {{qual.amount}}
+
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>
+                                <mat-form-field class="example-full-width">
+                                  <input matInput name="newCourse" [(ngModel)]="newCreditAttribute.creditname" required >
+                                </mat-form-field>
+                              </td>
+                              <td>
+                                <mat-form-field class="example-full-width">
+                                 <input matInput name="creditamount" [(ngModel)]="newCreditAttribute.amount" required >
+                                </mat-form-field>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="total"><h3>Total</h3></td>
+                              <td><h2><input class="cretot" name="total" value={{creditTotal}}></h2></td>
+                            </tr>
+                          </tbody>
+                      </table>
+                    </form>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="card2">
+                  <div class="card-body">
+                      <form #f="ngForm">
+                      <button class="btn btn-default" type="button" (click)="addDebitField()"
+                      style="background-color:green;color:white;float:right;font-size: 12px;
+                      margin-bottom: 10px;"
+                      ><i class="fas fa-plus"></i></button>
+
+                      <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th style = "color:#666869">Debit</th>
+                              <th style = "color:#666869">Amount</th>
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let qual of debit; let i = index">
+                              <td >
+                                {{qual.debitname}}
+
+                              </td>
+                              <td>
+                                  {{qual.amount}}
+
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>
+                                <mat-form-field class="example-full-width">
+                                  <input matInput name="newCourse" [(ngModel)]="newDebitAttribute.debitname" required >
+                                </mat-form-field>
+                              </td>
+                              <td>
+                                <mat-form-field class="example-full-width">
+                                 <input matInput name="newSpecialization" [(ngModel)]="newDebitAttribute.amount" required >
+                                </mat-form-field>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="total"><h3>Total</h3></td>
+                              <td><h2><input class="cretot" name="total" value="{{debitTotal}}"></h2></td>
+                            </tr>
+                          </tbody>
+                      </table>
+                    </form>
+                    </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-left:320px">
+
+            <button mat-raised-button color="primary"
+            style="margin-left:255px" (click)="onAdd()">Save</button>
+            <button mat-raised-button color="accent"
+            style="margin:20px">Cancel</button>
+          </div>
+
+

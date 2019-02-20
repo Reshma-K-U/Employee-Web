@@ -11,7 +11,7 @@
                             (input)="autoFill($event)"
                             name="total"
                             [(ngModel)]="salary.total"
-                            required 
+                            required
                            >
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
@@ -19,7 +19,7 @@
                     <input matInput
                           name="basicpay"
                         [(ngModel)]="salary.basicpay"
-                          required 
+                          required
                          >
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
@@ -27,7 +27,7 @@
                       <input matInput
                             name="hra"
                           [(ngModel)]="salary.hra"
-                            required 
+                            required
                            >
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
@@ -35,7 +35,7 @@
                       <input matInput
                             name="medallow"
                             [(ngModel)]="salary.medallow"
-                            required 
+                            required
                            >
                     </mat-form-field>
 
@@ -44,10 +44,10 @@
                     <input matInput
                           name="conallow"
                           [(ngModel)]="salary.conallow"
-                          required 
+                          required
                          >
                   </mat-form-field>
-                    
+
                     <mat-form-field class="example-full-width" >
                         <label style = "color:#666869">Children Education Allowance</label>
                       <input matInput
@@ -56,27 +56,53 @@
                             required
                             >
                     </mat-form-field>
-                    
+
                     <mat-form-field class="example-full-width">
                         <label style = "color:#666869">Special Allowance</label>
                       <input matInput
                             name="speallow"
                             [(ngModel)]="salary.speallow"
-                            required 
+                            required
                            >
                     </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <label style = "color:#666869">WWF</label>
+                      <input matInput
+                            name="wwf"
+                            [(ngModel)]="salary.wwf"
+                            required
+                           >
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                      <label style = "color:#666869">ESI</label>
+                    <input matInput
+                          name="esi"
+                          [(ngModel)]="salary.esi"
+                          required
+                         >
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <label style = "color:#666869">PT</label>
+                  <input matInput
+                        name="pt"
+                        [(ngModel)]="salary.pt"
+                        required
+                       >
+                </mat-form-field>
                 </form>
                   <button mat-raised-button color="accent" matStepperPrevious
                   style="margin:20px">Prev</button>
                   <button mat-raised-button color="primary" matStepperNext
                   style="margin:20px" (click)=onAdd()>Next</button>
                 </div>
-        
+
         </div>
-         
+
       </div>
     </div>
   </div>
-  
-  
-  
+
+
