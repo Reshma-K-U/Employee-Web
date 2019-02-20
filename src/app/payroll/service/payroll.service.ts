@@ -15,10 +15,10 @@ export class PayrollService {
   constructor(private afs: AngularFirestore) { }
    newEmployeeSalary(value: any) {
      const employeeDocRef = this.afs.collection('employees').doc(value.empid);
-     const hra = parseInt(value.basicpay)*0.5;
-     const medallow = parseInt(value.basicpay) * 0.4;
-     const cedallow = parseInt(value.basicpay) * 0.3;
-     const speallow = parseInt(value.basicpay) * 0.2;
+     const hra = parseInt(value.basicpay, 10) * 0.5;
+     const medallow = parseInt(value.basicpay, 10) * 0.4;
+     const cedallow = parseInt(value.basicpay, 10) * 0.3;
+     const speallow = parseInt(value.basicpay, 10) * 0.2;
     employeeDocRef.
     set({
          'empid': value.empid,
@@ -39,30 +39,30 @@ moreEmployeeSalary(more: any, date: Date) {
     const year = date.getFullYear();
     const docRef =  this.afs.collection('payroll').doc(more.empid);
     const employeeDocRef = docRef.collection(year.toString()).ref.doc(month.toString());
-    const updatetotal = parseInt(more.basicpay) + parseInt(more.hra) + parseInt(more.speallow)+
-    parseInt(more.medallow) + parseInt(more.cedallow) + parseInt(more.conallow) + parseInt(more.bonus) +
-    parseInt(more.arrears) + parseInt(more.gwp) - parseInt(more.esi) - parseInt(more.advance) -
-    parseInt(more.it) - parseInt(more.others) - parseInt(more.totded) + parseInt(more.wwf) - parseInt(more.lop);
+    const updatetotal = parseInt(more.basicpay, 10) + parseInt(more.hra, 10) + parseInt(more.speallow, 10) +
+    parseInt(more.medallow, 10) + parseInt(more.cedallow, 10) + parseInt(more.conallow, 10) + parseInt(more.bonus, 10) +
+    parseInt(more.arrears, 10) + parseInt(more.gwp, 10) - parseInt(more.esi, 10) - parseInt(more.advance, 10) -
+    parseInt(more.it, 10) - parseInt(more.others, 10) - parseInt(more.totded, 10) + parseInt(more.wwf, 10) - parseInt(more.lop, 10);
     employeeDocRef.
     set({
         'empid': more.empid,
         'name': more.empname,
         'join_date': more.join_date,
-        'basicpay': more.basicpay,
-        'hra': more.hra,
-        'speallow': more.speallow,
-        'medallow': more.medallow,
-        'cedallow': more.cedallow,
-        'conallow': more.conallow,
-        'bonus': more.bonus,
-        'arrears': more.arrears,
-        'gwp': more.gwp,
-        'esi': more.esi,
-        'wwf': more.wwf,
-        'advance': more.advance,
-        'it': more.it,
-        'others': more.others,
-        'totded': more.totded,
+        'basicpay': parseInt(more.basicpay, 10),
+        'hra': parseInt(more.hra, 10),
+        'speallow': parseInt(more.speallow, 10),
+        'medallow': parseInt(more.medallow, 10),
+        'cedallow': parseInt(more.cedallow, 10),
+        'conallow': parseInt(more.conallow, 10),
+        'bonus': parseInt(more.bonus, 10),
+        'arrears': parseInt(more.arrears, 10),
+        'gwp': parseInt(more.gwp, 10),
+        'esi': parseInt(more.esi, 10),
+        'wwf': parseInt(more.wwf, 10),
+        'advance': parseInt(more.advance, 10),
+        'it': parseInt(more.it, 10),
+        'others': parseInt(more.others, 10),
+        'totded': parseInt(more.totded, 10),
         'total': updatetotal,
         'lop': more.lop,
         'pt': more.pt,
@@ -163,76 +163,5 @@ dateToString(date) {
     date = month + '/' + year;
     return date;
 }
-getTaxDetails(id: string) {
-  const userDoc = this.afs.collection('payroll').doc(id);
-  let salary: any;
-  this.moreEmpFill(id).subscribe(d => {
-  salary = d;
-  });
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  let fromYear;
-  let toYear;
-  const from: string[] = ['3', '4', '5', '6', '7', '8', '9', '10', '11'];
-  const to: string[] = ['0', '1', '2'];
-  const data: any[] = [];
-  let monthData: any;
-  let hasSalary = false;
-  if (month < 3) {
-    fromYear = date.getFullYear() - 1;
-   toYear = year;
-  } else {
-     fromYear = year;
-     toYear = date.getFullYear() + 1;
-  }
-  from.forEach((i, index) => {
-    userDoc.collection(fromYear.toString()).doc(i).valueChanges()
-    .subscribe( val1 => {
-      if (!val1) {
-        monthData = salary;
 
-      } else {
-        if (!hasSalary) {
-          hasSalary = true;
-          this.startIndex = index;
-        }
-        monthData = val1;
-      }
-      data[ parseInt(i) - 3] = monthData;
-      if (index === 8) {
-        to.forEach((j, ind) => {
-          userDoc.collection(toYear.toString()).doc(j).valueChanges()
-        .subscribe( val2 => {
-          if (!val2 ) {
-            monthData = salary;
-          } else {
-            if (!hasSalary) {
-              hasSalary = true;
-              this.startIndex = 9 + ind;
-            }
-            monthData = val2;
-          }
-          data[ parseInt(j) + 9] = monthData;
-          });
-        });
-      }
-      });
-    });
-    setTimeout(() => {
-      while (this.startIndex > 0) {
-        data[this.startIndex - 1] = {
-          'basicpay': 0,
-                'cedallow': 0,
-                'medallow': 0,
-                'conallow': 0,
-                'speallow': 0,
-                'tax': 0
-        };
-        this.startIndex--;
-      }
-    }, 2000);
-
-    return of(data);
-}
 }

@@ -1,21 +1,88 @@
-<!-- <button class="btn btn-primary" (click)="onAdd()">ADD</button> -->
-<mat-card class="card" (click)="plusClick(status)">
-    <i class="fas fa-plus"><b>Total Income from House Property</b></i>
-    </mat-card>
-<table *ngIf="plusopen">
-  <th>Description</th>
-  <th>Max Limit</th>
-    <th>Amount</th>
-    <th>Remarks</th>
-    <tbody>
+<h4>Other Income</h4>
+<table class="table" >
+  <thead class="thead-light table-bordered">
     <tr>
-      <td><input type="text" name="desc"></td>
-      <td><input type="text" name="desc"></td>
-      <td><input type="text" name="desc"></td>
-      <td><input type="text" name="desc"></td>
+      <th>Description</th>
+      <th>Max Limit</th>
+      <th>Amount</th>
+      <th>Remarks</th>
     </tr>
-    </tbody>
-  </table>
-  <h1>Total:</h1>
-  <button class="btn btn-primary">SAVE</button>
-  <button class="btn btn-danger">CANCEL</button>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          <mat-form-field  class="form-field">
+            <mat-select [(ngModel)]="otherIncome.description"  >
+                <!-- (selectionChange)="onSelectIncomeDescription($event.value)" -->
+              <mat-option *ngFor="let item of descriptions" [value]="item.viewVal">
+                {{item.viewVal}}
+              </mat-option>
+            </mat-select>
+             </mat-form-field>
+      </td>
+      <td>
+          <mat-form-field  class="form-field">
+              <input matInput name="maxLimit" [(ngModel)]="otherIncome.maxLimit">
+             </mat-form-field>
+      </td>
+      <td>
+          <mat-form-field  class="form-field">
+              <input matInput name="amount" [(ngModel)]="otherIncome.amount">
+             </mat-form-field>
+      </td>
+      <td>
+          <mat-form-field  class="form-field">
+              <input matInput name="remarks" [(ngModel)]="otherIncome.remarks">
+             </mat-form-field>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4>Short Term Income</h4>
+<table class="table" >
+  <thead class="thead-light table-bordered">
+    <tr>
+      <th>Description</th>
+      <th>Max Limit</th>
+      <th>Amount</th>
+      <th>Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          <mat-form-field  class="form-field">
+            <mat-select [(ngModel)]="shortTermIncome.description" >
+              <!-- (selectionChange)="onSelectShortTermIncomeDescription($event.value)" -->
+              <mat-option *ngFor="let item of descriptions" [value]="item.viewVal">
+                {{item.viewVal}}
+              </mat-option>
+            </mat-select>
+             </mat-form-field>
+      </td>
+      <td>
+          <mat-form-field  class="form-field">
+              <input matInput name="maxLimit" [(ngModel)]="shortTermIncome.maxLimit">
+             </mat-form-field>
+      </td>
+      <td>
+          <mat-form-field  class="form-field">
+              <input matInput name="amount" [(ngModel)]="shortTermIncome.amount">
+             </mat-form-field>
+      </td>
+      <td>
+          <mat-form-field  class="form-field">
+              <input matInput name="remarks" [(ngModel)]="shortTermIncome.remarks">
+             </mat-form-field>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="row">
+  <div class="col-md-5"></div>
+  <div class="col-md-2">
+      <button class="btn btn-primary"(click)="onSave()">Save</button>
+      <button class="btn btn-danger">CANCEL</button>
+  </div>
+  <div class="col-md-5"></div>
+</div>

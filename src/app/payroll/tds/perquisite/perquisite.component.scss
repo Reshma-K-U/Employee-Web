@@ -1,22 +1,13 @@
-
-table {
-  margin-left: 30%;
-  width: 40%;
-  background-color: #EEF5F5;
+.table{
+  width:80%;
+  margin:30px;
 }
-th {
-  text-align: left;
-  color: black
+.head{
+  font-size: small !important;
 }
-table, th, td,tr {
-  border: 2px solid #f5f0f0;
+.btn{
+  margin:3px !important;
 }
-input{
-  width: 200px;
-  background-color: white;
-  padding: 15px;
-}
-td{
-  width: 200px;
-  padding: 10px;
+.total{
+  margin:30px;
 }

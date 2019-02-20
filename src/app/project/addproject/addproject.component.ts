@@ -11,26 +11,41 @@ import { ProjectService } from 'src/app/project/service/project.service';
   styleUrls: ['./addproject.component.scss']
 })
 export class AddprojectComponent implements OnInit {
-allclients:any[] = [] ;
-allemployees:any[] = [];
- 
-  constructor(private cfs:FirestoreClientService ,private afs:FirestoreService,private pfs:ProjectService) { }
+allclients: any[] = [] ;
+allemployees: any[] = [];
+textbox = false;
+agentName = '';
+clientId = '';
+clientName = '';
+
+  constructor(private cfs: FirestoreClientService , private afs: FirestoreService, private pfs: ProjectService) { }
 
   ngOnInit() {
-   this.allclients= this.cfs.getDataForList();
+   this.allclients = this.cfs.getDataForList();
    console.log(this.allclients);
 
-   this.allemployees=this.afs.getDataForList();
+   this.allemployees = this.afs.getDataForList();
    console.log(this.allemployees);
   }
 
-   onAdd(form:NgForm){
-    console.log(form);
-    var value=form.value;
+   onAdd(form: NgForm) {
+    const value = form.value;
+    value.agent_name = this.agentName;
+    value.client_id = this.clientId;
+    console.log(value);
     this.pfs.addNewProject(value);
-   
-  
-  }
- 
 
+
+
+  }
+onclick() {
+  this.textbox = !this.textbox;
+}
+selectClient(id: string) {
+ for ( let i = 0; i < this.allclients.length; i++) {
+   if ( this.allclients[i].company_name === this.clientName) {
+    this.clientId = this.allclients[i].client_id;
+   }
+ }
+}
 }

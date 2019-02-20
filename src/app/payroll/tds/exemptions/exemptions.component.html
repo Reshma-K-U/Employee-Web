@@ -1,41 +1,98 @@
-<form #f="ngForm">
-<div class="content">
-  <div class="green">
+<div class="parent">
+<div class="row">
+  <div class="col-md-6">
+  <div>
       <h2>Exemptions</h2>
-  <table>
-      <tr><b>Exemption</b><td>
-        <input matInput name="exem" [(ngModel)]="exem">
-      </td></tr>
-      <tr><b>Leave Encashment Exemption</b><td>
-        <input matInput name="lee" [(ngModel)]="lee">
-      </td></tr>
-      <tr><b>Gratuity Exemption</b><td>
-          <input matInput name="gex" [(ngModel)]="gex">
-      </td></tr>
-    </table>
+      <hr>
   </div>
-  <div class="blue">
-    <h2>HRA Exemptions</h2>
+  <div>
+      <table>
+          <tr>
+            <th>Exemption</th>
+          <td>
+            <input matInput name="exem" [(ngModel)]="exemptions.exem">
+          </td>
+        </tr>
+          <tr>
+            <th>Leave Encashment Exemption</th>
+            <td>
+            <input matInput name="lee" [(ngModel)]="exemptions.lee">
+          </td>
+        </tr>
+          <tr>
+            <th>Gratuity Exemption</th>
+            <td>
+              <input matInput name="gex" [(ngModel)]="exemptions.gex">
+          </td>
+        </tr>
+        <tr>
+          <th>LTA Exemption</th>
+          <td>
+            <input matInput name="gex" [(ngModel)]="exemptions.lta">
+        </td>
+      </tr>
+        </table>
+  </div>
+  <!-- <mat-checkbox (change)="checkBoxClick()">Override HRA Exemptions</mat-checkbox> -->
+  <!-- <div *ngIf="checkbox"> -->
     <mat-card class="card">
-        <label for="email"><b>Total rent paid:</b></label> <input matInput name="totrent" [(ngModel)]="totrent">
-      <mat-checkbox (change)="checkBoxClick(tick)">Override HRA Exemptions</mat-checkbox>
-      <div *ngIf="checkbox">
-            <label><b>Total HRA:</b></label> <input matInput name="tothra" [(ngModel)]="tothra">
-            <label><b>40% of Basic:</b></label> <input matInput name="b40" [(ngModel)]="b40">
-            <label><b>Excess rent:</b></label> <input matInput name="exrent" [(ngModel)]="exrent">
-            <label><b>HRA Exemption:</b></label> <input matInput name="hraex" [(ngModel)]="hraex">
-      </div>
+        <p><b>Total HRA: </b>{{other.totalhra}}</p>
+        <p><b>40% of Basic: </b>{{other.basic}}</p>
+        <p><b>Excess rent: </b>{{other.excessRent}}</p>
+        <p><b>HRA Exemption: </b>{{other.hraExemption}}<p>
     </mat-card>
-  </div>
-  <div class="other">
-      <h2>Other Exemptions</h2>
-  <mat-card class="card">
-      <label><b>LTA Exemption:</b></label> <input matInput name="lta" [(ngModel)]="lta">
-    </mat-card>
-  </div>
-    </div>
-  </form>
-    <button class="btn btn-primary" (click)="onSaveClick(f)">SAVE</button>
-    <button class="btn btn-danger">CANCEL</button>
 
+  <!-- </div> -->
+  </div>
+  <div class="col-md-6">
+    <div>
+        <h2>HRA Exemptions</h2>
+        <hr>
+    </div>
+    <div>
+      <button class="btn btn-primary" (click)="monthlyRent()">Monthly Rent</button>
+      <div *ngIf="showMonthlyRent">
+            <mat-form-field>
+                <input matInput placeholder="Monthly Rent" [(ngModel)]="rent">
+            </mat-form-field>
+       <mat-checkbox (change)="addRentDetails()">Same for all month</mat-checkbox>
+       <div>
+         <p *ngIf="showMessage" style="color:red">Please provide monthly rent!</p>
+       </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Rent <span><i class="fas fa-edit" (click)="onEditRent()"></i></span></th>
+              </tr>
+              </thead>
+            <tbody>
+              <tr *ngFor = "let item of RentDetails;let i=index">
+                <td>{{item.month}}</td>
+                <td [attr.contenteditable]="editRent===true ? true : false" (focusout)="editRentValue(i,$event)">{{item.rent}}
+              </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+
+    </div>
+      <div>
+          <p><b>Total rent paid (p.a):{{totalRent}} </b></p>
+      </div>
+
+
+  </div>
+
+    </div>
+
+</div>
+<div class="row">
+  <div class="col-md-5"></div>
+  <div class="col-md-2">
+      <button class="btn btn-primary" (click)="saveRentDetails()">SAVE</button>
+      <button class="btn btn-danger">CANCEL</button>
+  </div>
+  <div class="col-md-5"></div>
+</div>
 

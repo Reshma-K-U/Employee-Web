@@ -9,24 +9,22 @@ import { ProjectService } from 'src/app/project/service/project.service';
   styleUrls: ['./project-detail.component.scss']
 })
 export class ProjectDetailComponent implements OnInit {
-id:string;
-subscription:Subscription;
-project:any =null;
-  constructor( private route:ActivatedRoute,private pfs:ProjectService,private location:Location) { }
+id: string;
+subscription: Subscription;
+project: any = null;
+  constructor( private route: ActivatedRoute, private pfs: ProjectService, private location: Location) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.subscription=this.pfs.getData(this.id).subscribe(
-    (project)=>{
-      this.project=project;
+    this.subscription = this.pfs.getData(this.id).subscribe(
+    (project) => {
+     this.project = project;
+     console.log(this.id);
     }
-    
-    )
-   
+    );
   }
 
-  remove()
-{
+  remove() {
   this.pfs.remove(this.id);
 }
 }

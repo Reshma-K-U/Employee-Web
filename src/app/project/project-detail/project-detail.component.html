@@ -2,30 +2,32 @@
 <div class="container">
   <div class="row">
     <a routerLink="/project-list"><button class="btn btn-primary">Back</button></a>
-    
+
     <button class="btn btn-danger" (click)="remove()">Remove Project</button>
   </div>
-  
+
   <div class="row" *ngIf="project">
-  
+
     <div class="col-md-12">
-       
+
       <h1> <b>{{project.project_name}}</b></h1>
       </div>
 
   </div>
 
   <div class="row">
-      <mat-tab-group style="width:100%"> 
-          <mat-tab label="Main">  </mat-tab>
-         <mat-tab  label="Info"> 
-            <!-- <exalt-info [client]="client"></exalt-info> -->
+      <mat-tab-group style="width:100%" #tabGroup>
+
+
+            <mat-tab label="info">
+            <exalt-proj-info *ngIf="project" [project]="project"></exalt-proj-info>
           </mat-tab>
-          <mat-tab label="Payements"> </mat-tab>
-          <mat-tab label="Documents">  </mat-tab>
-          <mat-tab label="Bookings">  </mat-tab>
+          <mat-tab label="Payements">
+            <exalt-proj-payment *ngIf="project" [project]="project"> </exalt-proj-payment> </mat-tab>
+          <mat-tab label="Documents"> <exalt-proj-doc> </exalt-proj-doc> </mat-tab>
+
         </mat-tab-group>
   </div>
- 
+
 </div>
-  
+

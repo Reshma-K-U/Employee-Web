@@ -1,0 +1,153 @@
+
+<form #f="ngForm">
+  <div class="row">
+    <div class="col-md-6">
+    <mat-form-field  class="form-field">
+     <input matInput name="invoice_num" ngModel  placeholder="Invoice Number">
+    </mat-form-field>
+
+
+    <mat-form-field  class="form-field" >
+      <input matInput name="project_name" [(ngModel)]="project.data.project_name"  placeholder="Project name" >
+     </mat-form-field>
+     <mat-form-field class="form-field">
+    <input matInput name="dueOnR" ngModel [matDatepicker]="dueOnR" placeholder="Due on Receipt">
+    <mat-datepicker-toggle matSuffix [for]="dueOnR"></mat-datepicker-toggle>
+    <mat-datepicker #dueOnR></mat-datepicker>
+    </mat-form-field>
+   </div>
+    <div class="col-md-6">
+       <!--  <mat-form-field class="form-field">
+            <mat-select name="project" ngModel  placeholder="Choose Project">
+              <mat-option *ngFor="let proj of projects" [value]="proj.project_name">
+                {{proj.project_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <mat-form-field class="form-field">
+            <input matInput name="client_company" [(ngModel)]="project.data.client_company" ngModel placeholder="Client name">
+          </mat-form-field>
+           <mat-form-field class="form-field">
+            <input name="dueDate" ngModel matInput [matDatepicker]="dueDate" placeholder="Due Date">
+            <mat-datepicker-toggle matSuffix [for]="dueDate"></mat-datepicker-toggle>
+            <mat-datepicker #dueDate></mat-datepicker>
+        </mat-form-field>
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th >Quantity</th>
+        <th >Description</th>
+        <th>Unit Price</th>
+        <th>Line Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of invoiceDetails.data; let i = index">
+         <td>{{row.total_hours}} </td>
+         <td> {{row.project_description}} </td>
+         <td>  {{row.unit_price}}  </td>
+         <td> {{row.line_total}}</td>
+         <td></td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field  class="form-field">
+            <input matInput name="total_hours" [(ngModel)]="newRow.total_hours"
+            (input)="onChange()"
+
+            placeholder="Total Hours" >
+           </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="form-field">
+            <textarea matInput name="about" [(ngModel)]="newRow.project_description" placeholder="Project Description"></textarea>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field  class="form-field">
+            <input matInput name="unit_price" [(ngModel)]="newRow.unit_price"
+            (input)="onChange()"
+
+            placeholder="Unit Price">
+           </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field  class="form-field">
+            <input matInput name="line_total" [(ngModel)]="newRow.line_total"
+            placeholder="Line total" >
+           </mat-form-field>
+        </td>
+        <td>
+          <button class="button1" (click)="addNewRow()" >Add</button>
+        </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Subtotal</td>
+      <td>{{invoiceDetails.subTotal}}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="row">
+  <div class="col-md-6">
+    <mat-form-field  class="form-field" *ngIf="client_detail.country ==='india'&& client_detail.state !='kerala'" >
+      <input matInput name="igst" [(ngModel)]="invoiceDetails.igst"  placeholder="IGST">
+    </mat-form-field>
+    <mat-form-field  class="form-field" *ngIf="client_detail.state ==='kerala'" >
+      <input matInput name="sgst" [(ngModel)]="invoiceDetails.sgst"  placeholder="SGST">
+    </mat-form-field>
+  </div>
+  <div class="col-md-6">
+    <mat-form-field  class="form-field" *ngIf="client_detail.state==='kerala'" >
+      <input matInput name="cgst" [(ngModel)]="invoiceDetails.cgst"  placeholder="CGST">
+    </mat-form-field>
+  </div>
+</div>
+Total: {{invoiceDetails.total}}
+
+    <button class="btn btn-primary submit" (click)="onSubmit(f)" >Submit</button>
+    <button class="btn btn-danger cancel" (click)="onCancel()" >Cancel</button>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
