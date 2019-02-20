@@ -8,13 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class OtherincomeComponent implements OnInit {
   @Input() empid: string;
   otherIncome = {
-    'descriptipn': '',
+    'description': '',
     'maxLimit': '',
     'amount': '',
     'remarks': ''
   };
   shortTermIncome = {
-    'descriptipn': '',
+    'description': '',
     'maxLimit': '',
     'amount': '',
     'remarks': ''
@@ -24,7 +24,7 @@ export class OtherincomeComponent implements OnInit {
 
   ngOnInit() {
   }
-  onSelectDescription(val: string) {
-    console.log(val);
+  onSave() {
+    console.log(this.otherIncome, this.shortTermIncome);
   }
 }

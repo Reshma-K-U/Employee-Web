@@ -12,7 +12,8 @@
     <tr>
       <td>
           <mat-form-field  class="form-field">
-            <mat-select [(ngModel)]="otherIncome.description" (selectionChange)="onSelectDescription($event.value)">
+            <mat-select [(ngModel)]="otherIncome.description"  >
+                <!-- (selectionChange)="onSelectIncomeDescription($event.value)" -->
               <mat-option *ngFor="let item of descriptions" [value]="item.viewVal">
                 {{item.viewVal}}
               </mat-option>
@@ -51,7 +52,8 @@
     <tr>
       <td>
           <mat-form-field  class="form-field">
-            <mat-select [(ngModel)]="shortTermIncome.description" (selectionChange)="onSelectDescription($event.value)">
+            <mat-select [(ngModel)]="shortTermIncome.description" >
+              <!-- (selectionChange)="onSelectShortTermIncomeDescription($event.value)" -->
               <mat-option *ngFor="let item of descriptions" [value]="item.viewVal">
                 {{item.viewVal}}
               </mat-option>
