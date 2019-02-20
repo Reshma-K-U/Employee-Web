@@ -19,6 +19,7 @@ project: any = null;
     this.subscription = this.pfs.getData(this.id).subscribe(
     (project) => {
      this.project = project;
+     console.log(this.id);
     }
     );
   }

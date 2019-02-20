@@ -32,7 +32,8 @@ invoiceDetails: any = {
 'sgst' : '',
 'total' : ''
 };
-client_id: string;
+year: string;
+month: string;
 invoice_id: string;
 date: Date = new Date();
 
@@ -40,10 +41,12 @@ date: Date = new Date();
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.client_id = params['client_id'];
+      this.year = params['year'];
+      this.month = params['month'];
+
       this.invoice_id = params['invoice_id'];
   });
-   this.fsService.getInvoiceDetails(this.client_id, this.invoice_id).subscribe(
+   this.fsService.getInvoiceDetails(this.year, this.month, this.invoice_id).subscribe(
      val => {
        this.invoiceDetails = val;
        console.log(this.invoiceDetails);

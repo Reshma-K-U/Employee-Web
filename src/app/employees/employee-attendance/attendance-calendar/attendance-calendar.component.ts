@@ -64,7 +64,7 @@ export class AttendanceCalendarComponent {
      }
 
      beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
-    console.log('hfhf');
+
    // this.events = [];
       body.forEach(day => {
       setTimeout(() => {
@@ -83,11 +83,12 @@ export class AttendanceCalendarComponent {
     );
   }
 isLeave(date: any) {
+
     for(var i = 0; i < this.data.length; i++)
   { if(this.data[i].on.toDate().getTime()===date.getTime()){
         if(this.data[i].days == "1" ){
-          // console.log(date);
-          // console.log(this.data[i].leaveType);
+        console.log(date);
+       console.log(this.data[i].leaveType);
           this.events.push({
             start:this.data[i].on.toDate(),
             title:this.data[i].leaveType

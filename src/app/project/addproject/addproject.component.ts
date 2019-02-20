@@ -15,6 +15,8 @@ allclients: any[] = [] ;
 allemployees: any[] = [];
 textbox = false;
 agentName = '';
+clientId = '';
+clientName = '';
 
   constructor(private cfs: FirestoreClientService , private afs: FirestoreService, private pfs: ProjectService) { }
 
@@ -27,10 +29,10 @@ agentName = '';
   }
 
    onAdd(form: NgForm) {
-     console.log(this.agentName);
-    console.log(form);
     const value = form.value;
     value.agent_name = this.agentName;
+    value.client_id = this.clientId;
+    console.log(value);
     this.pfs.addNewProject(value);
 
 
@@ -38,5 +40,12 @@ agentName = '';
   }
 onclick() {
   this.textbox = !this.textbox;
+}
+selectClient(id: string) {
+ for ( let i = 0; i < this.allclients.length; i++) {
+   if ( this.allclients[i].company_name === this.clientName) {
+    this.clientId = this.allclients[i].client_id;
+   }
+ }
 }
 }

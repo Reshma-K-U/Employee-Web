@@ -44,7 +44,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTreeModule} from '@angular/material/tree';
-
+import {MatListModule} from '@angular/material/list';
 import {EmployeeService} from  './employees/services/employee.services';
 import{FirestoreService} from '../app/services/firestore.service';
 import {FirestoreClientService} from './clients/services/firestore.service'
@@ -230,6 +230,10 @@ import { ProjInvoiceComponent } from './project/project-detail/proj-invoice/proj
     PerquisiteComponent,
     ProjPaymentComponent,
     ProjInvoiceComponent,
+
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -259,6 +263,7 @@ import { ProjInvoiceComponent } from './project/project-detail/proj-invoice/proj
     MatCheckboxModule,
     MatGridListModule,
     MatTreeModule,
+    MatListModule,
 
     AppRoutingModule,
     MatCheckboxModule,

@@ -10,6 +10,7 @@ import { ProjInvoiceComponent } from '../proj-invoice/proj-invoice.component';
 
 export class ProjPaymentComponent implements OnInit {
   @Input() project: any;
+
   constructor(public dialog: MatDialog ) { }
 
   ngOnInit() {
@@ -19,8 +20,9 @@ export class ProjPaymentComponent implements OnInit {
 
     const dialogRef = this.dialog.open(ProjInvoiceComponent,{
       data: {data:this.project},
-      width: '750px',
+      width: '945px',
     });
-    }
+  }
+
 
 }

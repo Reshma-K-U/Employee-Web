@@ -25,9 +25,9 @@ export class ClientInvoiceComponent implements OnInit {
 
   newRow: any = {
     'total_hours': '',
-      'unit_price': '',
+      'unit_price': 0,
       'project_description': '',
-      'line_total': '',
+      'line_total': 0,
   };
   projects: any[] = [];
   constructor(
@@ -54,7 +54,7 @@ export class ClientInvoiceComponent implements OnInit {
     this.fsService.createNewInvoice(this.invoiceDetails, this.client);
     this.dialogRef.close();
     this.router.navigate(['newinvoice'],
-    { queryParams: {client_id: this.client.data.client_id, invoice_id: value.invoice_num}});
+    { queryParams: {year: new Date().getFullYear(), month: new Date().getMonth(), invoice_id: value.invoice_num}});
   }
 
   onCancel() {
