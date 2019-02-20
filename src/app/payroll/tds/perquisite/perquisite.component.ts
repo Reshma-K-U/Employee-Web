@@ -1,6 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PayrollService } from '../../service/payroll.service';
+import { TdsService } from '../tds.service';
 
 @Component({
   selector: 'exalt-perquisite',
@@ -9,12 +10,12 @@ import { PayrollService } from '../../service/payroll.service';
 })
 export class PerquisiteComponent implements OnInit {
 
-  constructor(private pyService: PayrollService) { }
+  constructor(private tdsService: TdsService) { }
   @Input() empid: any;
   ngOnInit() {
   }
   onSaveClick(form: NgForm) {
     const value = form.value;
-  this.pyService.addPerquisite(value, this.empid);
+  this.tdsService.addPerquisite(value, this.empid);
   }
 }

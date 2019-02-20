@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PayrollService } from '../service/payroll.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { Subscription } from 'rxjs';
+import { TdsService } from './tds.service';
 @Component({
   selector: 'exalt-tds',
   templateUrl: './tds.component.html',
@@ -23,7 +24,7 @@ export class TdsComponent implements OnInit {
   };
   subscription: Subscription;
   salaryDetails: any;
-  constructor(private pyService: PayrollService, private fsService: FirestoreService) { }
+  constructor(private pyService: PayrollService, private fsService: FirestoreService, private tdsService: TdsService) { }
 
   ngOnInit() {
     this.employeeNames = this.fsService.getDataForList();

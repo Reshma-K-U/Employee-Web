@@ -136,6 +136,8 @@ import { PerquisiteComponent } from './payroll/tds/perquisite/perquisite.compone
 import { OtherincomeComponent } from './payroll/tds/otherincome/otherincome.component';
 import { ResultComponent } from './payroll/tds/result/result.component';
 import { HousepropertyComponent } from './payroll/tds/houseproperty/houseproperty.component';
+import { AccountsComponent } from './accounts/accounts.component';
+import { AddaccountsComponent } from './accounts/addaccounts/addaccounts.component';
 
 
 @NgModule({
@@ -202,7 +204,7 @@ import { HousepropertyComponent } from './payroll/tds/houseproperty/housepropert
     ClientPaymentComponent,
     ClientInvoiceComponent,
     NewInvoiceComponent,
-    
+
     ProjectItemComponent,
     ProjectDetailComponent,
     AccountstatementComponent,
@@ -217,6 +219,8 @@ import { HousepropertyComponent } from './payroll/tds/houseproperty/housepropert
     OtherincomeComponent,
     ResultComponent,
     HousepropertyComponent,
+    AccountsComponent,
+    AddaccountsComponent,
   ],
   imports: [
     BrowserModule,

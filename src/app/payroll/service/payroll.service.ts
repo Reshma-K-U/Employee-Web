@@ -65,6 +65,7 @@ moreEmployeeSalary(more: any, date: Date) {
         'totded': more.totded,
         'total': updatetotal,
         'lop': more.lop,
+        'pt': more.pt,
         'day': date1,
     });
 
@@ -90,11 +91,14 @@ getPayrollDetails() {
             'join_date': val['joining_date'],
             'basicpay': val['basicpay'],
             'hra': val['hra'],
-            'speallow': val['speallow'],
+         'speallow': val['speallow'],
             'medallow': val['medallow'],
             'cedallow': val['cedallow'],
             'total': val['total'],
             'conallow': val['conallow'],
+            'wwf': val['wwf'],
+            'esi': val['esi'],
+            'pt': val['pt'],
         });
     });
     });
@@ -231,49 +235,4 @@ getTaxDetails(id: string) {
 
     return of(data);
 }
-addExemption(form: any, empid) {
-  const employeeDocRef = this.afs.collection('tds').doc(empid);
-  employeeDocRef.
-     set({
-         'exemption': form.exem,
-         'lee': form.lee,
-         'gex': form.gex,
-         'totrent': form.totrent,
-         'tothra': form.tothra,
-         'b40': form.b40,
-         'exrent': form.exrent,
-         'hraex': form.hraex,
-         'lta': form.lta,
-     });
-  }
-  addPerquisite(form: any, empid) {
-    const employeeDocRef = this.afs.collection('tds').doc(empid);
-    employeeDocRef.
-       update({
-            'vehper': form.vehper,
-            'hoper': form.hoper,
-            'assres': form.assres,
-            'loanper': form.loanper,
-       });
-    }
-    addHousePropertyIncome(form: any, empid) {
-      const employeeDocRef = this.afs.collection('tds').doc(empid);
-      employeeDocRef.
-         update({
-            'tihp': form.tihp,
-            'ihlso': form.ihlso,
-            'tilop': form.tilop,
-            'totexem' : form.exem,
-            'totilop': form.totilop,
-            'alv': form.alv,
-            'muntax': form.muntax,
-            'unrent': form.unrent,
-            'netannval': form.netannval,
-            'd30': form.d30,
-            'ihl': form.ihl,
-            'lendname': form.lendname,
-            'lendpan': form.lendpan,
-            'ilop': form.ilop,
-         });
-      }
 }

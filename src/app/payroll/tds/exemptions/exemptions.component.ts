@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PayrollService } from '../../service/payroll.service';
 import { EmployeeDetailComponent } from 'src/app/employees/employee-detail/employee-detail.component';
+import { TdsService } from '../tds.service';
 
 @Component({
   selector: 'exalt-exemptions',
@@ -12,10 +13,10 @@ export class ExemptionsComponent implements OnInit {
 
   checkbox: boolean = false;
   tick: number = 1;
-  // inputText:number = 1;
-  constructor(private pyService: PayrollService) { }
+  constructor(private tdsService: TdsService) { }
   @Input() empid: any;
   ngOnInit() {
+    console.log(this.empid);
   }
   checkBoxClick(tick) {
     this.tick = tick + 1;
@@ -28,7 +29,7 @@ export class ExemptionsComponent implements OnInit {
   }
   onSaveClick(form: NgForm) {
     const value = form.value;
-    this.pyService.addExemption(value, this.empid);
+    this.tdsService.addExemption(value, this.empid);
   }
 
 }

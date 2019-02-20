@@ -2,10 +2,9 @@
 table {
   margin-left: 30%;
   width: 40%;
+  background-color: #EEF5F5;
 }
 th {
-  padding-top: 12px;
-  padding-bottom: 12px;
   text-align: left;
   color: black
 }
@@ -15,7 +14,9 @@ table, th, td,tr {
 input{
   width: 200px;
   background-color: white;
+  padding: 15px;
 }
 td{
   width: 200px;
+  padding: 10px;
 }

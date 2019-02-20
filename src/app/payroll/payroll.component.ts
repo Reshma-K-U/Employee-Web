@@ -35,7 +35,6 @@ export class PayrollComponent implements OnInit {
       this.payrollDetails = [];
         value.forEach(x => {
             this.payrollDetails.push(x.payload.doc.data());
-            console.log(x.payload.doc.data()['total']);
             this.totalsal = this.totalsal + parseInt(x.payload.doc.data()['total']);
         });
     });
@@ -46,7 +45,6 @@ export class PayrollComponent implements OnInit {
 
   const dialogRef = this.dialog.open(AddsalaryComponent, {
       data: {id: id, date: this.onDate},
-      // width: '750px',
     });
   }
 
