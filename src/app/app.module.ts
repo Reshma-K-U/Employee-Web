@@ -45,6 +45,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
 import {EmployeeService} from  './employees/services/employee.services';
 import{FirestoreService} from '../app/services/firestore.service';
 import {FirestoreClientService} from './clients/services/firestore.service'
@@ -142,6 +143,8 @@ import { ResultComponent } from './payroll/tds/result/result.component';
 import { HousepropertyComponent } from './payroll/tds/houseproperty/houseproperty.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AddaccountsComponent } from './accounts/addaccounts/addaccounts.component';
+import { ClientDocComponent } from './clients/client-details/client-doc/client-doc.component';
+
 
 
 @NgModule({
@@ -228,6 +231,8 @@ import { AddaccountsComponent } from './accounts/addaccounts/addaccounts.compone
     HousepropertyComponent,
     AccountsComponent,
     AddaccountsComponent,
+    ClientDocComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -258,7 +263,7 @@ import { AddaccountsComponent } from './accounts/addaccounts/addaccounts.compone
     MatGridListModule,
     MatTreeModule,
     MatListModule,
-
+    MatDividerModule,
     AppRoutingModule,
     MatCheckboxModule,
     PdfViewerModule,
