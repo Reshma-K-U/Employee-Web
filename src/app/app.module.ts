@@ -4,11 +4,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-//import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
-'@angular/platform-browser/animations';
 import { GridModule } from '@progress/kendo-angular-grid';
 
 
@@ -16,13 +14,13 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireStorageModule} from 'angularfire2/storage';
-var firebaseConfig = {
-  apiKey: "AIzaSyBzsyyLdJBjK0kZcEPPiorS38Ij7Hg3LTw",
-  authDomain: "getexalture.firebaseapp.com",
-  databaseURL: "https://getexalture.firebaseio.com",
-  projectId: "getexalture",
-  storageBucket: "getexalture.appspot.com",
-  messagingSenderId: "43275888739"
+const firebaseConfig = {
+  apiKey: 'AIzaSyBzsyyLdJBjK0kZcEPPiorS38Ij7Hg3LTw',
+  authDomain: 'getexalture.firebaseapp.com',
+  databaseURL: 'https://getexalture.firebaseio.com',
+  projectId: 'getexalture',
+  storageBucket: 'getexalture.appspot.com',
+  messagingSenderId: '43275888739'
 };
 
 
@@ -44,12 +42,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTreeModule} from '@angular/material/tree';
+
+import {EmployeeService} from './employees/services/employee.services';
+import {FirestoreService} from '../app/services/firestore.service';
+import {FirestoreClientService} from './clients/services/firestore.service';
+import {AttendanceService } from './attendance/service/attendance.service';
+import {TaxComputationService} from './payroll/tds/service/tax-computation.service';
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
-import {EmployeeService} from  './employees/services/employee.services';
-import{FirestoreService} from '../app/services/firestore.service';
-import {FirestoreClientService} from './clients/services/firestore.service'
-import {AttendanceService } from './attendance/service/attendance.service'
+
 
 import { AppComponent } from './app.component';
 import { BasicInfoComponent } from './employees/add-employee/basic-info/basic-info.component';
@@ -141,6 +142,7 @@ import { ProjInvoiceComponent } from './project/project-detail/proj-invoice/proj
 import { OtherincomeComponent } from './payroll/tds/otherincome/otherincome.component';
 import { ResultComponent } from './payroll/tds/result/result.component';
 import { HousepropertyComponent } from './payroll/tds/houseproperty/houseproperty.component';
+import { PreviousEmployerComponent } from './payroll/tds/previous-employer/previous-employer.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AddaccountsComponent } from './accounts/addaccounts/addaccounts.component';
 import { ClientDocComponent } from './clients/client-details/client-doc/client-doc.component';
@@ -229,6 +231,7 @@ import { ClientDocComponent } from './clients/client-details/client-doc/client-d
     OtherincomeComponent,
     ResultComponent,
     HousepropertyComponent,
+    PreviousEmployerComponent,
     AccountsComponent,
     AddaccountsComponent,
     ClientDocComponent,
@@ -276,10 +279,11 @@ import { ClientDocComponent } from './clients/client-details/client-doc/client-d
 
     GridModule
   ],
-  providers: [EmployeeService,FirestoreService,FirestoreClientService,FirestoreLeaveService,AttendanceService],
+  providers: [EmployeeService, FirestoreService, FirestoreClientService, FirestoreLeaveService, AttendanceService
+  , TaxComputationService],
   bootstrap: [AppComponent],
-  entryComponents:[NewqualificationComponent,NewinterestComponent,NewexperienceComponent,AddPrivilageLeaveComponent,AddsalaryComponent,
-  NewempsalaryComponent,EmployeeSalaryComponent,NewdependentComponent,ClientInvoiceComponent,
-  AddassetsComponent,AssignassetsComponent,SearchassetsComponent,ProjectComponent,EditassetsComponent,ProjInvoiceComponent]
+  entryComponents: [NewqualificationComponent, NewinterestComponent, NewexperienceComponent, AddPrivilageLeaveComponent, AddsalaryComponent,
+  NewempsalaryComponent, EmployeeSalaryComponent, NewdependentComponent, ClientInvoiceComponent,
+  AddassetsComponent, AssignassetsComponent, SearchassetsComponent, ProjectComponent, EditassetsComponent, ProjInvoiceComponent]
 })
 export class AppModule { }

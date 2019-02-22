@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'exalt-result',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-
+@Input() empid: string;
   constructor() { }
 
   ngOnInit() {

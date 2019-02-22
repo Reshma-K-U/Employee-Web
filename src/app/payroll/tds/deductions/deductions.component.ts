@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'exalt-deductions',
@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deductions.component.scss']
 })
 export class DeductionsComponent implements OnInit {
-
+  @Input() empid: string;
   constructor() { }
-  table80c:boolean=false;
-  table80d:boolean=false;
-  array:any[]=[
-    {viewValue1:'1'},
-  ]
-  section80c: section80c[] = [
+  table80c = false;
+  table80d = false;
+  array: any[] = [
+    {viewValue1: '1'},
+  ];
+  section80c: Section80c[] = [
     {value: 'c1', viewValue: '5 years of fixed deposit in scheduled bank'},
     {value: 'c2', viewValue: 'Additional interest on Housing loan'},
     {value: 'c3', viewValue: 'Children tution fees'},
@@ -25,7 +25,7 @@ export class DeductionsComponent implements OnInit {
     {value: 'c9', viewValue: 'Donation-100% Exemption'},
     {value: 'c10', viewValue: 'Donation-100% Exemption'}
   ];
-  section80d: section80d[] = [
+  section80d: Section80d[] = [
     {value: 'phc', viewValue: 'Preventive Health Check-Up'},
     {value: 'phcp', viewValue: 'Preventive Health Check-Up-Dependant Parents'},
     {value: 'mip', viewValue: 'Medical Insurance Premium'},
@@ -34,27 +34,27 @@ export class DeductionsComponent implements OnInit {
   ];
   ngOnInit() {
   }
-  addRow(j){
+  addRow(j) {
     console.log(j);
-    this.array.push({viewValue1:j+1});
+    this.array.push({viewValue1: j + 1 });
   }
-  onSectionChange(sec){
-    if(sec=='80c'){
-    this.table80c=true;
+  onSectionChange(sec) {
+    if (sec === '80c') {
+    this.table80c = true;
     }
-    if(sec=='80d'){
-      this.table80d=true;
+    if (sec === '80d') {
+      this.table80d = true;
     }
   }
 }
-export interface section80c {
+export interface Section80c {
   value: string;
   viewValue: string;
 }
-export interface section80d {
+export interface Section80d {
   value: string;
   viewValue: string;
 }
-export interface array{
+export interface Array {
   viewValue1: string;
 }

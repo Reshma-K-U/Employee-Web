@@ -132,8 +132,8 @@ export class FirestoreClientService {
 
 
   createNewInvoice(details: any, client: any) {
-    const year = new Date().getFullYear();
-    const month = new Date().getMonth();
+      const year = new Date().getFullYear();
+      const month = new Date().getMonth();
        this.afs.collection('invoices').doc(year.toString()).collection(month.toString())
       .doc(details.invoice_num).set({
         'client_name': client.data.company_name,

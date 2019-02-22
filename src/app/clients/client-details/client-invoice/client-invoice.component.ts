@@ -46,7 +46,6 @@ export class ClientInvoiceComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const value = form.value;
-    console.log('value', value);
    this.invoiceDetails.invoice_num =  value.invoice_num,
    this.invoiceDetails.project_name =  value.project,
    this.invoiceDetails.due_on_receipt =  value.dueOnR,
