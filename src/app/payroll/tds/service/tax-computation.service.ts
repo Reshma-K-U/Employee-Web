@@ -99,4 +99,19 @@ export class TaxComputationService {
       'previousEmployerDetails': previousEmployerDetails
     });
   }
+
+  add80c(c80,empid){
+    const employeeDocRef = this.afs.collection('taxDetails').doc(empid);
+    employeeDocRef.
+       update({
+          'c80':c80,
+       });
+  }
+  add80d(d80,empid){
+    const employeeDocRef = this.afs.collection('taxDetails').doc(empid);
+    employeeDocRef.
+       update({
+          'd80':d80,
+       });
+  }
 }

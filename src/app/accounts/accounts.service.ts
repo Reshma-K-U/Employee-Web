@@ -26,7 +26,7 @@ export class AccountsService {
     //       'foodbev': form.foodbev,
        });
   }
-  addDebit(date: Date, debit,debitTotal) {
+  addDebit(date: Date, debit,debitTotal,balance) {
     var month=date.getMonth();
     month=month+1;
     var year = date.getFullYear();
@@ -35,17 +35,23 @@ export class AccountsService {
        set({
          'debit': debit,
          'debitTotal': debitTotal,
-          // 'projpay': form.projpay,
-          // 'balance': form.balance,
-       });
+         'balance': balance,       });
   }
-  getAccountDetails(date){
+  getCreditAccountDetails(date){
     var month=date.getMonth();
     month=month+1;
     var year = date.getFullYear();
     var col = this.afs.collection('accounts').doc(year.toString()).collection(month.toString()).doc('credit');
     var data:any
-    // data = col.snapshotChanges();
+    data=col.valueChanges();
+    return data;
+  }
+  getDebitAccountDetails(date){
+    var month=date.getMonth();
+    month=month+1;
+    var year = date.getFullYear();
+    var col = this.afs.collection('accounts').doc(year.toString()).collection(month.toString()).doc('debit');
+    var data:any
     data=col.valueChanges();
     return data;
   }

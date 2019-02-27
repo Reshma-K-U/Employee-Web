@@ -10,23 +10,45 @@ import { Route, Router } from '@angular/router';
 })
 export class AccountsComponent implements OnInit {
 
-  accountDetails:any[];
+  creditAccountDetails:any[];
+  debitAccountDetails:any[];
   creditTotal:any[];
+  debitTotal:any[];
+  balance: any[];
   onDate: Date = new Date();
   constructor(private accService: AccountsService, private router: Router) { }
 
   ngOnInit() {
-    this.accountDetails=[];
-    this.accService.getAccountDetails(this.onDate).subscribe(
+    this.creditAccountDetails=[];
+    this.accService.getCreditAccountDetails(this.onDate).subscribe(
     (value)=>{
             this.creditTotal=value.creditTotal;
-            this.accountDetails=value.credit;
-            console.log(this.accountDetails);
+            this.creditAccountDetails=value.credit;
             });
+            this.debitAccountDetails=[];
+            this.accService.getDebitAccountDetails(this.onDate).subscribe(
+            (value)=>{
+                    this.debitTotal=value.debitTotal;
+                    this.debitAccountDetails=value.debit;
+                    this.balance = value.balance;
+                    });
 
   }
   onAddClick(){
         this.router.navigate(['addaccounts']);
   }
-  dateChange(){}
+  dateChange(){
+    this.creditAccountDetails=[];
+    this.accService.getCreditAccountDetails(this.onDate).subscribe(
+    (value)=>{
+            this.creditTotal=value.creditTotal;
+            this.creditAccountDetails=value.credit;
+            });
+            this.debitAccountDetails=[];
+            this.accService.getDebitAccountDetails(this.onDate).subscribe(
+            (value)=>{
+                    this.debitTotal=value.debitTotal;
+                    this.debitAccountDetails=value.debit;
+                    });
+  }
 }
