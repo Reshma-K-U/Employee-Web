@@ -1,13 +1,15 @@
 <div class="container-fluid">
   <div class="row">
     <mat-form-field class="date">
-    <input matInput (input)="dateChange($event)" [matDatepicker]="picker" name="onDate" placeholder="Choose a date" [(ngModel)]="onDate">
+    <input matInput (dateChange)="dateChange()" [matDatepicker]="picker" name="onDate" placeholder="Choose a date" [(ngModel)]="onDate">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <button mat-raised-button color="warn" class="addbtn" (click)="onAddClick()">Add</button>
   </div>
 </div>
+<div class="container-fluid">
+    <div class="row">
 <table class="table" >
     <thead class="thead-light table-bordered">
       <tr>
@@ -16,9 +18,37 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>a</td>
-        <td>b</td>
+      <tr *ngFor="let acc of creditAccountDetails">
+        <td>{{acc.creditname}}</td>
+        <td>{{acc.amount}}</td>
       </tr>
+      <tr>
+        <td><h2>Total</h2></td>
+        <td>{{this.creditTotal}}</td>
       </tbody>
       </table>
+
+      <table class="table" >
+          <thead class="thead-light table-bordered">
+            <tr>
+              <th >DEBIT</th>
+              <th >AMOUNT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let acc of debitAccountDetails">
+              <td>{{acc.debitname}}</td>
+              <td>{{acc.amount}}</td>
+            </tr>
+            <tr>
+              <td><h2>Total</h2></td>
+              <td>{{this.debitTotal}}</td>
+            </tr>
+            <tr>
+              <td><h2>Balance</h2></td>
+              <td>{{this.balance}}</td>
+            </tr>
+            </tbody>
+            </table>
+</div>
+</div>

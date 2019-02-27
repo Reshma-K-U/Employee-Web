@@ -52,9 +52,11 @@ export class ExemptionsComponent implements OnInit {
   ngOnInit() {
       this.tsService.getDetails(this.empid).subscribe(data => {
         if (data) {
-          this.RentDetails = data.payload.data()['rentDetails'];
-          this.exemptions = data.payload.data()['exemptions'];
-          this.calculateTotal();
+          if (data.payload.data()['rentDetails']){
+            this.RentDetails = data.payload.data()['rentDetails'];
+            this.exemptions = data.payload.data()['exemptions'];
+            this.calculateTotal();
+          }
         } else {
           this.calculateTotal();
         }

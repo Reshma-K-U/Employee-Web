@@ -1,76 +1,218 @@
-<mat-form-field>
+  <mat-form-field>
     <mat-select placeholder="Section" [(value)]="selected" (selectionChange)="onSectionChange(selected)">
       <mat-option value="80c">80C</mat-option>
       <mat-option value="80d">80D</mat-option>
     </mat-select>
   </mat-form-field>
 
-<table *ngIf="table80c">
-  <thead>
-    <tr>
-      <th>Narrations</th>
-      <th>Age</th>
-      <th>Section</th>
-      <th>Max.Limit</th>
-      <th>Gross</th>
-      <th>Qualifying</th>
-      <th>Deductable</th>
-      <th>Proof</th>
-      <th>Remarks</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let j of array">
-      <td><mat-form-field  class="form-field">
-          <mat-select name="itemValue" (selectionChange)="addRow(j)">
-            <mat-option *ngFor="let i of section80c" [value]="i.value">
-              {{i.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field></td>
-      <td><input matInput name="lta" [(ngModel)]="lta"></td>
-      <td><input matInput name="lta" [(ngModel)]="lta"></td>
-      <td><input matInput name="lta" [(ngModel)]="lta"></td>
-      <td><input matInput name="lta" [(ngModel)]="lta"></td>
-      <td><input matInput name="lta" [(ngModel)]="lta"></td>
-      <td><input matInput name="lta" [(ngModel)]="lta"></td>
-      <td><mat-checkbox></mat-checkbox></td>
-      <td><input matInput name="lta" [(ngModel)]="lta"></td>
-    </tr>
-  </tbody>
-</table>
-
-<table *ngIf="table80d">
-    <thead>
-      <tr>
-        <th>Narrations</th>
-        <th>Age</th>
-        <th>Section</th>
-        <th>Max.Limit</th>
-        <th>Gross</th>
-        <th>Qualifying</th>
-        <th>Deductable</th>
-        <th>Proof</th>
-        <th>Remarks</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let j of array">
-        <td><mat-form-field  class="form-field">
-            <mat-select name="itemValue" (selectionChange)="addRow(j)">
-              <mat-option *ngFor="let i of section80d" [value]="i.value">
-                {{i.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field></td>
-        <td><input matInput name="lta" [(ngModel)]="lta"></td>
-        <td><input matInput name="lta" [(ngModel)]="lta"></td>
-        <td><input matInput name="lta" [(ngModel)]="lta"></td>
-        <td><input matInput name="lta" [(ngModel)]="lta"></td>
-        <td><input matInput name="lta" [(ngModel)]="lta"></td>
-        <td><input matInput name="lta" [(ngModel)]="lta"></td>
-        <td><mat-checkbox></mat-checkbox></td>
-        <td><input matInput name="lta" [(ngModel)]="lta"></td>
-      </tr>
-    </tbody>
+  <table class="table" *ngIf="table80c">
+      <thead>
+        <tr>
+          <th>Narrations</th>
+          <th>Age</th>
+          <th>Section</th>
+          <th>Max.Limit</th>
+          <th>Gross</th>
+          <th>Qualifying</th>
+          <th>Deductable</th>
+          <th>Proof</th>
+          <th>Remarks</th>
+          <th><button class="btn btn-default" type="button" (click)="on80cAddClick()"
+            style="background-color:green;color:white;float:right;font-size: 12px;"
+            ><i class="fas fa-plus"></i></button></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let qual of c80; let i = index">
+              <td >
+                {{qual.narration}}
+              </td>
+              <td>
+                  {{qual.age}}
+              </td>
+              <td >
+                  {{qual.section}}
+              </td>
+                <td>
+                  {{qual.maxlimit}}
+              </td>
+              <td >
+                  {{qual.gross}}
+              </td>
+              <td>
+                  {{qual.qualifying}}
+              </td>
+              <td >
+                  {{qual.deductable}}
+              </td>
+              <td>
+                  {{qual.proof}}
+              </td>
+              <td >
+              {{qual.remarks}}
+              </td>
+            </tr>
+            <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <mat-select name="narration" [(ngModel)]="new80cAttribute.narration">
+                      <mat-option *ngFor="let i of section80c" [value]="i.value">
+                        {{i.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput name="age" [(ngModel)]="new80cAttribute.age" required >
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+               <input matInput name="section" [(ngModel)]="new80cAttribute.section" required >
+              </mat-form-field>
+            </td>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input readonly matInput name="maxlimit" [(ngModel)]="new80cAttribute.maxlimit" required >
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width">
+                 <input matInput name="gross" [(ngModel)]="new80cAttribute.gross" required >
+                </mat-form-field>
+              </td>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <input matInput name="qualifying" [(ngModel)]="new80cAttribute.qualifying" required >
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width">
+                   <input matInput name="deductable" [(ngModel)]="new80cAttribute.deductable" required >
+                  </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                     <input matInput name="proof" [(ngModel)]="new80cAttribute.proof" required >
+                    </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                       <input matInput name="remarks" [(ngModel)]="new80cAttribute.remarks" required >
+                      </mat-form-field>
+                    </td>
+                </tr>
+      </tbody>
   </table>
+
+<div>
+  <table class="table" *ngIf="table80d">
+      <thead>
+        <tr>
+          <th>Narrations</th>
+          <th>Age</th>
+          <th>Section</th>
+          <th>Max.Limit</th>
+          <th>Gross</th>
+          <th>Qualifying</th>
+          <th>Deductable</th>
+          <th>Proof</th>
+          <th>Remarks</th>
+          <th><button class="btn btn-default" type="button" (click)="on80dAddClick()"
+            style="background-color:green;color:white;float:right;font-size: 12px;"
+            ><i class="fas fa-plus"></i></button></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let qual of d80; let j = index">
+              <td >
+                {{qual.narration}}
+              </td>
+              <td>
+                  {{qual.age}}
+              </td>
+              <td >
+                  {{qual.section}}
+              </td>
+                <td>
+                  {{qual.maxlimit}}
+              </td>
+              <td >
+                  {{qual.gross}}
+              </td>
+              <td>
+                  {{qual.qualifying}}
+              </td>
+              <td >
+                  {{qual.deductable}}
+              </td>
+              <td>
+                  {{qual.proof}}
+              </td>
+              <td >
+              {{qual.remarks}}
+              </td>
+            </tr>
+            <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <mat-select name="narration" [(ngModel)]="new80dAttribute.narration">
+                      <mat-option *ngFor="let j of section80d" [value]="j.value">
+                        {{j.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput name="age" [(ngModel)]="new80dAttribute.age" required >
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+               <input matInput name="section" [(ngModel)]="new80dAttribute.section" required >
+              </mat-form-field>
+            </td>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input readonly matInput name="maxlimit" [(ngModel)]="new80dAttribute.maxlimit" required >
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width">
+                 <input matInput name="gross" [(ngModel)]="new80dAttribute.gross" required >
+                </mat-form-field>
+              </td>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <input matInput name="qualifying" [(ngModel)]="new80dAttribute.qualifying" required >
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width">
+                   <input matInput name="deductable" [(ngModel)]="new80dAttribute.deductable" (input)="changeDed($event)" required >
+                  </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                     <input matInput name="proof" [(ngModel)]="new80dAttribute.proof" required >
+                    </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                       <input matInput name="remarks" [(ngModel)]="new80dAttribute.remarks" required >
+                      </mat-form-field>
+                    </td>
+                </tr>
+      </tbody>
+  </table>
+</div>
+    <div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2">
+        <button class="btn btn-primary" (click)="onSave()">SAVE</button>
+        <button class="btn btn-danger">CANCEL</button>
+    </div>
+    <div class="col-md-5"></div>
+  </div>

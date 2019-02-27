@@ -163,5 +163,4 @@ dateToString(date) {
     date = month + '/' + year;
     return date;
 }
-
 }
