@@ -362,5 +362,20 @@ getImageUrl(path: string) {
   const ref: AngularFireStorageReference = this.storage.ref(path);
   return ref.getDownloadURL();
 }
+uploaddoc( empid: string , file: File ) {
+  // const path = 'ClientLogos/'${ clientId }'/'${file.name};
+
+  const path = `Employeedocs/${empid}/${file.name}`;
+  this.task = this.storage.upload(path, file);
+  this.afs.collection('employees').doc(empid).collection('documents').doc(file.name).set({
+      'DocPath': path,
+      'name' : file.name
+  });
+}
+getdoc(id: string) {
+  return this.afs.collection('employees').doc(id).collection('documents').valueChanges();
+
+}
+
 
 }

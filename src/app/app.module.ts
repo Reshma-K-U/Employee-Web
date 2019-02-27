@@ -236,6 +236,7 @@ import { ClientDocComponent } from './clients/client-details/client-doc/client-d
     AddaccountsComponent,
     ClientDocComponent,
 
+
   ],
   imports: [
     BrowserModule,

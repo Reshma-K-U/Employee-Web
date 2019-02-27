@@ -60,8 +60,26 @@ date: Date = new Date();
       const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
       const position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-      pdf.save(this.date + '.pdf'); // Generated PDF
+      pdf.save(this.year  + '_' + this.invoice_id + '.pdf'); // Generated PDF
+      console.log(pdf);
     });
+  }
+  onUpload()
+  {
+    const data = document.getElementById('contentToConvert');
+    html2canvas(data).then(canvas => {
+      const imgWidth = 210;
+      const pageHeight = 250;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const heightLeft = imgHeight;
+      const contentDataURL = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
+      const position = 0;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+      const file = pdf.output('blob');
+      this.fsService.uploadinvoice(file, this.invoice_id);
+  });
+
   }
 
 }

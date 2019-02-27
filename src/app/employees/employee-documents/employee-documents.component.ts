@@ -1,14 +1,7 @@
-import {NestedTreeControl} from '@angular/cdk/tree';
-import {Component, Injectable} from '@angular/core';
-import {MatTreeNestedDataSource} from '@angular/material/tree';
-import {BehaviorSubject,Observable,of as observableOf} from 'rxjs';
-
-
-export class FileNode {
-  children: FileNode[];
-  filename: string;
-  type: any;
-}
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { FirestoreService } from '../../services/firestore.service';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'exalt-employee-documents',
@@ -17,46 +10,44 @@ export class FileNode {
 })
 
 export class EmployeeDocumentsComponent{
-  dataChange = new BehaviorSubject<FileNode[]>([]);
-  nestedTreeControl: NestedTreeControl<FileNode>;
-  nestedDataSource: MatTreeNestedDataSource<FileNode>;
 
-  constructor() {
-    this.nestedTreeControl = new NestedTreeControl<FileNode>(this._getChildren);
-    this.nestedDataSource = new MatTreeNestedDataSource();
 
-    this.dataChange.subscribe(data=>{
-      this.nestedDataSource.data=data;
-    })
+  id: string;
+  subscription: Subscription;
+  employee: any = null;
+  selectedFile: File;
+  selected = false;
+  url: any[] = [];
+  constructor( private route: ActivatedRoute,private cd: ChangeDetectorRef, private emp: FirestoreService ) {}
+  ngOnInit() {
 
-    this.dataChange.next([
-      {
-        filename:'personal',
-        type:"",
-        children:[
-            {
-              filename:'aadhar',
-              type:'doc',
-              children:null,
-            },
-            {
-              filename:'id card',
-              type:"doc",
-              children:null
-            }
-        ]
-      },
-      {
-        filename:'Offer Letter',
-        type:'pdf',
-        children:null
+    this.id = this.route.snapshot.paramMap.get('id');
 
+    this.subscription = this.emp.getdoc(this.id).subscribe(
+      (value) => {
+        this.employee = value;
+        this.url = [];
+        for( let i = 0; i < this.employee.length; i++) {
+        const path = this.employee[i]['DocPath'];
+        this.emp.getImageUrl(path).subscribe(val => {
+        this.url.push({
+          'name': this.employee[i].name,
+          'url': val
+        });
+        console.log(val);
+      });
       }
-    ])
-}
+      this.cd.markForCheck();
+      });
+  }
+  onSelectFile(event) {
+    this.selectedFile = event.target.files[0];
+    this.selected = true;
 
-hasNestedChild = (_: number, nodeData: FileNode) => !nodeData.type;
 
-  private _getChildren = (node: FileNode) => node.children;
-}
+  }
+  upload() {
 
+    this.emp.uploaddoc(this.id, this.selectedFile );
+    }
+  }
