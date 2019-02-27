@@ -87,12 +87,26 @@ export class FirestoreClientService {
   uploadLogo(file: File , clientid: string) {
     // const path = 'ClientLogos/'${ clientId }'/'${file.name};
     const path = `ClientLogos/${clientid}_${file.name}`;
-    console.log(path);
+
     this.task = this.storage.upload(path, file);
     this.afs.collection('clients').doc(clientid).update({
         'logoPath': path
     });
   }
+  uploaddoc( clientid: string , file: File ) {
+    // const path = 'ClientLogos/'${ clientId }'/'${file.name};
+
+    const path = `Projectdocs/${clientid}/${file.name}`;
+    this.task = this.storage.upload(path, file);
+    this.afs.collection('clients').doc(clientid).collection('documents').doc(file.name).set({
+        'DocPath': path,
+        'name' : file.name
+    });
+  }
+  getdoc(id: string) {
+    return this.afs.collection('clients').doc(id).collection('documents').valueChanges();
+
+ }
 
   getImageUrl(path: string) {
     const ref: AngularFireStorageReference = this.storage.ref(path);
