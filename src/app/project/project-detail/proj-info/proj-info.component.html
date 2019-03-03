@@ -21,21 +21,19 @@
                       <mat-option value="ios">IOS</mat-option>
                     </mat-select>
                   </mat-form-field>
+
+
+                        <mat-form-field class="form-field">
+                            <input matInput name="client_company" [(ngModel)]="project.client_company"   ngModel placeholder="Client Name">
+                          </mat-form-field>
                   <mat-form-field class="form-field">
-                      <mat-select name="client_company" [(ngModel)]="client_company" placeholder="Client Name">
-                          <mat-option *ngFor="let client of allclients" [value]="client.company_name">
-                            {{client.company_name}}
-                          </mat-option>
-                        </mat-select>
-                        </mat-form-field>
-                  <mat-form-field class="form-field">
-                      <input name="startDate" [(ngModel)]="start_Date" ngModel matInput [matDatepicker]="startDate" placeholder="START DATE">
+                      <input name="startDate" [(ngModel)]="project.start_date" ngModel matInput [matDatepicker]="startDate" placeholder="START DATE">
                       <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
                       <mat-datepicker #startDate></mat-datepicker>
                   </mat-form-field>
 
                       <mat-form-field class="form-field">
-                          <mat-select name="assigned_emp" [(ngModel)]="assigned_emp" placeholder="Assigned Employee"  multiple>
+                          <mat-select name="assigned_emp" [(ngModel)]="project.assigned_emp" placeholder="Assigned Employee"  multiple>
 
                             <mat-option *ngFor="let emp of allemployees" [value]="emp.name+emp.role">{{emp.name}}({{emp.role}})</mat-option>
                           </mat-select>

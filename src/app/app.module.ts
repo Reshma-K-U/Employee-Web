@@ -146,6 +146,7 @@ import { PreviousEmployerComponent } from './payroll/tds/previous-employer/previ
 import { AccountsComponent } from './accounts/accounts.component';
 import { AddaccountsComponent } from './accounts/addaccounts/addaccounts.component';
 import { ClientDocComponent } from './clients/client-details/client-doc/client-doc.component';
+import { EmployeeTermComponent } from './employees/employee-term/employee-term.component';
 
 
 
@@ -235,6 +236,7 @@ import { ClientDocComponent } from './clients/client-details/client-doc/client-d
     AccountsComponent,
     AddaccountsComponent,
     ClientDocComponent,
+    EmployeeTermComponent,
 
 
   ],
