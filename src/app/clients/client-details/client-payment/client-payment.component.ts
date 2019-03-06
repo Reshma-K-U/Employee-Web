@@ -1,5 +1,6 @@
 import { Component, OnInit , Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import {FormControl} from '@angular/forms';
 import {ClientInvoiceComponent} from '../client-invoice/client-invoice.component';
 
 
@@ -12,9 +13,11 @@ export class ClientPaymentComponent implements OnInit {
 
   @Input() client: any;
 
+
   constructor( public dialog: MatDialog) { }
 
   ngOnInit() {
+
 
   }
 
@@ -25,6 +28,9 @@ export class ClientPaymentComponent implements OnInit {
         width: '945px',
       });
     }
+
+
+
 
 
 }

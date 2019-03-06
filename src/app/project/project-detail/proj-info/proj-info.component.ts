@@ -16,6 +16,7 @@ export class ProjInfoComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.project);
+    this.project.start_date=this.project.start_date.toDate();
     this.allclients= this.cfs.getDataForList();
 
 
@@ -25,6 +26,6 @@ update(){
   console.log("test");
   this.pfs.update(this.project);
   console.log(this.project);
-  
+
 }
 }

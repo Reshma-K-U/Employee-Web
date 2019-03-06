@@ -103,6 +103,18 @@ export class FirestoreClientService {
         'name' : file.name
     });
   }
+  uploadinvoice(file: File , invoice_id: string ){
+    const year= new Date().getFullYear();
+    const month= new Date().getMonth();
+    const path = `invoicedocs/${year}/${invoice_id}`;
+    this.task = this.storage.upload(path, file);
+    this.afs.collection('invoices').doc(year.toString()).collection(month.toString())
+      .doc(invoice_id).update({
+        'DocPath': path,
+        'name' : invoice_id
+    });
+
+  }
   getdoc(id: string) {
     return this.afs.collection('clients').doc(id).collection('documents').valueChanges();
 

@@ -22,7 +22,7 @@
             <input matInput  name="zip_code" ngModel placeholder="Zip Code">
           </mat-form-field><br>
           <mat-form-field class="form-field">
-            <input matInput name="email" ngModel placeholder="Email">
+            <input matInput name="email" ngModel placeholder="Email" >
           </mat-form-field><br>
           <mat-form-field class="form-field">
             <input matInput name="phone" ngModel placeholder="Phone">
@@ -60,8 +60,8 @@
       </div>
 
     </form>
-    <hr>
-    <button mat-raised-button color="accent">Cancel</button>
+
+    <a routerLink="/client-list"><button mat-raised-button color="accent"> Cancel</button></a>
     <button mat-raised-button color="primary" style="float:right" type="submit" (click)="onAdd(f)">Save</button>
   </mat-card-content>
 </mat-card>
