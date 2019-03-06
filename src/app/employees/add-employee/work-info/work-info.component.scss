@@ -2,8 +2,8 @@
 
   .example-full-width {
     width: 50%;
-    padding: 8px;   
-  
+    padding: 8px;
+
   }
 
   .card{
@@ -13,7 +13,12 @@
     float:left;
     padding:10px;
   }
-  
+
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  .save{
+    color: white;
+    margin-left: 20px;
+    background-color: #800080;
   }

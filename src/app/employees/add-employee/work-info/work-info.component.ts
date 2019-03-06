@@ -10,6 +10,9 @@ import { AddemployeeService } from '../addemployee.service';
 })
 export class WorkInfoComponent implements OnInit {
 
+  joindatemessage = false;
+  rolemessage = false;
+  nextbutton = false;
   work:Work={
     department:" ",
     location:" ",
@@ -19,14 +22,42 @@ export class WorkInfoComponent implements OnInit {
     joining_date:" ",
     employee_type:" ",
   }
-  
+
   constructor(private addService:AddemployeeService) { }
 
   ngOnInit() {
   }
-
+  saveClick(){
+    if(this.work.joining_date === ' '){
+      this.joindatemessage = true;
+    }
+    else if(this.work.role === ' '){
+      this.rolemessage = true;
+    }
+    else{
+      this.nextbutton = true;
+      this.joindatemessage = false;
+      this.joindatemessage = false;
+    }
+  }
   onAdd(){
     this.addService.setWork(this.work);
+  }
+  dateCheck(){
+    if(this.work.joining_date === ' '){
+      this.joindatemessage = true;
+    }
+    else{
+      this.joindatemessage = false;
+    }
+  }
+  roleCheck(){
+    if(this.work.role === ' '){
+      this.rolemessage = true;
+    }
+    else{
+      this.rolemessage = false;
+    }
   }
 
 }

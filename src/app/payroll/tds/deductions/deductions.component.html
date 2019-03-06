@@ -1,4 +1,4 @@
-  <mat-form-field>
+  <mat-form-field class="sel80">
     <mat-select placeholder="Section" [(value)]="selected" (selectionChange)="onSectionChange(selected)">
       <mat-option value="80c">80C</mat-option>
       <mat-option value="80d">80D</mat-option>
@@ -17,9 +17,7 @@
           <th>Deductable</th>
           <th>Proof</th>
           <th>Remarks</th>
-          <th><button class="btn btn-default" type="button" (click)="on80cAddClick()"
-            style="background-color:green;color:white;float:right;font-size: 12px;"
-            ><i class="fas fa-plus"></i></button></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -55,8 +53,8 @@
             <tr>
                 <td>
                   <mat-form-field class="example-full-width">
-                    <mat-select name="narration" [(ngModel)]="new80cAttribute.narration">
-                      <mat-option *ngFor="let i of section80c" [value]="i.value">
+                    <mat-select name="narration" [(ngModel)]="new80cAttribute.narration" (selectionChange)="optcChange()">
+                      <mat-option *ngFor="let i of section80c" [value]="i.viewValue">
                         {{i.viewValue}}
                       </mat-option>
                     </mat-select>
@@ -102,6 +100,9 @@
                        <input matInput name="remarks" [(ngModel)]="new80cAttribute.remarks" required >
                       </mat-form-field>
                     </td>
+                    <td><button class="btn btn-default" type="button" (click)="on80cAddClick()"
+                      style="background-color:green;color:white;float:right;font-size: 12px;"
+                      ><i class="fas fa-plus"></i></button></td>
                 </tr>
       </tbody>
   </table>
@@ -119,9 +120,7 @@
           <th>Deductable</th>
           <th>Proof</th>
           <th>Remarks</th>
-          <th><button class="btn btn-default" type="button" (click)="on80dAddClick()"
-            style="background-color:green;color:white;float:right;font-size: 12px;"
-            ><i class="fas fa-plus"></i></button></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -157,8 +156,8 @@
             <tr>
                 <td>
                   <mat-form-field class="example-full-width">
-                    <mat-select name="narration" [(ngModel)]="new80dAttribute.narration">
-                      <mat-option *ngFor="let j of section80d" [value]="j.value">
+                    <mat-select name="narration" [(ngModel)]="new80dAttribute.narration" (selectionChange)="optdChange()">
+                      <mat-option *ngFor="let j of section80d" [value]="j.viewValue">
                         {{j.viewValue}}
                       </mat-option>
                     </mat-select>
@@ -204,6 +203,9 @@
                        <input matInput name="remarks" [(ngModel)]="new80dAttribute.remarks" required >
                       </mat-form-field>
                     </td>
+                  <td><button class="btn btn-default" type="button" (click)="on80dAddClick()"
+                    style="background-color:green;color:white;float:right;font-size: 12px;"
+                    ><i class="fas fa-plus"></i></button></td>
                 </tr>
       </tbody>
   </table>

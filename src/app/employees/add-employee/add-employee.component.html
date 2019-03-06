@@ -3,25 +3,25 @@
         <div class="col-xs-12">
             <mat-horizontal-stepper [linear]="true" #stepper>
                 <mat-step [stepControl]="basic">
-                      
+
                     <ng-template matStepLabel>Basic Info</ng-template>
                     <exalt-basic-info></exalt-basic-info>
-                    
+
                 </mat-step>
-               
+
                 <mat-step [stepControl]="personal">
-                       
+
                     <ng-template matStepLabel>Personal Info</ng-template>
                     <exalt-personal-info></exalt-personal-info>
-               
-                </mat-step>
-               
 
-              <mat-step [stepControl]="work" > 
-                   
+                </mat-step>
+
+
+              <mat-step [stepControl]="work" >
+
                     <ng-template matStepLabel>Work Info</ng-template>
                     <exalt-work-info></exalt-work-info>
-                   
+
                 </mat-step>
                 <mat-step [stepControl]="prev_exp">
                         <ng-template matStepLabel>Previous Experience</ng-template>
@@ -33,7 +33,7 @@
                 </mat-step >
                 <mat-step [stepControl]="dependents">
                         <ng-template matStepLabel>Dependents</ng-template>
-                        <exalt-dependents></exalt-dependents> 
+                        <exalt-dependents></exalt-dependents>
                 </mat-step>
                 <mat-step [stepControl]="salary">
                     <ng-template matStepLabel>Salary Info</ng-template>
@@ -50,6 +50,5 @@
 
 
 
- 
- 
- 
+
+

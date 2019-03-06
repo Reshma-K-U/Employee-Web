@@ -7,52 +7,80 @@
                 <div class="mat-radio-button">
                     <label style = "color:#666869">Marrital Status</label>
                     <mat-radio-group name="marrital_status" [(ngModel)]="personal.marrital_status" required>
-                    <mat-radio-button value="single" style = "color:#666869">Single</mat-radio-button>
+                    <mat-radio-button value="single" style = "color:#666869" required>Single</mat-radio-button>
                     <mat-radio-button value="married" style = "color:#666869">Married</mat-radio-button>
-                    </mat-radio-group>    
+                    </mat-radio-group>
                 </div>
                 <br>
-                <mat-form-field class="example-full-width">
+
+                <div class="row">
+                <div class="col-md-6">
+                    <div class="example-full-width">
+                <mat-form-field>
                     <label style = "color:#666869">Date Of Birth</label>
-                  <input matInput [matDatepicker]="picker" name="dob" 
+                  <input matInput [matDatepicker]="picker" name="dob"
+                  (input)="dateCheck($event)"
                   [(ngModel)]="personal.date_of_birth" required>
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
-                
-                <mat-form-field class="example-full-width">
+                <P *ngIf="dobmessage" style="color:red">*please provide Date of Birth</P>
+                </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="example-full-width">
+                <mat-form-field>
                     <label style = "color:#666869">Address</label>
-                  <input matInput 
+                  <input matInput
                             type="text"
                             id="address"
                             name="address"
+                            (input)="addressCheck($event)"
                             [(ngModel)]="personal.address"
-                            required
-                          >
+                            required>
                 </mat-form-field>
-                <mat-form-field class="example-full-width">
+                <P *ngIf="addressmessage" style="color:red">*please provide Address</P>
+                </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="example-full-width">
+                <mat-form-field>
                     <label style = "color:#666869">Mobile Number</label>
-                  <input matInput 
+                  <input matInput
                           type="text"
                           id="mobNum"
                           name="mobNum"
+                          (input)="mobileCheck($event)"
                           [(ngModel)]="personal.mob_num"
                           required
                          >
                 </mat-form-field>
-                <mat-form-field class="example-full-width">
+                <P *ngIf="mobmessage" style="color:red">*please provide a Valid Mobile Nmber</P>
+                </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="example-full-width">
+                <mat-form-field>
                     <label style = "color:#666869">Other Email</label>
                   <input matInput
                           type="email"
                           id="otherEmail"
                           name="otherEmail"
                           [(ngModel)]="personal.other_email"
-                          required 
+                          required
                         >
                 </mat-form-field>
-                <mat-form-field class="example-full-width">
+                </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="example-full-width">
+                <mat-form-field>
                     <label style = "color:#666869">Bank Account Number</label>
-                  <input matInput 
+                  <input matInput
                           type="text"
                           id="accnt_num"
                           name="accnt_num"
@@ -60,19 +88,31 @@
                           required
                          >
                 </mat-form-field>
-                <mat-form-field class="example-full-width">
+                </div>
+                </div>
+
+                <div class="col-md-6">
+                <div class="example-full-width">
+                <mat-form-field>
                     <label style = "color:#666869">Aadhar Number</label>
-                  <input matInput 
+                  <input matInput
                           type="text"
                           id="aadhar_num"
                           name="aadhar_num"
+                          (input)="aadharCheck($event)"
                           [(ngModel)]="personal.aadhar_num"
                           required
                           >
                 </mat-form-field>
-                <mat-form-field class="example-full-width">
+                <P *ngIf="aadharmessage" style="color:red">*please provide Valid Aadhar Number</P>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                  <div class="example-full-width">
+                <mat-form-field>
                     <label style = "color:#666869">Passport Number</label>
-                  <input matInput 
+                  <input matInput
                           type="text"
                           id="passport_num"
                           name="passport_num"
@@ -80,9 +120,14 @@
                           required
                           >
                 </mat-form-field>
-                <mat-form-field class="example-full-width">
+                </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="example-full-width">
+                <mat-form-field>
                     <label style = "color:#666869">PAN Number</label>
-                  <input matInput 
+                  <input matInput
                         type="text"
                         id="pan_num"
                         name="pan_num"
@@ -90,16 +135,19 @@
                         required
                         >
                 </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
               </form>
               <div style="margin-left:320px">
                   <button mat-raised-button color="accent" matStepperPrevious
-                  style="margin:20px">Prev</button>
-                  <button mat-raised-button color="primary" matStepperNext
-                  style="margin:20px" (click)="onAdd()">Next</button>
+                  >Prev</button>
+                  <button mat-raised-button class="save"(click)="saveClick()">Save</button>
+                  <button *ngIf="nextbutton" mat-raised-button class="next" color="primary" matStepperNext
+                  (click)="onAdd()">Next</button>
                 </div>
         </div>
       </div>
-        
     </div>
   </div>
 </div>

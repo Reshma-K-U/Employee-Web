@@ -4,82 +4,102 @@
       <div class="card">
         <div class="card-body">
             <form #f="ngForm">
-                <mat-form-field class="example-full-width">
-                  <label style = "color:#666869">Employee ID</label>
-                  <input matInput
-                        id="empID"
-                        name="empID"
-                        [(ngModel)]="basic.emp_id"
-                        required
-                         >
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                    <label style = "color:#666869">First Name</label>
-                  <input 
-                        matInput 
-                        id="firstName"
-                        name="firstName"
-                        [(ngModel)]="basic.firstname"
-                        required
-                        >
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="example-full-width">
+                        <mat-form-field >
+                            <label style = "color:#666869">Employee ID</label>
+                            <input matInput
+                                  id="empID"
+                                  name="empID"
+                                  [(ngModel)]="basic.emp_id"
+                                  required>
+                          </mat-form-field>
+                          <P *ngIf="empidmessage" style="color:red">please provide empid</P>
+                          </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="example-full-width">
+                    <mat-form-field>
+                        <label style = "color:#666869">First Name</label>
+                      <input
+                            matInput
+                            id="firstName"
+                            name="firstName"
+                            [(ngModel)]="basic.firstname"
+                            required
+                            >
+                          </mat-form-field>
+                                <p *ngIf="firstmessage" style="color:red">Please provide Data!</p>
+               </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="example-full-width">
+                <mat-form-field>
                     <label style = "color:#666869">Last Name</label>
-                  <input 
-                        matInput 
+                  <input
+                        matInput
                         id="lastName"
                         name="lastName"
                         [(ngModel)]="basic.lastname"
                         required
                         >
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
+                      </mat-form-field>
+                            <p *ngIf="lastmessage" style="color:red">Please provide Data!</p>
+                  </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="example-full-width">
+                <mat-form-field>
                     <label style = "color:#666869">Email</label>
-                  <input 
-                        matInput 
+                  <input
+                        matInput
                         type="email"
                         id="email"
                         name="email"
                         [(ngModel)]="basic.email"
                         required
                         >
-                </mat-form-field>
+                      </mat-form-field>
+                            <p *ngIf="emailmessage" style="color:red">Please provide Data!</p>
+                   </div>
+                  </div>
+
                <div class="mat-radio-button">
                   <label style = "color:#666869">Gender</label>
                   <mat-radio-group  name="gender" [(ngModel)]="basic.gender">
-                    
-                    <mat-radio-button 
-                             
-                              value="male" 
-                              style = "color:#666869" 
+
+                    <mat-radio-button
+
+                              value="male"
+                              style = "color:#666869"
                               required>Male</mat-radio-button>
-                    <mat-radio-button 
-                              
-                              value="female" 
-                              style = "color:#666869" 
+                    <mat-radio-button
+
+                              value="female"
+                              style = "color:#666869"
                               >Female</mat-radio-button>
                     <mat-radio-button
-                             
-                              value="others" 
+
+                              value="others"
                               style = "color:#666869"
                               >Others</mat-radio-button>
-                  </mat-radio-group> 
+                  </mat-radio-group>
                </div>
-               
-               
+              </div>
               </form>
               <div>
-                  <button mat-raised-button color="primary" matStepperNext
-                  style="margin-left:400px;margin-top: 20px" (click)="onAdd()">Next</button>
+                <button mat-raised-button class="save" (click)="saveClick()">Save</button>
+                  <button *ngIf="nextbutton" mat-raised-button color="primary" class="next" matStepperNext
+                  (click)="onAdd()">Next</button>
               </div>
         </div>
       </div>
-      
     </div>
   </div>
 </div>
 
 
-    
+
 
 

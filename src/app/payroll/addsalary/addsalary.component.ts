@@ -59,14 +59,6 @@ export class AddsalaryComponent implements OnInit {
         this.employeeDetail.esi = value.esi;
         this.employeeDetail.wwf = value.wwf;
         this.employeeDetail.pt = value.pt;
-        console.log(this.employeeDetail.pt);
-        console.log(this.employeeDetail.wwf);
-        console.log(this.employeeDetail.esi);
-        // this.employeeDetail.gwp=value.gwp;
-        // this.employeeDetail.it=value.it;
-        // this.employeeDetail.advance=value.advance;
-        // this.employeeDetail.totded=value.totded;
-        // this.employeeDetail.lop=value.lop;
       this.subscription.unsubscribe();
     });
   }

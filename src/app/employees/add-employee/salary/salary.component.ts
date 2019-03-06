@@ -16,15 +16,15 @@ export class SalaryComponent implements OnInit {
   subscription: Subscription;
   sal6mon: number = 1;
   salary: Salary = {
-    basicpay: '',
-    hra: '',
-    cedallow: '',
-    medallow: '',
-    speallow: '',
-    conallow: '',
-    wwf: '',
+    basicpay: 0,
+    hra: 0,
+    cedallow: 0,
+    medallow: 0,
+    speallow: 0,
+    conallow: 0,
+    wwf: 0,
     pt: 0,
-    esi: '',
+    esi: 0,
     total: '',
   };
   constructor(private addService: AddemployeeService) { }
@@ -37,34 +37,33 @@ export class SalaryComponent implements OnInit {
 
   autoFill() {
     if (this.salary.total <= 16000) {
-     this.salary.basicpay=parseInt(this.salary.total)*0.87;
-     this.salary.conallow=parseInt(this.salary.total)*0.05;
-     this.salary.hra=parseInt(this.salary.total)*0;
-     this.salary.medallow=parseInt(this.salary.total)*0.05;
-     this.salary.cedallow=parseInt(this.salary.total)*0.03;
-     this.salary.speallow=parseInt(this.salary.total)*0;
+     this.salary.basicpay = Math.round(parseInt(this.salary.total, 10) * 0.87);
+     this.salary.conallow = Math.round(parseInt(this.salary.total, 10) * 0.05);
+     this.salary.hra = Math.round(parseInt(this.salary.total, 10) * 0) ;
+     this.salary.medallow = Math.round(parseInt(this.salary.total, 10) * 0.05) ;
+     this.salary.cedallow = Math.round(parseInt(this.salary.total, 10) * 0.03) ;
+     this.salary.speallow = Math.round(parseInt(this.salary.total, 10) * 0) ;
      this.salary.total = this.salary.total;
     }
     if ( 16000 < this.salary.total && 25000 >= this.salary.total) {
-      this.salary.basicpay=parseInt(this.salary.total)*0.67;
-      this.salary.hra=parseInt(this.salary.total)*0.2;
-      this.salary.conallow=parseInt(this.salary.total)*0.05;
-      this.salary.medallow=parseInt(this.salary.total)*0.05;
-      this.salary.cedallow=parseInt(this.salary.total)*0.03;
-      this.salary.speallow=parseInt(this.salary.total)*0;
+      this.salary.basicpay = Math.round(parseInt(this.salary.total, 10) * 0.67) ;
+      this.salary.hra = Math.round(parseInt(this.salary.total, 10) * 0.2) ;
+      this.salary.conallow = Math.round(parseInt(this.salary.total, 10) * 0.05) ;
+      this.salary.medallow = Math.round(parseInt(this.salary.total, 10) * 0.05) ;
+      this.salary.cedallow = Math.round(parseInt(this.salary.total, 10) * 0.03) ;
+      this.salary.speallow = Math.round(parseInt(this.salary.total, 10 ) * 0) ;
       this.salary.total = this.salary.total;
     }
     if (this.salary.total > 25000) {
-      this.salary.basicpay = parseInt(this.salary.total)*0.55;
-      this.salary.hra = parseInt(this.salary.total)*0.2;
-      this.salary.medallow = parseInt(this.salary.total)*0.05;
-      this.salary.cedallow = parseInt(this.salary.total)*0.03;
-      this.salary.speallow = parseInt(this.salary.total)*0.12;
-      this.salary.conallow = parseInt(this.salary.total)*0.05;
+      this.salary.basicpay = Math.round(parseInt(this.salary.total, 10) * 0.55) ;
+      this.salary.hra = Math.round(parseInt(this.salary.total, 10) * 0.2) ;
+      this.salary.medallow = Math.round(parseInt(this.salary.total, 10) * 0.05) ;
+      this.salary.cedallow = Math.round(parseInt(this.salary.total, 10) * 0.03) ;
+      this.salary.speallow = Math.round(parseInt(this.salary.total, 10) * 0.12) ;
+      this.salary.conallow = Math.round(parseInt(this.salary.total, 10) * 0.05) ;
       this.salary.total = this.salary.total;
     }
     this.sal6mon = this.salary.total * 6;
-    console.log(this.sal6mon);
     if (12000 < this.sal6mon && 17999 >= this.sal6mon) {
       this.salary.pt = 120;
     }
@@ -89,7 +88,7 @@ export class SalaryComponent implements OnInit {
     if (this.sal6mon >= 125000) {
       this.salary.pt = 1250;
     }
-    this.salary.esi = 0.0175 * parseInt(this.salary.total);
+    this.salary.esi = Math.round(0.0175 * parseInt(this.salary.total, 10)) ;
     this.salary.wwf = 20;
   }
 

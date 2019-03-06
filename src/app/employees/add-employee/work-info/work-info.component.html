@@ -4,12 +4,16 @@
       <div class="card">
         <div class="card-body">
             <form #f="ngForm">
-                <mat-form-field class="example-full-width">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="example-full-width">
+                <mat-form-field>
                     <label style = "color:#666869">Department</label>
                     <input matInput
                           name="department"
                           [(ngModel)]="work.department"
-                          required 
+                          required
                          >
                   <!-- <mat-select  name="department" [(ngModel)]="work.department"   required>
                             <mat-option  value="marketing"> Marketing</mat-option>
@@ -19,15 +23,24 @@
                             <mat-option  value="testing">Testing</mat-option>
                           </mat-select> -->
                   </mat-form-field>
-                  <mat-form-field class="example-full-width">
+                </div>
+              </div>
+                  <div class="col-md-6">
+                      <div class="example-full-width">
+                  <mat-form-field>
                       <label style = "color:#666869">Working Location</label>
                     <input matInput
                           name="location"
                           [(ngModel)]="work.location"
-                          required 
+                          required
                          >
                   </mat-form-field>
-                  <mat-form-field class="example-full-width">
+                  </div>
+                  </div>
+
+                      <div class="col-md-6">
+                          <div class="example-full-width">
+                  <mat-form-field>
                       <label style = "color:#666869">Source of Hire</label>
                    <!--  <mat-select  required name="hire_source" [(ngModel)]="work.hire_source" >
                       <mat-option  value="referral">Through Referral</mat-option>
@@ -37,18 +50,29 @@
                     <input matInput
                           name="hire_sourcr"
                           [(ngModel)]="work.hire_source"
-                          required 
+                          required
                          >
                   </mat-form-field>
-                  
-                  <mat-form-field class="example-full-width" >
+                  </div>
+                  </div>
+
+                      <div class="col-md-6">
+                          <div class="example-full-width">
+                  <mat-form-field>
                       <label style = "color:#666869">Date Of Joining</label>
-                    <input matInput [matDatepicker]="picker" required name="join_date" 
+                    <input matInput [matDatepicker]="picker" required name="join_date"
+                    (input)="dateCheck($event)"
                     [(ngModel)]="work.joining_date">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
-                  <mat-form-field class="example-full-width">
+                  <P *ngIf="joindatemessage" style="color:red">*please provide the Date of Joining</P>
+                  </div>
+                  </div>
+
+                  <div class="col-md-6">
+                      <div class="example-full-width">
+                  <mat-form-field>
                       <label style = "color:#666869">Role</label>
                     <!-- <mat-select  required name="role" [(ngModel)]="work.role">
                       <mat-option  value="manager">Manager</mat-option>
@@ -60,10 +84,17 @@
                     <input matInput
                           name="role"
                           [(ngModel)]="work.role"
-                          required 
+                          (input)="roleCheck($event)"
+                          required
                          >
                   </mat-form-field>
-                  <mat-form-field class="example-full-width">
+                  <P *ngIf="rolemessage" style="color:red">*please provide Valid Aadhar Number</P>
+                  </div>
+                  </div>
+
+                  <div class="col-md-6">
+                      <div class="example-full-width">
+                  <mat-form-field>
                       <label style = "color:#666869">Employee Type</label>
                    <!--  <mat-select  required name="employee_type" [(ngModel)]="work.employee_type">
                       <mat-option  value="on_contract">On Contract</mat-option>
@@ -74,10 +105,15 @@
                     <input matInput
                           name="employee_type"
                           [(ngModel)]="work.employee_type"
-                          required 
+                          required
                          >
                   </mat-form-field>
-                  <mat-form-field class="example-full-width">
+                  </div>
+                  </div>
+
+                  <div class="col-md-6">
+                      <div class="example-full-width">
+                  <mat-form-field>
                       <label style = "color:#666869">Status</label>
                    <!--  <mat-select  required name="status" [(ngModel)]="work.status">
                       <mat-option  value="active">Active</mat-option>
@@ -87,19 +123,23 @@
                     <input matInput
                           name="status"
                           [(ngModel)]="work.status"
-                          required 
+                          required
                          >
                   </mat-form-field>
+                      </div>
+                  </div>
+                </div>
               </form>
             <div style="margin-left:250px">
                 <button mat-raised-button color="accent" matStepperPrevious
-                style="margin:20px">Prev</button>
-                <button mat-raised-button color="primary" matStepperNext
+                >Prev</button>
+                <button mat-raised-button class="save"(click)="saveClick()">Save</button>
+                <button mat-raised-button *ngIf="nextbutton" color="primary" matStepperNext
                 style="margin:20px"  (click)="onAdd(f)">Next</button>
               </div>
         </div>
       </div>
-       
+
     </div>
   </div>
 </div>

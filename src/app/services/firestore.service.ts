@@ -68,7 +68,9 @@ export class FirestoreService {
             'wwf': employee.salary.wwf,
             'esi': employee.salary.esi,
             'pt': employee.salary.pt,
-            'total': employee.salary.total,
+            'alltotal': employee.salary.total + parseInt(employee.salary.wwf, 10) + parseInt(employee.salary.esi, 10) +
+            parseInt(employee.salary.pt, 10),
+            'total':employee.salary.total,
      });
 
         employee.dependents.forEach(function (value, index) {
